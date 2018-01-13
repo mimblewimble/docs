@@ -19,7 +19,14 @@ and anything related.
 We have:
  - [introduction material](intro/)
  - [technical documentation](tech/)
- - [community-organized wiki pages](wiki/)
+ - [community-organized wiki pages](https://github.com/mimblewimble/docs/wiki/) with things like
+   - [Building Testnet1](https://github.com/mimblewimble/docs/wiki/Building-Testnet1)
+   - [Troubleshooting Testnet1](https://github.com/mimblewimble/docs/wiki/Testnet1-troubleshooting)
+   - [Software](https://github.com/mimblewimble/docs/wiki/Community-Software-projects)
+   - [Explorers](https://github.com/mimblewimble/docs/wiki/Explorers-and-Status-Pages)
+   - [Grin for programmers](https://github.com/mimblewimble/docs/wiki/Hacking-and-contributing)
+   - [Glossary and jargon](https://github.com/mimblewimble/docs/wiki/Jargon-file-and-glossary)
+   - [Archive of some design discussions](https://github.com/mimblewimble/docs/wiki/Design-discussions)
 
 ## Status of implementations
 

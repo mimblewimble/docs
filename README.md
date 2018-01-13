@@ -33,14 +33,14 @@ We have:
 
 We're doing early testing in Testnet1 with grin, the rust implementation.
 
-Join us! And [contributions](CONTRIBUTING.md) are very welcome.
-
-[__Try grin on Testnet__](https://github.com/mimblewimble/docs/wiki/Building-Testnet1)
+Join us! [__Try grin on Testnet__](https://github.com/mimblewimble/docs/wiki/Building-Testnet1)
+-----------
 
 ## Get involved
 
-Please read our [contributing docs](CONTRIBUTING.md) and be aware of our
-[code of conduct](CONDE_OF_CONDUCT.md).
+Please read [how to contribute](https://github.com/mimblewimble/grin/blob/master/CONTRIBUTING.md)
+and be aware of our
+[code of conduct](https://github.com/mimblewimble/grin/blob/master/CODE_OF_CONDUCT.md).
 
 ### Find us:
 

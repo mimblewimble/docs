@@ -8,7 +8,7 @@ MimbleWimble as an idea was released anonymously. It's a block chain with PoW bu
 
 Grin is an in-progress implementation of the MimbleWimble protocol.
 Many characteristics of MimbleWimble and Grin are still undefined.
-Please read our [introduction to MimbleWimble and Grin](basics/intro.md)
+Please read our [introduction to MimbleWimble and Grin](https://github.com/mimblewimble/grin/blob/master/doc/intro.md)
 
 ## What is here in "docs"?
 

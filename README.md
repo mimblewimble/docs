@@ -17,8 +17,8 @@ Please read our [introduction to MimbleWimble and Grin](basics/intro.md)
 Documents about MimbleWimble, its implementations, and more.
 
 We have:
- - [introduction material](intro/)
- - [technical documentation](tech/)
+ - [introduction material](https://github.com/mimblewimble/grin/blob/master/doc/intro.md)
+ - [technical documentation](https://github.com/mimblewimble/grin/tree/master/doc)
  - The Wiki, open for all to edit and improve! Has things like
    - [Building Testnet1](https://github.com/mimblewimble/docs/wiki/Building-Testnet1)
    - [Troubleshooting Testnet1](https://github.com/mimblewimble/docs/wiki/Testnet1-troubleshooting)

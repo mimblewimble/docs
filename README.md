@@ -10,11 +10,11 @@ Grin is an in-progress implementation of the MimbleWimble protocol.
 Many characteristics of MimbleWimble and Grin are still undefined.
 Please read our [introduction to MimbleWimble and Grin](basics/intro.md)
 
-## What is "docs"?
+## What is here in "docs"?
 
-Here we document MimbleWimble
-and its implementations (grin, grin in C#, gringo, etc)
-and anything related.
+[__The wiki__](https://github.com/mimblewimble/docs/wiki/)
+
+Documents about MimbleWimble, its implementations, and more.
 
 We have:
  - [introduction material](intro/)

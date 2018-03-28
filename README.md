@@ -33,7 +33,7 @@ We have:
 
 We're doing early testing in Testnet1 with grin, the rust implementation.
 
-Join us! [__Try grin on Testnet__](https://github.com/mimblewimble/docs/wiki/Building-Testnet1)
+Join us! [__Try grin on Testnet__](https://github.com/mimblewimble/docs/wiki/Building)
 -----------
 
 ## Get involved

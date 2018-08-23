@@ -17,13 +17,11 @@ Please read our [introduction to MimbleWimble and Grin](https://github.com/mimbl
 Documents about MimbleWimble, its implementations, and more.
 
 We have:
- - [introduction material](https://github.com/mimblewimble/grin/blob/master/doc/intro.md)
- - [technical documentation](https://github.com/mimblewimble/grin/tree/master/doc)
+ - [Introduction material](https://github.com/mimblewimble/grin/blob/master/doc/intro.md)
+ - [Technical documentation](https://github.com/mimblewimble/grin/tree/master/doc)
  - The Wiki, open for all to edit and improve! Has things like
-   - [Building Testnet1](https://github.com/mimblewimble/docs/wiki/Building-Testnet1)
-   - [Troubleshooting Testnet1](https://github.com/mimblewimble/docs/wiki/Testnet1-troubleshooting)
-   - [Software](https://github.com/mimblewimble/docs/wiki/Community-Software-projects)
-   - [Explorers](https://github.com/mimblewimble/docs/wiki/Explorers-and-Status-Pages)
+   - [How to use grin](https://github.com/mimblewimble/docs/wiki/Testnet3-troubleshooting)
+   - [Testnet3 FAQ](https://github.com/mimblewimble/docs/wiki/Building-Testnet3)
    - [Grin for programmers](https://github.com/mimblewimble/docs/wiki/Hacking-and-contributing)
    - [Glossary and jargon](https://github.com/mimblewimble/docs/wiki/Jargon-file-and-glossary)
    - [Archive of some design discussions](https://github.com/mimblewimble/docs/wiki/Design-discussions)
@@ -31,9 +29,9 @@ We have:
 
 ## Status of implementations
 
-We're doing early testing in Testnet1 with grin, the rust implementation.
+We're doing early testing in Testnet3 with grin, the rust implementation.
 
-Join us! [__Try grin on Testnet__](https://github.com/mimblewimble/docs/wiki/Building-Testnet1)
+Join us! [__Try grin on Testnet__](https://github.com/mimblewimble/grin/blob/master/doc/build.md)
 -----------
 
 ## Get involved

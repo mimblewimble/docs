@@ -2,7 +2,7 @@
 <br>
 <center>![](images/smiley_a1.jpg ':size=280px' ':no-zoom')</center>
 
-![](favicon/favicon-96x96.png ':size=20' ':no-zoom')  [![Lobby chat](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/grin_community/Lobby) ![](favicon/favicon-96x96.png ':size=20' ':no-zoom')
+![](favicon/favicon-96x96.png ':size=20' ':no-zoom')  [![Lobby chat](https://img.shields.io/gitter/room/nwjs/nw.js.svg ':no-zoom')](https://gitter.im/grin_community/Lobby) ![](favicon/favicon-96x96.png ':size=20' ':no-zoom')
 
 # Grin
 

@@ -3,7 +3,7 @@
 <!-- * Translations *(Coming soon!)*
   * 🇺🇸 **English** -->
 
-* Grin: The First MimbleWimble
+* ![](favicon/favicon-96x96.png ':size=16' ':no-zoom') Grin: The First MimbleWimble
 
-  * [🕸 Website](https://grin-tech.org/)
+  * [🕸 Website](http://grin.mw/)
   * [🐦 Twitter](https://twitter.com/grinmW)

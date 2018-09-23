@@ -18,7 +18,7 @@ When it’s ready.
 Not yet. Eventually, the aim is to provide these for Testnet3.
 
 ### I'm having these compile errors...
-Ensure you meet the requirements and have installed all the dependencies in the [build documentation](https://github.com/mimblewimble/grin/blob/master/doc/build.md). If you still experience issues, ask in the gitter and we can troubleshoot.
+Ensure you meet the requirements and have installed all the dependencies in the [build documentation](Building.md). If you still experience issues, ask in the gitter and we can troubleshoot.
 
 ### I'm getting these weird node sync errors...
 Ensure you made a clean install for Testnet3 and did not move over config or chain history from your Testnet2 node. If you still experience issues, visit gitter and we might be able to diagnose the issue.

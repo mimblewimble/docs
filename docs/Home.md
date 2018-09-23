@@ -24,7 +24,7 @@ Grin is still an infant, much is left to be done and [contributions](CONTRIBUTIN
 
 ## Contributing
 
-To get involved, read our [contributing docs](https://github.com/mimblewimble/docs/wiki/Hacking-and-contributing).
+To get involved, read our [contributing docs](Hacking-and-contributing.md).
 
 Find us:
 
@@ -38,7 +38,7 @@ Find us:
 
 To learn more about the technology, read our [introduction](https://github.com/mimblewimble/grin/blob/master/doc/intro.md).
 
-To build and try out Grin, see the [[Build Doc|Building]].
+To build and try out Grin, see the [Build Doc](Building.md).
 
 ## Philosophy
 

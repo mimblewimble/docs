@@ -20,7 +20,7 @@ We have:
  - [Introduction material](https://github.com/mimblewimble/grin/blob/master/doc/intro.md)
  - [Technical documentation](https://github.com/mimblewimble/grin/tree/master/doc)
  - The Wiki, open for all to edit and improve! Has things like
-   - [How to use grin](https://github.com/mimblewimble/docs/wiki/Testnet3-troubleshooting)
+   - [How to use grin](https://github.com/mimblewimble/docs/wiki/How-to-use-grin)
    - [Testnet3 FAQ](https://github.com/mimblewimble/docs/wiki/Building-Testnet3)
    - [Grin for programmers](https://github.com/mimblewimble/docs/wiki/Hacking-and-contributing)
    - [Glossary and jargon](https://github.com/mimblewimble/docs/wiki/Jargon-file-and-glossary)

@@ -42,7 +42,7 @@ and be aware of our
 
 ### Find us:
 
-* Chat: [Gitter](https://gitter.im/grin_community/Lobby).
+* Chat: [Gitter](https://gitter.im/grin_community/Lobby) and [Discord](https://discord.gg/vDRYEZK).
 * Mailing list: [see archives](https://lists.launchpad.net/mimblewimble/) or
 join the [~MimbleWimble team](https://launchpad.net/~mimblewimble)
 and click there to request to join the mailing list.

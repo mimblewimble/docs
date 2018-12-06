@@ -29,7 +29,7 @@ We have:
 
 ## Status of implementations
 
-We're doing early testing in Testnet3 with grin, the rust implementation.
+We're on Testnet4 and doing testing before the main net launch.
 
 Join us! [__Try grin on Testnet__](https://github.com/mimblewimble/grin/blob/master/doc/build.md)
 -----------

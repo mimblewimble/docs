@@ -20,19 +20,12 @@ We have:
  - [Introduction material](https://github.com/mimblewimble/grin/blob/master/doc/intro.md)
  - [Technical documentation](https://github.com/mimblewimble/grin/tree/master/doc)
  - The Wiki, open for all to edit and improve! Has things like
-   - [How to use grin](https://github.com/mimblewimble/docs/wiki/Testnet3-troubleshooting)
+   - [Getting started with Grin](https://github.com/mimblewimble/docs/wiki/Getting-Started-With-Grin%3A-Links-and-Resources)
    - [FAQ](https://github.com/mimblewimble/docs/wiki/FAQ)
    - [Grin for programmers](https://github.com/mimblewimble/docs/wiki/Hacking-and-contributing)
    - [Glossary and jargon](https://github.com/mimblewimble/docs/wiki/Jargon-file-and-glossary)
    - [Archive of some design discussions](https://github.com/mimblewimble/docs/wiki/Design-discussions)
    - [and more...](https://github.com/mimblewimble/docs/wiki/)
-
-## Status of implementations
-
-We're on Testnet4 and doing testing before the main net launch.
-
-Join us! [__Try grin on Testnet__](https://github.com/mimblewimble/grin/blob/master/doc/build.md)
------------
 
 ## Get involved
 

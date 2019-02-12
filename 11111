@@ -1,0 +1,1 @@
+grin wallet send -m file -d my_grin_transaction.tx 10.25

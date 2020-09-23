@@ -7,7 +7,7 @@ site_description: 'Grin Documentation'
 # Repository
 repo_name: mimblewimble/grin
 repo_url: https://github.com/mimblewimble/grin
-edit_uri: https://github.com/mimblewimble/docs
+edit_uri: https://github.com/mimblewimble/docs/blob/master/docs
 
 # Copyright
 # copyright: Copyright &copy; 2016 - 2021 Grin Developers

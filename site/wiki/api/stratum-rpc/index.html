@@ -1,0 +1,2718 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Grin Documentation">
+      
+      
+        <link rel="canonical" href="https://docs.grin.mw/wiki/api/stratum-rpc/">
+      
+      
+        <meta name="author" content="Grin Developers">
+      
+      <link rel="shortcut icon" href="../../../assets/images/grin-logo.svg">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.0">
+    
+    
+      
+        <title>Stratum RPC - Grin Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.b5d04df8.min.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9ab2c1f8.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#stratum-rpc-protocol" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://docs.grin.mw" title="Grin Documentation" class="md-header-nav__button md-logo" aria-label="Grin Documentation">
+      
+  <img src="../../../assets/images/grin-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Grin Documentation
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Stratum RPC
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/mimblewimble/grin/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimblewimble/grin
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../.." class="md-tabs__link">
+          Getting Started
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../about-grin/story/" class="md-tabs__link">
+          About Grin
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../table-of-contents/" class="md-tabs__link md-tabs__link--active">
+          Wiki
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../grin-rfcs/text/0015-slatepack/" class="md-tabs__link">
+          RFCs
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://docs.grin.mw" title="Grin Documentation" class="md-nav__button md-logo" aria-label="Grin Documentation">
+      
+  <img src="../../../assets/images/grin-logo.svg" alt="logo">
+
+    </a>
+    Grin Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/mimblewimble/grin/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimblewimble/grin
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      Getting Started
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Getting Started" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Getting Started
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="./Grin" class="md-nav__link">
+      ./Grin
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-1-2" type="checkbox" id="nav-1-2">
+    
+    <label class="md-nav__link" for="nav-1-2">
+      Quickstart
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Quickstart" data-md-level="2">
+      <label class="md-nav__title" for="nav-1-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Quickstart
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../getting-started/quickstart/install/" title="Install" class="md-nav__link">
+      Install
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../getting-started/quickstart/initialize/" title="Initialize" class="md-nav__link">
+      Initialize
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../getting-started/quickstart/receive/" title="Receive" class="md-nav__link">
+      Receive
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../getting-started/quickstart/send/" title="Send" class="md-nav__link">
+      Send
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../getting-started/wallet-handbook/" title="CLI Handbook" class="md-nav__link">
+      CLI Handbook
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../getting-started/wallets/" title="Wallets" class="md-nav__link">
+      Wallets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../getting-started/build/" title="Build" class="md-nav__link">
+      Build
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      About Grin
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="About Grin" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        About Grin
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../about-grin/story/" title="Story" class="md-nav__link">
+      Story
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../about-grin/privacy/" title="Privacy" class="md-nav__link">
+      Privacy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../about-grin/scalability/" title="Scalability" class="md-nav__link">
+      Scalability
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../about-grin/transactions/" title="Transactions" class="md-nav__link">
+      Transactions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../about-grin/proof-of-work/" title="Proof of Work" class="md-nav__link">
+      Proof of Work
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../about-grin/emission/" title="Emission" class="md-nav__link">
+      Emission
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Wiki
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Wiki" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Wiki
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../table-of-contents/" title="Table of Contents" class="md-nav__link">
+      Table of Contents
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2">
+    
+    <label class="md-nav__link" for="nav-3-2">
+      Introduction
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Introduction" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Introduction
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../introduction/grin-for-bitcoiners/" title="Grin for Bitcoiners" class="md-nav__link">
+      Grin for Bitcoiners
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-2-2" type="checkbox" id="nav-3-2-2">
+    
+    <label class="md-nav__link" for="nav-3-2-2">
+      Mimblewimble
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Mimblewimble" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-2-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Mimblewimble
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../introduction/mimblewimble/ecc/" title="Elliptic Curves" class="md-nav__link">
+      Elliptic Curves
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../introduction/mimblewimble/commitments/" title="Commitments" class="md-nav__link">
+      Commitments
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../introduction/mimblewimble/mimblewimble/" title="Mimblewimble" class="md-nav__link">
+      Mimblewimble
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
+    
+    <label class="md-nav__link" for="nav-3-3">
+      Transactions
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Transactions" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Transactions
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../transactions/slates/" title="Slates" class="md-nav__link">
+      Slates
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../transactions/slatepack/" title="Slatepack" class="md-nav__link">
+      Slatepack
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../transactions/payment-proofs/" title="Payment Proofs" class="md-nav__link">
+      Payment Proofs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../transactions/contracts/" title="Contracts" class="md-nav__link">
+      Contracts
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4">
+    
+    <label class="md-nav__link" for="nav-3-4">
+      Blocks
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Blocks" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Blocks
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../blocks/block-header/" title="Header" class="md-nav__link">
+      Header
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../blocks/block-body/" title="Body" class="md-nav__link">
+      Body
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../blocks/fees-and-weight/" title="Fees & Weight" class="md-nav__link">
+      Fees & Weight
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-5" type="checkbox" id="nav-3-5">
+    
+    <label class="md-nav__link" for="nav-3-5">
+      Chain State
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Chain State" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Chain State
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../chain-state/merkle-mountain-range/" title="Merkle Mountain Ranges" class="md-nav__link">
+      Merkle Mountain Ranges
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../chain-state/state-and-pruning/" title="State & Pruning" class="md-nav__link">
+      State & Pruning
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../chain-state/chain-sync/" title="Chain Sync" class="md-nav__link">
+      Chain Sync
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
+    
+    <label class="md-nav__link" for="nav-3-6">
+      Miscellaneous
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Miscellaneous" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Miscellaneous
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../miscellaneous/cuckoo-cycle/" title="Cuckoo Cycle" class="md-nav__link">
+      Cuckoo Cycle
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../miscellaneous/dandelion/" title="Dandelion" class="md-nav__link">
+      Dandelion
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../miscellaneous/switch-commitments/" title="Switch Commitments" class="md-nav__link">
+      Switch Commitments
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../miscellaneous/coinbase-maturity-rule/" title="Coinbase Maturity Rule" class="md-nav__link">
+      Coinbase Maturity Rule
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../miscellaneous/nrd-kernels/" title="NRD Kernels" class="md-nav__link">
+      NRD Kernels
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-7" type="checkbox" id="nav-3-7" checked>
+    
+    <label class="md-nav__link" for="nav-3-7">
+      API
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="API" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../node-api/" title="Node API" class="md-nav__link">
+      Node API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../wallet-api/" title="Wallet API" class="md-nav__link">
+      Wallet API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Stratum RPC
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Stratum RPC" class="md-nav__link md-nav__link--active">
+      Stratum RPC
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#messages" class="md-nav__link">
+    Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getjobtemplate" class="md-nav__link">
+    getjobtemplate
+  </a>
+  
+    <nav class="md-nav" aria-label="getjobtemplate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request" class="md-nav__link">
+    Request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ok-response" class="md-nav__link">
+    OK response
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-response" class="md-nav__link">
+    Error response
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#job" class="md-nav__link">
+    job
+  </a>
+  
+    <nav class="md-nav" aria-label="job">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request_1" class="md-nav__link">
+    Request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response" class="md-nav__link">
+    Response
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keepalive" class="md-nav__link">
+    keepalive
+  </a>
+  
+    <nav class="md-nav" aria-label="keepalive">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request_2" class="md-nav__link">
+    Request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response_1" class="md-nav__link">
+    Response
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#login" class="md-nav__link">
+    login
+  </a>
+  
+    <nav class="md-nav" aria-label="login">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request_3" class="md-nav__link">
+    Request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ok-response_1" class="md-nav__link">
+    OK response
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-response_1" class="md-nav__link">
+    Error response
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status" class="md-nav__link">
+    status
+  </a>
+  
+    <nav class="md-nav" aria-label="status">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request_4" class="md-nav__link">
+    Request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response_2" class="md-nav__link">
+    Response
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#submit" class="md-nav__link">
+    submit
+  </a>
+  
+    <nav class="md-nav" aria-label="submit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request_5" class="md-nav__link">
+    Request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ok-response_2" class="md-nav__link">
+    OK response
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blockfound-response" class="md-nav__link">
+    Blockfound response
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-response_2" class="md-nav__link">
+    Error response
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-messages" class="md-nav__link">
+    Error Messages
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#miner-behavior" class="md-nav__link">
+    Miner behavior
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference-implementation" class="md-nav__link">
+    Reference Implementation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-8" type="checkbox" id="nav-3-8">
+    
+    <label class="md-nav__link" for="nav-3-8">
+      Security Process
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Security Process" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-8">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Security Process
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../security-process/grin-security-process/" title="Grin's Security Process" class="md-nav__link">
+      Grin's Security Process
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../security-process/security-team/" title="Security Team" class="md-nav__link">
+      Security Team
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../security-process/code-audits/" title="Code Audits" class="md-nav__link">
+      Code Audits
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-9" type="checkbox" id="nav-3-9">
+    
+    <label class="md-nav__link" for="nav-3-9">
+      Services
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Services" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-9">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Services
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../services/list-of-services/" title="List of Services" class="md-nav__link">
+      List of Services
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../services/slatepack-integration/" title="Slatepack Integration Guide" class="md-nav__link">
+      Slatepack Integration Guide
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../resources/" title="Resources" class="md-nav__link">
+      Resources
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      RFCs
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="RFCs" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        RFCs
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../grin-rfcs/text/0015-slatepack/" title="0015 slatepack" class="md-nav__link">
+      0015 slatepack
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../grin-rfcs/text/0014-general-fund-guidelines/" title="0014 general-fund-guidelines" class="md-nav__link">
+      0014 general-fund-guidelines
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../grin-rfcs/text/0013-nrd-kernels/" title="0013 nrd-kernels" class="md-nav__link">
+      0013 nrd-kernels
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../grin-rfcs/text/0012-compact-slates/" title="0012 compact-slates" class="md-nav__link">
+      0012 compact-slates
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../grin-rfcs/text/0011-security-team/" title="0011 security-team" class="md-nav__link">
+      0011 security-team
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../grin-rfcs/text/0010-online-transacting-via-tor/" title="0010 online-transacting-via-tor" class="md-nav__link">
+      0010 online-transacting-via-tor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../grin-rfcs/text/0009-enable-faster-sync/" title="0009 enable-faster-sync" class="md-nav__link">
+      0009 enable-faster-sync
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../grin-rfcs/text/0008-wallet-state-management/" title="0008 wallet-state-management" class="md-nav__link">
+      0008 wallet-state-management
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../grin-rfcs/text/0007-node-api-v2/" title="0007 node-api-v2" class="md-nav__link">
+      0007 node-api-v2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../grin-rfcs/text/0006-payment-proofs/" title="0006 payment-proofs" class="md-nav__link">
+      0006 payment-proofs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../grin-rfcs/text/0005-variable-size-kernels/" title="0005 variable-size-kernels" class="md-nav__link">
+      0005 variable-size-kernels
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../grin-rfcs/text/0004-full-wallet-lifecycle/" title="0004 full-wallet-lifecycle" class="md-nav__link">
+      0004 full-wallet-lifecycle
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../grin-rfcs/text/0003-security-process/" title="0003 security-process" class="md-nav__link">
+      0003 security-process
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../grin-rfcs/text/0002-grin-governance/" title="0002 grin-governance" class="md-nav__link">
+      0002 grin-governance
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../grin-rfcs/text/0001-rfc-process/" title="0001 rfc-process" class="md-nav__link">
+      0001 rfc-process
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#messages" class="md-nav__link">
+    Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getjobtemplate" class="md-nav__link">
+    getjobtemplate
+  </a>
+  
+    <nav class="md-nav" aria-label="getjobtemplate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request" class="md-nav__link">
+    Request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ok-response" class="md-nav__link">
+    OK response
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-response" class="md-nav__link">
+    Error response
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#job" class="md-nav__link">
+    job
+  </a>
+  
+    <nav class="md-nav" aria-label="job">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request_1" class="md-nav__link">
+    Request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response" class="md-nav__link">
+    Response
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keepalive" class="md-nav__link">
+    keepalive
+  </a>
+  
+    <nav class="md-nav" aria-label="keepalive">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request_2" class="md-nav__link">
+    Request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response_1" class="md-nav__link">
+    Response
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#login" class="md-nav__link">
+    login
+  </a>
+  
+    <nav class="md-nav" aria-label="login">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request_3" class="md-nav__link">
+    Request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ok-response_1" class="md-nav__link">
+    OK response
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-response_1" class="md-nav__link">
+    Error response
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status" class="md-nav__link">
+    status
+  </a>
+  
+    <nav class="md-nav" aria-label="status">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request_4" class="md-nav__link">
+    Request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response_2" class="md-nav__link">
+    Response
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#submit" class="md-nav__link">
+    submit
+  </a>
+  
+    <nav class="md-nav" aria-label="submit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request_5" class="md-nav__link">
+    Request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ok-response_2" class="md-nav__link">
+    OK response
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blockfound-response" class="md-nav__link">
+    Blockfound response
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-response_2" class="md-nav__link">
+    Error response
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-messages" class="md-nav__link">
+    Error Messages
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#miner-behavior" class="md-nav__link">
+    Miner behavior
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference-implementation" class="md-nav__link">
+    Reference Implementation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/mimblewimble/docs/wiki/api/stratum-rpc.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  
+                
+                
+                <h1 id="stratum-rpc-protocol">Stratum RPC Protocol</h1>
+<blockquote>
+<p><em>Read this in other languages: <a href="https://github.com/mimblewimble/grin/blob/master/doc/stratum_KR.md">Korean</a>, <a href="https://github.com/mimblewimble/grin/blob/master/doc/stratum_ZH-CN.md">简体中文</a>.</em></p>
+</blockquote>
+<p>This document describes the current Stratum RPC protocol implemented in Grin.</p>
+<h2 id="messages">Messages</h2>
+<p>In this section, we detail each message and the potential response.</p>
+<h3 id="getjobtemplate"><code>getjobtemplate</code></h3>
+<p>A message initiated by the miner.
+Miner can request a job with this message.</p>
+<h4 id="request">Request</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="left">Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">id</td>
+<td align="left">ID of the request</td>
+</tr>
+<tr>
+<td align="left">jsonrpc</td>
+<td align="left">"2.0"</td>
+</tr>
+<tr>
+<td align="left">method</td>
+<td align="left">"getjobtemplate"</td>
+</tr>
+<tr>
+<td align="left">params</td>
+<td align="left">null</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+   <span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;2&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="s2">&quot;getjobtemplate&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="kc">null</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>The response can be of two types:</p>
+<h4 id="ok-response">OK response</h4>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+   <span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="s2">&quot;getjobtemplate&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;result&quot;</span><span class="p">:{</span>
+      <span class="nt">&quot;difficulty&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+      <span class="nt">&quot;height&quot;</span><span class="p">:</span><span class="mi">13726</span><span class="p">,</span>
+      <span class="nt">&quot;job_id&quot;</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span>
+      <span class="nt">&quot;pre_pow&quot;</span><span class="p">:</span><span class="s2">&quot;00010000000000003c4d0171369781424b39c81eb39de10cdf4a7cc27bbc6769203c7c9bc02cc6a1dfc6000000005b50f8210000000000395f123c6856055aab2369fe325c3d709b129dee5c96f2db60cdbc0dc123a80cb0b89e883ae2614f8dbd169888a95c0513b1ac7e069de82e5d479cf838281f7838b4bf75ea7c9222a1ad7406a4cab29af4e018c402f70dc8e9ef3d085169391c78741c656ec0f11f62d41b463c82737970afaa431c5cabb9b759cdfa52d761ac451276084366d1ba9efff2db9ed07eec1bcd8da352b32227f452dfa987ad249f689d9780000000000000b9e00000000000009954&quot;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="error-response">Error response</h4>
+<p>If the node is syncing, it will send the following message:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="left">Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">id</td>
+<td align="left">ID of the request</td>
+</tr>
+<tr>
+<td align="left">jsonrpc</td>
+<td align="left">"2.0"</td>
+</tr>
+<tr>
+<td align="left">method</td>
+<td align="left">"getjobtemplate"</td>
+</tr>
+<tr>
+<td align="left">error</td>
+<td -="-" Please="Please" _code_:-32701_message_:_Node="&quot;code&quot;:-32701,&quot;message&quot;:&quot;Node" align="left" is="is" syncing="syncing" wait_="wait&quot;"></td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+   <span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;10&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="s2">&quot;getjobtemplate&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;error&quot;</span><span class="p">:{</span>
+      <span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="mi">-32000</span><span class="p">,</span>
+      <span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;Node is syncing - Please wait&quot;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="job"><code>job</code></h3>
+<p>A message initiated by the Stratum server.
+Stratum server will send job automatically to connected miners.
+The miner SHOULD interrupt current job if job_id = 0, and SHOULD replace the current job with this one after the current graph is complete.</p>
+<h4 id="request_1">Request</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="left">Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">id</td>
+<td align="left">ID of the request</td>
+</tr>
+<tr>
+<td align="left">jsonrpc</td>
+<td align="left">"2.0"</td>
+</tr>
+<tr>
+<td align="left">method</td>
+<td align="left">"job"</td>
+</tr>
+<tr>
+<td align="left">params</td>
+<td align="left">Int <code>difficulty</code>, <code>height</code>, <code>job_id</code> and string <code>pre_pow</code></td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+   <span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;Stratum&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="s2">&quot;job&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;params&quot;</span><span class="p">:{</span>
+      <span class="nt">&quot;difficulty&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+      <span class="nt">&quot;height&quot;</span><span class="p">:</span><span class="mi">16375</span><span class="p">,</span>
+      <span class="nt">&quot;job_id&quot;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span>
+      <span class="nt">&quot;pre_pow&quot;</span><span class="p">:</span><span class="s2">&quot;00010000000000003ff723bc8c987b0c594794a0487e52260c5343288749c7e288de95a80afa558c5fb8000000005b51f15f00000000003cadef6a45edf92d2520bf45cbd4f36b5ef283c53d8266bbe9aa1b8daaa1458ce5578fcb0978b3995dd00e3bfc5a9277190bb9407a30d66aec26ff55a2b50214b22cdc1f3894f27374f568b2fe94d857b6b3808124888dd5eff7e8de7e451ac805a4ebd6551fa7a529a1b9f35f761719ed41bfef6ab081defc45a64a374dfd8321feac083741f29207b044071d93904986fa322df610e210c543c2f95522c9bdaef5f598000000000000c184000000000000a0cf&quot;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="response">Response</h4>
+<p>No response is required for this message.</p>
+<hr />
+<h3 id="keepalive"><code>keepalive</code></h3>
+<p>A message initiated by the miner in order to keep the connection alive.</p>
+<h4 id="request_2">Request</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="left">Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">id</td>
+<td align="left">ID of the request</td>
+</tr>
+<tr>
+<td align="left">jsonrpc</td>
+<td align="left">"2.0"</td>
+</tr>
+<tr>
+<td align="left">method</td>
+<td align="left">"keepalive"</td>
+</tr>
+<tr>
+<td align="left">params</td>
+<td align="left">null</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+   <span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;2&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="s2">&quot;keepalive&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="kc">null</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="response_1">Response</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="left">Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">id</td>
+<td align="left">ID of the request</td>
+</tr>
+<tr>
+<td align="left">jsonrpc</td>
+<td align="left">"2.0"</td>
+</tr>
+<tr>
+<td align="left">method</td>
+<td align="left">"keepalive"</td>
+</tr>
+<tr>
+<td align="left">result</td>
+<td align="left">"ok"</td>
+</tr>
+<tr>
+<td align="left">error</td>
+<td align="left">null</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+   <span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;2&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="s2">&quot;keepalive&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="s2">&quot;ok&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="kc">null</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="login"><code>login</code></h3>
+<p>A message initiated by the miner.
+Miner can log in on a Grin Stratum server with a login, password and agent (usually statically set by the miner program).</p>
+<h4 id="request_3">Request</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="left">Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">id</td>
+<td align="left">ID of the request</td>
+</tr>
+<tr>
+<td align="left">jsonrpc</td>
+<td align="left">"2.0"</td>
+</tr>
+<tr>
+<td align="left">method</td>
+<td align="left">"login"</td>
+</tr>
+<tr>
+<td align="left">params</td>
+<td align="left">Strings: login, pass and agent</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+   <span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="s2">&quot;login&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;params&quot;</span><span class="p">:{</span>
+      <span class="nt">&quot;login&quot;</span><span class="p">:</span><span class="s2">&quot;login&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;pass&quot;</span><span class="p">:</span><span class="s2">&quot;password&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;agent&quot;</span><span class="p">:</span><span class="s2">&quot;grin-miner&quot;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>The response can be of two types:</p>
+<h4 id="ok-response_1">OK response</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="left">Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">id</td>
+<td align="left">ID of the request</td>
+</tr>
+<tr>
+<td align="left">jsonrpc</td>
+<td align="left">"2.0"</td>
+</tr>
+<tr>
+<td align="left">method</td>
+<td align="left">"login"</td>
+</tr>
+<tr>
+<td align="left">result</td>
+<td align="left">"ok"</td>
+</tr>
+<tr>
+<td align="left">error</td>
+<td align="left">null</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+   <span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="s2">&quot;login&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="s2">&quot;ok&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="kc">null</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="error-response_1">Error response</h4>
+<p>Not yet implemented. Should return error -32500 "Login first" when login is required.</p>
+<hr />
+<h3 id="status"><code>status</code></h3>
+<p>A message initiated by the miner.
+This message allows a miner to get the status of its current worker and the network.</p>
+<h4 id="request_4">Request</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="left">Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">id</td>
+<td align="left">ID of the request</td>
+</tr>
+<tr>
+<td align="left">jsonrpc</td>
+<td align="left">"2.0"</td>
+</tr>
+<tr>
+<td align="left">method</td>
+<td align="left">"status"</td>
+</tr>
+<tr>
+<td align="left">params</td>
+<td align="left">null</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+   <span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;2&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="s2">&quot;status&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="kc">null</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="response_2">Response</h4>
+<p>The response is the following:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="left">Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">id</td>
+<td align="left">ID of the request</td>
+</tr>
+<tr>
+<td align="left">jsonrpc</td>
+<td align="left">"2.0"</td>
+</tr>
+<tr>
+<td align="left">method</td>
+<td align="left">"status"</td>
+</tr>
+<tr>
+<td align="left">result</td>
+<td align="left">String <code>id</code>. Integers <code>height</code>, <code>difficulty</code>, <code>accepted</code>, <code>rejected</code> and <code>stale</code></td>
+</tr>
+<tr>
+<td align="left">error</td>
+<td align="left">null</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+   <span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;5&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="s2">&quot;status&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;result&quot;</span><span class="p">:{</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;5&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;height&quot;</span><span class="p">:</span><span class="mi">13726</span><span class="p">,</span>
+      <span class="nt">&quot;difficulty&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+      <span class="nt">&quot;accepted&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+      <span class="nt">&quot;rejected&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+      <span class="nt">&quot;stale&quot;</span><span class="p">:</span><span class="mi">0</span>
+   <span class="p">},</span>
+   <span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="kc">null</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="submit"><code>submit</code></h3>
+<p>A message initiated by the miner.
+When a miner find a share, it will submit it to the node.</p>
+<h4 id="request_5">Request</h4>
+<p>The miner submit a solution to a job to the Stratum server.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="left">Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">id</td>
+<td align="left">ID of the request</td>
+</tr>
+<tr>
+<td align="left">jsonrpc</td>
+<td align="left">"2.0"</td>
+</tr>
+<tr>
+<td align="left">method</td>
+<td align="left">"submit"</td>
+</tr>
+<tr>
+<td align="left">params</td>
+<td align="left">Int <code>edge_bits</code>,<code>nonce</code>, <code>height</code>, <code>job_id</code> and array of integers <code>pow</code></td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+   <span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="s2">&quot;submit&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;params&quot;</span><span class="p">:{</span>
+      <span class="nt">&quot;edge_bits&quot;</span><span class="p">:</span><span class="mi">29</span><span class="p">,</span>
+      <span class="nt">&quot;height&quot;</span><span class="p">:</span><span class="mi">16419</span><span class="p">,</span>
+      <span class="nt">&quot;job_id&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+      <span class="nt">&quot;nonce&quot;</span><span class="p">:</span><span class="mi">8895699060858340771</span><span class="p">,</span>
+      <span class="nt">&quot;pow&quot;</span><span class="p">:[</span>
+         <span class="mi">4210040</span><span class="p">,</span><span class="mi">10141596</span><span class="p">,</span><span class="mi">13269632</span><span class="p">,</span><span class="mi">24291934</span><span class="p">,</span><span class="mi">28079062</span><span class="p">,</span><span class="mi">84254573</span><span class="p">,</span><span class="mi">84493890</span><span class="p">,</span><span class="mi">100560174</span><span class="p">,</span><span class="mi">100657333</span><span class="p">,</span><span class="mi">120128285</span><span class="p">,</span><span class="mi">130518226</span><span class="p">,</span><span class="mi">140371663</span><span class="p">,</span><span class="mi">142109188</span><span class="p">,</span><span class="mi">159800646</span><span class="p">,</span><span class="mi">163323737</span><span class="p">,</span><span class="mi">171019100</span><span class="p">,</span><span class="mi">176840047</span><span class="p">,</span><span class="mi">191220010</span><span class="p">,</span><span class="mi">192245584</span><span class="p">,</span><span class="mi">198941444</span><span class="p">,</span><span class="mi">209276164</span><span class="p">,</span><span class="mi">216952635</span><span class="p">,</span><span class="mi">217795152</span><span class="p">,</span><span class="mi">225662613</span><span class="p">,</span><span class="mi">230166736</span><span class="p">,</span><span class="mi">231315079</span><span class="p">,</span><span class="mi">248639876</span><span class="p">,</span><span class="mi">263910393</span><span class="p">,</span><span class="mi">293995691</span><span class="p">,</span><span class="mi">298361937</span><span class="p">,</span><span class="mi">326412694</span><span class="p">,</span><span class="mi">330363619</span><span class="p">,</span><span class="mi">414572127</span><span class="p">,</span><span class="mi">424798984</span><span class="p">,</span><span class="mi">426489226</span><span class="p">,</span><span class="mi">466671748</span><span class="p">,</span><span class="mi">466924466</span><span class="p">,</span><span class="mi">490048497</span><span class="p">,</span><span class="mi">495035248</span><span class="p">,</span><span class="mi">496623057</span><span class="p">,</span><span class="mi">502828197</span><span class="p">,</span> <span class="mi">532838434</span>
+         <span class="p">]</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>The response can be of three types.</p>
+<h4 id="ok-response_2">OK response</h4>
+<p>The share is accepted by the Stratum but is not a valid cuck(at)oo solution at the network target difficulty.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="left">Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">id</td>
+<td align="left">ID of the request</td>
+</tr>
+<tr>
+<td align="left">jsonrpc</td>
+<td align="left">"2.0"</td>
+</tr>
+<tr>
+<td align="left">method</td>
+<td align="left">"submit"</td>
+</tr>
+<tr>
+<td align="left">result</td>
+<td align="left">"ok"</td>
+</tr>
+<tr>
+<td align="left">error</td>
+<td align="left">null</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+   <span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;2&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="s2">&quot;submit&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="s2">&quot;ok&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="kc">null</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="blockfound-response">Blockfound response</h4>
+<p>The share is accepted by the Stratum and is a valid cuck(at)oo solution at the network target difficulty.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="left">Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">id</td>
+<td align="left">ID of the request</td>
+</tr>
+<tr>
+<td align="left">jsonrpc</td>
+<td align="left">"2.0"</td>
+</tr>
+<tr>
+<td align="left">method</td>
+<td align="left">"submit"</td>
+</tr>
+<tr>
+<td align="left">result</td>
+<td align="left">"block - " + hash of the block</td>
+</tr>
+<tr>
+<td align="left">error</td>
+<td align="left">null</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+   <span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;6&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="s2">&quot;submit&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="s2">&quot;blockfound - 23025af9032de812d15228121d5e4b0e977d30ad8036ab07131104787b9dcf10&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="kc">null</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="error-response_2">Error response</h4>
+<p>The error response can be of two types: stale and rejected.</p>
+<p><strong>Stale share error response</strong></p>
+<p>The share is a valid solution to a previous job not the current one.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="left">Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">id</td>
+<td align="left">ID of the request</td>
+</tr>
+<tr>
+<td align="left">jsonrpc</td>
+<td align="left">"2.0"</td>
+</tr>
+<tr>
+<td align="left">method</td>
+<td align="left">"submit"</td>
+</tr>
+<tr>
+<td align="left">error</td>
+<td _code_:-32503_message_:_Solution="&quot;code&quot;:-32503,&quot;message&quot;:&quot;Solution" align="left" late_="late&quot;" submitted="submitted" too="too"></td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+   <span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;5&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="s2">&quot;submit&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;error&quot;</span><span class="p">:{</span>
+      <span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="mi">-32503</span><span class="p">,</span>
+      <span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;Solution submitted too late&quot;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><strong>Rejected share error responses</strong></p>
+<p>Two possibilities: the solution cannot be validated or the solution is of too low difficulty.</p>
+<p><strong>Failed to validate solution error</strong></p>
+<p>The submitted solution cannot be validated.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="left">Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">id</td>
+<td align="left">ID of the request</td>
+</tr>
+<tr>
+<td align="left">jsonrpc</td>
+<td align="left">"2.0"</td>
+</tr>
+<tr>
+<td align="left">method</td>
+<td align="left">"submit"</td>
+</tr>
+<tr>
+<td align="left">error</td>
+<td _code_:-32502_message_:_Failed="&quot;code&quot;:-32502,&quot;message&quot;:&quot;Failed" align="left" solution_="solution&quot;" to="to" validate="validate"></td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+   <span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;5&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="s2">&quot;submit&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;error&quot;</span><span class="p">:{</span>
+      <span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="mi">-32502</span><span class="p">,</span>
+      <span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;Failed to validate solution&quot;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><strong>Share rejected due to low difficulty error</strong></p>
+<p>The submitted solution is of too low difficulty.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="left">Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">id</td>
+<td align="left">ID of the request</td>
+</tr>
+<tr>
+<td align="left">jsonrpc</td>
+<td align="left">"2.0"</td>
+</tr>
+<tr>
+<td align="left">method</td>
+<td align="left">"submit"</td>
+</tr>
+<tr>
+<td align="left">error</td>
+<td _code_:-32501_message_:_Share="&quot;code&quot;:-32501,&quot;message&quot;:&quot;Share" align="left" difficulty_="difficulty&quot;" due="due" low="low" rejected="rejected" to="to"></td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+   <span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;5&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="s2">&quot;submit&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;error&quot;</span><span class="p">:{</span>
+      <span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="mi">-32501</span><span class="p">,</span>
+      <span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;Share rejected due to low difficulty&quot;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2 id="error-messages">Error Messages</h2>
+<p>Grin Stratum protocol implementation contains the following error message:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Error code</th>
+<th align="left">Error Message</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">-32000</td>
+<td align="left">Node is syncing - please wait</td>
+</tr>
+<tr>
+<td align="left">-32500</td>
+<td align="left">Login first</td>
+</tr>
+<tr>
+<td align="left">-32501</td>
+<td align="left">Share rejected due to low difficulty</td>
+</tr>
+<tr>
+<td align="left">-32502</td>
+<td align="left">Failed to validate solution</td>
+</tr>
+<tr>
+<td align="left">-32503</td>
+<td align="left">Solution Submitted too late</td>
+</tr>
+<tr>
+<td align="left">-32600</td>
+<td align="left">Invalid Request</td>
+</tr>
+<tr>
+<td align="left">-32601</td>
+<td align="left">Method not found</td>
+</tr>
+</tbody>
+</table>
+<h2 id="miner-behavior">Miner behavior</h2>
+<p>Miners SHOULD, MAY or MUST respect the following rules:</p>
+<ul>
+<li>Miners SHOULD randomize the job nonce before starting</li>
+<li>Miners MUST continue mining the same job until the server sends a new one, though a miner MAY request a new job at any time</li>
+<li>Miners MUST NOT send an rpc response to a job request from the server</li>
+<li>Miners MAY set the RPC "id" and expect responses to have that same id</li>
+<li>Miners MAY send a keepalive message</li>
+<li>Miners MAY send a login request (to identify which miner finds shares / solutions in the logs), the login request MUST have all 3 params.</li>
+<li>Miners MUST return the supplied job_id with submit messages.</li>
+</ul>
+<h2 id="reference-implementation">Reference Implementation</h2>
+<p>The current reference implementation is available at <a href="https://github.com/mimblewimble/grin-miner/blob/master/src/bin/client.rs">mimblewimble/grin-miner</a>.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../wallet-api/" title="Wallet API" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Wallet API
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../../security-process/grin-security-process/" title="Grin's Security Process" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Grin's Security Process
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/mimblewimble" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://keybase.io/team/grincoin" target="_blank" rel="noopener" title="keybase.io" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M286.17 419a18 18 0 1018 18 18 18 0 00-18-18zm111.92-147.6c-9.5-14.62-39.37-52.45-87.26-73.71q-9.1-4.06-18.38-7.27a78.43 78.43 0 00-47.88-104.13c-12.41-4.1-23.33-6-32.41-5.77-.6-2-1.89-11 9.4-35L198.66 32l-5.48 7.56c-8.69 12.06-16.92 23.55-24.34 34.89a51 51 0 00-8.29-1.25c-41.53-2.45-39-2.33-41.06-2.33-50.61 0-50.75 52.12-50.75 45.88l-2.36 36.68c-1.61 27 19.75 50.21 47.63 51.85l8.93.54a214 214 0 00-46.29 35.54C14 304.66 14 374 14 429.77v33.64l23.32-29.8a148.6 148.6 0 0014.56 37.56c5.78 10.13 14.87 9.45 19.64 7.33 4.21-1.87 10-6.92 3.75-20.11a178.29 178.29 0 01-15.76-53.13l46.82-59.83-24.66 74.11c58.23-42.4 157.38-61.76 236.25-38.59 34.2 10.05 67.45.69 84.74-23.84.72-1 1.2-2.16 1.85-3.22a156.09 156.09 0 012.8 28.43c0 23.3-3.69 52.93-14.88 81.64-2.52 6.46 1.76 14.5 8.6 15.74 7.42 1.57 15.33-3.1 18.37-11.15C429 443 434 414 434 382.32c0-38.58-13-77.46-35.91-110.92zM142.37 128.58l-15.7-.93-1.39 21.79 13.13.78a93 93 0 00.32 19.57l-22.38-1.34a12.28 12.28 0 01-11.76-12.79L107 119c1-12.17 13.87-11.27 13.26-11.32l29.11 1.73a144.35 144.35 0 00-7 19.17zm148.42 172.18a10.51 10.51 0 01-14.35-1.39l-9.68-11.49-34.42 27a8.09 8.09 0 01-11.13-1.08l-15.78-18.64a7.38 7.38 0 011.34-10.34l34.57-27.18-14.14-16.74-17.09 13.45a7.75 7.75 0 01-10.59-1s-3.72-4.42-3.8-4.53a7.38 7.38 0 011.37-10.34L214 225.19s-18.51-22-18.6-22.14a9.56 9.56 0 011.74-13.42 10.38 10.38 0 0114.3 1.37l81.09 96.32a9.58 9.58 0 01-1.74 13.44zM187.44 419a18 18 0 1018 18 18 18 0 00-18-18z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/vendor.92ffa368.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5123e3d4.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../../..",
+          features: ["tabs"],
+          search: Object.assign({
+            worker: "../../../assets/javascripts/worker/search.a68abb33.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

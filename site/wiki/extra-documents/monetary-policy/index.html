@@ -1,0 +1,1624 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Grin Documentation">
+      
+      
+        <link rel="canonical" href="https://docs.grin.mw/wiki/extra-documents/monetary-policy/">
+      
+      
+        <meta name="author" content="Grin Developers">
+      
+      <link rel="shortcut icon" href="../../../assets/images/grin-logo.svg">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.0">
+    
+    
+      
+        <title>Monetary Policy - Grin Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.b5d04df8.min.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9ab2c1f8.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#monetary-policy" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://docs.grin.mw" title="Grin Documentation" class="md-header-nav__button md-logo" aria-label="Grin Documentation">
+      
+  <img src="../../../assets/images/grin-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Grin Documentation
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Monetary Policy
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/mimblewimble/grin/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimblewimble/grin
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+          
+
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../.." class="md-tabs__link">
+          Getting Started
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../about-grin/story/" class="md-tabs__link">
+          About Grin
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../table-of-contents/" class="md-tabs__link">
+          Wiki
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../grin-rfcs/text/0015-slatepack/" class="md-tabs__link">
+          RFCs
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://docs.grin.mw" title="Grin Documentation" class="md-nav__button md-logo" aria-label="Grin Documentation">
+      
+  <img src="../../../assets/images/grin-logo.svg" alt="logo">
+
+    </a>
+    Grin Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/mimblewimble/grin/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimblewimble/grin
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      Getting Started
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Getting Started" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Getting Started
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="./Grin" class="md-nav__link">
+      ./Grin
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-1-2" type="checkbox" id="nav-1-2">
+    
+    <label class="md-nav__link" for="nav-1-2">
+      Quickstart
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Quickstart" data-md-level="2">
+      <label class="md-nav__title" for="nav-1-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Quickstart
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../getting-started/quickstart/install/" title="Install" class="md-nav__link">
+      Install
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../getting-started/quickstart/initialize/" title="Initialize" class="md-nav__link">
+      Initialize
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../getting-started/quickstart/receive/" title="Receive" class="md-nav__link">
+      Receive
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../getting-started/quickstart/send/" title="Send" class="md-nav__link">
+      Send
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../getting-started/wallet-handbook/" title="CLI Handbook" class="md-nav__link">
+      CLI Handbook
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../getting-started/wallets/" title="Wallets" class="md-nav__link">
+      Wallets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../getting-started/build/" title="Build" class="md-nav__link">
+      Build
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      About Grin
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="About Grin" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        About Grin
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../about-grin/story/" title="Story" class="md-nav__link">
+      Story
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../about-grin/privacy/" title="Privacy" class="md-nav__link">
+      Privacy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../about-grin/scalability/" title="Scalability" class="md-nav__link">
+      Scalability
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../about-grin/transactions/" title="Transactions" class="md-nav__link">
+      Transactions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../about-grin/proof-of-work/" title="Proof of Work" class="md-nav__link">
+      Proof of Work
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../about-grin/emission/" title="Emission" class="md-nav__link">
+      Emission
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Wiki
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Wiki" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Wiki
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../table-of-contents/" title="Table of Contents" class="md-nav__link">
+      Table of Contents
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2">
+    
+    <label class="md-nav__link" for="nav-3-2">
+      Introduction
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Introduction" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Introduction
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../introduction/grin-for-bitcoiners/" title="Grin for Bitcoiners" class="md-nav__link">
+      Grin for Bitcoiners
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-2-2" type="checkbox" id="nav-3-2-2">
+    
+    <label class="md-nav__link" for="nav-3-2-2">
+      Mimblewimble
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Mimblewimble" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-2-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Mimblewimble
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../introduction/mimblewimble/ecc/" title="Elliptic Curves" class="md-nav__link">
+      Elliptic Curves
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../introduction/mimblewimble/commitments/" title="Commitments" class="md-nav__link">
+      Commitments
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../introduction/mimblewimble/mimblewimble/" title="Mimblewimble" class="md-nav__link">
+      Mimblewimble
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
+    
+    <label class="md-nav__link" for="nav-3-3">
+      Transactions
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Transactions" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Transactions
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../transactions/slates/" title="Slates" class="md-nav__link">
+      Slates
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../transactions/slatepack/" title="Slatepack" class="md-nav__link">
+      Slatepack
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../transactions/payment-proofs/" title="Payment Proofs" class="md-nav__link">
+      Payment Proofs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../transactions/contracts/" title="Contracts" class="md-nav__link">
+      Contracts
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4">
+    
+    <label class="md-nav__link" for="nav-3-4">
+      Blocks
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Blocks" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Blocks
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../blocks/block-header/" title="Header" class="md-nav__link">
+      Header
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../blocks/block-body/" title="Body" class="md-nav__link">
+      Body
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../blocks/fees-and-weight/" title="Fees & Weight" class="md-nav__link">
+      Fees & Weight
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-5" type="checkbox" id="nav-3-5">
+    
+    <label class="md-nav__link" for="nav-3-5">
+      Chain State
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Chain State" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Chain State
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../chain-state/merkle-mountain-range/" title="Merkle Mountain Ranges" class="md-nav__link">
+      Merkle Mountain Ranges
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../chain-state/state-and-pruning/" title="State & Pruning" class="md-nav__link">
+      State & Pruning
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../chain-state/chain-sync/" title="Chain Sync" class="md-nav__link">
+      Chain Sync
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
+    
+    <label class="md-nav__link" for="nav-3-6">
+      Miscellaneous
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Miscellaneous" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Miscellaneous
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../miscellaneous/cuckoo-cycle/" title="Cuckoo Cycle" class="md-nav__link">
+      Cuckoo Cycle
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../miscellaneous/dandelion/" title="Dandelion" class="md-nav__link">
+      Dandelion
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../miscellaneous/switch-commitments/" title="Switch Commitments" class="md-nav__link">
+      Switch Commitments
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../miscellaneous/coinbase-maturity-rule/" title="Coinbase Maturity Rule" class="md-nav__link">
+      Coinbase Maturity Rule
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../miscellaneous/nrd-kernels/" title="NRD Kernels" class="md-nav__link">
+      NRD Kernels
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-7" type="checkbox" id="nav-3-7">
+    
+    <label class="md-nav__link" for="nav-3-7">
+      API
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="API" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/node-api/" title="Node API" class="md-nav__link">
+      Node API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/wallet-api/" title="Wallet API" class="md-nav__link">
+      Wallet API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/stratum-rpc/" title="Stratum RPC" class="md-nav__link">
+      Stratum RPC
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-8" type="checkbox" id="nav-3-8">
+    
+    <label class="md-nav__link" for="nav-3-8">
+      Security Process
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Security Process" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-8">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Security Process
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../security-process/grin-security-process/" title="Grin's Security Process" class="md-nav__link">
+      Grin's Security Process
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../security-process/security-team/" title="Security Team" class="md-nav__link">
+      Security Team
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../security-process/code-audits/" title="Code Audits" class="md-nav__link">
+      Code Audits
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-9" type="checkbox" id="nav-3-9">
+    
+    <label class="md-nav__link" for="nav-3-9">
+      Services
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Services" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-9">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Services
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../services/list-of-services/" title="List of Services" class="md-nav__link">
+      List of Services
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../services/slatepack-integration/" title="Slatepack Integration Guide" class="md-nav__link">
+      Slatepack Integration Guide
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../resources/" title="Resources" class="md-nav__link">
+      Resources
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      RFCs
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="RFCs" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        RFCs
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../grin-rfcs/text/0015-slatepack/" title="0015 slatepack" class="md-nav__link">
+      0015 slatepack
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../grin-rfcs/text/0014-general-fund-guidelines/" title="0014 general-fund-guidelines" class="md-nav__link">
+      0014 general-fund-guidelines
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../grin-rfcs/text/0013-nrd-kernels/" title="0013 nrd-kernels" class="md-nav__link">
+      0013 nrd-kernels
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../grin-rfcs/text/0012-compact-slates/" title="0012 compact-slates" class="md-nav__link">
+      0012 compact-slates
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../grin-rfcs/text/0011-security-team/" title="0011 security-team" class="md-nav__link">
+      0011 security-team
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../grin-rfcs/text/0010-online-transacting-via-tor/" title="0010 online-transacting-via-tor" class="md-nav__link">
+      0010 online-transacting-via-tor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../grin-rfcs/text/0009-enable-faster-sync/" title="0009 enable-faster-sync" class="md-nav__link">
+      0009 enable-faster-sync
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../grin-rfcs/text/0008-wallet-state-management/" title="0008 wallet-state-management" class="md-nav__link">
+      0008 wallet-state-management
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../grin-rfcs/text/0007-node-api-v2/" title="0007 node-api-v2" class="md-nav__link">
+      0007 node-api-v2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../grin-rfcs/text/0006-payment-proofs/" title="0006 payment-proofs" class="md-nav__link">
+      0006 payment-proofs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../grin-rfcs/text/0005-variable-size-kernels/" title="0005 variable-size-kernels" class="md-nav__link">
+      0005 variable-size-kernels
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../grin-rfcs/text/0004-full-wallet-lifecycle/" title="0004 full-wallet-lifecycle" class="md-nav__link">
+      0004 full-wallet-lifecycle
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../grin-rfcs/text/0003-security-process/" title="0003 security-process" class="md-nav__link">
+      0003 security-process
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../grin-rfcs/text/0002-grin-governance/" title="0002 grin-governance" class="md-nav__link">
+      0002 grin-governance
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../grin-rfcs/text/0001-rfc-process/" title="0001 rfc-process" class="md-nav__link">
+      0001 rfc-process
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#its-very-close-to-bitcoin-in-the-first-decade" class="md-nav__link">
+    It's very close to Bitcoin in the first decade
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#its-more-similar-to-ethereum" class="md-nav__link">
+    It's more similar to Ethereum
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#its-even-more-similar-to-gold" class="md-nav__link">
+    It's even more similar to gold
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#new-supply-falls-below-10-after-10-years" class="md-nav__link">
+    New supply falls below 10% after 10 years
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#its-highly-likely-that-at-least-2-of-coins-get-lost-per-year" class="md-nav__link">
+    It's highly likely that at least 2% of coins get lost per year
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tail-emission-may-be-required-for-long-term-stability" class="md-nav__link">
+    Tail emission may be required for long term stability
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sound-money-has-more-to-do-with-transparent-emission-than-a-capped-supply" class="md-nav__link">
+    Sound money has more to do with transparent emission than a capped supply
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inflation-may-make-price-more-stable" class="md-nav__link">
+    Inflation may make price more stable
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#there-are-already-better-store-of-values-or-get-rich-quick-coins" class="md-nav__link">
+    There are already better store of values or "get rich quick" coins
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#it-will-get-forked-into-a-get-rich-quick-coin" class="md-nav__link">
+    It will get forked into a "get rich quick" coin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#confidential-assets-allow-parallel-monetary-policies-to-be-soft-forked-in-later" class="md-nav__link">
+    Confidential Assets allow parallel monetary policies to be soft-forked in later
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#we-are-in-the-early-days-of-cryptoeconomics" class="md-nav__link">
+    We are in the early days of cryptoeconomics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-discussion" class="md-nav__link">
+    Further discussion
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/mimblewimble/docs/wiki/extra-documents/monetary-policy.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  
+                
+                
+                <h1 id="monetary-policy">Monetary Policy</h1>
+<p>Currently, a new grin is emitted every second, and it's likely to stay that way forever, meaning that the supply inflation rate stays constant. Why? Consider the following points.</p>
+<h2 id="its-very-close-to-bitcoin-in-the-first-decade">It's very close to Bitcoin in the first decade</h2>
+<p><a href="https://plot.ly/~Bobby_Digital/1/#/">The first four years of Bitcoin emission rate are identical to the first four of Grin.</a> Bitcoin had a full reward for 4 years, followed by half that for the following 4 years. So compared to a constant supply, after 8 years, the total amount of coins emitted is only 25% less. Compare that to daily price fluctuations.</p>
+<h2 id="its-more-similar-to-ethereum">It's more similar to Ethereum</h2>
+<p>Ethereum's reward stayed at 5 ether per block until late 2017. It then changed to 3 ether per block, with plan to 2 ether per block after Constantinople upgrade.</p>
+<h2 id="its-even-more-similar-to-gold">It's even <strong>more</strong> similar to gold</h2>
+<p>Gold has historically had a linear emission, like Grin. <a href="https://plot.ly/~Bobby_Digital/1/#/">See this graph</a> comparing Bitcoin, Grin, and gold emissions.</p>
+<h2 id="new-supply-falls-below-10-after-10-years">New supply falls below 10% after 10 years</h2>
+<p>Every year that passes makes the overall dilution smaller. After 10 years, this falls below 10%. After 20, below 5%. After 25 years Grin will have 4% supply inflation, the same as Bitcoin 10 years after its genesis (2018).</p>
+<h2 id="its-highly-likely-that-at-least-2-of-coins-get-lost-per-year">It's highly likely that at least 2% of coins get lost per year</h2>
+<p>Multiple studies have shown that a considerable amount of coins get lost, burnt and generally disappear from circulation with no chance to get them back. The rate at which coins get lost has been conservatively estimated at 2%, but is likely slightly higher.</p>
+<h2 id="tail-emission-may-be-required-for-long-term-stability">Tail emission may be required for long term stability</h2>
+<p>Currencies with set supply are extremely experimental. Miners likely need incentives to secure the chain beyond only fees.</p>
+<h2 id="sound-money-has-more-to-do-with-transparent-emission-than-a-capped-supply">Sound money has more to do with transparent emission than a capped supply</h2>
+<p>One of the pitfalls of monetary inflation in fiat currencies is governments can inflate the monetary supply on a whim. This has been used to disastrous effect throughout history. A non-sovereign, open source, consensus based currency solves this issue by making the emission policy well known ahead of time, and makes it difficult if not impossible to change. <em>Based on this definition of soundness, Grin is just as much "sound money" as Bitcoin.</em> Removing central authorities with arbitrary control is much more what makes Bitcoin important than the arbitrary amount of its capped supply.</p>
+<div class="admonition quote">
+<p>Nick Szabo <a href="https://twitter.com/NickSzabo4/status/1077317105148547072">commented</a> on Bitcoin's fixed supply:</p>
+<blockquote>
+<p>a wide variety of supply algos would have worked, as long as they are predictable. […] Security/trust minimization is responsible for more of the value.</p>
+</blockquote>
+</div>
+<p>There are plenty of cryptocurrencies identical to Bitcoin but with smaller capped supplies, how many of them can you name?</p>
+<h2 id="inflation-may-make-price-more-stable">Inflation may make price more stable</h2>
+<p>As an experimental hypothesis, Grin's inflation rate may discourage hoarding early on, improving its distribution. Inflation disincentivizes "whales," who have an inordinate amount of control over the price of an asset, and should act to downplay speculative bubbles and price swings. Early adopters get just as much out of grin as those who adopt later.
+This argument is discussed at length in <a href="https://www.lesswrong.com/posts/P9jggxRZTMJcjnaPw/bitcoins-are-not-digital-greenbacks">Bitcoins are not digital greenbacks</a>, in which Wei Dai himself considers "Bitcoin to have failed with regard to its monetary policy". Grin is aiming for as equal access and utility as possible for all users, now and in the future.</p>
+<p>Constant emission could provide enhanced supply/demand certainty for all types of users, and allow transparent and natural pricing. Note: Bitcoin becoming widely usable as a method of exchange versus a strict store of value depends on the concept of "<a href="https://jpkoning.blogspot.com/2018/10/bitcoin-and-bubble-theory-of-money.html">Keynesian beauty contests.</a>" The experiment is ongoing.</p>
+<h2 id="there-are-already-better-store-of-values-or-get-rich-quick-coins">There are already better store of values or "get rich quick" coins</h2>
+<p>Grin is focused on privacy, scalability and fairness. If groups or individuals "get rich quick," they will have power to influence the entire grin economy more than others. Grin is not for creating technocrats, but for providing private digital cash to as many people as possible. Hoarding is a huge centralization pressure, and grin emission policy hopes to mitigate this.</p>
+<p>The idea is to use grin like you use your bicycle, to get you around and make you more efficient, not to store in your garage hoping its value goes up.</p>
+<h2 id="it-will-get-forked-into-a-get-rich-quick-coin">It will get forked into a "get rich quick" coin</h2>
+<p><a href="http://woke.mw">Fine.</a> But the keyword in "get rich quick" is <em>quick</em>. Moderate yearly variations in supply are fairly slow in comparison. Grin isn't for getting rich quick.</p>
+<h2 id="confidential-assets-allow-parallel-monetary-policies-to-be-soft-forked-in-later">Confidential Assets allow parallel monetary policies to be soft-forked in later</h2>
+<p>If the current monetary policy is keeping you from contributing to Grin, you should still stick around. <a href="https://lists.launchpad.net/mimblewimble/msg00103.html">Confidential Assets</a>, an invention by early Mimblewimble contributor Andrew Poelstra, allow alternative assets (with differing cryptography, emission rates, and more; including coins pegged to other assets/blockchains) to be added to Grin later on via soft fork. These assets add very little to the chain size, make all other assets (like the native grin token) more private, and can be embraced or ignored as one wishes without compromising any other asset (grin or otherwise) on the chain. Grin is a minimal Mimblewimble implementation, but it will grow and evolve. Mimblewimble is nimble.</p>
+<h2 id="we-are-in-the-early-days-of-cryptoeconomics">We are in the early days of cryptoeconomics</h2>
+<p>Experiments in transparent, collaborative monetary policies are very immature. Bitcoin is only ten years old and the experiment is still going strong. The time is ripe not for copycat experiments, but novel variations. Only time will tell, but the sooner we start running alternative monetary policy experiments the sooner we get useful data.</p>
+<p>There are only ~28 million Bitcoin wallets today (many of them not in active use, or secondary wallets for single users). That means less than one-half of one percent of the global population has their own wallet. Because you are here means you care about the entire premise of cryptocurrencies, it is important to be open minded when things are so new and uncertain.</p>
+<p>Onward.</p>
+<h2 id="further-discussion">Further discussion</h2>
+<p>There is a long discussion regarding Grin's monetary policy in the community <a href="https://forum.grin.mw/t/emmission-rate-of-grin/171">forum</a>.</p>
+<p><a href="https://forum.grin.mw/t/emmission-rate-of-grin/171/88">Igno's thoughts</a> on soliciting productive feedback:</p>
+<blockquote>
+<p>With respect to this whole thread and future ones, if you want to provide constructive criticisms on the emission curve, at least give it some decent thoughts. Repeating what you read on Reddit doesn’t count.</p>
+<p>To be more specific:</p>
+<ul>
+<li>At a minimum consider the loss rate when building supply curve. Ever wondered at which point 50% of those 21M bitcoins will have disappeared, for example?</li>
+<li>Compare with other slow emission coins. After 8 years, grin only has 25% more supply than bitcoin or, to pick something more recent, zcash. Argue why this matters (or not).</li>
+<li>Compare with fast emissions coins. Monero had over half emitted in 17 months. How does that affect long term adoption? How about use?</li>
+<li>Rich lists and coin decentralization. What affects them.</li>
+<li>Analyze average crypto user and investor behavior. How does multi-year emission curves, fast or slow, influence them? What are the real adoption drivers, both long and short term?</li>
+<li>Do not use econ101 in your arguments. That can be used to argue anything and its opposite equally well. And before telling us we don’t understand economics, convince Nouriel. Then maybe I’ll listen.</li>
+<li>Consider different strategies and how they can play the strengths or weaknesses of various blockchains. What is the effect on Ethereum when daily supply is hard forked for example?</li>
+<li>Facts and real research. Unsubstantiated opinions are a nanogrin a dozen.</li>
+</ul>
+<p>The grin team is earnest, if you can provide well substantiated real research that shows a different supply curve would be be better for grin, we will most definitely listen. But don’t think you can flyby post your knee-jerk reaction 5 min after having heard of grin, which we’ve spent the last 2 years building, and expect us to listen to you.</p>
+</blockquote>
+<p><a href="https://forum.grin.mw/t/emmission-rate-of-grin/171">Informed ideas are more than welcome!</a></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/mimblewimble" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://keybase.io/team/grincoin" target="_blank" rel="noopener" title="keybase.io" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M286.17 419a18 18 0 1018 18 18 18 0 00-18-18zm111.92-147.6c-9.5-14.62-39.37-52.45-87.26-73.71q-9.1-4.06-18.38-7.27a78.43 78.43 0 00-47.88-104.13c-12.41-4.1-23.33-6-32.41-5.77-.6-2-1.89-11 9.4-35L198.66 32l-5.48 7.56c-8.69 12.06-16.92 23.55-24.34 34.89a51 51 0 00-8.29-1.25c-41.53-2.45-39-2.33-41.06-2.33-50.61 0-50.75 52.12-50.75 45.88l-2.36 36.68c-1.61 27 19.75 50.21 47.63 51.85l8.93.54a214 214 0 00-46.29 35.54C14 304.66 14 374 14 429.77v33.64l23.32-29.8a148.6 148.6 0 0014.56 37.56c5.78 10.13 14.87 9.45 19.64 7.33 4.21-1.87 10-6.92 3.75-20.11a178.29 178.29 0 01-15.76-53.13l46.82-59.83-24.66 74.11c58.23-42.4 157.38-61.76 236.25-38.59 34.2 10.05 67.45.69 84.74-23.84.72-1 1.2-2.16 1.85-3.22a156.09 156.09 0 012.8 28.43c0 23.3-3.69 52.93-14.88 81.64-2.52 6.46 1.76 14.5 8.6 15.74 7.42 1.57 15.33-3.1 18.37-11.15C429 443 434 414 434 382.32c0-38.58-13-77.46-35.91-110.92zM142.37 128.58l-15.7-.93-1.39 21.79 13.13.78a93 93 0 00.32 19.57l-22.38-1.34a12.28 12.28 0 01-11.76-12.79L107 119c1-12.17 13.87-11.27 13.26-11.32l29.11 1.73a144.35 144.35 0 00-7 19.17zm148.42 172.18a10.51 10.51 0 01-14.35-1.39l-9.68-11.49-34.42 27a8.09 8.09 0 01-11.13-1.08l-15.78-18.64a7.38 7.38 0 011.34-10.34l34.57-27.18-14.14-16.74-17.09 13.45a7.75 7.75 0 01-10.59-1s-3.72-4.42-3.8-4.53a7.38 7.38 0 011.37-10.34L214 225.19s-18.51-22-18.6-22.14a9.56 9.56 0 011.74-13.42 10.38 10.38 0 0114.3 1.37l81.09 96.32a9.58 9.58 0 01-1.74 13.44zM187.44 419a18 18 0 1018 18 18 18 0 00-18-18z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/vendor.92ffa368.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5123e3d4.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../../..",
+          features: ["tabs"],
+          search: Object.assign({
+            worker: "../../../assets/javascripts/worker/search.a68abb33.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

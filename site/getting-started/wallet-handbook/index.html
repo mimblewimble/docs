@@ -1,0 +1,2313 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Grin Documentation">
+      
+      
+        <link rel="canonical" href="https://docs.grin.mw/getting-started/wallet-handbook/">
+      
+      
+        <meta name="author" content="Grin Developers">
+      
+      <link rel="shortcut icon" href="../../assets/images/grin-logo.svg">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.0">
+    
+    
+      
+        <title>CLI Handbook - Grin Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.b5d04df8.min.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.9ab2c1f8.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cli-wallet-user-handbook" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://docs.grin.mw" title="Grin Documentation" class="md-header-nav__button md-logo" aria-label="Grin Documentation">
+      
+  <img src="../../assets/images/grin-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Grin Documentation
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              CLI Handbook
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/mimblewimble/grin/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimblewimble/grin
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../.." class="md-tabs__link md-tabs__link--active">
+          Getting Started
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../about-grin/story/" class="md-tabs__link">
+          About Grin
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../wiki/table-of-contents/" class="md-tabs__link">
+          Wiki
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../grin-rfcs/text/0015-slatepack/" class="md-tabs__link">
+          RFCs
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://docs.grin.mw" title="Grin Documentation" class="md-nav__button md-logo" aria-label="Grin Documentation">
+      
+  <img src="../../assets/images/grin-logo.svg" alt="logo">
+
+    </a>
+    Grin Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/mimblewimble/grin/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimblewimble/grin
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1" checked>
+    
+    <label class="md-nav__link" for="nav-1">
+      Getting Started
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Getting Started" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Getting Started
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="./Grin" class="md-nav__link">
+      ./Grin
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-1-2" type="checkbox" id="nav-1-2">
+    
+    <label class="md-nav__link" for="nav-1-2">
+      Quickstart
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Quickstart" data-md-level="2">
+      <label class="md-nav__title" for="nav-1-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Quickstart
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../quickstart/install/" title="Install" class="md-nav__link">
+      Install
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../quickstart/initialize/" title="Initialize" class="md-nav__link">
+      Initialize
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../quickstart/receive/" title="Receive" class="md-nav__link">
+      Receive
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../quickstart/send/" title="Send" class="md-nav__link">
+      Send
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        CLI Handbook
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="CLI Handbook" class="md-nav__link md-nav__link--active">
+      CLI Handbook
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#file-structure" class="md-nav__link">
+    File Structure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#help" class="md-nav__link">
+    help
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#init" class="md-nav__link">
+    init
+  </a>
+  
+    <nav class="md-nav" aria-label="init">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#init-recover" class="md-nav__link">
+    init --recover
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#account" class="md-nav__link">
+    account
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#info" class="md-nav__link">
+    info
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#address" class="md-nav__link">
+    address
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#listen" class="md-nav__link">
+    listen
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#send" class="md-nav__link">
+    send
+  </a>
+  
+    <nav class="md-nav" aria-label="send">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#more-flags" class="md-nav__link">
+    more flags
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#receive" class="md-nav__link">
+    receive
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#finalize" class="md-nav__link">
+    finalize
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#post" class="md-nav__link">
+    post
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proof" class="md-nav__link">
+    proof
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#invoice" class="md-nav__link">
+    invoice
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pay" class="md-nav__link">
+    pay
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unpack" class="md-nav__link">
+    unpack
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#outputs" class="md-nav__link">
+    outputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#txs" class="md-nav__link">
+    txs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cancel" class="md-nav__link">
+    cancel
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scan" class="md-nav__link">
+    scan
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recover" class="md-nav__link">
+    recover
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arguments" class="md-nav__link">
+    arguments
+  </a>
+  
+    <nav class="md-nav" aria-label="arguments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#account_1" class="md-nav__link">
+    account
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#password" class="md-nav__link">
+    password
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#node" class="md-nav__link">
+    node
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../wallets/" title="Wallets" class="md-nav__link">
+      Wallets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../build/" title="Build" class="md-nav__link">
+      Build
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      About Grin
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="About Grin" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        About Grin
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../about-grin/story/" title="Story" class="md-nav__link">
+      Story
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../about-grin/privacy/" title="Privacy" class="md-nav__link">
+      Privacy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../about-grin/scalability/" title="Scalability" class="md-nav__link">
+      Scalability
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../about-grin/transactions/" title="Transactions" class="md-nav__link">
+      Transactions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../about-grin/proof-of-work/" title="Proof of Work" class="md-nav__link">
+      Proof of Work
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../about-grin/emission/" title="Emission" class="md-nav__link">
+      Emission
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Wiki
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Wiki" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Wiki
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../wiki/table-of-contents/" title="Table of Contents" class="md-nav__link">
+      Table of Contents
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2">
+    
+    <label class="md-nav__link" for="nav-3-2">
+      Introduction
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Introduction" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Introduction
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../wiki/introduction/grin-for-bitcoiners/" title="Grin for Bitcoiners" class="md-nav__link">
+      Grin for Bitcoiners
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-2-2" type="checkbox" id="nav-3-2-2">
+    
+    <label class="md-nav__link" for="nav-3-2-2">
+      Mimblewimble
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Mimblewimble" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-2-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Mimblewimble
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../wiki/introduction/mimblewimble/ecc/" title="Elliptic Curves" class="md-nav__link">
+      Elliptic Curves
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../wiki/introduction/mimblewimble/commitments/" title="Commitments" class="md-nav__link">
+      Commitments
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../wiki/introduction/mimblewimble/mimblewimble/" title="Mimblewimble" class="md-nav__link">
+      Mimblewimble
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
+    
+    <label class="md-nav__link" for="nav-3-3">
+      Transactions
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Transactions" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Transactions
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../wiki/transactions/slates/" title="Slates" class="md-nav__link">
+      Slates
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../wiki/transactions/slatepack/" title="Slatepack" class="md-nav__link">
+      Slatepack
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../wiki/transactions/payment-proofs/" title="Payment Proofs" class="md-nav__link">
+      Payment Proofs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../wiki/transactions/contracts/" title="Contracts" class="md-nav__link">
+      Contracts
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4">
+    
+    <label class="md-nav__link" for="nav-3-4">
+      Blocks
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Blocks" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Blocks
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../wiki/blocks/block-header/" title="Header" class="md-nav__link">
+      Header
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../wiki/blocks/block-body/" title="Body" class="md-nav__link">
+      Body
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../wiki/blocks/fees-and-weight/" title="Fees & Weight" class="md-nav__link">
+      Fees & Weight
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-5" type="checkbox" id="nav-3-5">
+    
+    <label class="md-nav__link" for="nav-3-5">
+      Chain State
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Chain State" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Chain State
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../wiki/chain-state/merkle-mountain-range/" title="Merkle Mountain Ranges" class="md-nav__link">
+      Merkle Mountain Ranges
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../wiki/chain-state/state-and-pruning/" title="State & Pruning" class="md-nav__link">
+      State & Pruning
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../wiki/chain-state/chain-sync/" title="Chain Sync" class="md-nav__link">
+      Chain Sync
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
+    
+    <label class="md-nav__link" for="nav-3-6">
+      Miscellaneous
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Miscellaneous" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Miscellaneous
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../wiki/miscellaneous/cuckoo-cycle/" title="Cuckoo Cycle" class="md-nav__link">
+      Cuckoo Cycle
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../wiki/miscellaneous/dandelion/" title="Dandelion" class="md-nav__link">
+      Dandelion
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../wiki/miscellaneous/switch-commitments/" title="Switch Commitments" class="md-nav__link">
+      Switch Commitments
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../wiki/miscellaneous/coinbase-maturity-rule/" title="Coinbase Maturity Rule" class="md-nav__link">
+      Coinbase Maturity Rule
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../wiki/miscellaneous/nrd-kernels/" title="NRD Kernels" class="md-nav__link">
+      NRD Kernels
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-7" type="checkbox" id="nav-3-7">
+    
+    <label class="md-nav__link" for="nav-3-7">
+      API
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="API" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../wiki/api/node-api/" title="Node API" class="md-nav__link">
+      Node API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../wiki/api/wallet-api/" title="Wallet API" class="md-nav__link">
+      Wallet API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../wiki/api/stratum-rpc/" title="Stratum RPC" class="md-nav__link">
+      Stratum RPC
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-8" type="checkbox" id="nav-3-8">
+    
+    <label class="md-nav__link" for="nav-3-8">
+      Security Process
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Security Process" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-8">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Security Process
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../wiki/security-process/grin-security-process/" title="Grin's Security Process" class="md-nav__link">
+      Grin's Security Process
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../wiki/security-process/security-team/" title="Security Team" class="md-nav__link">
+      Security Team
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../wiki/security-process/code-audits/" title="Code Audits" class="md-nav__link">
+      Code Audits
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-9" type="checkbox" id="nav-3-9">
+    
+    <label class="md-nav__link" for="nav-3-9">
+      Services
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Services" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-9">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Services
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../wiki/services/list-of-services/" title="List of Services" class="md-nav__link">
+      List of Services
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../wiki/services/slatepack-integration/" title="Slatepack Integration Guide" class="md-nav__link">
+      Slatepack Integration Guide
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../wiki/resources/" title="Resources" class="md-nav__link">
+      Resources
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      RFCs
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="RFCs" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        RFCs
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../grin-rfcs/text/0015-slatepack/" title="0015 slatepack" class="md-nav__link">
+      0015 slatepack
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../grin-rfcs/text/0014-general-fund-guidelines/" title="0014 general-fund-guidelines" class="md-nav__link">
+      0014 general-fund-guidelines
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../grin-rfcs/text/0013-nrd-kernels/" title="0013 nrd-kernels" class="md-nav__link">
+      0013 nrd-kernels
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../grin-rfcs/text/0012-compact-slates/" title="0012 compact-slates" class="md-nav__link">
+      0012 compact-slates
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../grin-rfcs/text/0011-security-team/" title="0011 security-team" class="md-nav__link">
+      0011 security-team
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../grin-rfcs/text/0010-online-transacting-via-tor/" title="0010 online-transacting-via-tor" class="md-nav__link">
+      0010 online-transacting-via-tor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../grin-rfcs/text/0009-enable-faster-sync/" title="0009 enable-faster-sync" class="md-nav__link">
+      0009 enable-faster-sync
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../grin-rfcs/text/0008-wallet-state-management/" title="0008 wallet-state-management" class="md-nav__link">
+      0008 wallet-state-management
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../grin-rfcs/text/0007-node-api-v2/" title="0007 node-api-v2" class="md-nav__link">
+      0007 node-api-v2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../grin-rfcs/text/0006-payment-proofs/" title="0006 payment-proofs" class="md-nav__link">
+      0006 payment-proofs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../grin-rfcs/text/0005-variable-size-kernels/" title="0005 variable-size-kernels" class="md-nav__link">
+      0005 variable-size-kernels
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../grin-rfcs/text/0004-full-wallet-lifecycle/" title="0004 full-wallet-lifecycle" class="md-nav__link">
+      0004 full-wallet-lifecycle
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../grin-rfcs/text/0003-security-process/" title="0003 security-process" class="md-nav__link">
+      0003 security-process
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../grin-rfcs/text/0002-grin-governance/" title="0002 grin-governance" class="md-nav__link">
+      0002 grin-governance
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../grin-rfcs/text/0001-rfc-process/" title="0001 rfc-process" class="md-nav__link">
+      0001 rfc-process
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#file-structure" class="md-nav__link">
+    File Structure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#help" class="md-nav__link">
+    help
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#init" class="md-nav__link">
+    init
+  </a>
+  
+    <nav class="md-nav" aria-label="init">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#init-recover" class="md-nav__link">
+    init --recover
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#account" class="md-nav__link">
+    account
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#info" class="md-nav__link">
+    info
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#address" class="md-nav__link">
+    address
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#listen" class="md-nav__link">
+    listen
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#send" class="md-nav__link">
+    send
+  </a>
+  
+    <nav class="md-nav" aria-label="send">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#more-flags" class="md-nav__link">
+    more flags
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#receive" class="md-nav__link">
+    receive
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#finalize" class="md-nav__link">
+    finalize
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#post" class="md-nav__link">
+    post
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proof" class="md-nav__link">
+    proof
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#invoice" class="md-nav__link">
+    invoice
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pay" class="md-nav__link">
+    pay
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unpack" class="md-nav__link">
+    unpack
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#outputs" class="md-nav__link">
+    outputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#txs" class="md-nav__link">
+    txs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cancel" class="md-nav__link">
+    cancel
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scan" class="md-nav__link">
+    scan
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recover" class="md-nav__link">
+    recover
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arguments" class="md-nav__link">
+    arguments
+  </a>
+  
+    <nav class="md-nav" aria-label="arguments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#account_1" class="md-nav__link">
+    account
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#password" class="md-nav__link">
+    password
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#node" class="md-nav__link">
+    node
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/mimblewimble/docs/getting-started/wallet-handbook.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  
+                
+                
+                <h1 id="cli-wallet-user-handbook">CLI Wallet User Handbook</h1>
+<p>Now that you've set up your node and learned how to form a simple transaction, let's get to know the wallet more deeply. The following document is an extremely comprehensive user guide to the reference grin wallet implementation, <code>grin-wallet v4.0.0</code>.</p>
+<div class="admonition tip">
+<p class="admonition-title">GUI Wallet</p>
+<p>Instructions on how to transact with a graphical user interface can be found in <a href="../wallets">wallets</a>.</p>
+</div>
+<h2 id="file-structure">File Structure</h2>
+<p>By default, grin will create all wallet files in the hidden directory <code>.grin</code> under your home directory (i.e. <code>~/.grin</code>). You can also create and use a wallet with data files in a custom directory, as will be explained later.</p>
+<p>A grin wallet maintains its state in an LMDB database, with the master seed stored in a separate file. When creating a new wallet, the file structure should be as follows:</p>
+<div class="highlight"><pre><span></span><code>[wallet directory]
+├── grin-wallet.log
+├── grin-wallet.toml
+├── tor
+└── wallet_data
+    ├── db
+    │   └── lmdb
+    │
+    └── wallet.seed
+</code></pre></div>
+
+<ul>
+<li>
+<p><code>grin-wallet.toml</code> contains configuration information for the wallet. You can modify values within to change ports, the address of your grin node, or logging values.</p>
+</li>
+<li>
+<p><code>wallet.seed</code> is your master seed file; the private keys of all your outputs are derived from it, and its contents are encrypted with your wallet password. The seed file can be recovered using the seed phrase.</p>
+</li>
+<li>
+<p><code>tor</code> folder contains Tor configuration files used by the wallet listener. There should be no need to manipulate anything in this directory manually.</p>
+</li>
+</ul>
+<details class="note"><summary>Tor Configuration &#8628;</summary><p><code>grin-wallet.toml</code> contains a [tor] section used to configure values when sending or listening via TOR:</p>
+<ul>
+<li>
+<p><code>use_tor_listener</code> specifies whether the Tor listener should also be invoked when starting the wallet listener via <code>listen</code> (default = true).</p>
+</li>
+<li>
+<p><code>socks_proxy_addr</code> contains the listening address of TOR's socks proxy port. This should generally be left alone.</p>
+</li>
+</ul>
+</details>
+<hr />
+<h2 id="help">help</h2>
+<p><code>grin-wallet help</code> will display all the commands and every global flag.
+</br> To get additional info about a specific command type <code>grin-wallet help [command]</code>, e.g:</p>
+<div class="highlight"><pre><span></span><code>grin-wallet help send
+</code></pre></div>
+
+<div class="admonition note">
+<p>You can also pass <code>--help</code> or <code>-h</code>.</p>
+</div>
+<h2 id="init">init</h2>
+<p>Before doing anything else, the wallet files need to be generated via the <code>init</code> command:</p>
+<div class="highlight"><pre><span></span><code>grin-wallet init
+</code></pre></div>
+
+<p>You'll be prompted to enter a password for the new wallet. It will be used to encrypt your <code>master.seed</code> file and you'll be asked to type it for most wallet commands.</p>
+<p>By default, your wallet files will be placed into <code>`~/.grin</code>. Alternatively,  if you'd like to run a wallet in a directory of your choice, you can create one in the current directory by using flag <code>-h</code>, e.g:</p>
+<div class="highlight"><pre><span></span><code>grin-wallet init -h
+</code></pre></div>
+
+<p>This will create all the needed data files, including <code>grin-wallet.toml</code> and <code>wallet.seed</code>, in the current directory. When running any <code>grin-wallet</code> command, grin will check the working directory if these files exist. If not, it will use the default location <code>~/.grin</code>.</p>
+<p>Upon a successful <code>init</code>, the wallet prints a 24-word recovery phrase, which you should write down and store in a non-digital format. This phrase can be used to re-create your master seed file if it gets lost or corrupted, or if you forget the wallet password.</p>
+<div class="admonition note">
+<p>If you'd prefer to use a 12-word recovery phrase, you can use the <code>-s</code> <code>--short_wordlist</code> flag.</p>
+</div>
+<h3 id="init-recover">init --recover</h3>
+<p>If you need to recreate your wallet from an existing seed, you can <code>init</code> a wallet with a recovery phrase using the <code>-r</code> <code>--recover</code> flag. For example, the following command initializes a wallet in the current directory.</p>
+<div class="highlight"><pre><span></span><code>grin-wallet init -hr
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>File /home/tomriddle/wallet/grin-wallet.toml configured and created
+Please enter your recovery phrase:
+</code></pre></div>
+
+<p>On the first run, the wallet will scan the entire chain and restore any outputs that belong to you.</p>
+<h2 id="account">account</h2>
+<p>The <code>account</code> command is used to manage wallet accounts. Let's print a list of your existing accounts:
+<div class="highlight"><pre><span></span><code>grin-wallet account
+</code></pre></div></p>
+<p>Accounts could be thought of as somewhat similar to different bank accounts under the same name. Each account acts as a seperate wallet, but they are all derived from the same master seed. The <code>default</code> account is created when you initialize the wallet.</p>
+<p>To create a new account, pass the argument <code>-c</code> <code>--create</code>.</p>
+<p><div class="highlight"><pre><span></span><code>grin-wallet account -c jedusor
+</code></pre></div>
+This will create a new account called 'jedusor'.</p>
+<p>All <code>grin-wallet</code> commands can then be passed the argument <code>-a</code> to specify an account for the command (otherwise <code>default</code> account is used), e.g:</p>
+<div class="highlight"><pre><span></span><code>grin-wallet -a jedusor info
+</code></pre></div>
+
+<h2 id="info">info</h2>
+<p>The <code>info</code> command summarizes wallet account balance.</p>
+<div class="highlight"><pre><span></span><code>grin-wallet info
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>____ Wallet Summary Info - Account &#39;default&#39; as of height 813137 ____
+
+Confirmed Total                  | 5779.473029600
+Awaiting Confirmation (&lt; 10)     | 0.000000000
+Awaiting Finalization            | 139.851133700
+Locked by previous transaction   | 389.859133700
+-------------------------------- | -------------
+Currently Spendable              | 5779.473029600
+</code></pre></div>
+
+<ul>
+<li><strong>Confirmed Total</strong> is your balance including both spendable coins and those awaiting confirmation.</li>
+<li><strong>Awaiting Confirmation</strong> denotes the balance from transactions that have appeared on-chain, but for which your wallet is waiting a set number of blocks before treating them as spendable (default is 10 blocks).</li>
+<li><strong>Awaiting Finalization</strong> is the balance from transactions that have not yet appeared on-chain. This could be due to the other party not having broadcast the transaction yet. Also, when you are the sender of a transaction, your change output will be denoted in this field as well.</li>
+<li><strong>Locked by previous transaction</strong> shows the amount of coins locked by a previous transaction you have made and that is currently awaiting finalization. This is usually made up both of the amount being sent and of the change outputs waiting to be returned back to your wallet. </br>
+Once the transaction appears on-chain, this balance unlocks and the output that was used will again become available for spending.</li>
+</ul>
+<h2 id="address">address</h2>
+<p>To get your wallet address, enter the <code>address</code> command.</p>
+<div class="highlight"><pre><span></span><code>grin-wallet address
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>grin1chv9p4uxp3qgl6qp4w6x5p2434varqwl6fdevg6342qr
+</code></pre></div>
+
+<p>This command outputs the same address as using the <code>listen</code> command. The address serves a triple purpose:</p>
+<ul>
+<li>If Tor is available, it will serve as your Tor onion address.</li>
+<li>A key to encrypt the slatepack messages exchanged between you and your counterparty (more on that below).</li>
+<li>Payment proof identification.</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Address</p>
+<p>This is not the same concept of address that other cryptocurrencies might use; A Mimblewimble chain has no addresses. It is used purely for wallet to wallet communication.</p>
+</div>
+<h2 id="listen">listen</h2>
+<p>The <code>listen</code> command opens up a Tor listener.</p>
+<div class="highlight"><pre><span></span><code>grin-wallet listen
+</code></pre></div>
+
+<p>This will automatically configure a Tor hidden service and makes the wallet listen to it for incoming transactions. This allows you to transact directly through Tor with other users who are sending grins to your <code>grin1...</code>. Your wallet will listen for requests until the process is cancelled (<code>&lt;Ctrl-C&gt;</code>).</p>
+<div class="admonition note">
+<p><code>tor</code> or <code>tor.exe</code> need to be available on the system path.</p>
+</div>
+<h2 id="send">send</h2>
+<p>The <code>send</code> command is the first step of building an interactive transaction. The transaction can either be an instant synchronous exchange through Tor, or it can be an asynchronous process, in which each step is done manually by exchanging easily copy-pastable strings called slatepacks.</p>
+<p>The choice between the two methods is handled automatically by using <code>send</code> in the form of <code>send -d &lt;address&gt; &lt;amount&gt;</code>.</p>
+<p><div class="highlight"><pre><span></span><code>grin-wallet send -d grin1dhvv9mvarqwl6fderuxp3qgl6qpphvc9p4u24347ec0mvvg6342q4w6x5r 180
+</code></pre></div>
+This command tries to send <code>180</code> grins to the specified address via Tor. If both wallets are accessible, the transaction would complete immediately with no further steps required.</p>
+<p>If the above communication fails, for whatever reason, your wallet will output a slatepack message:</p>
+<div class="highlight"><pre><span></span><code>BEGINSLATEPACK. HctgNGXrJDGFY3B KrEF1meAezGjxQ6 Z93QF6Ps2m9yKCQ LfhZvpDY9ZXViM7 nDoNeMvwtYV2crr 8gDqvYDmtRfLL3n Uabao7VyWR4AuYg TXQUSWU83kEhKmr bRtdRjvpisx1LYo 9cyZGfsgsd7ZvDJ KKZPHhcPe4Eivtv cMvee3nwFFY3ZnM SoULNaHVJ38h3tZ vMXQMoMLB17L53o Xy6QQjDaG8avUBt LQq2GfGRTiUPQgn vQwFzfZPVzVKNLk
+5AFmUQFZtiVdTJV xHvc1BuAqcamerv Y76KVccPY3WGupy 4zWFpkjTH65XNiH XqQnkb3EA1iVrHc tyTJ1PWb6X6oV1k ktYiWBpatyTirRy CywPyjr6c8XLr4Q 9VoCedU5BcdFdMB ACqQTwjgVXqjHoS 58ZPKFitjeH67Ts ah6twcKtMaFmTXD i7JEQ7qV6cewgxH 2jwWFxbb98mye6A Lm9movc6Wer26L2 91WQD3cbVpAZLEs APFPtyxnWjv8n3W
+ZXFLR2TPZwGc5Vt zwFUPoyWfKXasQy VVV6tbKWEEhqAZR e34M7uEwfurpUUi 9812VFPY1qw3K9b ynwQXuXMuWQCUnU s1JqWqFgSQKENUP tGCK19dys9twghA FaAc7ZXQHdMbUoL sVxVfdjE94F1Wpj M7QAM5VZuaauHdQ Mt2erFyxJ5vsYSZ hgS553UKoQL5YWX E7oRNdMDkJV6VkL i55kAQc1vWvW9ce 3MoXiBT4TJ1SyNS NVZKxgk8c. ENDSLATEPACK.
+</code></pre></div>
+
+<p>This message contains the data required for the receiver's wallet to process the transaction via the <code>receive</code> command. This slatepack is also encypted for the recipient only, since you provided an address (which is a public key) by using the <code>-d</code> flag.</p>
+<p><strong>Non-encrypted slatepack</strong></p>
+<p>If the receiver does not want, or is not able to provide an address, you could use command <code>send</code> <em>without</em> the <code>-d</code> <code>--dest</code> flag.</p>
+<div class="highlight"><pre><span></span><code>grin-wallet send 180
+</code></pre></div>
+
+<p>In this case, the wallet will simply output a non-encrypted slatepack message which can be sent to anybody.</p>
+<h4 id="more-flags">more flags</h4>
+<ul>
+<li><code>-m</code> <code>--manual</code> if present, don't attempt to interact via Tor, only output slatepack message.</li>
+<li><code>-f</code> <code>--fluff</code> if present, ignore the dandelion relay protocol. Dandelion bounces your transactions directly through several nodes in a stem phase, after which the transaction randomly fluffs (broadcast) to the rest of the network.</li>
+<li><code>-n</code> <code>--no_payment_proof</code> if present, do not request the data required for a payment proof. This shortens the slatepack message length.</li>
+<li><code>-e</code> <code>--estimate-selection</code> if present, performs a "dry-run" of creating the transaction, without actually doing anything and locking the funds. It then lists different output selection strategies (outlined below) and their possible effect on your wallet outputs, if chosen.</li>
+<li><code>-s</code> <code>--selection</code> allows you to choose between two output selection strategies, <code>small</code> and <code>all</code>. The default startegy is <code>small</code>, which includes the <em>minimum</em> number of inputs to cover the amount, starting with the smallest value output. In contrast, using <code>all</code> consolidates <em>all</em> of your outputs into a single new output, thus reducing your wallet size, increasing operation speed and reducing the UTXO-set size of the chain. The downside is that the entire contents of your wallet remain locked until the transaction is validated on-chain, and all outputs are linked to one another, a detriment to your privacy.</li>
+<li><code>-b</code> <code>--ttl_blocks</code> allows you to specify a number of blocks into the future, after which a wallet should refuse to process the transaction further. This can be useful for putting time limits on transaction finalization, but please note this is not enforced at the grin protocol level; it's up to individual wallets whether they wish to respect this flag.</li>
+</ul>
+<h2 id="receive">receive</h2>
+<p>The <code>receive</code> command proccesses the slatepack message provided by the sender.</p>
+<div class="highlight"><pre><span></span><code>grin-wallet receive
+</code></pre></div>
+
+<p>After entering the command, you'll be prompted to input the slatepack. </br>
+Then your wallet will output another slatepack message to provide the other party, so they can <code>finalize</code> the transaction.</p>
+<div class="admonition info">
+<p class="admonition-title">Files</p>
+<p>When sending or receiving via slatepacks, the wallet will also create a text file containing the message it generated. Default path is <code>~/.grin/main/slatepacks</code>.</p>
+</div>
+<h2 id="finalize">finalize</h2>
+<p>The <code>finalize</code> command is the final step to any slatepack transaction.</p>
+<div class="highlight"><pre><span></span><code>grin-wallet finalize
+</code></pre></div>
+
+<p>After entering the command, you'll be prompted to input the slatepack message provided to you by the receiver.</p>
+<p>The transaction building process will then be finalized and your wallet will post it to the network.</p>
+<p>If the flag <code>-n</code> <code>--nopost</code> is present, the transaction would be finalized but not posted.</p>
+<h2 id="post">post</h2>
+<p>Manually post a finalized transaction to the network. Either type <code>grin-wallet post</code> and enter the slatepack message into the prompt, or specify the file path using the <code>-i</code> flag.</p>
+<div class="highlight"><pre><span></span><code>grin-wallet post -i &quot;~/.grin/main/slatepacks/my_tx.S3.slatepack/&quot;
+</code></pre></div>
+
+<h2 id="proof">proof</h2>
+<p>Grin's privacy and scalability mechanics mean users no longer have the ability to simply prove a transaction has happened by pointing to it on the chain. By default, whenever a transaction sent to a destination addres using <code>-d</code>, a payment proof is created.</p>
+<p>Payers can then use these proofs to resolve future payment disputes and prove they sent funds to the correct recipient.</p>
+<p>The <em>sender</em> can export the payment proof by specifying the transaction id (<code>-i</code>) (obtained by <a href="#txs">txs</a>) or the tx-UUID (<code>-t</code>), and choosing the path for the proof file, e.g:</p>
+<div class="highlight"><pre><span></span><code>grin-wallet export_proof -i 4 &quot;~/Documents/proof.txt&quot;
+</code></pre></div>
+
+<p>The sender can then provide this proof to any other wallet for verification.</p>
+<p>Verification for e.g.</p>
+<div class="highlight"><pre><span></span><code>grin-wallet verify_proof /path/proof.txt
+</code></pre></div>
+
+<p>This will ensure that:</p>
+<ul>
+<li>The kernel for the transaction in the proof is validated and can be found on-chain.</li>
+<li>Both the sender and recipient's signatures correctly sign for the amount and the kernel.</li>
+</ul>
+<p>On top of that, if the receiver's address in the transaction belongs to the same wallet who's verifying, then the user will be informed as follows:</p>
+<div class="highlight"><pre><span></span><code>grin-wallet verify_proof proof.txt
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Payment proof&#39;s signatures are valid.
+The proof&#39;s recipient address belongs to this wallet.
+Command &#39;verify_proof&#39; completed successfully
+</code></pre></div>
+
+<h2 id="invoice">invoice</h2>
+<p>The <code>invoice</code> command sends an invoice transaction, in which the initiator requests an amount for payment and sends that request to another party.</p>
+<p>Since invoice transactions require manual confirmation from the party paying the funds, they can only be created and sent to payers via slatepack.</p>
+<div class="highlight"><pre><span></span><code>grin-wallet invoice -d grin1dhvv9mvarqwl6fderuxp3qgl6qpphvc9p4u24347ec0mvvg6342q4w6x5r 60
+</code></pre></div>
+
+<p>This command will create an encypted (since <code>-d</code> is provided) invoice, requesting a payment of <code>60</code> grins. The resulting slatepack can then be sent to the other party for them to <a href="#pay">pay</a>.</p>
+<p>Upon receiving the back the slatepack from the payer, the transaction can then be finalized and posted using the <code>finalize</code> command.</p>
+<h2 id="pay">pay</h2>
+<p>After receiving an invoice request, the payer can use the <code>pay</code> command to decode (also decrypt if possible) the slatepack and confirm the amount of coins being requested as payment.</p>
+<div class="highlight"><pre><span></span><code>grin-wallet pay
+
+Please paste your encoded slatepack message:
+BEGINSLATEPACK. P9rVoTRyKdhVsuC a5SfwQMXbtsDBwD omfeWYWwkbK9AUD k2pZvpgeXmJSUcv y9Mi81ngsCrpW9r QW226CWwbxrSprJ cCJA9cACpguBHDj eExN8vuYc1SHj9B 2Xa1BPGB77kpY9q uG9eXmaeprY6CQt PAibwfMnwxVDJFU EeQfwwSnEUADkg3 wBYXcuSVTnfJ4Jj DnqawMkmAiWvhNm WLrdZ1Vh3P6TXP6 ZgJG9pRNi51mAtU 9soyVAgvFWoEpgn VA6suegVxTsWN1r V3LQHB7bjwX5Rwa yPfqhGTLwR. ENDSLATEPACK.
+
+This command will pay the amount specified in the invoice using your wallet&#39;s funds.
+After you confirm, the following will occur:
+
+* 10.000000000 of your wallet funds will be added to the transaction to pay this invoice.
+* The wallet will IMMEDIATELY attempt to send the resulting transaction to the wallet listening at: &#39;grin1ln4y82fw4urggk3hq0xkeqfhw3dfe6rhcv6a0v64uz4ny9epcc6qpuwx4k&#39;.
+* If other wallet is not listening, the resulting transaction will output as a slatepack which you can manually send back to the invoice creator.
+
+Please review the above information carefully before proceeding
+
+To proceed, type the exact amount of the invoice as displayed above (or Q/q to quit) &gt;
+</code></pre></div>
+
+<p>To confirm the payment, type the exact amount in decimal, <code>10.000000000</code> in this example, into the prompt. Your wallet will then fill out the transaction slate and return a slatepack for you to provide back to the initiator, which they can then <code>finalize</code>.</p>
+<h2 id="unpack">unpack</h2>
+<p>Upon receiving a slatepack message or file from a party, whether in an encrypted form or not, the <code>unpack</code> command decrypts and decodes it to a bare slate JSON format (the format used by the wallet to read and contruct transactions).</p>
+<div class="highlight"><pre><span></span><code>grin-wallet unpack
+</code></pre></div>
+
+<p>This prompts you for a slatepack message. to decode a file, use the <code>-i</code> flag and provide the path.</p>
+<p>Result:</p>
+<div class="highlight"><pre><span></span><code>SLATEPACK CONTENTS
+------------------
+{
+  ...
+}
+------------------
+Slatepack is encrypted for this wallet
+
+DECRYPTED SLATEPACK
+-------------------
+{
+  ...
+}
+
+DECRYPTED SLATE
+---------------
+{
+  ...
+}
+Command &#39;unpack&#39; completed successfully
+</code></pre></div>
+
+<h2 id="outputs">outputs</h2>
+<p>To show a list of all your wallet's outputs, type:</p>
+<div class="highlight"><pre><span></span><code>grin-wallet outputs
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>allet Outputs - Account &#39;default&#39; - Block Height: 814491
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Output Commitment                                                   MMR Index  Block Height  Locked Until  Status   Coinbase?  # Confirms  Value           Tx
+===============================================================================================================================================================
+ 08f4f062b99223d2d8a1ad1ae11085ab2d7b4f1bc603f9c29748f1b918861fdf23  7498573    743936        743936        Unspent  false      70556       5198.081029600  1
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 097fe8bf1ad6a792600d5e010d0b77c40b147ea122c176476259f100a48924d40c  7832632    790025        790025        Unspent  false      24467       581.392000000   2
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 08645896f150bfc70f36a602a7a5f41180ae8d5db42864f19f7257542cf2c7fc98  None       811501        0             Unspent  false      2991        389.859133700   9
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+</code></pre></div>
+
+<p>By default, only unspent outputs are listed. To show spent outputs, provide the <code>-s</code> flag.</p>
+<div class="highlight"><pre><span></span><code>grin-wallet -s outputs
+</code></pre></div>
+
+<h2 id="txs">txs</h2>
+<p>Every time an action is performed in your wallet (send, receive, even if uncompleted), an entry is added to an internal transaction log containing vital information about the transaction. Because the grin blockchain contains no identifying information whatsoever, this transaction log is necessary for your wallet to keep track of transactions. To view the contents of your transaction log, use the command:</p>
+<div class="highlight"><pre><span></span><code>grin-wallet txs
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Transaction Log - Account &#39;default&#39; - Block Height: 814448
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Id  Type         Shared Transaction Id                 Creation Time        TTL Cutoff Height  Confirmed?  Confirmation Time    Num.    Num.     Amount        Amount       Fee    Net           Payment   Kernel                                                              Tx
+                                                                                                                                 Inputs  Outputs  Credited      Debited             Difference    Proof                                                                         Data
+=====================================================================================================================================================================================================================================================================================
+ 0   Received Tx  2b2ffc5e-8fa0-4450-b270-078df29b3e23  2020-07-28 13:18:18  None               true        2020-07-28 13:18:18  0       1        389.892       0.0          0.007  389.892       None      ddec166399348a24d2893c025b4b4d4a058f81834a663284ba23fe0bd0ac025b4b  Yes
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 1   Sent Tx      fd9b3035-73d0-4ea3-8c3e-5d45c512ad8b  2020-08-03 15:32:19  None               true        2020-08-03 15:42:20  2       1        389.8591337   390.8661337  0.007  -1.007        Yes       0834a66310df8a8b43093c025b4b4d4a058f8188ee24d2809e338e0bd0ae9e2c2c  Yes
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 2   Sent Tx      ea92fcce-8fa0-48d0-b270-078df2e22d24  2020-08-04 18:51:47  None               false       None                 1       1        139.8511337   389.8591337  0.008  -250.008      None      09fd95b4e40ce1c2d67376d46dc37ddec1aa0ae50ca9934ba271fff0b47510c72f  Yes
+     - Cancelled
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+</code></pre></div>
+
+<p>To see the inputs &amp; outputs associated with a particular transaction, as well as the payment proof associated with the transaction, use the <code>-i</code> switch and specify the id of the transaction, e.g:</p>
+<div class="highlight"><pre><span></span><code>grin-wallet txs -i 0
+</code></pre></div>
+
+<h2 id="cancel">cancel</h2>
+<p>Cancels an in-progress created transaction, freeing previously <a href="#info">locked outputs</a> for use again.</p>
+<div class="highlight"><pre><span></span><code>grin-wallet cancel -i 2
+</code></pre></div>
+
+<p>To specify which transaction to cancel, use the <code>-i</code> flag along with the tx id (obtained by <a href="#txs">txs</a>) or the <code>-t</code> flag with the tx-UUID.</p>
+<h2 id="scan">scan</h2>
+<p>The <code>scan</code> command scans the entire UTXO (unspent tx outputs) set from the node, identifies which outputs are yours and updates your wallet state.</p>
+<div class="highlight"><pre><span></span><code>grin-wallet scan
+</code></pre></div>
+
+<p>It should not be necessary to run the scan command manually, as the wallet continually scans the outputs on the chain. However, if for some reason you believe your outputs and transactions are in an inconsistent state, you can initiate a manual scan to attempt to fix or restore them.</p>
+<p><strong>flags</strong></p>
+<ul>
+<li>
+<p><code>-d</code> <code>--delete-unconfirmed</code> if present, scan and cancel all pending transactions, freeing up any locked outputs.</p>
+</li>
+<li>
+<p><code>-h</code> <code>--start-height</code> lets you specify a block height from which to start the manual scan.</p>
+</li>
+</ul>
+<div class="admonition text">
+<p>When initializing a wallet from an existing seed via the grin-wallet <code>init -r command</code>, this scan is performed automatically on the first run.</p>
+</div>
+<h2 id="recover">recover</h2>
+<p>The <code>recover</code> command displays the existing wallet's 24 (or 12) word seed phrase.</p>
+<div class="highlight"><pre><span></span><code>grin-wallet recover
+</code></pre></div>
+
+<hr />
+<h2 id="arguments">arguments</h2>
+<p>There are several global wallet arguments which you can provide for every command.</p>
+<h3 id="account_1">account</h3>
+<p>To set the account for a wallet command, provide the <code>-a</code> argument.</p>
+<div class="highlight"><pre><span></span><code>grin-wallet -a jedusor info
+</code></pre></div>
+
+<h3 id="password">password</h3>
+<p>You could specify your password on the directly command line by providing the -p argument. Please note this will place your password in your shell's command history, so use this switch with caution.</p>
+<div class="highlight"><pre><span></span><code>grin-wallet -p mypass info
+</code></pre></div>
+
+<h3 id="node">node</h3>
+<p>The wallet needs to talk to a running grin node in order to remain up-to-date and verify its contents. By default, it tries to contact a node at 127.0.0.1:3413. To change this, either modify the value in the <code>grin_wallet.toml</code> file, or alternatively, you can provide the <code>-r</code> (se <strong>r</strong> ver) switch to wallet commands.</p>
+<div class="highlight"><pre><span></span><code>grin-wallet -r &quot;http://192.168.0.2:3413&quot; info
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../quickstart/send/" title="Send" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Send
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../wallets/" title="Wallets" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Wallets
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/mimblewimble" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://keybase.io/team/grincoin" target="_blank" rel="noopener" title="keybase.io" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M286.17 419a18 18 0 1018 18 18 18 0 00-18-18zm111.92-147.6c-9.5-14.62-39.37-52.45-87.26-73.71q-9.1-4.06-18.38-7.27a78.43 78.43 0 00-47.88-104.13c-12.41-4.1-23.33-6-32.41-5.77-.6-2-1.89-11 9.4-35L198.66 32l-5.48 7.56c-8.69 12.06-16.92 23.55-24.34 34.89a51 51 0 00-8.29-1.25c-41.53-2.45-39-2.33-41.06-2.33-50.61 0-50.75 52.12-50.75 45.88l-2.36 36.68c-1.61 27 19.75 50.21 47.63 51.85l8.93.54a214 214 0 00-46.29 35.54C14 304.66 14 374 14 429.77v33.64l23.32-29.8a148.6 148.6 0 0014.56 37.56c5.78 10.13 14.87 9.45 19.64 7.33 4.21-1.87 10-6.92 3.75-20.11a178.29 178.29 0 01-15.76-53.13l46.82-59.83-24.66 74.11c58.23-42.4 157.38-61.76 236.25-38.59 34.2 10.05 67.45.69 84.74-23.84.72-1 1.2-2.16 1.85-3.22a156.09 156.09 0 012.8 28.43c0 23.3-3.69 52.93-14.88 81.64-2.52 6.46 1.76 14.5 8.6 15.74 7.42 1.57 15.33-3.1 18.37-11.15C429 443 434 414 434 382.32c0-38.58-13-77.46-35.91-110.92zM142.37 128.58l-15.7-.93-1.39 21.79 13.13.78a93 93 0 00.32 19.57l-22.38-1.34a12.28 12.28 0 01-11.76-12.79L107 119c1-12.17 13.87-11.27 13.26-11.32l29.11 1.73a144.35 144.35 0 00-7 19.17zm148.42 172.18a10.51 10.51 0 01-14.35-1.39l-9.68-11.49-34.42 27a8.09 8.09 0 01-11.13-1.08l-15.78-18.64a7.38 7.38 0 011.34-10.34l34.57-27.18-14.14-16.74-17.09 13.45a7.75 7.75 0 01-10.59-1s-3.72-4.42-3.8-4.53a7.38 7.38 0 011.37-10.34L214 225.19s-18.51-22-18.6-22.14a9.56 9.56 0 011.74-13.42 10.38 10.38 0 0114.3 1.37l81.09 96.32a9.58 9.58 0 01-1.74 13.44zM187.44 419a18 18 0 1018 18 18 18 0 00-18-18z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.92ffa368.min.js"></script>
+      <script src="../../assets/javascripts/bundle.5123e3d4.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: ["tabs"],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.a68abb33.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

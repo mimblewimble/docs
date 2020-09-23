@@ -1,0 +1,1759 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Grin Documentation">
+      
+      
+        <link rel="canonical" href="https://docs.grin.mw/grin-rfcs/text/0013-nrd-kernels/">
+      
+      
+        <meta name="author" content="Grin Developers">
+      
+      <link rel="shortcut icon" href="../../../assets/images/grin-logo.svg">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.0">
+    
+    
+      
+        <title>0013 nrd-kernels - Grin Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.b5d04df8.min.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9ab2c1f8.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#summary" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://docs.grin.mw" title="Grin Documentation" class="md-header-nav__button md-logo" aria-label="Grin Documentation">
+      
+  <img src="../../../assets/images/grin-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Grin Documentation
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              0013 nrd-kernels
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/mimblewimble/grin/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimblewimble/grin
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../.." class="md-tabs__link">
+          Getting Started
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../about-grin/story/" class="md-tabs__link">
+          About Grin
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../wiki/table-of-contents/" class="md-tabs__link">
+          Wiki
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../0015-slatepack/" class="md-tabs__link md-tabs__link--active">
+          RFCs
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://docs.grin.mw" title="Grin Documentation" class="md-nav__button md-logo" aria-label="Grin Documentation">
+      
+  <img src="../../../assets/images/grin-logo.svg" alt="logo">
+
+    </a>
+    Grin Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/mimblewimble/grin/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimblewimble/grin
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      Getting Started
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Getting Started" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Getting Started
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="./Grin" class="md-nav__link">
+      ./Grin
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-1-2" type="checkbox" id="nav-1-2">
+    
+    <label class="md-nav__link" for="nav-1-2">
+      Quickstart
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Quickstart" data-md-level="2">
+      <label class="md-nav__title" for="nav-1-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Quickstart
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../getting-started/quickstart/install/" title="Install" class="md-nav__link">
+      Install
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../getting-started/quickstart/initialize/" title="Initialize" class="md-nav__link">
+      Initialize
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../getting-started/quickstart/receive/" title="Receive" class="md-nav__link">
+      Receive
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../getting-started/quickstart/send/" title="Send" class="md-nav__link">
+      Send
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../getting-started/wallet-handbook/" title="CLI Handbook" class="md-nav__link">
+      CLI Handbook
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../getting-started/wallets/" title="Wallets" class="md-nav__link">
+      Wallets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../getting-started/build/" title="Build" class="md-nav__link">
+      Build
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      About Grin
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="About Grin" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        About Grin
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../about-grin/story/" title="Story" class="md-nav__link">
+      Story
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../about-grin/privacy/" title="Privacy" class="md-nav__link">
+      Privacy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../about-grin/scalability/" title="Scalability" class="md-nav__link">
+      Scalability
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../about-grin/transactions/" title="Transactions" class="md-nav__link">
+      Transactions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../about-grin/proof-of-work/" title="Proof of Work" class="md-nav__link">
+      Proof of Work
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../about-grin/emission/" title="Emission" class="md-nav__link">
+      Emission
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Wiki
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Wiki" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Wiki
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/table-of-contents/" title="Table of Contents" class="md-nav__link">
+      Table of Contents
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2">
+    
+    <label class="md-nav__link" for="nav-3-2">
+      Introduction
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Introduction" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Introduction
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/introduction/grin-for-bitcoiners/" title="Grin for Bitcoiners" class="md-nav__link">
+      Grin for Bitcoiners
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-2-2" type="checkbox" id="nav-3-2-2">
+    
+    <label class="md-nav__link" for="nav-3-2-2">
+      Mimblewimble
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Mimblewimble" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-2-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Mimblewimble
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/introduction/mimblewimble/ecc/" title="Elliptic Curves" class="md-nav__link">
+      Elliptic Curves
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/introduction/mimblewimble/commitments/" title="Commitments" class="md-nav__link">
+      Commitments
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/introduction/mimblewimble/mimblewimble/" title="Mimblewimble" class="md-nav__link">
+      Mimblewimble
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
+    
+    <label class="md-nav__link" for="nav-3-3">
+      Transactions
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Transactions" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Transactions
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/transactions/slates/" title="Slates" class="md-nav__link">
+      Slates
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/transactions/slatepack/" title="Slatepack" class="md-nav__link">
+      Slatepack
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/transactions/payment-proofs/" title="Payment Proofs" class="md-nav__link">
+      Payment Proofs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/transactions/contracts/" title="Contracts" class="md-nav__link">
+      Contracts
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4">
+    
+    <label class="md-nav__link" for="nav-3-4">
+      Blocks
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Blocks" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Blocks
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/blocks/block-header/" title="Header" class="md-nav__link">
+      Header
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/blocks/block-body/" title="Body" class="md-nav__link">
+      Body
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/blocks/fees-and-weight/" title="Fees & Weight" class="md-nav__link">
+      Fees & Weight
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-5" type="checkbox" id="nav-3-5">
+    
+    <label class="md-nav__link" for="nav-3-5">
+      Chain State
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Chain State" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Chain State
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/chain-state/merkle-mountain-range/" title="Merkle Mountain Ranges" class="md-nav__link">
+      Merkle Mountain Ranges
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/chain-state/state-and-pruning/" title="State & Pruning" class="md-nav__link">
+      State & Pruning
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/chain-state/chain-sync/" title="Chain Sync" class="md-nav__link">
+      Chain Sync
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
+    
+    <label class="md-nav__link" for="nav-3-6">
+      Miscellaneous
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Miscellaneous" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Miscellaneous
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/miscellaneous/cuckoo-cycle/" title="Cuckoo Cycle" class="md-nav__link">
+      Cuckoo Cycle
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/miscellaneous/dandelion/" title="Dandelion" class="md-nav__link">
+      Dandelion
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/miscellaneous/switch-commitments/" title="Switch Commitments" class="md-nav__link">
+      Switch Commitments
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/miscellaneous/coinbase-maturity-rule/" title="Coinbase Maturity Rule" class="md-nav__link">
+      Coinbase Maturity Rule
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/miscellaneous/nrd-kernels/" title="NRD Kernels" class="md-nav__link">
+      NRD Kernels
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-7" type="checkbox" id="nav-3-7">
+    
+    <label class="md-nav__link" for="nav-3-7">
+      API
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="API" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/api/node-api/" title="Node API" class="md-nav__link">
+      Node API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/api/wallet-api/" title="Wallet API" class="md-nav__link">
+      Wallet API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/api/stratum-rpc/" title="Stratum RPC" class="md-nav__link">
+      Stratum RPC
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-8" type="checkbox" id="nav-3-8">
+    
+    <label class="md-nav__link" for="nav-3-8">
+      Security Process
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Security Process" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-8">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Security Process
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/security-process/grin-security-process/" title="Grin's Security Process" class="md-nav__link">
+      Grin's Security Process
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/security-process/security-team/" title="Security Team" class="md-nav__link">
+      Security Team
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/security-process/code-audits/" title="Code Audits" class="md-nav__link">
+      Code Audits
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-9" type="checkbox" id="nav-3-9">
+    
+    <label class="md-nav__link" for="nav-3-9">
+      Services
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Services" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-9">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Services
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/services/list-of-services/" title="List of Services" class="md-nav__link">
+      List of Services
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/services/slatepack-integration/" title="Slatepack Integration Guide" class="md-nav__link">
+      Slatepack Integration Guide
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/resources/" title="Resources" class="md-nav__link">
+      Resources
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      RFCs
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="RFCs" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        RFCs
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0015-slatepack/" title="0015 slatepack" class="md-nav__link">
+      0015 slatepack
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0014-general-fund-guidelines/" title="0014 general-fund-guidelines" class="md-nav__link">
+      0014 general-fund-guidelines
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+    <a href="./" title="0013 nrd-kernels" class="md-nav__link md-nav__link--active">
+      0013 nrd-kernels
+    </a>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0012-compact-slates/" title="0012 compact-slates" class="md-nav__link">
+      0012 compact-slates
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0011-security-team/" title="0011 security-team" class="md-nav__link">
+      0011 security-team
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0010-online-transacting-via-tor/" title="0010 online-transacting-via-tor" class="md-nav__link">
+      0010 online-transacting-via-tor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0009-enable-faster-sync/" title="0009 enable-faster-sync" class="md-nav__link">
+      0009 enable-faster-sync
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0008-wallet-state-management/" title="0008 wallet-state-management" class="md-nav__link">
+      0008 wallet-state-management
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0007-node-api-v2/" title="0007 node-api-v2" class="md-nav__link">
+      0007 node-api-v2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0006-payment-proofs/" title="0006 payment-proofs" class="md-nav__link">
+      0006 payment-proofs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0005-variable-size-kernels/" title="0005 variable-size-kernels" class="md-nav__link">
+      0005 variable-size-kernels
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0004-full-wallet-lifecycle/" title="0004 full-wallet-lifecycle" class="md-nav__link">
+      0004 full-wallet-lifecycle
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0003-security-process/" title="0003 security-process" class="md-nav__link">
+      0003 security-process
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0002-grin-governance/" title="0002 grin-governance" class="md-nav__link">
+      0002 grin-governance
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0001-rfc-process/" title="0001 rfc-process" class="md-nav__link">
+      0001 rfc-process
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/mimblewimble/docs/grin-rfcs/text/0013-nrd-kernels.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  
+                
+                
+                <ul>
+<li>Title: <code>nrd-kernels</code></li>
+<li>Authors: <a href="mailto:apeverell@protonmail.com">Antioch Peverell</a></li>
+<li>Start date: Mar 24, 2020</li>
+<li>RFC PR: Edit if merged: <a href="https://github.com/mimblewimble/grin-rfcs/pull/47">mimblewimble/grin-rfcs#47</a></li>
+<li>Tracking issue: <a href="https://github.com/mimblewimble/grin/issues/3288">mimblewimble/grin#3288</a></li>
+</ul>
+<hr />
+<h1 id="summary">Summary</h1>
+<p>Grin supports a limited implementation of "relative timelocks" with "No Recent Duplicate" (NRD) transaction kernels. Transactions can be constructed such that they share duplicate kernels. An NRD kernel instance is not valid within a specified number of blocks relative to a prior duplicate instance of the kernel. A minimum height difference must therefore exist between two instances of an NRD kernel. This provides the relative height lock between transactions.</p>
+<h1 id="motivation">Motivation</h1>
+<p>Relative timelocks are a prerequisite for robust payment channels. NRD kernels can be used to implement a <em>revocable</em> channel close mechanism.
+A mandatory revocation period can be introduced through a relative timelock between two transactions. Any attempt to close an old invalid channel state can be safely revoked during the revocation period.</p>
+<p>Recently, Ruben Somsen announced a design for <a href="https://www.reddit.com/r/Bitcoin/comments/gi6ciw/sas_succinct_atomic_swaps_half_the_number_of/">Succinct Atomic Swaps (SAS)</a> reducing the number of on-chain transactions required to implement the swap. This design uses a combination of relative locks and <a href="http://diyhpl.us/wiki/transcripts/layer2-summit/2018/scriptless-scripts/">adaptor signatures</a>. SAS would appear to be compatible with Grin/MW but with some caveats, namely the need for an additional transaction kernel as the NRD lock and the adaptor signature cannot co-exist on the same kernel. This is discussed in <a href="#unresolved-questions">Unresolved questions</a> below.</p>
+<h1 id="community-level-explanation">Community-level explanation</h1>
+<p>A minimum distance in block height is enforced between successive duplicate instances of a given NRD kernel. This can be used to enforce a relative lock height between two transactions. A transaction containing an NRD kernel will not be accepted as valid within the specified block height relative to any prior instance of the NRD kernel.</p>
+<p>Transactions can be constructed around an existing transaction kernel by introducing either an additional kernel or in some cases by simply adjusting the kernel offset. This allows NRD kernels to be used across any pair of transactions.</p>
+<p>The NRD kernel implementation aims for simplicity and a minimal approach to solving the problem of "relative locks". Grin does not support a general solution for arbitrary length locks between arbitrary kernels. The implementation is limited in scope to avoid adversely impacting performance and scalability. References between duplicate kernels are <em>implicit</em>, avoiding the need to store kernel references. Locks are limited in length to <em>recent</em> history, avoiding the need to inspect the full historical kernel set during verification.</p>
+<h1 id="reference-level-explanation">Reference-level explanation</h1>
+<p>An NRD kernel is not valid within a specified number of blocks of a previous duplicate instance of the same NRD kernel. We define duplicate here as two NRD kernels sharing the same public excess commitment. NRD kernels with different excess commitments are not treated as duplicates. An NRD kernel and a non-NRD kernel (plain kernel, coinbase kernel etc.) sharing the same excess commitment are not treated as duplicates.</p>
+<p>An NRD kernel has an associated <em>relative</em> lock height. For a block <em>B</em> containing this kernel to be valid, no duplicate instance of the kernel can exist in the last <em>RH</em> blocks (up to and including <em>B</em>), where <em>RH</em> is the relative lock height.
+For example, a transaction containing an NRD kernel with relative lock height 1440 (24 hours) is included in a block at height 1000000. This block is only valid if no duplicate instance of this kernel exists in any block from height 998561 (h-1439) to height 1000000 (h-0) inclusive. A duplicate instance <em>is</em> permitted at height 998560 (h-1440), with the transaction seen as valid.
+If no duplicate instance of the kernel exists within this range then the lock criteria is met.</p>
+<p>A kernel can be delayed by the existence of a previous kernel. The <em>non-existence</em> of a previous kernel has no impact on the lock criteria. Note that this implies the <em>first</em> singular occurrence of any NRD kernel meets the lock criteria trivially as it cannot, by definition, be locked by a previous kernel. Thus, the relative lock defaults to "fail open" semantics.</p>
+<p>Each node maintains an index of <em>recent</em> NRD kernels to enable efficient checking of NRD relative lock heights. Note we only need to index NRD locks and we only need to index those within recent history. Relative locks longer than 7 days are not valid. This is believed to be sufficient to cover all proposed use cases.</p>
+<p>The minimum value for a relative lock height is 1 meaning a prior instance of the kernel can exist in the previous block for the lock criteria to be met.
+An instance of the NRD kernel in the <em>same</em> block will invalidate the block as the lock criteria will not be met.</p>
+<p>NRD lock heights of 0 are invalid and it is never valid for two duplicate instances of the <em>same</em> NRD kernel to exist in the same block.</p>
+<p>It follows that two transactions containing duplicate instances of the same NRD kernel cannot be accepted as valid in the transaction pool concurrently.
+Current txpool behavior is "first one wins" semantics when receiving transactions and this will also apply to transactions containing NRD kernels. We plan to revisit this in a future "fee" RFC and plan to investigate the feasibility of introducing "replace by fee" semantics at that time.</p>
+<p>Grin supports "rewind" back through recent history to handle fork and chain reorg scenarios. 1 week of full blocks are maintained on each node and up to 10080 blocks can be rewound. To support relative lock heights each node must maintain an index over sufficient kernel history for an <em>additional</em> 10080 blocks beyond this rewind horizon. Each node should maintain 2 weeks of kernel history in the local NRD kernel index. This will cover the pathological case of a 1 week rewind and the validation of a 1 week long relative lock beyond that. The primary use case is for revocable payment channel close operations. We believe a 7 day period is more than sufficient for this. We do not require long, extended revocation periods and limiting this to a few days is preferable to keep the cost of verification low. The need for these revocable transactions to be included on chain should be low as these are only required in a non-cooperative situation but where required we want to minimize the cost of verification which must be performed across all nodes.</p>
+<hr />
+<p>The following kernel variants are supported in Grin -</p>
+<ul>
+<li>Plain</li>
+<li>Coinbase</li>
+<li>HeightLocked</li>
+<li>NoRecentDuplicate</li>
+</ul>
+<p>These are implemented as kernel "feature" variants -</p>
+<div class="highlight"><pre><span></span><code>pub enum KernelFeatures {
+    /// Plain kernel (default for Grin txs).
+    Plain = 0,
+    /// A coinbase kernel.
+    Coinbase = 1,
+    /// A kernel with an explicit absolute lock height.
+    HeightLocked = 2,
+    /// A relative height locked NRD kernel.
+    NoRecentDuplicate = 3,
+}
+</code></pre></div>
+
+<p>Each kernel variant includes feature specific data -</p>
+<div class="highlight"><pre><span></span><code># Plain
+{    
+  &quot;fee&quot;: 8
+}
+# Coinbase
+{
+  # empty
+}
+# Height Locked
+{
+  &quot;fee&quot;: 8,
+  &quot;lock_height&quot;: 295800
+}
+# No Recent Duplicate (NRD)
+{
+  &quot;fee&quot;: 8,
+  &quot;relative_height&quot;: 1440,
+}
+</code></pre></div>
+
+<p>Note that NRD kernels require no additional data beyond that required for absolute height locked kernels. The reference to the previous kernel is <em>implicit</em> and based on a duplicate NRD kernel excess commitment.</p>
+<p>The maximum supported NRD <em>relative_height</em> is 10080 (7 days) and the relative height can be safely and conveniently represented as a <code>u16</code> (2 bytes). This differs from absolute lock heights where <code>u64</code> (8 bytes) is necessary to specify the lock height.</p>
+<p>The minimum supported NRD <em>relative_height</em> is 1 and a value of 0 is not valid. Two duplicate instances of a given NRD kernel cannot exist simultaneously in the same block. There must be a relative height of at least 1 block between them.</p>
+<hr />
+<p>Nodes on the Grin network currently support two serialization versions for transaction kernels -</p>
+<p><strong>V1 "fixed size kernels"</strong></p>
+<p>In V1 all kernels are serialized to the same "fixed" number of bytes:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">feature</span> <span class="p">(</span><span class="mi">1</span> <span class="n">byte</span><span class="p">)</span> <span class="o">|</span> <span class="n">fee</span> <span class="p">(</span><span class="mi">8</span> <span class="n">bytes</span><span class="p">)</span> <span class="o">|</span> <span class="n">additional_data</span> <span class="p">(</span><span class="mi">8</span> <span class="n">bytes</span><span class="p">)</span> <span class="o">|</span> <span class="n">excess</span> <span class="n">commitment</span> <span class="p">(</span><span class="mi">33</span> <span class="n">bytes</span><span class="p">)</span> <span class="o">|</span> <span class="n">signature</span> <span class="p">(</span><span class="mi">64</span> <span class="n">bytes</span><span class="p">)</span>
+
+<span class="mi">03</span> <span class="o">|</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">01</span> <span class="n">f7</span> <span class="mi">8</span><span class="n">a</span> <span class="mi">40</span> <span class="o">|</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">05</span> <span class="n">A0</span> <span class="o">|</span> <span class="mi">08</span> <span class="n">b1</span> <span class="p">...</span> <span class="mi">22</span> <span class="n">d8</span> <span class="o">|</span> <span class="mi">33</span> <span class="mi">11</span> <span class="p">...</span> <span class="n">b9</span> <span class="mi">69</span>
+</code></pre></div>
+
+
+<p>NRD kernels use the last 2 bytes of feature specific data for the relative lock height as big-endian u16. 
+The first 6 bytes of feature specific data must be all zero:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">00 00 00 00 00 00 05 A0</span>
+</code></pre></div>
+
+
+<p>Note: absolute lock height (u64) and relative lock height (u16) have identical serialization in practice. </p>
+<p>V1 is supported for backward compatibility with nodes that do not support V2 "variable size kernels".</p>
+<p><strong>V2 "variable size kernels"</strong></p>
+<p>V2 kernels have been supported since Grin <code>v2.1.0</code> and V2 supports the notion of "variable size" kernels. See <a href="https://github.com/mimblewimble/grin-rfcs/blob/master/text/0005-variable-size-kernels.md">RFC-0005 "Varible Size Kernels"</a> for details of this.</p>
+<p>NRD kernels include 8 bytes for the fee as big-endian u64 and 2 bytes for the relative lock height:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">feature</span> <span class="p">(</span><span class="mi">1</span> <span class="n">byte</span><span class="p">)</span> <span class="o">|</span> <span class="n">fee</span> <span class="p">(</span><span class="mi">8</span> <span class="n">bytes</span><span class="p">)</span> <span class="o">|</span> <span class="n">relative_height</span> <span class="p">(</span><span class="mi">2</span> <span class="n">bytes</span><span class="p">)</span> <span class="o">|</span> <span class="n">excess</span> <span class="n">commitment</span> <span class="p">(</span><span class="mi">33</span> <span class="n">bytes</span><span class="p">)</span> <span class="o">|</span> <span class="n">signature</span> <span class="p">(</span><span class="mi">64</span> <span class="n">bytes</span><span class="p">)</span>
+
+<span class="mi">03</span> <span class="o">|</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">6</span><span class="n">a</span> <span class="n">cf</span> <span class="n">c0</span> <span class="o">|</span> <span class="mi">05</span> <span class="n">A0</span> <span class="o">|</span> <span class="mi">09</span> <span class="mi">4</span><span class="n">d</span> <span class="p">...</span> <span class="n">bb</span> <span class="mi">9</span><span class="n">a</span> <span class="o">|</span> <span class="mi">09</span> <span class="n">c7</span> <span class="p">...</span> <span class="n">bd</span> <span class="mi">54</span>
+</code></pre></div>
+
+
+<p>In V2 relative lock height is 2 bytes as big-endian u16:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">05 A0</span>
+</code></pre></div>
+
+
+<p>Note: the serialization strategy is used for both network "on the wire" serialization of both transactions and full blocks, and local storage, both the database for full blocks and the kernel MMR backend files.
+Version negotiation occurs during the initial peer connection setup process and determines which version is used for p2p message serialization.
+If a node uses V2 serialization for the kernel MMR backend file then it will provide a V2 txhashset based on these underlying files.</p>
+<p><strong>Kernel Signature Message</strong></p>
+<p>Every kernel contains a signature proving the excess commitment is a commitment to zero. The message being signed includes the features, fee and other associated data to prevent malleability of the transaction kernel and the overall transaction. The transaction fee cannot be modified after signing, for example.</p>
+<p>For NRD kernels the message being signed is constructed as follows with
+the relative lock height serialized as 2 bytes.</p>
+<div class="highlight"><pre><span></span><code>Hash(feature | fee | relative_height)
+
+Hash(03 | 00 00 00 00 01 f7 8a 40 | 05 A0)
+</code></pre></div>
+
+<hr />
+<p>No additional data is introduced with NRD kernels beyond the 2 bytes representing the relative lock height. There is no opportunity to include arbitrary data. Any additional kernel included in a transaction is itself still a fully valid kernel. There is no explicit reference necessary that could be misused to include arbitrary data.</p>
+<p>An additional NRD kernel in a transaction will increase the "weight" of the transaction by this single additional kernel and allows for a simple way to deal with additional fees. A transaction with an additional kernel must provide additional fees to cover the additional "weight". NRD kernels cannot be added for free. Note that in some limited situations it is possible to <em>replace</em> a kernel with an NRD kernel. If the NRD lock can be introduced without adding an additional kernel then the fee does not have to be increased and the lock is effectively added for free.</p>
+<hr />
+<p>A transaction kernel consists of an excess commitment and an associated signature showing this excess is indeed a commitment to 0.</p>
+<p>A transaction with a single kernel can always be represented as a transaction with multiple kernels, provided the kernels excess commitments sum to the correct total excess.</p>
+<p>Given an existing NRD kernel with excess commitment -</p>
+<ul>
+<li><em>r'G + 0H</em></li>
+</ul>
+<p>And a transaction with single excess commitment -</p>
+<ul>
+<li><em>rG + 0H</em></li>
+</ul>
+<p>This transaction can be represented as a pair of kernels with excess commitments -</p>
+<ul>
+<li><em>rG + 0H =
+    (r'G + 0H) + (r-r'G + 0H)</em></li>
+</ul>
+<p>We take advantage of this to allow an arbitrary NRD kernel to be included in any transaction at construction time.</p>
+<p>Additionally the kernel offset included in each transaction can be used in certain situations to allow the replacement of a single transaction kernel with an NRD kernel without needing to introduce an additional kernel.</p>
+<p>Given an existing NRD kernel with excess commitment -</p>
+<ul>
+<li><em>r'G + 0H</em></li>
+</ul>
+<p>And a transaction with single excess commitment and kernel offset -</p>
+<ul>
+<li><em>rG + 0H, o</em></li>
+</ul>
+<p>This transaction can be rewritten to use the NRD kernel -</p>
+<ul>
+<li><em>r'G + 0H, (o+r-r')</em></li>
+</ul>
+<p>These two "degrees of freedom", introducing multiple kernels and adjusting the kernel offset, allowing for flexibility to introduce an NRD kernel in a variety of ways.</p>
+<ul>
+<li>Introduce NRD kernel to transaction, compensate with additional kernel.</li>
+<li>Introduce NRD kernel to transaction, compensate with kernel offset.</li>
+</ul>
+<hr />
+<h4 id="payment-channel-implementation">Payment Channel Implementation</h4>
+<p>NRD kernels can be used to delay alternate "branches" of conflicting transactions, enabling a payment channel implementation.</p>
+<p>A payment channel is represented as a single multi-party output. Each channel state transition is represented as a pair of "close" and "settle" transactions with an NRD kernel enforcing a delay between them. Funds are held in an intermediate multi-party output while delayed. The NRD kernel is reused across both transactions by adjusting kernel offsets.</p>
+<p><em>X -&gt; Y, K<sub>nrd_a</sub></em> \
+<em>Y -&gt; [Z<sub>a</sub>, Z<sub>b</sub>], K<sub>nrd_a</sub></em></p>
+<p>Alice closes the channel <em>X</em> with their "close" transaction. After a delay Alice can "settle" the funds out to Alice and Bob.</p>
+<p><em>Attribution</em> of "close" and "settle" transactions for each channel state is provided through endpoint specific NRD kernels. This allows the other party to "revoke" old invalid state without the NRD delay.</p>
+<p>Each channel state transition involves a new pair of "close" and "settle" transactions for each participant along with a shared "revoke" transaction. The "revoke" transaction simply spends funds back to the channel output and a plain kernel suffices.</p>
+<p><em>[Z<sub>a</sub>, Z<sub>b</sub>] -&gt; X, K<sub>rev</sub></em></p>
+<p>Alice attempts to close old invalid state (<em>Y<sub>1</sub></em>):</p>
+<p><em>X -&gt; Y<sub>1</sub>, K<sub>nrd_a1</sub></em></p>
+<p>Bob can immediately revoke and close current state (<em>Y<sub>1</sub> -&gt; Y<sub>2</sub></em>):</p>
+<p><em>Y<sub>1</sub> -&gt; ~[Z<sub>a</sub>, Z<sub>b</sub>]~, K<sub>nrd_b1</sub></em> \
+<em>~[Z<sub>a</sub>, Z<sub>b</sub>]~ -&gt; <sub>X</sub>, K<sub>rev_1</sub></em> \
+<em><sub>X</sub> -&gt; Y<sub>2</sub>, K<sub>nrd_b2</sub></em> \
+<em>=&gt; Y<sub>1</sub> -&gt; Y<sub>2</sub>, [K<sub>nrd_b1</sub>, K<sub>rev_1</sub>, K<sub>nrd_b2</sub>]</em></p>
+<p>Bob publishes only the final cut-through multi-kernel transaction (<em>Y<sub>1</sub> -&gt; Y<sub>2</sub></em>). Bob's individual settle transaction is not revealed.</p>
+<p>Neither party can self-revoke without introducing the NRD delay. The other party always has the opportunity to revoke first. Self-revocation cannot be used to lock funds up indefinitely.</p>
+<hr />
+<h4 id="rolloutdeployment-hf3">Rollout/Deployment (HF3)</h4>
+<p>The following rules will be enforced during rollout as part of HF3 -</p>
+<p><strong>Assumptions:</strong></p>
+<ol>
+<li>HF3 will occur at height 786,240.</li>
+<li>Blocks at height &gt;= 786,240 will have block version &gt;= 4.</li>
+</ol>
+<p><strong>Block Specific Rules:</strong></p>
+<ol>
+<li>A block containing NRD kernel(s) is only be valid if block version &gt;= 4.</li>
+<li>A block containing NRD kernel(s) is only valid if all defined relative lock height rules are met.</li>
+<li>Two duplicate NRD kernel instances cannot exist in the same block.</li>
+</ol>
+<p><strong>Transaction Specific Rules:</strong></p>
+<ol>
+<li>A transaction containing NRD kernel(s) will not be accepted by the local txpool/stempool unless chain head version &gt;= 4.</li>
+<li>A transaction containing NRD kernel(s) will not be relayed or broadcast to other nodes unless chain head version &gt;= 4.</li>
+<li>A transaction containing NRD kernel(s) will not be accepted by the local txpool/stempool unless it meets the defined relative lock height rule in the next block.</li>
+<li>A transaction containing NRD kernel(s) will not be relayed or broadcast to other nodes unless it meets the defined relative lock height rule in the next block.</li>
+<li>Two duplicate NRD kernel instances cannot exist in the txpool/stempool concurrently.</li>
+</ol>
+<h4 id="weights-fees">Weights &amp; Fees</h4>
+<p>For the purpose of block weight calculations, each kernel is treated as 3 "weight units" where each unit is approximately 32 bytes. This covers the excess commitment and the associated signature common across all kernel variants.
+The additional 2 bytes of "relative height" on NRD kernels are ignored for the purposes of calculating block weight.</p>
+<p>For the purpose of minimum transaction relay fees all kernels are treated as 1 "fee unit" with each unit being 1 milligrin.
+We plan to revisit the entire transaction fee structure in a future RFC. Kernel variants may affect the transaction fee calculations differently in the future.</p>
+<h1 id="drawbacks">Drawbacks</h1>
+<p>NRD kernels are a limited and restricted form of "relative locks" between kernels. These locks are limited to a period of 7 days and "fail open" beyond that window. This approach meets the requirements for limited revocable payment channel operations but there are likely to be use cases where this approach is not sufficient or unsuitable.</p>
+<p>While it would be nice to provide a fully general purpose solution that would allow arbitrary locks to be implemented, it does appear to be hard, if not impossible, to do this in Grin/MW.</p>
+<h1 id="rationale-and-alternatives">Rationale and alternatives</h1>
+<p>Referencing historical data in Grin and in Mimblewimble in general is difficult due to the possibility of pruning historical data. It is not possible to reference old outputs once they are spent. Historical validators must have access to any referenced data to validate consensus rules. This leaves transaction kernels as the only available data to be referenced. While arbitrary historical kernels <em>can</em> be referenced this is not desirable as we do not want to impose additional constraints on nodes, requiring them to maintain historical data that would otherwise be prunable.</p>
+<p>An earlier design iteration was "No Such Kernel Recently" (NSKR) locks. Where NRD references were implicit, with duplicate kernel excess commitments, NSKR kernels referenced prior kernels explicitly. These explicit references were problematic for several reasons -</p>
+<ul>
+<li>Additional overhead, both local storage and network traffic due to the explicit references.</li>
+<li>Optimization by referencing prior kernel based on MMR position introduced a dependency on external data (kernels can no longer be validated in isolation).</li>
+<li>Permitting non-existence of references due to limited window of history, opened up a vector for "spam" where arbitrary data could be used in place of a valid reference.</li>
+</ul>
+<p>To prevent "spam" a signature can be used to verify the reference was indeed a valid commitment. By including a signature along with the commitment, the reference is effectively a full transaction kernel.</p>
+<p>The idea of using Merkle proofs to verify inclusion of a historical referenced kernel in the kernel MMR was also considered. This gets expensive both in terms of transaction size and increased verification cost. There is also the problem of position not yet being known at transaction creation time, necessitating Merkle proof generation at block creation time by miners which adds complexity.</p>
+<h1 id="prior-art">Prior art</h1>
+<p>Bitcoin allows transaction inputs to be "encumbered" with a relative locktime based on the sequence number field. This restricts an input from spending the associated output until a certain number of blocks have passed. BIP112 describes the CHECKSEQUENCEVERIFY opcode in Bitcoin and BIP68 describes the underlying consensus changes around the sequence number field.</p>
+<ul>
+<li><a href="https://en.bitcoin.it/wiki/Timelock#CheckSequenceVerify">Timelock#CheckSequenceVerify (bitcoin wiki)</a></li>
+<li><a href="https://en.bitcoin.it/wiki/CheckSequenceVerify">CheckSequenceVerify (bitcoin wiki)</a></li>
+<li><a href="https://github.com/bitcoin/bips/blob/master/bip-0068.mediawiki">Bitcoin BIP-0068</a></li>
+<li><a href="https://github.com/bitcoin/bips/blob/master/bip-0112.mediawiki">Bitcoin BIP-0112</a></li>
+</ul>
+<p>Note that relative locks in Bitcoin are based on transaction <em>inputs</em> and <em>outputs</em>, with inputs only able to spend outputs once confirmed beneath a certain number of blocks. We cannot do this in Grin due to the pruning of old data. Spent outputs will eventually be removed and cannot be relied upon as part of the validation process. Bitcoin encumbers individual outputs whereas in Grin we encumber transactions via the constituent transaction kernels.</p>
+<h1 id="unresolved-questions">Unresolved questions</h1>
+<p>Some investigation is still needed around the conditions necessary to allow a kernel to simply be reused with an adjustment to the kernel offset and where an additional kernel is necessary. An adjustment to the kernel offset will expose the private excess under certain conditions and cannot be done safely for all transactions.</p>
+<p>One outstanding question is what use cases are not covered by NRD kernels. We believe them to be sufficient for the revocable payment channel close mechanism. But they may not be sufficient for all use cases.</p>
+<p><a href="https://www.reddit.com/r/Bitcoin/comments/gi6ciw/sas_succinct_atomic_swaps_half_the_number_of/">Succinct Atomic Swaps (SAS)</a> describes the use of both relative locks and <a href="http://diyhpl.us/wiki/transcripts/layer2-summit/2018/scriptless-scripts/">adaptor signatures</a> to implement atomic swaps with only two on-chain transactions. The secret associated with the adaptor signature is swapped to allow funds to be claimed while the relative lock locks funds prior to a refund being claimed. We note that NRD kernels and adaptor signatures are not directly compatible as a prior instance of an NRD kernel would have revealed the secret associated with the adaptor signature. That said we can produce transactions with multiple kernels and we can use this to isolate the adaptor signature on a separate kernel alongside an NRD kernel. It is an unresolved question if there is a way to modify the SAS protocol and avoid the need for these additional kernels in Grin/MW.  </p>
+<h1 id="references">References</h1>
+<ul>
+<li><a href="https://lists.launchpad.net/mimblewimble/msg00025.html">Original "triggers" mailing list post by Ruben Somsen</a></li>
+<li><a href="https://lists.launchpad.net/mimblewimble/msg00635.html">"No Such Kernel Recently" post by John Tromp</a></li>
+<li><a href="https://lists.launchpad.net/mimblewimble/msg00635.html">"Duplicate Kernels" post by Antioch</a></li>
+<li><a href="https://lists.launchpad.net/mimblewimble/msg00636.html">"NRD based payment channel" post by John Tromp</a></li>
+<li><a href="https://gist.github.com/antiochp/78fe813b6c2c0612593f8747390a8aae">Earlier NSKR based payment channel design)</a></li>
+<li><a href="https://en.bitcoin.it/wiki/Timelock#CheckSequenceVerify">Timelock#CheckSequenceVerify (bitcoin wiki)</a></li>
+<li><a href="https://en.bitcoin.it/wiki/CheckSequenceVerify">CheckSequenceVerify (bitcoin wiki)</a></li>
+<li><a href="https://github.com/bitcoin/bips/blob/master/bip-0068.mediawiki">Bitcoin BIP-0068</a></li>
+<li><a href="https://github.com/bitcoin/bips/blob/master/bip-0112.mediawiki">Bitcoin BIP-0112</a></li>
+<li><a href="https://www.reddit.com/r/Bitcoin/comments/gi6ciw/sas_succinct_atomic_swaps_half_the_number_of/">Succinct Atomic Swaps by Ruben Somsen</a></li>
+<li><a href="http://diyhpl.us/wiki/transcripts/layer2-summit/2018/scriptless-scripts/">Scriptless Scripts</a></li>
+<li><a href="https://github.com/mimblewimble/grin-rfcs/blob/master/text/0005-variable-size-kernels.md">RFC-0005 "Variable Size Kernels"</a></li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../0014-general-fund-guidelines/" title="0014 general-fund-guidelines" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                0014 general-fund-guidelines
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../0012-compact-slates/" title="0012 compact-slates" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                0012 compact-slates
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/mimblewimble" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://keybase.io/team/grincoin" target="_blank" rel="noopener" title="keybase.io" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M286.17 419a18 18 0 1018 18 18 18 0 00-18-18zm111.92-147.6c-9.5-14.62-39.37-52.45-87.26-73.71q-9.1-4.06-18.38-7.27a78.43 78.43 0 00-47.88-104.13c-12.41-4.1-23.33-6-32.41-5.77-.6-2-1.89-11 9.4-35L198.66 32l-5.48 7.56c-8.69 12.06-16.92 23.55-24.34 34.89a51 51 0 00-8.29-1.25c-41.53-2.45-39-2.33-41.06-2.33-50.61 0-50.75 52.12-50.75 45.88l-2.36 36.68c-1.61 27 19.75 50.21 47.63 51.85l8.93.54a214 214 0 00-46.29 35.54C14 304.66 14 374 14 429.77v33.64l23.32-29.8a148.6 148.6 0 0014.56 37.56c5.78 10.13 14.87 9.45 19.64 7.33 4.21-1.87 10-6.92 3.75-20.11a178.29 178.29 0 01-15.76-53.13l46.82-59.83-24.66 74.11c58.23-42.4 157.38-61.76 236.25-38.59 34.2 10.05 67.45.69 84.74-23.84.72-1 1.2-2.16 1.85-3.22a156.09 156.09 0 012.8 28.43c0 23.3-3.69 52.93-14.88 81.64-2.52 6.46 1.76 14.5 8.6 15.74 7.42 1.57 15.33-3.1 18.37-11.15C429 443 434 414 434 382.32c0-38.58-13-77.46-35.91-110.92zM142.37 128.58l-15.7-.93-1.39 21.79 13.13.78a93 93 0 00.32 19.57l-22.38-1.34a12.28 12.28 0 01-11.76-12.79L107 119c1-12.17 13.87-11.27 13.26-11.32l29.11 1.73a144.35 144.35 0 00-7 19.17zm148.42 172.18a10.51 10.51 0 01-14.35-1.39l-9.68-11.49-34.42 27a8.09 8.09 0 01-11.13-1.08l-15.78-18.64a7.38 7.38 0 011.34-10.34l34.57-27.18-14.14-16.74-17.09 13.45a7.75 7.75 0 01-10.59-1s-3.72-4.42-3.8-4.53a7.38 7.38 0 011.37-10.34L214 225.19s-18.51-22-18.6-22.14a9.56 9.56 0 011.74-13.42 10.38 10.38 0 0114.3 1.37l81.09 96.32a9.58 9.58 0 01-1.74 13.44zM187.44 419a18 18 0 1018 18 18 18 0 00-18-18z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/vendor.92ffa368.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5123e3d4.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../../..",
+          features: ["tabs"],
+          search: Object.assign({
+            worker: "../../../assets/javascripts/worker/search.a68abb33.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

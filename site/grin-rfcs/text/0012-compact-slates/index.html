@@ -1,0 +1,2241 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Grin Documentation">
+      
+      
+        <link rel="canonical" href="https://docs.grin.mw/grin-rfcs/text/0012-compact-slates/">
+      
+      
+        <meta name="author" content="Grin Developers">
+      
+      <link rel="shortcut icon" href="../../../assets/images/grin-logo.svg">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.0">
+    
+    
+      
+        <title>0012 compact-slates - Grin Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.b5d04df8.min.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9ab2c1f8.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#summary" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://docs.grin.mw" title="Grin Documentation" class="md-header-nav__button md-logo" aria-label="Grin Documentation">
+      
+  <img src="../../../assets/images/grin-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Grin Documentation
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              0012 compact-slates
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/mimblewimble/grin/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimblewimble/grin
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../.." class="md-tabs__link">
+          Getting Started
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../about-grin/story/" class="md-tabs__link">
+          About Grin
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../wiki/table-of-contents/" class="md-tabs__link">
+          Wiki
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../0015-slatepack/" class="md-tabs__link md-tabs__link--active">
+          RFCs
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://docs.grin.mw" title="Grin Documentation" class="md-nav__button md-logo" aria-label="Grin Documentation">
+      
+  <img src="../../../assets/images/grin-logo.svg" alt="logo">
+
+    </a>
+    Grin Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/mimblewimble/grin/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimblewimble/grin
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      Getting Started
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Getting Started" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Getting Started
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="./Grin" class="md-nav__link">
+      ./Grin
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-1-2" type="checkbox" id="nav-1-2">
+    
+    <label class="md-nav__link" for="nav-1-2">
+      Quickstart
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Quickstart" data-md-level="2">
+      <label class="md-nav__title" for="nav-1-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Quickstart
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../getting-started/quickstart/install/" title="Install" class="md-nav__link">
+      Install
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../getting-started/quickstart/initialize/" title="Initialize" class="md-nav__link">
+      Initialize
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../getting-started/quickstart/receive/" title="Receive" class="md-nav__link">
+      Receive
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../getting-started/quickstart/send/" title="Send" class="md-nav__link">
+      Send
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../getting-started/wallet-handbook/" title="CLI Handbook" class="md-nav__link">
+      CLI Handbook
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../getting-started/wallets/" title="Wallets" class="md-nav__link">
+      Wallets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../getting-started/build/" title="Build" class="md-nav__link">
+      Build
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      About Grin
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="About Grin" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        About Grin
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../about-grin/story/" title="Story" class="md-nav__link">
+      Story
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../about-grin/privacy/" title="Privacy" class="md-nav__link">
+      Privacy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../about-grin/scalability/" title="Scalability" class="md-nav__link">
+      Scalability
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../about-grin/transactions/" title="Transactions" class="md-nav__link">
+      Transactions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../about-grin/proof-of-work/" title="Proof of Work" class="md-nav__link">
+      Proof of Work
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../about-grin/emission/" title="Emission" class="md-nav__link">
+      Emission
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Wiki
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Wiki" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Wiki
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/table-of-contents/" title="Table of Contents" class="md-nav__link">
+      Table of Contents
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2">
+    
+    <label class="md-nav__link" for="nav-3-2">
+      Introduction
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Introduction" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Introduction
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/introduction/grin-for-bitcoiners/" title="Grin for Bitcoiners" class="md-nav__link">
+      Grin for Bitcoiners
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-2-2" type="checkbox" id="nav-3-2-2">
+    
+    <label class="md-nav__link" for="nav-3-2-2">
+      Mimblewimble
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Mimblewimble" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-2-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Mimblewimble
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/introduction/mimblewimble/ecc/" title="Elliptic Curves" class="md-nav__link">
+      Elliptic Curves
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/introduction/mimblewimble/commitments/" title="Commitments" class="md-nav__link">
+      Commitments
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/introduction/mimblewimble/mimblewimble/" title="Mimblewimble" class="md-nav__link">
+      Mimblewimble
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
+    
+    <label class="md-nav__link" for="nav-3-3">
+      Transactions
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Transactions" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Transactions
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/transactions/slates/" title="Slates" class="md-nav__link">
+      Slates
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/transactions/slatepack/" title="Slatepack" class="md-nav__link">
+      Slatepack
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/transactions/payment-proofs/" title="Payment Proofs" class="md-nav__link">
+      Payment Proofs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/transactions/contracts/" title="Contracts" class="md-nav__link">
+      Contracts
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4">
+    
+    <label class="md-nav__link" for="nav-3-4">
+      Blocks
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Blocks" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Blocks
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/blocks/block-header/" title="Header" class="md-nav__link">
+      Header
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/blocks/block-body/" title="Body" class="md-nav__link">
+      Body
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/blocks/fees-and-weight/" title="Fees & Weight" class="md-nav__link">
+      Fees & Weight
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-5" type="checkbox" id="nav-3-5">
+    
+    <label class="md-nav__link" for="nav-3-5">
+      Chain State
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Chain State" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Chain State
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/chain-state/merkle-mountain-range/" title="Merkle Mountain Ranges" class="md-nav__link">
+      Merkle Mountain Ranges
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/chain-state/state-and-pruning/" title="State & Pruning" class="md-nav__link">
+      State & Pruning
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/chain-state/chain-sync/" title="Chain Sync" class="md-nav__link">
+      Chain Sync
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
+    
+    <label class="md-nav__link" for="nav-3-6">
+      Miscellaneous
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Miscellaneous" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Miscellaneous
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/miscellaneous/cuckoo-cycle/" title="Cuckoo Cycle" class="md-nav__link">
+      Cuckoo Cycle
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/miscellaneous/dandelion/" title="Dandelion" class="md-nav__link">
+      Dandelion
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/miscellaneous/switch-commitments/" title="Switch Commitments" class="md-nav__link">
+      Switch Commitments
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/miscellaneous/coinbase-maturity-rule/" title="Coinbase Maturity Rule" class="md-nav__link">
+      Coinbase Maturity Rule
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/miscellaneous/nrd-kernels/" title="NRD Kernels" class="md-nav__link">
+      NRD Kernels
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-7" type="checkbox" id="nav-3-7">
+    
+    <label class="md-nav__link" for="nav-3-7">
+      API
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="API" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/api/node-api/" title="Node API" class="md-nav__link">
+      Node API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/api/wallet-api/" title="Wallet API" class="md-nav__link">
+      Wallet API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/api/stratum-rpc/" title="Stratum RPC" class="md-nav__link">
+      Stratum RPC
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-8" type="checkbox" id="nav-3-8">
+    
+    <label class="md-nav__link" for="nav-3-8">
+      Security Process
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Security Process" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-8">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Security Process
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/security-process/grin-security-process/" title="Grin's Security Process" class="md-nav__link">
+      Grin's Security Process
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/security-process/security-team/" title="Security Team" class="md-nav__link">
+      Security Team
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/security-process/code-audits/" title="Code Audits" class="md-nav__link">
+      Code Audits
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-9" type="checkbox" id="nav-3-9">
+    
+    <label class="md-nav__link" for="nav-3-9">
+      Services
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Services" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-9">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Services
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/services/list-of-services/" title="List of Services" class="md-nav__link">
+      List of Services
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/services/slatepack-integration/" title="Slatepack Integration Guide" class="md-nav__link">
+      Slatepack Integration Guide
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wiki/resources/" title="Resources" class="md-nav__link">
+      Resources
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      RFCs
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="RFCs" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        RFCs
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0015-slatepack/" title="0015 slatepack" class="md-nav__link">
+      0015 slatepack
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0014-general-fund-guidelines/" title="0014 general-fund-guidelines" class="md-nav__link">
+      0014 general-fund-guidelines
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0013-nrd-kernels/" title="0013 nrd-kernels" class="md-nav__link">
+      0013 nrd-kernels
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+    <a href="./" title="0012 compact-slates" class="md-nav__link md-nav__link--active">
+      0012 compact-slates
+    </a>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0011-security-team/" title="0011 security-team" class="md-nav__link">
+      0011 security-team
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0010-online-transacting-via-tor/" title="0010 online-transacting-via-tor" class="md-nav__link">
+      0010 online-transacting-via-tor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0009-enable-faster-sync/" title="0009 enable-faster-sync" class="md-nav__link">
+      0009 enable-faster-sync
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0008-wallet-state-management/" title="0008 wallet-state-management" class="md-nav__link">
+      0008 wallet-state-management
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0007-node-api-v2/" title="0007 node-api-v2" class="md-nav__link">
+      0007 node-api-v2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0006-payment-proofs/" title="0006 payment-proofs" class="md-nav__link">
+      0006 payment-proofs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0005-variable-size-kernels/" title="0005 variable-size-kernels" class="md-nav__link">
+      0005 variable-size-kernels
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0004-full-wallet-lifecycle/" title="0004 full-wallet-lifecycle" class="md-nav__link">
+      0004 full-wallet-lifecycle
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0003-security-process/" title="0003 security-process" class="md-nav__link">
+      0003 security-process
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0002-grin-governance/" title="0002 grin-governance" class="md-nav__link">
+      0002 grin-governance
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0001-rfc-process/" title="0001 rfc-process" class="md-nav__link">
+      0001 rfc-process
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/mimblewimble/docs/grin-rfcs/text/0012-compact-slates.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  
+                
+                
+                <ul>
+<li>Title: Slate V4 (Compact Slates)</li>
+<li>Authors: <a href="mailto:yeastplume@protonmail.com">Michael Cordner</a></li>
+<li>Start date: April 3, 2020</li>
+<li>RFC PR: <a href="https://github.com/mimblewimble/grin-rfcs/pull/49">mimblewimble/grin-rfcs#49</a></li>
+<li>Tracking issue: <a href="https://github.com/mimblewimble/grin-wallet/issues/317">mimblewimble/grin-wallet#317</a></li>
+</ul>
+<hr />
+<h1 id="summary">Summary</h1>
+<p>This RFC describes the changes between version 3 and version 4 of the Slate transaction exchange format, which had the goal of reducing the contents of the Slate to be as minimal as possible.</p>
+<h1 id="motivation">Motivation</h1>
+<p>Previously, the definition of Slate versions up to V3 had been put together with no regard for its size or/and redundant/irrelevant content. In order to facilitate future exchange method possibilities, it's desirable to ensure the Slate is as compact as possible, particularly on the 'first leg' of a transaction exchange which only actually requires minimal information from the transaction initiator. </p>
+<p>This RFC aims to define the contents of a streamlined "compact" slate by:</p>
+<ul>
+<li>Removing all redundant or unnecessary Slate fields</li>
+<li>Shortening the names of many Slate fields</li>
+<li>Reducing the size of the Slate to at all phases of a transaction</li>
+<li>Defining an optional highly-minimized binary format for Slate output</li>
+</ul>
+<p>Although this RFC doesn't address any particular transaction exchange methods that might be facilitated by this streamlining, one could envisage possibilities such as:</p>
+<ul>
+<li>An exchange placing the entire initial slate in a QR code</li>
+<li>Encoding the initial slate as an easily-cut-and-paste chunk</li>
+</ul>
+<h1 id="community-level-explanation">Community-level explanation</h1>
+<p>There are two basic transaction workflows in a two-party Grin transaction:</p>
+<ul>
+<li>
+<p>In the Basic workflow, a sender adds their inputs and change outputs to a transaction, and sends them, along with the fee, the amount and their signature data to the recipient. The recipient adds a output for the amount to the transaction, adds their signature data and returns to the sender, who completes the transaction and posts.</p>
+</li>
+<li>
+<p>In the Invoice workflow, the invoice creator adds a new output to a transaction, and sends the amount and signature data to the payer. The payer adds their inputs and change outputs to the transaction along with their signature data and fee information, then returns to the invoicer, who completes the transaction and posts.</p>
+</li>
+</ul>
+<p>Although previous versions of the Slate included every party's complete inputs and outputs at every stage of the transaction, it is not technically necessary for the initiator to provide their inputs and outputs to the other party. It suffices for the initiator to store the input/output listing in their local transaction context, and only provide the amount, fee, excess and signature data to the other party. Recognising this, it is possible to ensure that the 'first-leg' of a transaction stage is extremely compact.</p>
+<p>For instance, version 3 of the Slate on transaction initiation may have looked something like the following:</p>
+<div class="highlight"><pre><span></span><code>{
+  &quot;version_info&quot;: {
+    &quot;version&quot;: 3,
+    &quot;orig_version&quot;: 3,
+    &quot;block_header_version&quot;: 2
+  },
+  &quot;num_participants&quot;: 2,
+  &quot;id&quot;: &quot;0436430c-2b02-624c-2032-570501212b00&quot;,
+  &quot;tx&quot;: {
+    &quot;offset&quot;: &quot;d202964900000000d302964900000000d402964900000000d502964900000000&quot;,
+    &quot;body&quot;: {
+      &quot;inputs&quot;: [
+        {
+          &quot;features&quot;: &quot;Coinbase&quot;,
+          &quot;commit&quot;: &quot;087df32304c5d4ae8b2af0bc31e700019d722910ef87dd4eec3197b80b207e3045&quot;
+        },
+        {
+          &quot;features&quot;: &quot;Coinbase&quot;,
+          &quot;commit&quot;: &quot;08e1da9e6dc4d6e808a718b2f110a991dd775d65ce5ae408a4e1f002a4961aa9e7&quot;
+        }
+      ],
+      &quot;outputs&quot;: [
+        {
+          &quot;features&quot;: &quot;Plain&quot;,
+          &quot;commit&quot;: &quot;0812276cc788e6870612296d926cba9f0e7b9810670710b5a6e6f1ba006d395774&quot;,
+          &quot;proof&quot;: &quot;dcff6175390c602bfa92c2ffd1a9b2d84dcc9ea941f6f317bdd0f875244ef23e696fd17c71df79760ce5ce1a96aab1d15dd057358dc835e972febeb86d50ccec0dad7cfe0246d742eb753cf7b88c045d15bc7123f8cf7155647ccf663fca92a83c9a65d0ed756ea7ebffd2cac90c380a102ed9caaa355d175ed0bf58d3ac2f5e909d6c447dfc6b605e04925c2b17c33ebd1908c965a5541ea5d2ed45a0958e6402f89d7a56df1992e036d836e74017e73ccad5cb3a82b8e139e309792a31b15f3ffd72ed033253428c156c2b9799458a25c1da65b719780a22de7fe7f437ae2fccd22cf7ea357ab5aa66a5ef7d71fb0dc64aa0b5761f68278062bb39bb296c787e4cabc5e2a2933a416ce1c9a9696160386449c437e9120f7bb26e5b0e74d1f2e7d5bcd7aafb2a92b87d1548f1f911fb06af7bd6cc13cee29f7c9cb79021aed18186272af0e9d189ec107c81a8a3aeb4782b0d950e4881aa51b776bb6844b25bce97035b48a9bdb2aea3608687bcdd479d4fa998b5a839ff88558e4a29dff0ed13b55900abb5d439b70793d902ae9ad34587b18c919f6b875c91d14deeb1c373f5e76570d59a6549758f655f1128a54f162dfe8868e1587028e26ad91e528c5ae7ee9335fa58fb59022b5de29d80f0764a9917390d46db899acc6a5b416e25ecc9dccb7153646addcc81cadb5f0078febc7e05d7735aba494f39ef05697bbcc9b47b2ccc79595d75fc13c80678b5e237edce58d731f34c05b1ddcaa649acf2d865bbbc3ceda10508bcdd29d0496744644bf1c3516f6687dfeef5649c7dff90627d642739a59d91a8d1d0c4dc55d74a949e1074427664b467992c9e0f7d3af9d6ea79513e8946ddc0d356bac49878e64e6a95b0a30214214faf2ce317fa622ff3266b32a816e10a18e6d789a5da1f23e67b4f970a68a7bcd9e18825ee274b0483896a40&quot;
+        }
+      ],
+      &quot;kernels&quot;: [
+        {
+          &quot;features&quot;: &quot;Plain&quot;,
+          &quot;fee&quot;: &quot;7000000&quot;,
+          &quot;lock_height&quot;: &quot;0&quot;,
+          &quot;excess&quot;: &quot;000000000000000000000000000000000000000000000000000000000000000000&quot;,
+          &quot;excess_sig&quot;: &quot;00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000&quot;
+        }
+      ]
+    }
+  },
+  &quot;amount&quot;: &quot;60000000000&quot;,
+  &quot;fee&quot;: &quot;7000000&quot;,
+  &quot;height&quot;: &quot;5&quot;,
+  &quot;lock_height&quot;: &quot;0&quot;,
+  &quot;ttl_cutoff_height&quot;: null,
+  &quot;payment_proof&quot;: null,
+  &quot;participant_data&quot;: [
+    {
+      &quot;id&quot;: &quot;0&quot;,
+      &quot;public_blind_excess&quot;: &quot;033ac2158fa0077f087de60c19d8e431753baa5b63b6e1477f05a2a6e7190d4592&quot;,
+      &quot;public_nonce&quot;: &quot;031b84c5567b126440995d3ed5aaba0565d71e1834604819ff9c17f5e9d5dd078f&quot;,
+      &quot;part_sig&quot;: null,
+      &quot;message&quot;: null,
+      &quot;message_sig&quot;: null
+    }
+  ]
+}
+</code></pre></div>
+
+<p>In version 4 of the Slate format, the initial Slate now looks like the following:</p>
+<div class="highlight"><pre><span></span><code>{
+  &quot;ver&quot;: &quot;4:2&quot;
+  &quot;id&quot;: &quot;0436430c-2b02-624c-2032-570501212b00&quot;,
+  &quot;sta&quot;: &quot;S1&quot;,
+  &quot;off&quot;: &quot;d202964900000000d302964900000000d402964900000000d502964900000000&quot;,
+  &quot;amt&quot;: &quot;6000000000&quot;,
+  &quot;fee&quot;: &quot;8000000&quot;,
+  &quot;sigs&quot;: [
+    {
+      &quot;xs&quot;: &quot;023878ce845727f3a4ec76ca3f3db4b38a2d05d636b8c3632108b857fed63c96de&quot;
+      &quot;nonce&quot;: &quot;031b84c5567b126440995d3ed5aaba0565d71e1834604819ff9c17f5e9d5dd078f&quot;,
+    }
+  ],
+}
+</code></pre></div>
+
+<p>While a "return" slate might look something like the following:</p>
+<div class="highlight"><pre><span></span><code>{
+  &quot;ver&quot;: &quot;4:3&quot;,
+  &quot;id&quot;: &quot;0436430c-2b02-624c-2032-570501212b00&quot;,
+  &quot;sta&quot;: &quot;S2&quot;,
+  &quot;off&quot;: &quot;a4052c9200000001a6052c9200000002ed564fab50b75fc5ea32ce052fc9bebf&quot;,
+  &quot;sigs&quot;: [
+    {
+      &quot;xs&quot;: &quot;03b0d73a044f1f9ae06cf96ef91593f121864b66bf7f7e7ac481b0ce61e39847fe&quot;,
+      &quot;nonce&quot;: &quot;031b84c5567b126440995d3ed5aaba0565d71e1834604819ff9c17f5e9d5dd078f&quot;,
+      &quot;part&quot;: &quot;8f07ddd5e9f5179cff19486034181ed76505baaad53e5d994064127b56c5841b54735cb9ed2f59fb457144f7b1c8226d08b54cbdd0eb7e6492950751b0bb54f9&quot;
+    }
+  ],
+  &quot;coms&quot;: [
+    {
+      &quot;c&quot;: &quot;091582c92b99943b57955e52b5ccf1223780c2a2e55995c00c86fca2bcb46b6b9f&quot;,
+      &quot;p&quot;: &quot;49972a8d5b7c088e7813c3988ebe0982f8f0b12b849b1788df7da07b549408b0d6c99f80c0e2335370c104225ef5d282d79966e9044c959bedc3be03af6246fa07fc13eb3c60c90213c9f3a7a5ecf9a34c8fbaddc1a72e49e12dba9495e5aaa53bb6ac6ed63d8774707c57ab604d6bdc46de18da57a731fe336c3ccef92b4dae967417ffdae2c7d75864d46d30e287dd9cc15882e15f296b9bab0040e4432f4024be33924f112dd26c90cc800ac09a327b0ac3a661f63da9945fb1bcc82a7777d61d97cbe657675e22d035d2cf9ea03a89cfa410960ebc18a0a18b1909f4c5bef20b0fd13ffcf5a818ad8768d354b1c0f2e9b16dd7a9cf0641546f57d1945a98b8684d067dd085b90b40457e4c14665fb1b94feecf30a90f508ded16ba1bba8080a6866dffd0b1f01738fff8c62ce5e38e677835752a1b4072124dd9ff14ba8ff92126baebbb5f6e14fbb052f5d5b09aec11bfd880d7d4640a295aa83f184034d26f00cbdbabf9b89fddd7a7c9cc8c5d4b53fc39971e4495a8d984ac9607be89780fde528ee3f2d6b912908b4caf04f5c93f64431517af6b32d0b9c18255959f6903c6696ec71f615a0c877630a2d871f3f8a107fc80f306a94b6ad5790070f7d2535163bad7feae9263a9d3558ea1acecc4e61ff4e05b0162f6aba1a3b299ff1c3bb85e4109e550ad870c328bedc45fed8b504f679bc3c1a25b2b65ede44602f21fac123ba7c5f132e7c786bf9420a27bae4d2559cf7779e77f96b747b6d3ad5c13b5e8c9b49a7083001b2f98bcf242d4644537bb5a3b5b41764812a93395b7ab372c18be575e02c3763b4170234e5fddeb43420aadb71cb80f75cc681c1e7ffee3e6a8868c6076fd1da539ab9a12fef1c8cbe271b6de60100c9f82d826dc97b47b57ee9804e60112f556c1dce4f12ecc91ef34d69090b8c9d2ae9cbae38994a955cb&quot;
+    }
+  ]
+}
+</code></pre></div>
+
+<p>The 'return' slate from the recipient to the originator is expected to be larger, as it must include the recipient's outputs/inputs and proofs (as the party who posts the transaction needs all of this information). However, compacting the slate at each stage of its journey allows for future possibilities that may have been more difficult in previous iterations of the slate format. For instance, an initiator taking Grin payments might be expected to be better equipped to receive Grin transactions. They could present the payer with an invoice transaction for the amount compacted to the size of a QR code, which the payer could scan, accept, and then post back to the invoicer's listening wallet infrastructure.</p>
+<p>Compacting the slate also acts as a minor privacy-enhancer by hiding the initiator's outputs from the other party.</p>
+<h1 id="reference-level-explanation">Reference-level explanation</h1>
+<h3 id="slate-definition-json">Slate Definition - JSON</h3>
+<p>Entries prefixed with <code>//</code> denote fields that may be omitted, as well as their default assumed values. <code>#</code> denotes a comment for the purposes of illustration.</p>
+<p>Field ordering is canonical.</p>
+<div class="highlight"><pre><span></span><code>{
+# These fields are always present
+  &quot;ver&quot;: &quot;4:3&quot;,
+  &quot;id&quot;: &quot;0436430c-2b02-624c-2032-570501212b00&quot;,
+  &quot;sta&quot;: &quot;S1&quot;,
+  &quot;off&quot;: &quot;d202964900000000d302964900000000d402964900000000d502964900000000&quot;,
+
+# These fields may or may not be present
+//&quot;num_parts: 2,
+//&quot;fee&quot;: &quot;8000000&quot;,
+//&quot;amt&quot;: &quot;1000000000&quot;,
+//&quot;feat&quot;: 0,
+//&quot;ttl&quot;: null,
+
+# Sigs is always present with at least one entry
+  &quot;sigs&quot;: [
+    {
+      &quot;xs&quot;: &quot;03b0d73a044f1f9ae06cf96ef91593f121864b66bf7f7e7ac481b0ce61e39847fe&quot;,
+//    &quot;part&quot;: null,
+      &quot;nonce&quot;: &quot;031b84c5567b126440995d3ed5aaba0565d71e1834604819ff9c17f5e9d5dd078f&quot;,
+    }
+  ]
+
+# These structs may or may not be present
+
+//&quot;coms&quot;: null,
+//&quot;proof&quot;: null,
+//&quot;feat_args&quot;: null
+}
+</code></pre></div>
+
+<p>A description of all fields and their meanings is as follows:</p>
+<h3 id="top-level-slate-struct">Top-Level Slate Struct</h3>
+<h5 id="fields-always-present">Fields - Always present</h5>
+<ul>
+<li><code>ver</code> - The slate version and supported block header version, separated by a <code>:</code></li>
+<li><code>id</code> - The slate's UUID, standard hex-string encoding for UUIDs</li>
+<li><code>sta</code> - 2 character String representing the current stage of the the transaction. See <a href="#status-codes">Status Codes</a></li>
+<li><code>off</code> - The running transaction offset total, hex-string encoded. All parties select a random offset at the beginning of the transaction and subtract their offset from the excess value of their outputs.
+They then subtract the value of the inputs from the offset when committing to inputs, updating the total offset before sending to the next stage.</li>
+</ul>
+<h5 id="fields-optional-depending-on-state-and-transaction-options">Fields - Optional, depending on State and transaction options</h5>
+<ul>
+<li><code>num_parts</code> - The number of participants in the transaction, assumed to be 2 if omitted</li>
+<li><code>amt</code> - The transaction amount as a string parseable as a u64. May be omitted on a return journey.</li>
+<li><code>fee</code> - The transaction fee as a string parseable as a u64. May be omitted on a return journey, except during an invoice transaction.</li>
+<li><code>feat</code> - Kernel Features ID. If omitted, kernel is assumed to be Plain (0). If set to 1 or otherwise, any arguments required for a
+particular kernel feature set will be found in the <code>feat_args</code> struct.</li>
+<li><code>ttl</code> - Time to Live, or block height beyond which wallets should refuse to further process the transaction. Assumed 0 (no ttl) if omitted
+from the slate.</li>
+</ul>
+<h5 id="structs-always-present">Structs - Always present</h5>
+<ul>
+<li><code>sigs</code> - An array of signature data containing the signature information of the last participant. See <a href="#signature-data">Signature Data</a></li>
+</ul>
+<h5 id="structs-optional-depending-on-state-of-transaction">Structs - Optional, depending on state of transaction</h5>
+<ul>
+<li><code>proof</code> - An optional payment proof request. See <a href="#payment-proof-data">Payment Proof Data</a></li>
+<li><code>coms</code> - The <a href="https://github.com/mimblewimble/grin/blob/34ff103bb02bc093fe73d36641eb193f7ef2404f/core/src/core/transaction.rs#L871">Transaction</a>; is removed from the slate in favour of including this top-level Slate field that can be used to reconstruction the transaction object as expected by the Grin node. See <a href="#transaction-object-fields">Transaction Object Fields</a></li>
+<li><code>feat_args</code> - Optional arguments for Kernel features.</li>
+</ul>
+<h4 id="status-codes">Status Codes</h4>
+<p>Valid values of the <code>sta</code> field and their meanings are:</p>
+<ul>
+<li><code>S1</code> - Standard (payer to payee) transaction flow, new transaction that incorporates the sender's inputs and change output(s), if any. Sender's signature nonce, excess (with kernel offset) is included and ready for sending to recipient.</li>
+<li><code>S2</code> - Standard transaction flow, recipient has created their outputs(s) and supplied their excess, nonce and partial signature, ready to return to recipient for completion.</li>
+<li><code>S3</code> - Standard transaction flow, Slate complete, contains all inputs, outputs and final signatures, and is ready for posting</li>
+<li><code>I1</code> - Invoice (payee to payer) transaction flow, new transaction that incorporates the Invoicer's output(s). Invoicer's signature nonce and excess (with kernel offset) is included and ready for sending to Invoicee.</li>
+<li><code>I2</code> - Invoice workflow, Invoicee has added their inputs and change output(s).  Invoicee's signature, nonce and excess is included and ready for sending back to the invoicer.</li>
+<li><code>I3</code> - Invoice workflow, Slate complete, contains all inputs, outputs and final signatures, and is ready for posting</li>
+</ul>
+<h4 id="signature-data">Signature Data</h4>
+<p>An entry in the <code>sigs</code> array is as follows:</p>
+<div class="highlight"><pre><span></span><code>{
+   &quot;xs&quot;: &quot;03b0d73a044f1f9ae06cf96ef91593f121864b66bf7f7e7ac481b0ce61e39847fe&quot;,
+   &quot;part&quot;: null,
+   &quot;nonce&quot;: &quot;031b84c5567b126440995d3ed5aaba0565d71e1834604819ff9c17f5e9d5dd078f&quot;,
+}
+</code></pre></div>
+
+<p>The <code>sigs</code> struct contains is comprised of an array of participant signature data, with each entry comprising:
+   * <code>xs</code> - Hex string encoded short form public key on the secp256k1 curve representing the public blind excess for the participants outputs subtracted from each party's part of the offset.
+   * <code>part</code> - Hex string encoded Aggregated (Schnorr) secp2561k signature represeting the participant's partial sig. May be omitted if the participant does not yet have enough data to create it
+   * <code>nonce</code> - Hex string encoded The public key of the nonce chosen by the participant for their partial signature</p>
+<p>The other party's <code>sig</code> entry is removed from the slate before sending it back to the transaction initiator during the S2 and I2 phases.</p>
+<h4 id="payment-proof-data">Payment Proof Data</h4>
+<p>If included, the proof structure is:</p>
+<div class="highlight"><pre><span></span><code>  &quot;proof&quot;: {
+    &quot;saddr&quot;: &quot;7e008eb593ba17d116e282d6267a3c6aad87b910933ad34dfa4d7d2c92b6ba31&quot;,
+//  &quot;rsig&quot;: null,
+    &quot;raddr&quot;: &quot;3a425bd5da5f0f78593251ede7fad0ecf7a95679d84b2cb405255d97ce068234&quot;
+  }
+</code></pre></div>
+
+<p>The <code>proof</code> struct is an optional payment proof request that must be filled out by the recipient if requested (only valid for basic transaction flow). Its fields are as follows:</p>
+<ul>
+<li><code>saddr</code> - Hex string encoded short-form public key on the ed25519 curve, representing the sender's wallet address (see the <a href="https://github.com/mimblewimble/grin-rfcs/blob/master/text/0006-payment-proofs.md">payment proofs rfc</a> for details.</li>
+<li><code>raddr</code> - Hex string encoded short-form public key on the ed25519 curve represnting the recipient's wallet address</li>
+<li><code>rsig</code> - Hex string encoded EdDSA ed25519 signature representing the recipient's payment-proof signature. Can be omitted if this has not yet been filled out</li>
+</ul>
+<h4 id="transaction-object-fields">Transaction Object Fields</h4>
+<p>The V4 Version of the Slate contains its own separate representation of Grin's internal Transaction object. (Grin's internal transaction struct definition can be found here: <a href="https://github.com/mimblewimble/grin/blob/34ff103bb02bc093fe73d36641eb193f7ef2404f/core/src/core/transaction.rs#L871">Transaction</a>). Internally, the wallet will transform its representation into the format expected by the node while posting the transaction.</p>
+<p>The <code>tx</code> struct in a V4 Slate is removed, and is replaced instead by the following Top-Level fields. Wallets recreate the transaction object as expected by the Grin node from these fields before posting.</p>
+<ul>
+<li><code>coms</code> is an array containing the outputs and inputs that have been added to the slate. These will appear during the I1 or S2 phases of a transaction. Each entry includes:</li>
+<li><code>f</code>: The output features, assumed to be 'Plain' if omitted. 0 denotes Plain, 1 denotes Coinbase</li>
+<li><code>c</code>: The output/input commitment, hex string Encoded</li>
+<li><code>p</code>: The output's range proof, hex string Encoded. If this is included, the entry is assumed to be an output. If not, it is an input.</li>
+</ul>
+<p>When rebuilding the transaction kernel for the Node (done during the S3 or I3 phases,) the kernel is assumed to be 'Plain' unless the top-level <code>feat</code> field is non-zero. In this case, the kernel features are filled accordingly with any needed values from the <code>feat_args</code> struct.</p>
+<p>In a typical S3 phase, these fields may look something like:</p>
+<div class="highlight"><pre><span></span><code>  &quot;coms&quot;: [
+    {
+      &quot;c&quot;: &quot;091582c92b99943b57955e52b5ccf1223780c2a2e55995c00c86fca2bcb46b6b9f&quot;,
+      &quot;p&quot;: &quot;49972a8d5b7c088e7813c3988ebe0982f8f0b12b849b1788df7da07b549408b0d6c99f80c0e2335370c104225ef5d282d79966e9044c959bedc3be03af6246fa07fc13eb3c60c90213c9f3a7a5ecf9a34c8fbaddc1a72e49e12dba9495e5aaa53bb6ac6ed63d8774707c57ab604d6bdc46de18da57a731fe336c3ccef92b4dae967417ffdae2c7d75864d46d30e287dd9cc15882e15f296b9bab0040e4432f4024be33924f112dd26c90cc800ac09a327b0ac3a661f63da9945fb1bcc82a7777d61d97cbe657675e22d035d2cf9ea03a89cfa410960ebc18a0a18b1909f4c5bef20b0fd13ffcf5a818ad8768d354b1c0f2e9b16dd7a9cf0641546f57d1945a98b8684d067dd085b90b40457e4c14665fb1b94feecf30a90f508ded16ba1bba8080a6866dffd0b1f01738fff8c62ce5e38e677835752a1b4072124dd9ff14ba8ff92126baebbb5f6e14fbb052f5d5b09aec11bfd880d7d4640a295aa83f184034d26f00cbdbabf9b89fddd7a7c9cc8c5d4b53fc39971e4495a8d984ac9607be89780fde528ee3f2d6b912908b4caf04f5c93f64431517af6b32d0b9c18255959f6903c6696ec71f615a0c877630a2d871f3f8a107fc80f306a94b6ad5790070f7d2535163bad7feae9263a9d3558ea1acecc4e61ff4e05b0162f6aba1a3b299ff1c3bb85e4109e550ad870c328bedc45fed8b504f679bc3c1a25b2b65ede44602f21fac123ba7c5f132e7c786bf9420a27bae4d2559cf7779e77f96b747b6d3ad5c13b5e8c9b49a7083001b2f98bcf242d4644537bb5a3b5b41764812a93395b7ab372c18be575e02c3763b4170234e5fddeb43420aadb71cb80f75cc681c1e7ffee3e6a8868c6076fd1da539ab9a12fef1c8cbe271b6de60100c9f82d826dc97b47b57ee9804e60112f556c1dce4f12ecc91ef34d69090b8c9d2ae9cbae38994a955cb&quot;
+    },
+    {
+      &quot;c&quot;: &quot;087df32304c5d4ae8b2af0bc31e700019d722910ef87dd4eec3197b80b207e3045&quot;
+    },
+    {
+      &quot;c&quot;: &quot;08e1da9e6dc4d6e808a718b2f110a991dd775d65ce5ae408a4e1f002a4961aa9e7&quot;
+    }
+  ],
+</code></pre></div>
+
+<h4 id="feature-arguments">Feature arguments</h4>
+<p>Depending on the chosen Kernel Feature set, <code>feat_args</code> may be populated with
+arguments specific to the kernel. The exact arguments that will be present here
+depend on the value of <code>feat</code>. Currently, the only supported kernel is HeightLocked
+(value 1) which has the arguments:</p>
+<div class="highlight"><pre><span></span><code>&quot;feat_args&quot;: {
+   &quot;lock_hgt&quot;: &quot;2343234&quot; // For HeightLocked kernels (1)
+}
+</code></pre></div>
+
+<h3 id="changes-from-existing-v3-slate">Changes from existing V3 Slate</h3>
+<h4 id="top-level-slate-struct_1">Top-Level Slate Struct</h4>
+<ul>
+<li>The <code>version_info</code> struct is removed, and is replaced with <code>ver</code>, which has the format "[version]:[block header version]"</li>
+<li><code>sta</code> is added, with possible values S1|S2|S3|I1|I2|I3|NA</li>
+<li><code>num_participants</code> is renamed to <code>num_parts</code></li>
+<li><code>num_parts</code> may be omitted from the slate. If omitted its value is assumed to be 2.</li>
+<li><code>amount</code> is renamed to <code>amt</code></li>
+<li><code>amt</code> may be removed from the slate on the S2 phase of a transaction.</li>
+<li><code>fee</code> may be removed from the slate on the S2 phase of a transaction. It may also be omitted when initiating an I1 transaction, and added during the I2 phase.</li>
+<li><code>lock_height</code> is removed</li>
+<li><code>feat</code> is added to the slate denoting the Kernel feature set. May be omitted from the slate if kernel is plain</li>
+<li><code>ttl_cutoff_height</code> is renamed to <code>ttl</code></li>
+<li><code>ttl</code> may be omitted from the slate. If omitted its value is assumed to be 0 (no TTL).</li>
+<li>The <code>participant_data</code> struct is renamed to <code>sigs</code></li>
+<li><code>tx</code> is removed </li>
+<li>The <code>coms</code> (commitments) array is added, from which the final transaction object can be reconstructed</li>
+<li>The <code>payment_proof</code> struct is renamed to <code>proof</code></li>
+<li>The <code>feat_args</code> struct is added, which may be populated for non-Plain kernels</li>
+<li><code>proof</code> may be omitted from the slate if it is None (null),</li>
+<li><code>offset</code> is added, which keeps track of the running offset total as it's modified by the participants</li>
+</ul>
+<h4 id="participant-data-sigs">Participant Data (<code>sigs</code>)</h4>
+<ul>
+<li><code>public_blind_excess</code> is renamed to <code>xs</code></li>
+<li><code>public_nonce</code> is renamed to <code>nonce</code></li>
+<li><code>part_sig</code> is renamed to <code>part</code></li>
+<li><code>part</code> may be omitted if it has not yet been filled out</li>
+<li><code>message</code> is removed</li>
+<li><code>message_sig</code> is removed</li>
+<li><code>id</code> is removed. Parties can identify themselves via the keys stored in their transaction context</li>
+</ul>
+<h4 id="payment-proof-data-proof">Payment Proof Data (<code>proof</code>)</h4>
+<ul>
+<li>The <code>sender_address</code> field is renamed to <code>saddr</code></li>
+<li>The <code>receiver_address</code> field is renamed to <code>raddr</code></li>
+<li>The <code>receiver_signature</code> field is renamed to <code>rsig</code></li>
+<li><code>rsig</code> may be omitted if it has not yet been filled out</li>
+</ul>
+<h3 id="pretty-printing">Pretty-Printing</h3>
+<p>The examples above are pretty-printed for reference, but all Slates should remove all whitespace before sending to other parties. The whitespace and formatting can be re-added anywhere the Slate needs to be presented for debugging.</p>
+<h3 id="slate-definition-binary">Slate Definition - Binary</h3>
+<p>While the JSON slate remains the first-order slate definition, and should be accepted by all wallets and APIs, wallets should also have the ability to transform slates between the JSON format and a reduced binary format suitable for armoring or direct transfer. The definition of the V4 binary slate format follows.</p>
+<p>All integer values are Big-Endian.</p>
+<table>
+<thead>
+<tr>
+<th align="right">Slate V4 Field</th>
+<th>type</th>
+<th>len</th>
+<th>notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><code>ver.slate_version</code></td>
+<td>u16</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td align="right"><code>ver.block_header_version</code></td>
+<td>u16</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td align="right"><code>id</code></td>
+<td>Uuid</td>
+<td>16</td>
+<td>binary Uuid representation</td>
+</tr>
+<tr>
+<td align="right"><code>sta</code></td>
+<td>u8</td>
+<td>1</td>
+<td>See <a href="#status-byte">Status Byte</a></td>
+</tr>
+<tr>
+<td align="right"><code>offset</code></td>
+<td>BlindingFactor</td>
+<td>32</td>
+<td></td>
+</tr>
+<tr>
+<td align="right">Optional field status</td>
+<td>u8</td>
+<td>1</td>
+<td>See <a href="#optional-field-status">Optional Field Status</a></td>
+</tr>
+<tr>
+<td align="right"><code>num_parts</code></td>
+<td>u8</td>
+<td>(1)</td>
+<td>If present</td>
+</tr>
+<tr>
+<td align="right"><code>amt</code></td>
+<td>u64</td>
+<td>(8)</td>
+<td>If present</td>
+</tr>
+<tr>
+<td align="right"><code>fee</code></td>
+<td>u64</td>
+<td>(8)</td>
+<td>If present</td>
+</tr>
+<tr>
+<td align="right"><code>feat</code></td>
+<td>u8</td>
+<td>(1)</td>
+<td>If present</td>
+</tr>
+<tr>
+<td align="right"><code>ttl</code></td>
+<td>u64</td>
+<td>(8)</td>
+<td>If present</td>
+</tr>
+<tr>
+<td align="right"><code>sigs</code> entries</td>
+<td>struct</td>
+<td>varies</td>
+<td>See <a href="#sigs-entries">Sigs Entries</a></td>
+</tr>
+<tr>
+<td align="right">Optional struct status</td>
+<td>u8</td>
+<td>1</td>
+<td>See <a href="#optional-struct-status">Optional Struct Status</a></td>
+</tr>
+<tr>
+<td align="right"><code>coms</code> entries</td>
+<td>struct</td>
+<td>(varies)</td>
+<td>If present. See <a href="#coms-entries">Coms Entries</a></td>
+</tr>
+<tr>
+<td align="right"><code>proof</code></td>
+<td>struct</td>
+<td>(varies)</td>
+<td>If present. See <a href="#proof">Proof</a></td>
+</tr>
+<tr>
+<td align="right"><code>feat_args</code> entries</td>
+<td>struct</td>
+<td>(varies)</td>
+<td>If present. See <a href="#feature-args">Feature Args</a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="status-byte">Status Byte</h4>
+<p>Encodes slate status (<code>sta</code>) field, mapped as follows:</p>
+<table>
+<thead>
+<tr>
+<th align="right">State</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><code>NA</code> (Unknown)</td>
+<td>0</td>
+</tr>
+<tr>
+<td align="right"><code>S1</code></td>
+<td>1</td>
+</tr>
+<tr>
+<td align="right"><code>S2</code></td>
+<td>2</td>
+</tr>
+<tr>
+<td align="right"><code>S3</code></td>
+<td>3</td>
+</tr>
+<tr>
+<td align="right"><code>I1</code></td>
+<td>4</td>
+</tr>
+<tr>
+<td align="right"><code>I2</code></td>
+<td>5</td>
+</tr>
+<tr>
+<td align="right"><code>I3</code></td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+<h4 id="optional-field-status">Optional Field Status</h4>
+<p>A bit field that denotes the presence or absence of the optional slate fields. Each bit is
+mapped to particular slate field as follows:</p>
+<table>
+<thead>
+<tr>
+<th align="right">Bit</th>
+<th>7</th>
+<th>6</th>
+<th>5</th>
+<th>4</th>
+<th>3</th>
+<th>2</th>
+<th>1</th>
+<th>0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">field</td>
+<td></td>
+<td></td>
+<td></td>
+<td><code>ttl</code></td>
+<td><code>feat</code></td>
+<td><code>fee</code></td>
+<td><code>amt</code></td>
+<td><code>num_parts</code></td>
+</tr>
+</tbody>
+</table>
+<p>If the corresponding field for a bit is 1, the field is present and must be read accordingly.</p>
+<h4 id="sigs-entries">Sigs Entries</h4>
+<p>Sigs Entries contains a length-prefixed array of entries corresponding to the <code>sigs</code> struct.</p>
+<table>
+<thead>
+<tr>
+<th align="right">Field</th>
+<th>type</th>
+<th>len</th>
+<th>notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">length</td>
+<td>u8</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td align="right">entries</td>
+<td>struct</td>
+<td>varies</td>
+<td>array of entries, see below</td>
+</tr>
+</tbody>
+</table>
+<p>Each Sigs Entry is structured as follows:</p>
+<table>
+<thead>
+<tr>
+<th align="right">Field</th>
+<th>type</th>
+<th>len</th>
+<th>notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">complete flag</td>
+<td>u8</td>
+<td>1</td>
+<td>If non-zero, entry contains <code>part</code></td>
+</tr>
+<tr>
+<td align="right"><code>xs</code></td>
+<td>secp256k1 Public Key</td>
+<td>33</td>
+<td></td>
+</tr>
+<tr>
+<td align="right"><code>nonce</code></td>
+<td>secp256k1 Public Key</td>
+<td>33</td>
+<td></td>
+</tr>
+<tr>
+<td align="right"><code>part</code></td>
+<td>secp256k1 AggSig</td>
+<td>(64)</td>
+<td>If present</td>
+</tr>
+</tbody>
+</table>
+<h4 id="optional-struct-status">Optional Struct Status</h4>
+<p>A bit field that denotes the presence or absence of the optional slate structures. Each bit is
+mapped to particular slate structure as follows:</p>
+<table>
+<thead>
+<tr>
+<th align="right">Bit</th>
+<th>7</th>
+<th>6</th>
+<th>5</th>
+<th>4</th>
+<th>3</th>
+<th>2</th>
+<th>1</th>
+<th>0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">struct</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><code>proof</code></td>
+<td><code>coms</code></td>
+</tr>
+</tbody>
+</table>
+<p>If the corresponding field for a struct is 1, the struct is present and must be read accordingly.</p>
+<h4 id="coms-entries">Coms Entries</h4>
+<p>Coms Entries contains a length-prefixed array of entries corresponding to the <code>coms</code> struct.</p>
+<table>
+<thead>
+<tr>
+<th align="right">Field</th>
+<th>type</th>
+<th>len</th>
+<th>notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">length</td>
+<td>u16</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td align="right">entries</td>
+<td>struct</td>
+<td>varies</td>
+<td>array of entries, see below</td>
+</tr>
+</tbody>
+</table>
+<p>Each Coms Entry is structured as follows:</p>
+<table>
+<thead>
+<tr>
+<th align="right">Field</th>
+<th>type</th>
+<th>len</th>
+<th>notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">output flag</td>
+<td>u8</td>
+<td>1</td>
+<td>If non-zero, entry is output and contains <code>p</code> (proof)</td>
+</tr>
+<tr>
+<td align="right"><code>f</code></td>
+<td>u8</td>
+<td>1</td>
+<td>features (1 = Coinbase, 0 = Plain)</td>
+</tr>
+<tr>
+<td align="right"><code>c</code></td>
+<td>Commitment</td>
+<td>33</td>
+<td></td>
+</tr>
+<tr>
+<td align="right"><code>p</code></td>
+<td>Rangeproof</td>
+<td>675</td>
+<td>If present</td>
+</tr>
+</tbody>
+</table>
+<h4 id="proof">Proof</h4>
+<p>Optional Payment proof, with fields as follows</p>
+<table>
+<thead>
+<tr>
+<th align="right">Proof Field</th>
+<th>type</th>
+<th>len</th>
+<th>notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><code>saddr</code></td>
+<td>ed25519 Public Key</td>
+<td>32</td>
+<td></td>
+</tr>
+<tr>
+<td align="right"><code>raddr</code></td>
+<td>ed25519 Public Key</td>
+<td>32</td>
+<td></td>
+</tr>
+<tr>
+<td align="right">rsig flag</td>
+<td>u8</td>
+<td>1</td>
+<td>If non-zero, <code>rsig</code> field is present</td>
+</tr>
+<tr>
+<td align="right"><code>rsig</code></td>
+<td>ed25519 EDCSA Sig</td>
+<td>(64)</td>
+<td>If present</td>
+</tr>
+</tbody>
+</table>
+<h4 id="feature-args">Feature Args</h4>
+<p>Optional feature args, presence or absence of which should be determined by the
+value of the <code>feat</code> field. Currently only present if <code>feat</code> is 2.</p>
+<table>
+<thead>
+<tr>
+<th align="right">Field</th>
+<th>type</th>
+<th>len</th>
+<th>notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><code>lock_hgt</code></td>
+<td>u64</td>
+<td>8</td>
+<td>Lock height, present if <code>feat</code> is 2</td>
+</tr>
+</tbody>
+</table>
+<h1 id="unresolved-questions">Unresolved questions</h1>
+<ul>
+<li>Is block header version needed?</li>
+<li>Nerd Kernels need to be included</li>
+</ul>
+<h1 id="future-possibilities">Future possibilities</h1>
+<p>This RFC is envisaged as a necessary first step for all slate-exchange possibilities that would benefit from compactness, e.g:</p>
+<ul>
+<li><a href="https://github.com/j01tz/grin-rfcs/blob/slatepack/text/0000-slatepack.md">Slatepack</a></li>
+<li>QR Code encoding of slates</li>
+<li>Armored slates</li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../0013-nrd-kernels/" title="0013 nrd-kernels" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                0013 nrd-kernels
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../0011-security-team/" title="0011 security-team" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                0011 security-team
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/mimblewimble" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://keybase.io/team/grincoin" target="_blank" rel="noopener" title="keybase.io" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M286.17 419a18 18 0 1018 18 18 18 0 00-18-18zm111.92-147.6c-9.5-14.62-39.37-52.45-87.26-73.71q-9.1-4.06-18.38-7.27a78.43 78.43 0 00-47.88-104.13c-12.41-4.1-23.33-6-32.41-5.77-.6-2-1.89-11 9.4-35L198.66 32l-5.48 7.56c-8.69 12.06-16.92 23.55-24.34 34.89a51 51 0 00-8.29-1.25c-41.53-2.45-39-2.33-41.06-2.33-50.61 0-50.75 52.12-50.75 45.88l-2.36 36.68c-1.61 27 19.75 50.21 47.63 51.85l8.93.54a214 214 0 00-46.29 35.54C14 304.66 14 374 14 429.77v33.64l23.32-29.8a148.6 148.6 0 0014.56 37.56c5.78 10.13 14.87 9.45 19.64 7.33 4.21-1.87 10-6.92 3.75-20.11a178.29 178.29 0 01-15.76-53.13l46.82-59.83-24.66 74.11c58.23-42.4 157.38-61.76 236.25-38.59 34.2 10.05 67.45.69 84.74-23.84.72-1 1.2-2.16 1.85-3.22a156.09 156.09 0 012.8 28.43c0 23.3-3.69 52.93-14.88 81.64-2.52 6.46 1.76 14.5 8.6 15.74 7.42 1.57 15.33-3.1 18.37-11.15C429 443 434 414 434 382.32c0-38.58-13-77.46-35.91-110.92zM142.37 128.58l-15.7-.93-1.39 21.79 13.13.78a93 93 0 00.32 19.57l-22.38-1.34a12.28 12.28 0 01-11.76-12.79L107 119c1-12.17 13.87-11.27 13.26-11.32l29.11 1.73a144.35 144.35 0 00-7 19.17zm148.42 172.18a10.51 10.51 0 01-14.35-1.39l-9.68-11.49-34.42 27a8.09 8.09 0 01-11.13-1.08l-15.78-18.64a7.38 7.38 0 011.34-10.34l34.57-27.18-14.14-16.74-17.09 13.45a7.75 7.75 0 01-10.59-1s-3.72-4.42-3.8-4.53a7.38 7.38 0 011.37-10.34L214 225.19s-18.51-22-18.6-22.14a9.56 9.56 0 011.74-13.42 10.38 10.38 0 0114.3 1.37l81.09 96.32a9.58 9.58 0 01-1.74 13.44zM187.44 419a18 18 0 1018 18 18 18 0 00-18-18z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/vendor.92ffa368.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5123e3d4.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../../..",
+          features: ["tabs"],
+          search: Object.assign({
+            worker: "../../../assets/javascripts/worker/search.a68abb33.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

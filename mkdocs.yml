@@ -1,0 +1,133 @@
+# Project information
+site_name: Grin Documentation
+site_url: https://docs.grin.mw
+site_author: Grin Developers
+site_description: 'Grin Documentation'
+
+# Repository
+repo_name: mimblewimble/grin
+repo_url: https://github.com/mimblewimble/grin
+edit_uri: https://github.com/mimblewimble/docs
+
+# Copyright
+# copyright: Copyright &copy; 2016 - 2021 Grin Developers
+
+theme:
+  palette:
+    scheme: slate
+  name: material
+  logo: assets/images/grin-logo.svg
+  favicon: assets/images/grin-logo.svg
+  language: en
+  features:
+    - tabs
+
+# Plugins
+plugins:
+  - search
+
+extra:
+  social:
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/mimblewimble
+    - icon: fontawesome/brands/keybase
+      link: https://keybase.io/team/grincoin
+
+extra_css:
+  - stylesheets/extra.css
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - pymdownx.superfences
+  - pymdownx.details
+  - footnotes
+  - attr_list
+  - def_list
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.tabbed
+  - pymdownx.superfences
+  - meta
+
+
+
+nav:
+
+- Getting Started:
+  - ./Grin: index.md
+  - Quickstart:
+    - Install: getting-started/quickstart/install.md
+    - Initialize: getting-started/quickstart/initialize.md
+    - Receive: getting-started/quickstart/receive.md
+    - Send: getting-started/quickstart/send.md
+  - CLI Handbook: getting-started/wallet-handbook.md
+  - Wallets: getting-started/wallets.md
+  - Build: getting-started/build.md
+
+- About Grin:
+  - Story: about-grin/story.md
+  - Privacy: about-grin/privacy.md
+  - Scalability: about-grin/scalability.md
+  - Transactions: about-grin/transactions.md
+  - Proof of Work: about-grin/proof-of-work.md
+  - Emission: about-grin/emission.md
+
+- Wiki:
+  - Table of Contents: wiki/table-of-contents.md
+  - Introduction:
+    - Grin for Bitcoiners: wiki/introduction/grin-for-bitcoiners.md
+    - Mimblewimble:
+      - Elliptic Curves: wiki/introduction/mimblewimble/ecc.md
+      - Commitments: wiki/introduction/mimblewimble/commitments.md
+      - Mimblewimble: wiki/introduction/mimblewimble/mimblewimble.md
+  - Transactions:
+      - Slates: wiki/transactions/slates.md
+      - Slatepack: wiki/transactions/slatepack.md
+      - Payment Proofs: wiki/transactions/payment-proofs.md
+      - Contracts: wiki/transactions/contracts.md
+  - Blocks:
+      - Header: wiki/blocks/block-header.md
+      - Body: wiki/blocks/block-body.md
+      - Fees & Weight: wiki/blocks/fees-and-weight.md
+  - Chain State:
+      - Merkle Mountain Ranges: wiki/chain-state/merkle-mountain-range.md
+      - State & Pruning: wiki/chain-state/state-and-pruning.md
+      - Chain Sync: wiki/chain-state/chain-sync.md
+  - Miscellaneous:
+      - Cuckoo Cycle: wiki/miscellaneous/cuckoo-cycle.md
+      - Dandelion: wiki/miscellaneous/dandelion.md
+      - Switch Commitments: wiki/miscellaneous/switch-commitments.md
+      - Coinbase Maturity Rule: wiki/miscellaneous/coinbase-maturity-rule.md
+      - NRD Kernels: wiki/miscellaneous/nrd-kernels.md
+  - API:
+      - Node API: wiki/api/node-api.md
+      - Wallet API: wiki/api/wallet-api.md
+      - Stratum RPC: wiki/api/stratum-rpc.md
+  - Security Process:
+      - Grin's Security Process: wiki/security-process/grin-security-process.md
+      - Security Team: wiki/security-process/security-team.md
+      - Code Audits: wiki/security-process/code-audits.md
+  - Services:
+      - List of Services: wiki/services/list-of-services.md
+      - Slatepack Integration Guide: wiki/services/slatepack-integration.md
+  - Resources: wiki/resources.md
+
+- RFCs:
+  - 0015 slatepack: grin-rfcs/text/0015-slatepack.md
+  - 0014 general-fund-guidelines: grin-rfcs/text/0014-general-fund-guidelines.md
+  - 0013 nrd-kernels: grin-rfcs/text/0013-nrd-kernels.md
+  - 0012 compact-slates: grin-rfcs/text/0012-compact-slates.md
+  - 0011 security-team: grin-rfcs/text/0011-security-team.md
+  - 0010 online-transacting-via-tor: grin-rfcs/text/0010-online-transacting-via-tor.md
+  - 0009 enable-faster-sync: grin-rfcs/text/0009-enable-faster-sync.md
+  - 0008 wallet-state-management: grin-rfcs/text/0008-wallet-state-management.md
+  - 0007 node-api-v2: grin-rfcs/text/0007-node-api-v2.md
+  - 0006 payment-proofs: grin-rfcs/text/0006-payment-proofs.md
+  - 0005 variable-size-kernels: grin-rfcs/text/0005-variable-size-kernels.md
+  - 0004 full-wallet-lifecycle: grin-rfcs/text/0004-full-wallet-lifecycle.md
+  - 0003 security-process: grin-rfcs/text/0003-security-process.md
+  - 0002 grin-governance: grin-rfcs/text/0002-grin-governance.md
+  - 0001 rfc-process: grin-rfcs/text/0001-rfc-process.md

@@ -1,0 +1,44 @@
+@startuml
+hide empty description
+skinparam shadowing false
+
+[*] -down-> long1 : [author]\nSubmit a PR to /grin-rfcs
+
+state "PR is Open" as long1 {
+draft : * tag sub-team
+draft : * assign shepherd
+draft : * feedback from community
+draft : * iterate on proposal
+draft -right-> FCP : [shepherd]\nEnter Final Comment Period
+FCP: * include disposition to merge/close/postpone
+FCP: * final feedback from community
+FCP: * final touches on proposal
+FCP -left-> draft : [shepherd]\nCancel FCP
+}
+
+state close_join <<join>>
+draft --> close_join 
+FCP --> close_join
+
+state post_join <<join>>
+draft --> post_join 
+FCP --> post_join
+
+state "PR is Closed" as long2 {
+close_join -down-> closed : Close RFC
+post_join -down-> postponed : Postpone RFC
+}
+
+state "PR is Merged" as long3 {
+FCP -right-> active : [shepherd]\nMerge RFC
+active --> active : Minor changes\nthrough new PR
+active: * assign RFC number
+active: * create tracking issue in relevant repo
+active: * make note if superseded by a new RFC 
+}
+
+postponed --> draft : Re-open PR 
+postponed --> [*]
+closed --> [*]
+active --> [*]
+@enduml

@@ -1,0 +1,16 @@
+@startuml
+actor "Client" as client
+participant "Internal Rust API" as rustapi
+participant "Wallet Backend" as backend
+
+title Wallet API Call (Directly Linked)
+
+== API Call ==
+client -> client: Stored token **t**
+client -> rustapi: call_api_function(**t**, **other_params**)
+rustapi -> backend: retrieve_seed(**t**)
+backend -> backend: calc(**t** ^ **seedT**) -> **seed**
+rustapi -> backend: Internal Wallet Calls
+backend -> backend: Drop **seed**
+rustapi -> client: Return (**return_data**)
+@enduml

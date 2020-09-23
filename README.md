@@ -7,7 +7,7 @@
 
 ## Instructions
 
-- Clone repo and navigate to the directory, then build:
+Clone repo and navigate to the directory, then build:
 
 `mkdocs serve`
 

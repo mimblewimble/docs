@@ -1,6 +1,6 @@
 # Merkle Mountain Ranges (MMR)
 
-> *Read this in other languages: [Korean](https://github.com/mimblewimble/grin/blob/master/doc/mmr_KR.md), [简体中文](https://github.com/mimblewimble/grin/blob/master/doc/mmr_ZH-CN.md).*
+> *Read this in other languages: [Korean](https://github.com/mimblewimble/grin/blob/master/doc/translations/mmr_KR.md), [简体中文](https://github.com/mimblewimble/grin/blob/master/doc/translations/mmr_ZH-CN.md).*
 
 ## Structure
 

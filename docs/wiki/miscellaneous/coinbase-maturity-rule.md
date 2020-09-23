@@ -1,6 +1,6 @@
 # Coinbase Maturity Rule (aka Output Lock Heights)
 
-*Read this in other languages: [Korean](https://github.com/mimblewimble/grin/blob/master/doc/coinbase_maturity_KR.md), [简体中文](https://github.com/mimblewimble/grin/blob/master/doc/coinbase_maturity_ZH-CN.md).*
+*Read this in other languages: [Korean](https://github.com/mimblewimble/grin/blob/master/doc/translations/coinbase_maturity_KR.md), [简体中文](https://github.com/mimblewimble/grin/blob/master/doc/translations/coinbase_maturity_ZH-CN.md).*
 
 ## Overview
 

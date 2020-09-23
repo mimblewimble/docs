@@ -1,6 +1,6 @@
 # Contracts
 
-> *Read this in other languages: [简体中文](https://github.com/mimblewimble/grin/blob/master/doc/contracts_ZH-CN.md)*
+> *Read this in other languages: [简体中文](https://github.com/mimblewimble/grin/blob/master/doc/translations/contracts_ZH-CN.md)*
 
 This document describes smart contracts that can be setup using Grin even
 though its simplicity does not allow scripting. All of these types of contracts rely

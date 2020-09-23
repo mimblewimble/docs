@@ -1,6 +1,6 @@
 # Merkle Structures
 
-> *Read this in other languages: [Korean](https://github.com/mimblewimble/grin/blob/master/doc/merkle_KR.md), [简体中文](https://github.com/mimblewimble/grin/blob/master/doc/merkle_ZH-CN.md).*
+> *Read this in other languages: [Korean](https://github.com/mimblewimble/grin/blob/master/doc/translations/merkle_KR.md), [简体中文](https://github.com/mimblewimble/grin/blob/master/doc/translations/merkle_ZH-CN.md).*
 
 Mimblewimble is designed for users to verify the state of the system given
 only pruned data. To achieve this goal, all transaction data is committed

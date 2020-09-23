@@ -1,6 +1,6 @@
 # Stratum RPC Protocol
 
-> *Read this in other languages: [Korean](https://github.com/mimblewimble/grin/blob/master/doc/stratum_KR.md), [简体中文](https://github.com/mimblewimble/grin/blob/master/doc/stratum_ZH-CN.md).*
+> *Read this in other languages: [Korean](https://github.com/mimblewimble/grin/blob/master/doc/translations/stratum_KR.md), [简体中文](https://github.com/mimblewimble/grin/blob/master/doc/translations/stratum_ZH-CN.md).*
 
 This document describes the current Stratum RPC protocol implemented in Grin.
 

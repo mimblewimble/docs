@@ -1,6 +1,6 @@
 # State and Pruning
 
-> *Read this in other languages: [Korean](https://github.com/mimblewimble/grin/blob/master/doc/pruning_KR.md), [简体中文](https://github.com/mimblewimble/grin/blob/master/doc/pruning_ZH-CN.md).*
+> *Read this in other languages: [Korean](https://github.com/mimblewimble/grin/blob/master/doc/translations/pruning_KR.md), [简体中文](https://github.com/mimblewimble/grin/blob/master/doc/translations/pruning_ZH-CN.md).*
 
 ## State Storage
 

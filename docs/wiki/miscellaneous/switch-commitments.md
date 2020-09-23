@@ -1,6 +1,6 @@
 # Introduction to Switch Commitments
 
-> *Read this in other languages: [简体中文](https://github.com/mimblewimble/grin/blob/master/doc/switch_commitment_ZH-CN.md).*
+> *Read this in other languages: [简体中文](https://github.com/mimblewimble/grin/blob/master/doc/translations/switch_commitment_ZH-CN.md).*
 
 ## General introduction
 

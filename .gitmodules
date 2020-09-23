@@ -1,3 +1,0 @@
-[submodule "docs/grin-rfcs"]
-	path = docs/grin-rfcs
-	url = https://github.com/mimblewimble/grin-rfcs.git

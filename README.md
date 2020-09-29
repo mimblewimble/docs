@@ -9,12 +9,16 @@
 
 Clone repo and navigate to directory:
 
-`git clone https://github.com/mimblewimble/docs.git`
-`cd docs`
+```bash
+git clone https://github.com/mimblewimble/docs.git
+cd docs
+```
 
 Start the local server:
 
-`mkdocs serve`
+```bash
+mkdocs serve
+```
 
 Visit URL to see live changes:
 

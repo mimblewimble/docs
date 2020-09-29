@@ -20,7 +20,7 @@ theme:
   favicon: assets/images/grin-logo.svg
   language: en
   features:
-    - tabs
+    - navigation.tabs
 
 # Plugins
 plugins:

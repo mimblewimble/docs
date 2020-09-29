@@ -5,9 +5,14 @@
 - MkDocs
 - Mkdocs Material theme
 
-## Instructions
+## Build locally
 
-Clone repo and navigate to the directory, then build:
+Clone repo and navigate to directory:
+
+`git clone https://github.com/mimblewimble/docs.git`
+`cd docs`
+
+Start the local server:
 
 `mkdocs serve`
 
@@ -15,8 +20,4 @@ Visit URL to see live changes:
 
 `localhost:8000`
 
-When ready, deploy to your github repo:
-
-`mkdocs gh-deploy --force`
-
-And finally commit and push all changes.
+When ready, push changes to your forked repo and then submit a PR.

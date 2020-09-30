@@ -1,6 +1,7 @@
 # Project information
 site_name: Grin Documentation
 site_url: https://docs.grin.mw
+site_main_url: https://grin.mw
 site_author: Grin Developers
 site_description: 'Grin Documentation'
 
@@ -16,6 +17,7 @@ theme:
   palette:
     scheme: slate
   name: material
+  custom_dir: overrides
   logo: assets/images/grin-logo.svg
   favicon: assets/images/grin-logo.svg
   language: en

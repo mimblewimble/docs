@@ -1,7 +1,8 @@
 # Project information
 site_name: Grin Documentation
 site_url: https://docs.grin.mw
-site_main_url: https://grin.mw
+main_site_url: https://grin.mw
+main_site_name: Grin
 site_author: Grin Developers
 site_description: 'Grin Documentation'
 

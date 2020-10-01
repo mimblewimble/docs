@@ -4,12 +4,13 @@
 
 - [Poloniex](https://www.poloniex.com/)
 - [BitForex](https://www.bitforex.com/)
-- [KuCoin](https://www.kucoin.com/)
-- [Bittrex](https://global.bittrex.com/)
 - [HitBTC](https://hitbtc.com/)
+- [MXC](https://www.mxc.com/)
+- [Bittrex](https://global.bittrex.com/)
 - [Hotbit](https://www.hotbit.io/)
-- [HBTC](https://www.hbtc.com/)
 - [Gate.io](https://www.gate.io/)
+- [HBTC](https://www.hbtc.com/)
+- [KuCoin](https://www.kucoin.com/)
 - [Kaiserex](https://www.kaiserex.com/)
 - [BigONE](https://big.one/en)
 - [TradeOgre](https://tradeogre.com/markets)
@@ -17,8 +18,8 @@
 ## Block Explorers
 
 - [Grinscan](https://grinscan.net/)
-- [Grinmint](https://grinmint.com/explorer/)
 - [Blockscan](https://grin.blockscan.com/)
+- [Grinmint](https://grinmint.com/explorer/)
 - [GrinExplorer](https://grinexplorer.net/)
 
 ## Mining Pools

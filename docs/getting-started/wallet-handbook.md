@@ -227,6 +227,13 @@ Then your wallet will output another slatepack message to provide the other part
 !!! info "Files"
     When sending or receiving via slatepacks, the wallet will also create a text file containing the message it generated. Default path is `~/.grin/main/slatepacks`.
 
+    To receive grins using a file, type:
+
+    ```text
+    grin-wallet receive -i $PATH/file.tx
+    ```
+
+
 ## finalize
 
 The `finalize` command is the final step to any slatepack transaction.
@@ -266,7 +273,7 @@ The sender can then provide this proof to any other wallet for verification.
 Verification for e.g.
 
 ```text
-grin-wallet verify_proof /path/proof.txt
+grin-wallet verify_proof $PATH/proof.txt
 ```
 
 This will ensure that:

@@ -2,7 +2,6 @@
 
 ## Exchanges
 
-- [Poloniex](https://www.poloniex.com/)
 - [BitForex](https://www.bitforex.com/)
 - [HitBTC](https://hitbtc.com/)
 - [MXC](https://www.mxc.com/)

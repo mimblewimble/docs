@@ -30,7 +30,7 @@
 :   [How to store Grin in cold storage?](https://forum.grin.mw/t/how-to-store-grin-in-cold-storage/5375) </br>
     [Raspberry Pi 4 - Standalone Grin-Node PoC by Grinnode.live](https://forum.grin.mw/t/raspberry-pi-4-standalone-grin-node-poc-by-grinnode-live/7796) </br>
     [How to open port 3414 (and why)](https://forum.grin.mw/t/how-to-open-port-3414-and-why/7825) </br>
-    [PoW specification](https://forum.grin.mw/t/pow-specification/7963)
+    [PoW specification](https://forum.grin.mw/t/pow-specification/7963) </br>
     [Coinbase outputs as regular outputs](https://forum.grin.mw/t/coinbase-outputs-as-transaction-outputs/7441) </br>
     [Use of NRD kernels in payment channels](https://forum.grin.mw/t/use-of-nrd-kernels-in-grin-payment-channels/7298) </br>
     [Emission Rate Thread](https://forum.grin.mw/t/emission-rate-of-grin/171), [#2](https://forum.grin.mw/t/questioning-core-assumptions-on-our-emissions-model/1414), [#3](https://forum.grin.mw/t/question-for-statement-linear-emission-is-fair-for-late-adopters/6285) </br>

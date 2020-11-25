@@ -8,7 +8,6 @@
 - [Bittrex](https://global.bittrex.com/)
 - [Hotbit](https://www.hotbit.io/)
 - [Gate.io](https://www.gate.io/)
-- [HBTC](https://www.hbtc.com/)
 - [KuCoin](https://www.kucoin.com/)
 - [Kaiserex](https://www.kaiserex.com/)
 - [BigONE](https://big.one/en)

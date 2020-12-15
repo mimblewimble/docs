@@ -121,6 +121,10 @@ nav:
   - Resources: wiki/resources.md
 
 - RFCs:
+  - 0019 deprecate-http-tx: grin-rfcs/text/0019-deprecate-http-tx.md
+  - 0018 fix-daa: grin-rfcs/text/0018-fix-daa.md
+  - 0017 fix-fees: grin-rfcs/text/0017-fix-fees.md
+  - 0016 simplify-governance: grin-rfcs/text/0016-simplify-governance.md
   - 0015 slatepack: grin-rfcs/text/0015-slatepack.md
   - 0014 general-fund-guidelines: grin-rfcs/text/0014-general-fund-guidelines.md
   - 0013 nrd-kernels: grin-rfcs/text/0013-nrd-kernels.md

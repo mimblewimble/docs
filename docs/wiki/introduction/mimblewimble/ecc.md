@@ -5,7 +5,7 @@ description: Elliptic Curve Cryptography ECC
 
 **Preface**
 
-The following three-part series is intended for those who wish to understand what goes on inside Mimblewimble and Grin. We try to make this objective more accessible by going through the cryptographic primitives required to know first, without diving into proofs and specifics. Once those are in order, we connect everything explain how Mimblewimble works.
+The following three-part series is intended for those who wish to understand what goes on inside Mimblewimble and Grin. We try to make this objective more accessible by going through the cryptographic primitives required to know first, without diving into proofs and specifics. Once those are in order, we connect everything and explain how Mimblewimble works.
 
 1. [Elliptic Curves](../ecc)
 1. [Commitments](../commitments)

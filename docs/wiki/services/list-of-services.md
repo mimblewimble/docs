@@ -2,16 +2,20 @@
 
 ## Exchanges
 
+### Active trading and withdraw/deposit
+
+- [TradeOgre](https://tradeogre.com/markets)
+
+### Active trading but no withdraw/deposit
+
 - [BitForex](https://www.bitforex.com/)
 - [HitBTC](https://hitbtc.com/)
-- [MXC](https://www.mxc.com/)
 - [Bittrex](https://global.bittrex.com/)
 - [Hotbit](https://www.hotbit.io/)
 - [Gate.io](https://www.gate.io/)
 - [KuCoin](https://www.kucoin.com/)
 - [Kaiserex](https://www.kaiserex.com/)
 - [BigONE](https://big.one/en)
-- [TradeOgre](https://tradeogre.com/markets)
 
 ## Block Explorers
 

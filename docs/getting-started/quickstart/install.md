@@ -100,7 +100,7 @@ We recommend that you create a directory called `Grin` in `C:\Users\%USER%\AppDa
 In this directory, extract both binaries `grin.exe` and `grin-wallet.exe`. Then, add them to your path by typing in the terminal:
 
 ```text
-set PATH=%PATH%;C:\Users\%USER%\AppData\Local
+set PATH=%PATH%;C:\Users\%USER%\AppData\Local\Grin
 ```
 
 *Remember to replace %USER%*

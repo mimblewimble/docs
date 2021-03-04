@@ -5,14 +5,15 @@
 ### Active trading and withdraw/deposit
 
 - [TradeOgre](https://tradeogre.com/markets)
+- [Gate.io](https://www.gate.io/)
+- [BitForex](https://www.bitforex.com/)
+
 
 ### Active trading but no withdraw/deposit
 
-- [BitForex](https://www.bitforex.com/)
 - [HitBTC](https://hitbtc.com/)
 - [Bittrex](https://global.bittrex.com/)
 - [Hotbit](https://www.hotbit.io/)
-- [Gate.io](https://www.gate.io/)
 - [KuCoin](https://www.kucoin.com/)
 - [Kaiserex](https://www.kaiserex.com/)
 - [BigONE](https://big.one/en)

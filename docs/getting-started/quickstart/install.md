@@ -20,7 +20,7 @@ First, choose your operating system:
 
 ## Linux
 
-Go to [grin.mw/download](https://grin.mw/download) and download the tgz files of grin and grin-wallet by clicking on their name titles. Or alternatively, type in the terminal: 
+Go to [grin.mw/download](https://grin.mw/download) and download the tgz files of grin and grin-wallet by clicking on their name titles. Or alternatively, type in the terminal:
 
 ```bash
 wget https://github.com/mimblewimble/grin/releases/latest/download/grin-$VERSION-linux-amd64.tar.gz
@@ -95,10 +95,6 @@ brew install grin grin-wallet
 ## Windows
 
 Go to [grin.mw/download](https://grin.mw/download) and download the zip files of grin and grin-wallet by clicking on their name titles.
-
-<center>
-![download page image](../../assets/images/download-page.png)
-</center>
 
 We recommend that you create a directory called `Grin` in `C:\Users\%USER%\AppData\Local`. The parent directory is where most user windows apps are installed, but if you want to put them somewhere else, that'll work too.
 

@@ -29,7 +29,7 @@ sha256sum grin-wallet-$VERSION-linux-amd64.tar.gz
 sha256sum grin-$VERSION-linux-amd64.tar.gz
 ```
 
-*Replace `$VESION` with the appropriate version for each binary, e.g. `v4.0.2`*
+*Replace `$VERSION` with the appropriate version for each binary, e.g. `v4.0.2`*
 
 Next, in the terminal, navigate to the directory where the files were downloaded and type:
 ```bash

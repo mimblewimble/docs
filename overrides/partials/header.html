@@ -44,7 +44,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
+            <a
+              href="{{ config.site_url | default(nav.homepage.url, true) | url }}"
+              title="{{ config.site_name }}"
+              aria-label="{{ config.site_name }}"
+            >
             {{ config.site_name }}
+            </a>
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">

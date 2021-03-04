@@ -1,9 +1,10 @@
 # Install
 
-!!! tip "GUI Wallet"
-    To use Grin with a graphical user interface, see [wallets](../../wallets).
 
 The *Quickstart* series will guide you in your first steps of installing a Grin node, creating a wallet, and making a transaction.
+
+!!! tip "GUI Wallet"
+    To use Grin with a graphical user interface, see [wallets](../../wallets).
 
 We begin by downloading the precompiled binaries.
 
@@ -20,7 +21,14 @@ First, choose your operating system:
 
 ## Linux
 
-Go to [grin.mw/download](https://grin.mw/download) and download the tgz files of grin and grin-wallet by clicking on their name titles.
+Go to [grin.mw/download](https://grin.mw/download) and download the tgz files of grin and grin-wallet by clicking on their name titles. Or alternatively, type in the terminal:
+
+```bash
+wget https://github.com/mimblewimble/grin/releases/latest/download/grin-$VERSION-linux-amd64.tar.gz
+wget https://github.com/mimblewimble/grin-wallet/releases/latest/download/grin-wallet-$VERSION-linux-amd64.tar.gz
+```
+
+*In every command replace `$VERSION` with the appropriate version for each binary, e.g. `v4.0.2`*
 
 To verify the release, calculate the `sha256sum` of the binaries and compare the result against their respective SHA256 HASH on the website (or in [releases](https://github.com/mimblewimble/grin/releases)).
 
@@ -29,9 +37,7 @@ sha256sum grin-wallet-$VERSION-linux-amd64.tar.gz
 sha256sum grin-$VERSION-linux-amd64.tar.gz
 ```
 
-*Replace `$VESION` with the appropriate version for each binary, e.g. `v4.0.2`*
-
-Next, in the terminal, navigate to the directory where the files were downloaded and type:
+Next, navigate to the directory where the files were downloaded and extract the binaries:
 ```bash
 sudo tar -C /usr/local/bin -xzf grin-$VERSION-linux-amd64.tar.gz --strip-components=1
 sudo tar -C /usr/local/bin -xzf grin-wallet-$VERSION-linux-amd64.tar.gz --strip-components=1
@@ -91,16 +97,12 @@ brew install grin grin-wallet
 
 Go to [grin.mw/download](https://grin.mw/download) and download the zip files of grin and grin-wallet by clicking on their name titles.
 
-<center>
-![download page image](../../assets/images/download-page.png)
-</center>
-
 We recommend that you create a directory called `Grin` in `C:\Users\%USER%\AppData\Local`. The parent directory is where most user windows apps are installed, but if you want to put them somewhere else, that'll work too.
 
 In this directory, extract both binaries `grin.exe` and `grin-wallet.exe`. Then, add them to your path by typing in the terminal:
 
 ```text
-set PATH=%PATH%;C:\Users\%USER%\AppData\Local
+set PATH=%PATH%;C:\Users\%USER%\AppData\Local\Grin
 ```
 
 *Remember to replace %USER%*

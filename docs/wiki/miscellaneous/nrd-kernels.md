@@ -128,7 +128,7 @@ V1 is supported for backward compatibility with nodes that do not support V2 "va
 
 __V2 "variable size kernels"__
 
-V2 kernels have been supported since Grin `v2.1.0` and V2 supports the notion of "variable size" kernels. See [RFC-0005 "Varible Size Kernels"][^12] for details of this.
+V2 kernels have been supported since Grin `v2.1.0` and V2 supports the notion of "variable size" kernels. See [RFC-0005 "Variable Size Kernels"][^12] for details of this.
 
 NRD kernels include 8 bytes for the fee as big-endian u64 and 2 bytes for the relative lock height:
 

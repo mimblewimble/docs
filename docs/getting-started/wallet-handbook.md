@@ -96,7 +96,7 @@ The `account` command is used to manage wallet accounts. Let's print a list of y
 grin-wallet account
 ```
 
-Accounts could be thought of as somewhat similar to different bank accounts under the same name. Each account acts as a seperate wallet, but they are all derived from the same master seed. The `default` account is created when you initialize the wallet.
+Accounts could be thought of as somewhat similar to different bank accounts under the same name. Each account acts as a separate wallet, but they are all derived from the same master seed. The `default` account is created when you initialize the wallet.
 
 To create a new account, pass the argument `-c` `--create`.
 
@@ -192,7 +192,7 @@ BEGINSLATEPACK. HctgNGXrJDGFY3B KrEF1meAezGjxQ6 Z93QF6Ps2m9yKCQ LfhZvpDY9ZXViM7 
 ZXFLR2TPZwGc5Vt zwFUPoyWfKXasQy VVV6tbKWEEhqAZR e34M7uEwfurpUUi 9812VFPY1qw3K9b ynwQXuXMuWQCUnU s1JqWqFgSQKENUP tGCK19dys9twghA FaAc7ZXQHdMbUoL sVxVfdjE94F1Wpj M7QAM5VZuaauHdQ Mt2erFyxJ5vsYSZ hgS553UKoQL5YWX E7oRNdMDkJV6VkL i55kAQc1vWvW9ce 3MoXiBT4TJ1SyNS NVZKxgk8c. ENDSLATEPACK.
 ```
 
-This message contains the data required for the receiver's wallet to process the transaction via the `receive` command. This slatepack is also encypted for the recipient only, since you provided an address (which is a public key) by using the `-d` flag.
+This message contains the data required for the receiver's wallet to process the transaction via the `receive` command. This slatepack is also encrypted for the recipient only, since you provided an address (which is a public key) by using the `-d` flag.
 
 **Non-encrypted slatepack**
 
@@ -215,7 +215,7 @@ In this case, the wallet will simply output a non-encrypted slatepack message wh
 
 ## receive
 
-The `receive` command proccesses the slatepack message provided by the sender.
+The `receive` command processes the slatepack message provided by the sender.
 
 ```text
 grin-wallet receive
@@ -258,7 +258,7 @@ grin-wallet post -i "~/.grin/main/slatepacks/my_tx.S3.slatepack/"
 
 ## proof
 
-Grin's privacy and scalability mechanics mean users no longer have the ability to simply prove a transaction has happened by pointing to it on the chain. By default, whenever a transaction sent to a destination addres using `-d`, a payment proof is created.
+Grin's privacy and scalability mechanics mean users no longer have the ability to simply prove a transaction has happened by pointing to it on the chain. By default, whenever a transaction sent to a destination address using `-d`, a payment proof is created.
 
 Payers can then use these proofs to resolve future payment disputes and prove they sent funds to the correct recipient.
 
@@ -334,7 +334,7 @@ To confirm the payment, type the exact amount in decimal, `10.000000000` in this
 
 ## unpack
 
-Upon receiving a slatepack message or file from a party, whether in an encrypted form or not, the `unpack` command decrypts and decodes it to a bare slate JSON format (the format used by the wallet to read and contruct transactions).
+Upon receiving a slatepack message or file from a party, whether in an encrypted form or not, the `unpack` command decrypts and decodes it to a bare slate JSON format (the format used by the wallet to read and construct transactions).
 
 ```text
 grin-wallet unpack

@@ -10,7 +10,7 @@ Grin has an average block time of 60 seconds and employs Cuckoo Cycle[^1], a mem
     !!! quote ""
         Q: Why use a memory-hard proof of work?
 
-        A: The point is that chips dominated by memory have rather different characteristics from computational chips; they run much cooler, dissipating less heat per unit of area. This shifts the mining cost from mostly opex (electricity) to mostly capex (hardware cost), which delays obsolescence  and allows mining in places with higher electricity costs.
+        A: The point is that chips dominated by memory have rather different characteristics from computational chips; they run much cooler, dissipating less heat per unit of area. This shifts the mining cost from mostly OPEX (electricity) to mostly CAPEX (hardware cost), which delays obsolescence  and allows mining in places with higher electricity costs.
 
 ## Two Algorithms
 

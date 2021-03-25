@@ -12,7 +12,7 @@ Previously, users and exchanges had to decide between multiple transaction metho
 
 The Slatepack standard eliminates the need for HTTPS or exchanging files. Instead, it introduces two methods:
 
-1. **Synchronous** commuication done through Tor (transaction is completed automatically similar to HTTPS).
+1. **Synchronous** communication done through Tor (transaction is completed automatically similar to HTTPS).
 1. **Asynchronous** communication using Slatepack Messages, which are encoded transaction strings exchanged by a simple copy-paste.
 
 Additionally, **Slatepack Addresses** are introduced to facilitate the interaction between two wallets.
@@ -26,7 +26,7 @@ Additionally, **Slatepack Addresses** are introduced to facilitate the interacti
 
 A Slatepack address is a bech32 encoded address, similar to those used in Bitcoin. However, Slatepack addresses do not touch the network; they are used strictly for transaction building between two wallets, and never appear on-chain or represent ownership.
 
-Addresses are exchanged between parties to serve as instructions for how to complete the payment. Therefore, a Slatepack address serves a double prupose:
+Addresses are exchanged between parties to serve as instructions for how to complete the payment. Therefore, a Slatepack address serves a double purpose:
 
 * It decodes to a Tor address.
 * Acts as a key to encrypt the transaction data being communicated by Slatepack Messages (strings).
@@ -92,7 +92,7 @@ As an example, let's demonstrate the workflow of an exchange.
 
 ## Exchange Integration
 
-Exchanges may consider several different paths for intergration:
+Exchanges may consider several different paths for integration:
 
 * Exchanges may run Tor hidden services to automatically complete transactions, and also provide a user-interface for copy-pasting Slatepack Messages as a fallback mechanism.
 * Some exchanges may not wish to have Tor running anywhere in their infrastructure. In this case, they may provide only the user-interface required for exchanging Slatepack Messages via copy and paste text boxes.
@@ -100,7 +100,7 @@ Exchanges may consider several different paths for intergration:
 
 ### Payment proofs
 
-Grin's lack of on-chain addresses slightly complicates proving a transaction occured. In order to solve disputes and prove funds were sent to the correct wallet, seperate [payment proofs](https://github.com/mimblewimble/grin-rfcs/blob/master/text/0006-payment-proofs.md) are used.
+Grin's lack of on-chain addresses slightly complicates proving a transaction occurred. In order to solve disputes and prove funds were sent to the correct wallet, separate [payment proofs](https://github.com/mimblewimble/grin-rfcs/blob/master/text/0006-payment-proofs.md) are used.
 
 By default, whenever a transaction is sent to a destination Slatepack Address, a payment proof is created automatically.
 

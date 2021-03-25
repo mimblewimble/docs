@@ -35,7 +35,7 @@ How the coin gets distributed carries significant importance. Grin was not creat
 
 The constant issuance establishes a fair coin distribution[^3], where equal opportunity is given to everyone, in any point in time. New users should not feel discouraged or disadvantaged when adopting a new form money.
 
-In constrast, distributing a very large portion of the coins early, mostly benefits the first users but presents an unwelcoming narrative to new ones, as it assigns them a substantially smaller portion of the network's value. This in turn affects the currency's long-standing story of distribution.[^4]
+In contrast, distributing a very large portion of the coins early, mostly benefits the first users but presents an unwelcoming narrative to new ones, as it assigns them a substantially smaller portion of the network's value. This in turn affects the currency's long-standing story of distribution.[^4]
 
 ### Wide
 

@@ -77,7 +77,7 @@ cargo build --release
 
 ## What was built?
 
-Let's review what a succesfull build gets you.
+Let's review what a successful build gets you.
 
 ### Binary
 
@@ -104,7 +104,7 @@ You can modify configuration values by editing the `grin-server.toml` file, loca
     grin server config
     ```
 
-    This will generate a `grin-server.toml` file in the current directory. Running grin from a directory that contains `grin-server.toml` will use the values in that filem which will also be pre-configured to use the current directory for all of the node's data.
+    This will generate a `grin-server.toml` file in the current directory. Running grin from a directory that contains `grin-server.toml` will use the values in that file which will also be pre-configured to use the current directory for all of the node's data.
 
 
 ## Configuration

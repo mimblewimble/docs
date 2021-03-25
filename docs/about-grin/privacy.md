@@ -70,7 +70,7 @@ This is could be done at any level of transaction building; Before broadcast, du
 
 Despite the fact that chain analysis can extract very little (if any) information about users and outputs, it is possible to monitor peer-to-peer network activity and obtain the transactions before they're included in a block and aggregated with others. By setting up sniffing nodes connected to many peers, you can figure out which outputs are being spent by what transaction, allowing you to build a partial transaction graph by separating the aggregation done at the block level. It's unclear at this point if meaningful information could be derived from this, as the trail of data stops there.
 
-As of today, an almost complete transaction graph can be constructed. But as usage grows this will gradually become harder. Likewise, many privacy-enchancing techniques can be employed to easily remove linkability of outputs. Fortunately, with mimblewimble these may be added natively, such that nobody knows when a user takes extra privacy precautions to obfuscate the transaction graph, therefore no coins become "tainted".
+As of today, an almost complete transaction graph can be constructed. But as usage grows this will gradually become harder. Likewise, many privacy-enhancing techniques can be employed to easily remove linkability of outputs. Fortunately, with mimblewimble these may be added natively, such that nobody knows when a user takes extra privacy precautions to obfuscate the transaction graph, therefore no coins become "tainted".
 
 ## Dandelion
 
@@ -82,7 +82,7 @@ This makes it almost impossible to deduce a reliable IP address, and renders sta
 
 ![dandelion](../assets/images/dandelion.png)
 
-Moreover, Dandelion provides an additional benefit unique to mimblewimble, as it allows for transactions to be aggregated at a very early stage. Right before a transaction beging its fluff phase, it enters a 30s waiting period in which it will be aggregated with any other transactions it meets, thus obscuring linkability of inputs and outputs that a sniffing node may have learned. However, the privacy gained from aggregation before fluffing depends on having many other transactions.
+Moreover, Dandelion provides an additional benefit unique to mimblewimble, as it allows for transactions to be aggregated at a very early stage. Right before a transaction starts its fluff phase, it enters a 30s waiting period in which it will be aggregated with any other transactions it meets, thus obscuring linkability of inputs and outputs that a sniffing node may have learned. However, the privacy gained from aggregation before fluffing depends on having many other transactions.
 
 ## Afterword
 

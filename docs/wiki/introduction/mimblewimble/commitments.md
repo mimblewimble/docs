@@ -23,7 +23,7 @@ To everybody else, our commitment `8*G` just looks like a random point, and we p
 reveal 8
 ```
 
-And now any observer could multiply our stated value 8, by the public point G and verify that their result is equal to the commitment we published ealier.
+And now any observer could multiply our stated value 8, by the public point G and verify that their result is equal to the commitment we published earlier.
 
 ```text
 verify (8, commitment) == 8*G  ? --> True/False
@@ -40,7 +40,7 @@ What’s the solution?
 
 The issue is solved by adding a blinding factor r, which is a random 256-bit integer (range 0 to 2^256, same as a typical private key) used to blind the value so that it can’t be guessed and uncovered.
 
-We could try adding the blinding factor by comitting `(8+r)*G` and then revealing `8` and `r`. But, doing so breaks the binding property of the commitment, because instead of revealing value `8` and blinding factor `r`, we could reveal `7` and `r+1` or any other value.
+We could try adding the blinding factor by committing `(8+r)*G` and then revealing `8` and `r`. But, doing so breaks the binding property of the commitment, because instead of revealing value `8` and blinding factor `r`, we could reveal `7` and `r+1` or any other value.
 
 Therefore, we require a different method to include `r`.
 

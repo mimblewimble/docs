@@ -113,10 +113,10 @@ Now, (hopefully) armed with a basic understanding of what the Cuckoo Cycle algor
 
 ## Mining in Grin
 
-The Cuckoo Cycle outlined above forms the basis of Grin's mining process, however Grin uses two variantion of Cuckoo Cycle in tandem with several other systems to create a Proof-of-Work.
+The Cuckoo Cycle outlined above forms the basis of Grin's mining process, however Grin uses two variations of Cuckoo Cycle in tandem with several other systems to create a Proof-of-Work.
 
 1. for GPUs: Cuckaroo on 2^29 edges
-    * Tweaked every 6 months to maitain ASIC resistance.
+    * Tweaked every 6 months to maintain ASIC resistance.
     * 90% of rewards at launch, linearly decreasing to 0% in 2 years.
     * Variant of Cuckoo that enforces so-called ``mean'' mining.
     * Takes 5.5GB of memory (perhaps 4GB with slowdown).
@@ -149,8 +149,8 @@ keeping the average block solution time within range of a target of exactly 60 s
 
 The difficulty calculation is based on a simple moving average computation, somewhat similar to ZCash.
 The reference difficulty is an average of the difficulty over a window of
-60 blocks (nominally one hour). The corresponding timespan is calculated by using the difference between
-the timestamps at the beginning and the end of the window. If the timespan is higher or lower than a certain
+60 blocks (nominally one hour). The corresponding time span is calculated by using the difference between
+the timestamps at the beginning and the end of the window. If the time span is higher or lower than a certain
 range, (adjusted with a dampening factor to allow for normal variation,) then the difficulty is raised or lowered
 to a value aiming for the target block solve time.
 
@@ -193,7 +193,7 @@ enables 'poolability' as well as a level of fairness among all miners.
 Progress-freeness is central to the 'poolability' of a proof-of-work, and is simply based on the idea that a single solution attempt
 takes a relatively small amount of time. For instance, if a blockchain
 has a one minute block time and a slow miner needs 10 seconds per solution
-attempt, then it will have wasted on average 5 seconds per minutewhen its
+attempt, then it will have wasted on average 5 seconds per minute when its
 current attempt is aborted due to arrival of a new block. Faster miners will
 have less waste, giving an extra advantage on top of their higher attempt
 throughput. So in order to keep mining relatively progress-free,

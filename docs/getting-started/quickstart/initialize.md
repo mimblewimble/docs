@@ -21,7 +21,7 @@ All data files will be created at the hidden folder `~/.grin` (under your home d
 
 ## Creating a Grin Wallet
 
-While your node is syncing, let's initalize a new Grin wallet.
+While your node is syncing, let's initialize a new Grin wallet.
 
 In the command prompt type the following:
 

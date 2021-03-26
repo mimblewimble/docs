@@ -2,7 +2,7 @@
 
 ## Mimblewimble
 
-On *Mon Aug 01 2016* a user named 'majorplayer' logged into the `#bitcoin-wizards` IRC channel, dropped a text file hosted on a Tor server and then disappeared. The document[^1] was titled MIMBLEWIMBLE and authored under the pseudonym  Tom Elvis Jedusor. It described a protocol which is both private and extremely lightweight.
+On *Mon Aug 01 2016* a user named `majorplayer` logged into the `#bitcoin-wizards` IRC channel, dropped a text file hosted on a Tor server and then disappeared. The document[^1] was titled MIMBLEWIMBLE and authored under the pseudonym  Tom Elvis Jedusor. It described a protocol which is both private and extremely lightweight.
 
 !!! info ""
     Tom Elvis Jedusor is the French name for Tom Riddle (Lord Voldemort) from the Harry Potter book series.
@@ -39,11 +39,11 @@ On *Oct 20 2016*, a pseudonymous developer using the name Ignotus Peverell, anno
 
 !!! info ""
     Ignotus Peverell is the wizard who was gifted the Cloak of Invisibility by Death. </br>
-    Grin is short for the Gringotts wizarding bank.
+    Grin is short for the Gringotts Wizarding Bank.
 
 ```text
 -!- igno_peverell [~user@104.238.169.137] has joined #bitcoin-wizards
-<igno_peverell> I have a minimal implementation of MimbleWimble available. It's very far from complete but has the basics, included the summing of pedersen commitments:
+<igno_peverell> I have a minimal implementation of MimbleWimble available. It's very far from complete but has the basics, included the summing of Pedersen commitments:
 <igno_peverell> https://github.com/ignopeverell/grin
 <igno_peverell> Any feedback or review is greatly appreciated. Thanks!
 ```

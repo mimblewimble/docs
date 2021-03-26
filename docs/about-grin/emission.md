@@ -54,9 +54,8 @@ Additional properties of constant emission that are worthy to consider:
 * When ownership is more evenly distributed, it likely means that more participants are holding a sizable portion of the network, and thus more users are meaningfully incentivized to advance its growth & improve it.
 * Early users do not profit exponentially due to a decreasing supply, but purely through increasing demand for the coin.
 
-
 [^1]: [Bitcoin's Security Trilemma](https://youtu.be/zPYkL6L3VGw?t=988)
 [^2]: [On the Instability of Bitcoin Without the Block Reward](https://www.cs.princeton.edu/~arvindn/publications/mining_CCS.pdf)
 [^3]: [Grin and the Mythical Fair Launch](https://medium.com/@arjunblj/grin-and-the-mythical-fair-launch-395ca87a5e73)
 [^4]: [The Story of Distribution](../../../wiki/extra-documents/story-of-distribution)
-[^5]: [Nick Szabo on Supply Predictabilty](https://twitter.com/NickSzabo4/status/1077317105148547072)
+[^5]: [Nick Szabo on Supply Predictability](https://twitter.com/NickSzabo4/status/1077317105148547072)

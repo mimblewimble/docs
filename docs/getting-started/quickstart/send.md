@@ -25,6 +25,7 @@ Simply type the following command:
 ```bash
 grin-wallet finalize
 ```
+
 And enter into the prompt the Slatepack message you got from the receiver.
 
 Your wallet will complete the transaction building process and post it to the network, along with a fee, to be included in an upcoming block. Celebrate this milestone with an unapologizing smile ツ

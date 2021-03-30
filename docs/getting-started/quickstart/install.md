@@ -1,6 +1,5 @@
 # Install
 
-
 The *Quickstart* series will guide you in your first steps of installing a Grin node, creating a wallet, and making a transaction.
 
 !!! tip "GUI Wallet"
@@ -38,6 +37,7 @@ sha256sum grin-$VERSION-linux-amd64.tar.gz
 ```
 
 Next, navigate to the directory where the files were downloaded and extract the binaries:
+
 ```bash
 sudo tar -C /usr/local/bin -xzf grin-$VERSION-linux-amd64.tar.gz --strip-components=1
 sudo tar -C /usr/local/bin -xzf grin-wallet-$VERSION-linux-amd64.tar.gz --strip-components=1
@@ -106,6 +106,5 @@ set PATH=%PATH%;C:\Users\%USER%\AppData\Local\Grin
 ```
 
 *Remember to replace %USER%*
-
 
 That's it, you're done!

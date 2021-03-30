@@ -207,7 +207,7 @@ sum(outputs) - sum(inputs) = kernel_excess
 ```
 
 !!! note ""
-    Note that we refer here to the complete pedersen commitments, not just their blinding factors (which would result in `excess_value` instead of `kernel_excess`).
+    Note that we refer here to the complete Pedersen commitments, not just their blinding factors (which would result in `excess_value` instead of `kernel_excess`).
 
 The same holds true for entire blocks of transactions, if we realize a block is simply an extended set of inputs, outputs and transaction kernels. We can sum the outputs, subtract the inputs, and the result would be a commitment equal to the sum of the kernel excesses.
 

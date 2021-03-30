@@ -50,7 +50,5 @@ Therefore, to achieve optimal security, two conditions must be met:
 There’s increasingly more evidence that ASICs are inevitable, as dedicated hardware will always have ways in which it can improve upon general purpose hardware. While it *is* possible to make ASIC manufacturing more difficult, over a long period it is likely to end up a centralizing force in itself, as it makes the chain vulnerable to secret ASIC operations[^3].
 
 [^1]: [Cuckoo Cycle](https://github.com/tromp/cuckoo)
-
 [^2]: [ASICs and Decentralization FAQ](https://download.wpsoftware.net/bitcoin/asic-faq.pdf)
-
 [^3]: [The State of Cryptocurrency Mining](https://blog.sia.tech/the-state-of-cryptocurrency-mining-538004a37f9b)

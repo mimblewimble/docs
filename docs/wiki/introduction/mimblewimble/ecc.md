@@ -7,9 +7,9 @@ description: Elliptic Curve Cryptography ECC
 
 The following three-part series is intended for those who wish to understand what goes on inside Mimblewimble and Grin. We try to make this objective more accessible by going through the cryptographic primitives required to know first, without diving into proofs and specifics. Once those are in order, we connect everything and explain how Mimblewimble works.
 
-1. [Elliptic Curves](../ecc)
-1. [Commitments](../commitments)
-1. [Mimblewimble](../mimblewimble)
+1. [Elliptic Curves](ecc.md)
+1. [Commitments](commitments.md)
+1. [Mimblewimble](mimblewimble.md)
 
 For the original introduction (along with many translations), refer to [here](https://github.com/mimblewimble/grin/blob/master/doc/intro.md).
 

@@ -14,7 +14,7 @@ grin-wallet send -d grin1dhvv9mvarqwl6fderuxp3qgl6qppvhc9p4u24347ec0mvgg6342q4w6
 ```
 
 !!! note "Locked Outputs"
-    From now on and until confirmed in the chain, the outputs used in this transaction are [locked](../../wallet-handbook/#cancel).
+    From now on and until confirmed in the chain, the outputs used in this transaction are [locked](../wallet-handbook.md#cancel).
 
 The wallets will interact through Tor and complete the process automatically.
 

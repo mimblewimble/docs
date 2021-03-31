@@ -3,7 +3,7 @@
 Now that you've set up your node and learned how to form a simple transaction, let's get to know the wallet more deeply. The following document is an extremely comprehensive user guide to the reference grin wallet implementation, `grin-wallet v4.0.0`.
 
 !!! tip "GUI Wallet"
-    Instructions on how to transact with a graphical user interface can be found in [wallets](../wallets).
+    Instructions on how to transact with a graphical user interface can be found in [wallets](wallets.md).
 
 ## File Structure
 

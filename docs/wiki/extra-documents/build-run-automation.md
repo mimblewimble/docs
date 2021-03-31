@@ -4,7 +4,7 @@ To get an automated build of grin and run the server, pull changes from Github, 
 
 ## Build and run manually the first time
 
-Follow the instructions in the [build docs](../../../getting-started/build) to build a binary or download the grin [release binary](https://github.com/mimblewimble/grin/releases). You should end up with a `.grin` directory in your home folder.
+Follow the instructions in the [build docs](../../getting-started/build.md) to build a binary or download the grin [release binary](https://github.com/mimblewimble/grin/releases). You should end up with a `.grin` directory in your home folder.
 
 ## Set up grin as a service
 

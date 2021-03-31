@@ -4,7 +4,7 @@
 Let's see how you can receive your first grins.
 
 !!! note "Interactive Transactions"
-    The nature of [Mimblewimble](../../../wiki/introduction/mimblewimble/ecc) protocol means that the sender & receiver need to interact with one another, in some way or another, in order to form [transactions](../../../about-grin/transactions).
+    The nature of [Mimblewimble](../../wiki/introduction/mimblewimble/ecc.md) protocol means that the sender & receiver need to interact with one another, in some way or another, in order to form [transactions](../../about-grin/transactions.md).
 
 The first step is to generate an address:
 
@@ -20,7 +20,7 @@ grin1dhvv9mvarqwl6fderuxp3qgl6qppvhc9p4u24347ec0mvgg6342q4w6x56
 
 Give it to the sender.
 
-To understand what comes next, you should know there are two primary ways to interact with the other party: [Tor](../../../about-grin/transactions/#tor) and [Slatepack](../../../about-grin/transactions/#slatepack). A Tor connection is attempted first, but if it isn't accessible (counterparty offline, or either party doesn't have Tor service installed), then Slatepack method is automatically chosen.
+To understand what comes next, you should know there are two primary ways to interact with the other party: [Tor](../../about-grin/transactions.md#tor) and [Slatepack](../../about-grin/transactions.md#slatepack). A Tor connection is attempted first, but if it isn't accessible (counterparty offline, or either party doesn't have Tor service installed), then Slatepack method is automatically chosen.
 
 ## Tor
 

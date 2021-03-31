@@ -8,11 +8,13 @@
     - Tracking issue: [mimblewimble/grin-pm/#258](https://github.com/mimblewimble/grin-pm/issues/258)
 
 ## Summary
+
 [summary]: #summary
 
 The security team for Grin carries out the security priorities of the Grin community and core team, which are to be defined prior to formation of the team. The security team streamlines the security decision making process for the core team while maintaining a careful balance of security and transparency for the community.
 
 ## Motivation
+
 [motivation]: #motivation
 
 * Improve transparency, efficiency, decisiveness and scalability around security-related decision making
@@ -24,6 +26,7 @@ A clear and structured decision making process is needed to fully support the cu
 The security team frees up core resources to focus on other important areas while expanding dedicated resources to security work, allowing the Grin ecosystem to continue to scale. A clear decision making structure around the security process instills confidence in the greater ecosystem and encourages projects, developers and users to continue to increase contributions of time and resources into Grin.
 
 ## Community-level explanation
+
 [community-level-explanation]: #community-level-explanation
 
 Grin's security team is responsible for making predefined security related decisions for the Grin project. This includes, but is not limited to, decisions about the specification and implementation of Grin's security processes. As much as possible Grin's security team carries out the security priorities of the community and core team in a transparent manner.
@@ -52,6 +55,7 @@ _In the example case, a vulnerability is disclosed to the disclosure contacts li
 * Once the vulnerability is mitigated the security team must disclose all information that is not still security-critical with the community
 
 ## Reference-level explanation
+s
 [reference-level-explanation]: #reference-level-explanation
 
 Grin's security team will be implemented as stated below.
@@ -78,7 +82,7 @@ Grin's security team will be implemented as stated below.
   * Updating the security policy
   * In the event that the core team does not follow a security team recommendation, a reasonable explanation must be provided as to why the security recommendation was not followed
 * Some decisions must be made without fully informing the core team of all details:
-  * When fixing a vulnerability requires a [deviation from the standard](../grin-security-process/#deviations-from-the-standard)
+  * When fixing a vulnerability requires a [deviation from the standard](grin-security-process.md#deviations-from-the-standard)
     * In these cases not all information will be shared with core team, such as specific details to carry out an exploit, full impact and other relevant information that will create unnecessary risk if disclosed
   * The core team must be notified of all cases of these decisions within a reasonable time frame that does not pose a security risk (e.g. after a fix is implemented) and provided with a reasonable explanation by the security team
 
@@ -101,7 +105,7 @@ Deadlocks should be avoided at all costs. The inability of the security team to 
 
 _By following the previous example in more detail, critical differences can be further explored between the current process and the proposed security team process in the handling of a unique case._
 
-_In cases where fixing a vulnerability is so critical that it requires a [deviation from the standard](../grin-security-process/#deviations-from-the-standard), the proposed process reduces the likelihood of the vulnerability being exploited with a focused decision making process and by restricting the details to essential persons only._
+_In cases where fixing a vulnerability is so critical that it requires a [deviation from the standard](grin-security-process.md#deviations-from-the-standard), the proposed process reduces the likelihood of the vulnerability being exploited with a focused decision making process and by restricting the details to essential persons only._
 
 **Previous Process**
 
@@ -120,6 +124,7 @@ _In cases where fixing a vulnerability is so critical that it requires a [deviat
 * _Once the vulnerability is mitigated, the security team must disclose all information that is not still security-critical with the community_
 
 ## Drawbacks
+
 [drawbacks]: #drawbacks
 
 * The core team is already busy and the formation and management of a security team may distract from other pressing and immediate issues
@@ -130,6 +135,7 @@ _In cases where fixing a vulnerability is so critical that it requires a [deviat
 * The community may trust core more than a team to make critical security decisions
 
 ## Rationale and alternatives
+
 [rationale-and-alternatives]: #rationale-and-alternatives
 
 * One alternative, currently in use, is adding the input of a security expert to the existing core decision making process
@@ -148,11 +154,13 @@ _In cases where fixing a vulnerability is so critical that it requires a [deviat
     * This model is much more transparent than other alternatives but comes with the unacceptable associated costs above
 
 ## Prior art
+
 [prior-art]: #prior-art
 
 grin-governance[^1] and security-process[^2] RFCs lay groundwork for the security-team RFC.
 
 ## Unresolved questions
+
 [unresolved-questions]: #unresolved-questions
 
 - What are the security priorities of the Grin community and core team? (e.g. is privacy a higher priority than undetectable inflation?)
@@ -160,6 +168,7 @@ grin-governance[^1] and security-process[^2] RFCs lay groundwork for the securit
 - Is the single-veto model sufficient for a consistent, timely decision making process?
 
 ## Future possibilities
+
 [future-possibilities]: #future-possibilities
 
 * Budget allocation and management
@@ -181,8 +190,8 @@ grin-governance[^1] and security-process[^2] RFCs lay groundwork for the securit
   * In the future security-team decisions can be expanded to include more security-related decisions
 
 ## References
+
 [references]: #references
 
 [^1]: [Grin's Governance RFC](https://github.com/mimblewimble/grin-rfcs/blob/master/text/0002-grin-governance.md#teams)
-
-[^2]: [Grin's Security Proccess RFC](https://github.com/mimblewimble/grin-rfcs/blob/master/text/0003-security-process.md)
+[^2]: [Grin's Security Process RFC](https://github.com/mimblewimble/grin-rfcs/blob/master/text/0003-security-process.md)

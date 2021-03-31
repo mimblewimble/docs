@@ -9,7 +9,7 @@ Now that you've set up your node and learned how to form a simple transaction, l
 
 By default, grin will create all wallet files in the hidden directory `.grin` under your home directory (i.e. `~/.grin`). You can also create and use a wallet with data files in a custom directory, as will be explained later.
 
-A grin wallet maintains its state in an Lightning Memory-Mapped Database (LMDB) database, with the master seed stored in a separate file. When creating a new wallet, the file structure should be as follows:
+A grin wallet maintains its state in an Lightning Memory-Mapped Database (LMDB), with the master seed stored in a separate file. When creating a new wallet, the file structure should be as follows:
 
 ```text
 [wallet directory]

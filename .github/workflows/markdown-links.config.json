@@ -1,4 +1,15 @@
 {
+  "ignorePatterns": [
+    {
+      "pattern": "https://tradeogre.com/markets"
+    },
+    {
+      "pattern": "https://global.bittrex.com/"
+    },
+    {
+      "pattern": "https://www.hotbit.io/"
+    }
+  ],
   "timeout": "20s",
   "retryOn429": true,
   "retryCount": 5,

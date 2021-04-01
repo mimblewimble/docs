@@ -20,7 +20,6 @@
 ## Block Explorers
 
 - [Grinscan](https://grinscan.net/)
-- [Blockscan](https://grin.blockscan.com/)
 - [Grinmint](https://grinmint.com/explorer/)
 - [GrinExplorer](https://grinexplorer.net/)
 

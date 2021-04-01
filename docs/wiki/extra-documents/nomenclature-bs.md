@@ -77,7 +77,7 @@ Sources: CCITT Working Group on Alphabets, October 6-9, 1964, CBI 67, box 3, fol
 
 and now some other resources I've found... and some symbols that stand out. There are lots of options and I am 100% of the belief that the perfect one can jump out at us like a mystical epiphany, and that bikeshedding isn't as arduous and arbitrary as it always seems to be.
 
-From this document: http://bora.uib.no/bitstream/handle/1956/10699/MUFI-Alphabetic-4-0.pdf?sequence=9&isAllowed=y
+From this document: https://folk.uib.no/hnooh/mufi/specs/MUFI-Alphabetic-4-0.pdf
 
 *  &grlig; EAD0 PUA-1 LATIN SMALL LIGATURE GR
 doesnt show

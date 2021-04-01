@@ -499,5 +499,5 @@ value of the `feat` field. Currently only present if `feat` is 2.
 This RFC is envisaged as a necessary first step for all slate-exchange possibilities that would benefit from compactness, e.g:
 
 * QR Code encoding of slates
-* [Armored slates]()
-* [Slatepack](https://github.com/j01tz/grin-rfcs/blob/slatepack/text/0000-slatepack.md)
+* Armored slates
+* Slatepack

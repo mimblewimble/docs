@@ -50,6 +50,19 @@ Sender will then create and store the following info, which can be considered th
 * `sender_address`
 * `sender_signature`
 
+Sizes of each corresponding field
+
+| Field             | Size     |
+|:------------------|:---------|
+| amount            | 8 bytes  |
+| excess            | 33 bytes |
+| recipient_address | 32 bytes |
+| recipient_sig     | 64 bytes |
+| sender_address    | 32 bytes |
+| sender_sig        | 64 bytes |
+
+The fields `recipient_address` and `sender_address` will occuppy 32 bytes under assumption of being stored as ed25519 public keys.
+
 ### Verifying Proofs
 
 This `payment_proof` can be provided by the sender at any time to convince a payee that a payment was made to them. The proof can be verified as follows:

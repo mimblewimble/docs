@@ -500,4 +500,4 @@ This RFC is envisaged as a necessary first step for all slate-exchange possibili
 
 * QR Code encoding of slates
 * Armored slates
-* Slatepack
+* [Slatepack](../../grin-rfcs/text/0012-compact-slates.md)

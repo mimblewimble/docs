@@ -1,6 +1,7 @@
 # Chain Sync
 
 > *Read (part of) this in other languages: [Korean](https://github.com/mimblewimble/grin/blob/master/doc/chain/chain_sync_KR.md).* </br>
+> *Read about fast sync in other languages: [Español](https://github.com/mimblewimble/grin/blob/master/doc/translations/fast-sync_ES.md), [Korean](https://github.com/mimblewimble/grin/blob/master/doc/translations/fast-sync_KR.md), [简体中文](https://github.com/mimblewimble/grin/blob/master/doc/translations/fast-sync_ZH-CN.md).*
 
 We describe here the different methods used by a new node when joining the network to catch up with the latest chain state. We start with reminding the reader of the following assumptions, which are all characteristics of Grin or Mimblewimble:
 

@@ -1,0 +1,6 @@
+.git
+.github
+.gitmodules
+.dockerignore
+.editorconfig
+Containerfile

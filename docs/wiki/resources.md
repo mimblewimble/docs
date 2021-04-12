@@ -2,10 +2,10 @@
 
 ## More Documents
 
-:   [Build and run automation](../extra-documents/build-run-automation) </br>
-    [Run a node on google cloud for free](../extra-documents/google-cloud-node) </br>
-    [How to mine with grin-miner](../extra-documents/how-to-mine) </br>
-    [Monetary policy](../extra-documents/monetary-policy) </br>
+:   [Build and run automation](extra-documents/build-run-automation.md) </br>
+    [Run a node on google cloud for free](extra-documents/google-cloud-node.md) </br>
+    [How to mine with grin-miner](extra-documents/how-to-mine.md) </br>
+    [Monetary policy](extra-documents/monetary-policy.md) </br>
 
 
 ## Talks

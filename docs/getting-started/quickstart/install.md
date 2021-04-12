@@ -3,7 +3,7 @@
 The *Quickstart* series will guide you in your first steps of installing a Grin node, creating a wallet, and making a transaction.
 
 !!! tip "GUI Wallet"
-    To use Grin with a graphical user interface, see [wallets](../../wallets).
+    To use Grin with a graphical user interface, see [wallets](../wallets.md).
 
 We begin by downloading the precompiled binaries.
 

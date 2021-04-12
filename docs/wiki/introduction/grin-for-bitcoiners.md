@@ -1,6 +1,6 @@
 # Grin for Bitcoiners
 
-> *Read this in other languages: [Korean](https://github.com/mimblewimble/grin/blob/master/doc/translations/grin4bitcoiners_KR.md), [简体中文](https://github.com/mimblewimble/grin/blob/master/doc/grin4bitcoiners_ZH-CN.md).*
+> *Read this in other languages: [Korean](https://github.com/mimblewimble/grin/blob/master/doc/translations/grin4bitcoiners_KR.md), [简体中文](https://github.com/mimblewimble/grin/blob/master/doc/translations/grin4bitcoiners_ZH-CN.md).*
 
 ## Privacy and Fungibility
 

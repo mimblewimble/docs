@@ -6,7 +6,7 @@
 * A relatively recent CPU
 * For mainnet mining, a Recent GPU with 6GB minimum for Cuckaroo29. Nvidia 1080/2080/ti series are known to work well. Support for AMD cards via OpenCL exists but is a recent development.
 
-These instructions also assume you've downloaded and installed the Grin software, are [running a synced node](How-to-run-a-Grin-node), and have initialized and are comfortable with [running a wallet](How-to-use-the-grin-wallet).
+These instructions also assume you've downloaded and installed the Grin software, are running a synced node, and have initialized and are comfortable with running a wallet.
 
 ## Grin POW Basics
 
@@ -135,7 +135,7 @@ If you have multiple GPUs you’ll need to copy these 5 lines for each device an
 
 ## Running grin-miner
 
-Ensure that your Grin node and wallet are running (see [Running Grin in Mining Mode](running-grin-in-mining-mode)), then, from your `grin-miner-vx.x.x` installation directory:
+Ensure that your Grin node and wallet are running, then, from your `grin-miner-vx.x.x` installation directory:
 
 ```bash
 ./grin-miner
@@ -184,4 +184,4 @@ It's recommended to manually set `cpuload = 1` for each CUDA solver, unless your
 
 ## Mining Pools
 
-Once you're comfortable with mining grin, you may want to try a [mining pool](../../services/list-of-services#mining-pools), of which there are several. Note that the Grin Project doesn't run or endorse any of these pools. Please refer to the individual pool's instructions to set up grin-miner.
+Once you're comfortable with mining grin, you may want to try a [mining pool](../services/list-of-services.md#mining-pools), of which there are several. Note that the Grin Project doesn't run or endorse any of these pools. Please refer to the individual pool's instructions to set up grin-miner.

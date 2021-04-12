@@ -2,11 +2,6 @@
 
 ## Requirements
 
-- MkDocs
-- MkDocs Material theme
-
-## Build
-
 Clone repo and navigate to directory:
 
 ```bash
@@ -15,7 +10,12 @@ git clone --recursive https://github.com/mimblewimble/docs.git
 
 ### Local
 
-Start the local server:
+Install the following software:
+
+- [MkDocs](https://www.mkdocs.org/#installation)
+- [MkDocs Material theme](https://squidfunk.github.io/mkdocs-material/getting-started/)
+
+Then start the local Mkdocs server:
 
 ```bash
 mkdocs serve
@@ -23,7 +23,7 @@ mkdocs serve
 
 ### Container
 
-Start the local server:
+Start the local MkDocs server:
 
 ```bash
 docker build -t docs -f Containerfile .

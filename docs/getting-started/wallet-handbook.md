@@ -3,13 +3,13 @@
 Now that you've set up your node and learned how to form a simple transaction, let's get to know the wallet more deeply. The following document is an extremely comprehensive user guide to the reference grin wallet implementation, `grin-wallet`.
 
 !!! tip "GUI Wallet"
-    Instructions on how to transact with a graphical user interface can be found in [wallets](../wallets).
+    Instructions on how to transact with a graphical user interface can be found in [wallets](wallets.md).
 
 ## File Structure
 
 By default, grin will create all wallet files in the hidden directory `.grin` under your home directory (i.e. `~/.grin`). You can also create and use a wallet with data files in a custom directory, as will be explained later.
 
-A grin wallet maintains its state in an Lightning Memory-Mapped Database (LMDB) database, with the master seed stored in a separate file. When creating a new wallet, the file structure should be as follows:
+A grin wallet maintains its state in an Lightning Memory-Mapped Database (LMDB), with the master seed stored in a separate file. When creating a new wallet, the file structure should be as follows:
 
 ```text
 [wallet directory]

@@ -107,7 +107,7 @@ technical aspects of Grin's proof-of-work.
     Cuckoo Cycle fixes M=N, which limits the number of cycles to a small number.
   * The size of the graph itself
 
-How these parameters interact in practice is looked at in more [detail below](#mining-loop-difficulty-control-and-timing).
+How these parameters interact in practice is looked at in more detail below.
 
 Now, (hopefully) armed with a basic understanding of what the Cuckoo Cycle algorithm is intended to do, as well as the parameters that affect how difficult it is to find a solution, we move on to the other portions of Grin's POW system.
 

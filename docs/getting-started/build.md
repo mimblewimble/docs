@@ -1,6 +1,6 @@
 # Build
 
-> *Read this in other languages: [Español](https://github.com/mimblewimble/grin/blob/master/doc/build_ES.md), [Korean](https://github.com/mimblewimble/grin/blob/master/doc/build_KR.md), [日本語](https://github.com/mimblewimble/grin/blob/master/doc/build_JP.md), [简体中文](https://github.com/mimblewimble/grin/blob/master/doc/build_ZH-CN.md).*
+> *Read this in other languages: [Español](https://github.com/mimblewimble/grin/blob/master/doc/translations/build_ES.md), [Korean](https://github.com/mimblewimble/grin/blob/master/doc/translations/build_KR.md), [日本語](https://github.com/mimblewimble/grin/blob/master/doc/translations/build_JP.md), [简体中文](https://github.com/mimblewimble/grin/blob/master/doc/translations/build_ZH-CN.md).*
 
 ## Requirements
 

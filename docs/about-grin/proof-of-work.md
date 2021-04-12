@@ -5,7 +5,7 @@ Proof of work is a consensus mechanism which allows anyone to extend the blockch
 Grin has an average block time of 60 seconds and employs Cuckoo Cycle[^1], a memory bound proof of work algorithm, or more specifically, a variation of it named *Cuckatoo* that is meant to simplify ASICs.
 
 ??? info "Cuckoo Cycle"
-    The algorithm finds length-42 cycles in a bipartite graph. The current (and final) grin PoW is Cuckatoo32+, in which a graph must have at least 2^32^ + 2^32^ nodes. For a comprehensive introduction, read [here](../../wiki/miscellaneous/cuckoo-cycle).
+    The algorithm finds length-42 cycles in a bipartite graph. The current (and final) grin PoW is Cuckatoo32+, in which a graph must have at least 2^32^ + 2^32^ nodes. For a comprehensive introduction, read [here](../wiki/miscellaneous/cuckoo-cycle.md).
 
     !!! quote ""
         Q: Why use a memory-hard proof of work?

@@ -1,7 +1,7 @@
 # Table of Contents
 
 !!! tip ""
-    **This wiki contains an high level technical overview of Grin.**
+    **This wiki contains a high level technical overview of Grin.**
     For more details about the implentation, please look at the Grin documentation on docs.rs
 
     - grin: [api](https://docs.rs/grin_api/latest), [core](https://docs.rs/grin_core/latest), [chain](https://docs.rs/grin_chain/latest), [util](https://docs.rs/grin_util/latest), [store](https://docs.rs/grin_store/latest), [keychain](https://docs.rs/grin_keychain/latest), [p2p](https://docs.rs/grin_p2p/latest), [pool](https://docs.rs/grin_pool/latest), [config](https://docs.rs/grin_config/latest), [servers](https://docs.rs/grin_servers/latest).

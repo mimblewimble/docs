@@ -11,7 +11,6 @@
 - [Gate.io](https://www.gate.io/)
 - [BitForex](https://www.bitforex.com/)
 - [HitBTC](https://hitbtc.com/)
-- [Bittrex](https://global.bittrex.com/)
 - [Hotbit](https://www.hotbit.io/)
 - [KuCoin](https://www.kucoin.com/)
 - [Kaiserex](https://www.kaiserex.com/)
@@ -26,9 +25,6 @@
 ## Mining Pools
 
 - [GrinMint](https://www.grinmint.com)
-- [Sparkpool](https://sparkpool.com)
-- [F2Pool](https://www.f2pool.com)
 - [WoolyPooly](https://woolypooly.com)
-- [BTC.com](https://pool.btc.com)
 - [2Miners](https://2miners.com)
 - [MinerGate](https://minergate.com)

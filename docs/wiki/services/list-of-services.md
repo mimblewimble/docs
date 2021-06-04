@@ -5,10 +5,10 @@
 ### Active trading and withdraw/deposit
 
 - [TradeOgre](https://tradeogre.com/markets)
+- [Gate.io](https://www.gate.io/)
 
 ### Active trading but no withdraw/deposit
 
-- [Gate.io](https://www.gate.io/)
 - [BitForex](https://www.bitforex.com/)
 - [HitBTC](https://hitbtc.com/)
 - [Hotbit](https://www.hotbit.io/)

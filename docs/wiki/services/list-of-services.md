@@ -24,7 +24,6 @@
 
 ## Mining Pools
 
-- [GrinMint](https://www.grinmint.com)
 - [WoolyPooly](https://woolypooly.com)
 - [2Miners](https://2miners.com)
 - [MinerGate](https://minergate.com)

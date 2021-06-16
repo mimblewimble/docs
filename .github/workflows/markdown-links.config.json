@@ -8,6 +8,9 @@
     },
     {
       "pattern": "https://www.hotbit.io/"
+    },
+    {
+      "pattern": "https://github.com/mimblewimble/grin-rfcs/pull/0000"
     }
   ],
   "timeout": "20s",

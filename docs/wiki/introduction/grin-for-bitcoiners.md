@@ -1,6 +1,6 @@
 # Grin for Bitcoiners
 
-> *Read this in other languages: [Korean](https://github.com/mimblewimble/grin/blob/master/doc/translations/grin4bitcoiners_KR.md), [简体中文](https://github.com/mimblewimble/grin/blob/master/doc/grin4bitcoiners_ZH-CN.md).*
+> *Read this in other languages: [Korean](https://github.com/mimblewimble/grin/blob/master/doc/translations/grin4bitcoiners_KR.md), [简体中文](https://github.com/mimblewimble/grin/blob/master/doc/translations/grin4bitcoiners_ZH-CN.md).*
 
 ## Privacy and Fungibility
 
@@ -18,9 +18,10 @@ Moreover, there are no more transactions in a block. A Grin block looks just lik
 
 As explained in the previous section, thanks to the Mimblewimble transaction and block format we can merge transactions when an output is directly spent by the input of another. It's as if when Alice gives money to Bob, and then Bob gives it all to Carol, Bob was never involved and his transaction is actually never even seen on the blockchain.
 
-Pushing that further, between blocks, most outputs end up being spent sooner or later by another input. So *all spent outputs can be safely removed*. And the whole blockchain can be stored, downloaded and fully verified in just a few gigabytes or less (assuming a number of transactions similar to bitcoin).
+Pushing that further, between blocks, most outputs end up being spent sooner or later as a transaction input. So all spent outputs can be safely removed.
+That leaves only the kernel of a transaction as having a lasting impact (at around 100 bytes) on the size of the blockchain.
 
-This means that the Grin blockchain scales with the number of users (unspent outputs), not the number of transactions. At the moment, there is one caveat to that: a small piece of data (called a *kernel*, about 100 bytes) needs to stay around for each transaction. But we're working on optimizing that as well.
+Asymptotically, a Mimblewimble blockchain grows at roughly one quarter the rate of a bitcoin blockchain, while offering much better privacy.
 
 ## Scripting
 

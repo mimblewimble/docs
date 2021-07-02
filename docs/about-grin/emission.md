@@ -35,7 +35,7 @@ How the coin gets distributed carries significant importance. Grin was not creat
 
 The constant issuance establishes a fair coin distribution[^3], where equal opportunity is given to everyone, in any point in time. New users should not feel discouraged or disadvantaged when adopting a new form money.
 
-In constrast, distributing a very large portion of the coins early, mostly benefits the first users but presents an unwelcoming narrative to new ones, as it assigns them a substantially smaller portion of the network's value. This in turn affects the currency's long-standing story of distribution.[^4]
+In contrast, distributing a very large portion of the coins early, mostly benefits the first users but presents an unwelcoming narrative to new ones, as it assigns them a substantially smaller portion of the network's value. This in turn affects the currency's long-standing story of distribution.[^4]
 
 ### Wide
 
@@ -54,9 +54,8 @@ Additional properties of constant emission that are worthy to consider:
 * When ownership is more evenly distributed, it likely means that more participants are holding a sizable portion of the network, and thus more users are meaningfully incentivized to advance its growth & improve it.
 * Early users do not profit exponentially due to a decreasing supply, but purely through increasing demand for the coin.
 
-
 [^1]: [Bitcoin's Security Trilemma](https://youtu.be/zPYkL6L3VGw?t=988)
 [^2]: [On the Instability of Bitcoin Without the Block Reward](https://www.cs.princeton.edu/~arvindn/publications/mining_CCS.pdf)
 [^3]: [Grin and the Mythical Fair Launch](https://medium.com/@arjunblj/grin-and-the-mythical-fair-launch-395ca87a5e73)
-[^4]: [The Story of Distribution](../../../wiki/extra-documents/story-of-distribution)
-[^5]: [Nick Szabo on Supply Predictabilty](https://twitter.com/NickSzabo4/status/1077317105148547072)
+[^4]: [The Story of Distribution](../wiki/extra-documents/story-of-distribution.md)
+[^5]: [Nick Szabo on Supply Predictability](https://twitter.com/NickSzabo4/status/1077317105148547072)

@@ -1,6 +1,6 @@
-> *Read this in other languages: [Español](https://github.com/mimblewimble/grin/blob/master/doc/build_ES.md), [Korean](https://github.com/mimblewimble/grin/blob/master/doc/build_KR.md), [日本語](https://github.com/mimblewimble/grin/blob/master/doc/build_JP.md), [简体中文](https://github.com/mimblewimble/grin/blob/master/doc/build_ZH-CN.md).*
+# Build
 
-
+> *Read this in other languages: [Español](https://github.com/mimblewimble/grin/blob/master/doc/translations/build_ES.md), [Korean](https://github.com/mimblewimble/grin/blob/master/doc/translations/build_KR.md), [日本語](https://github.com/mimblewimble/grin/blob/master/doc/translations/build_JP.md), [简体中文](https://github.com/mimblewimble/grin/blob/master/doc/translations/build_ZH-CN.md).*
 
 ## Requirements
 
@@ -87,7 +87,7 @@ cargo build --release
 
 ## What was built?
 
-Let's review what a succesfull build gets you.
+Let's review what a successful build gets you.
 
 ### Binary
 
@@ -114,8 +114,7 @@ You can modify configuration values by editing the `grin-server.toml` file, loca
     grin server config
     ```
 
-    This will generate a `grin-server.toml` file in the current directory. Running grin from a directory that contains `grin-server.toml` will use the values in that filem which will also be pre-configured to use the current directory for all of the node's data.
-
+    This will generate a `grin-server.toml` file in the current directory. Running grin from a directory that contains `grin-server.toml` will use the values in that file which will also be pre-configured to use the current directory for all of the node's data.
 
 ## Configuration
 

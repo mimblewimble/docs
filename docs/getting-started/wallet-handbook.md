@@ -1,14 +1,15 @@
 # CLI Wallet User Handbook
 
-Now that you've set up your node and learned how to form a simple transaction, let's get to know the wallet more deeply. The following document is an extremely comprehensive user guide to the reference grin wallet implementation, `grin-wallet v4.0.0`.
+Now that you've set up your node and learned how to form a simple transaction, let's get to know the wallet more deeply. The following document is an extremely comprehensive user guide to the reference grin wallet implementation, `grin-wallet`.
 
 !!! tip "GUI Wallet"
-    Instructions on how to transact with a graphical user interface can be found in [wallets](../wallets).
+    Instructions on how to transact with a graphical user interface can be found in [wallets](wallets.md).
 
 ## File Structure
+
 By default, grin will create all wallet files in the hidden directory `.grin` under your home directory (i.e. `~/.grin`). You can also create and use a wallet with data files in a custom directory, as will be explained later.
 
-A grin wallet maintains its state in an LMDB database, with the master seed stored in a separate file. When creating a new wallet, the file structure should be as follows:
+A grin wallet maintains its state in an Lightning Memory-Mapped Database (LMDB), with the master seed stored in a separate file. When creating a new wallet, the file structure should be as follows:
 
 ```text
 [wallet directory]
@@ -38,7 +39,6 @@ A grin wallet maintains its state in an LMDB database, with the master seed stor
 
 ---
 
-
 ## help
 
 `grin-wallet help` will display all the commands and every global flag.
@@ -61,7 +61,7 @@ grin-wallet init
 
 You'll be prompted to enter a password for the new wallet. It will be used to encrypt your `master.seed` file and you'll be asked to type it for most wallet commands.
 
-By default, your wallet files will be placed into ``~/.grin`. Alternatively,  if you'd like to run a wallet in a directory of your choice, you can create one in the current directory by using flag `-h`, e.g:
+By default, your wallet files will be placed into `~/.grin`. Alternatively, if you'd like to run a wallet in a directory of your choice, you can create one in the current directory by using flag `-h`, e.g:
 
 ```text
 grin-wallet init -h
@@ -92,17 +92,19 @@ On the first run, the wallet will scan the entire chain and restore any outputs 
 ## account
 
 The `account` command is used to manage wallet accounts. Let's print a list of your existing accounts:
+
 ```text
 grin-wallet account
 ```
 
-Accounts could be thought of as somewhat similar to different bank accounts under the same name. Each account acts as a seperate wallet, but they are all derived from the same master seed. The `default` account is created when you initialize the wallet.
+Accounts could be thought of as somewhat similar to different bank accounts under the same name. Each account acts as a separate wallet, but they are all derived from the same master seed. The `default` account is created when you initialize the wallet.
 
 To create a new account, pass the argument `-c` `--create`.
 
 ```text
 grin-wallet account -c jedusor
 ```
+
 This will create a new account called 'jedusor'.
 
 All `grin-wallet` commands can then be passed the argument `-a` to specify an account for the command (otherwise `default` account is used), e.g:
@@ -136,7 +138,6 @@ Currently Spendable              | 5779.473029600
 * **Locked by previous transaction** shows the amount of coins locked by a previous transaction you have made and that is currently awaiting finalization. This is usually made up both of the amount being sent and of the change outputs waiting to be returned back to your wallet. </br>
 Once the transaction appears on-chain, this balance unlocks and the output that was used will again become available for spending.
 
-
 ## address
 
 To get your wallet address, enter the `address` command.
@@ -158,7 +159,6 @@ This command outputs the same address as using the `listen` command. The address
 !!! info "Address"
      This is not the same concept of address that other cryptocurrencies might use; A Mimblewimble chain has no addresses. It is used purely for wallet to wallet communication.
 
-
 ## listen
 
 The `listen` command opens up a Tor listener.
@@ -168,7 +168,6 @@ grin-wallet listen
 ```
 
 This will automatically configure a Tor hidden service and makes the wallet listen to it for incoming transactions. This allows you to transact directly through Tor with other users who are sending grins to your `grin1...`. Your wallet will listen for requests until the process is cancelled (`<Ctrl-C>`).
-
 
 !!! note ""
     `tor` or `tor.exe` need to be available on the system path.
@@ -182,6 +181,7 @@ The choice between the two methods is handled automatically by using `send` in t
 ```text
 grin-wallet send -d grin1dhvv9mvarqwl6fderuxp3qgl6qpphvc9p4u24347ec0mvvg6342q4w6x5r 180
 ```
+
 This command tries to send `180` grins to the specified address via Tor. If both wallets are accessible, the transaction would complete immediately with no further steps required.
 
 If the above communication fails, for whatever reason, your wallet will output a slatepack message:
@@ -192,7 +192,7 @@ BEGINSLATEPACK. HctgNGXrJDGFY3B KrEF1meAezGjxQ6 Z93QF6Ps2m9yKCQ LfhZvpDY9ZXViM7 
 ZXFLR2TPZwGc5Vt zwFUPoyWfKXasQy VVV6tbKWEEhqAZR e34M7uEwfurpUUi 9812VFPY1qw3K9b ynwQXuXMuWQCUnU s1JqWqFgSQKENUP tGCK19dys9twghA FaAc7ZXQHdMbUoL sVxVfdjE94F1Wpj M7QAM5VZuaauHdQ Mt2erFyxJ5vsYSZ hgS553UKoQL5YWX E7oRNdMDkJV6VkL i55kAQc1vWvW9ce 3MoXiBT4TJ1SyNS NVZKxgk8c. ENDSLATEPACK.
 ```
 
-This message contains the data required for the receiver's wallet to process the transaction via the `receive` command. This slatepack is also encypted for the recipient only, since you provided an address (which is a public key) by using the `-d` flag.
+This message contains the data required for the receiver's wallet to process the transaction via the `receive` command. This slatepack is also encrypted for the recipient only, since you provided an address (which is a public key) by using the `-d` flag.
 
 **Non-encrypted slatepack**
 
@@ -204,18 +204,18 @@ grin-wallet send 180
 
 In this case, the wallet will simply output a non-encrypted slatepack message which can be sent to anybody.
 
-#### more flags
+### more flags
 
 * `-m` `--manual` if present, don't attempt to interact via Tor, only output slatepack message.
 * `-f` `--fluff` if present, ignore the dandelion relay protocol. Dandelion bounces your transactions directly through several nodes in a stem phase, after which the transaction randomly fluffs (broadcast) to the rest of the network.
 * `-n` `--no_payment_proof` if present, do not request the data required for a payment proof. This shortens the slatepack message length.
 * `-e` `--estimate-selection` if present, performs a "dry-run" of creating the transaction, without actually doing anything and locking the funds. It then lists different output selection strategies (outlined below) and their possible effect on your wallet outputs, if chosen.
-* `-s` `--selection` allows you to choose between two output selection strategies, `small` and `all`. The default startegy is `small`, which includes the *minimum* number of inputs to cover the amount, starting with the smallest value output. In contrast, using `all` consolidates *all* of your outputs into a single new output, thus reducing your wallet size, increasing operation speed and reducing the UTXO-set size of the chain. The downside is that the entire contents of your wallet remain locked until the transaction is validated on-chain, and all outputs are linked to one another, a detriment to your privacy.
+* `-s` `--selection` allows you to choose between two output selection strategies, `small` and `all`. The default strategy is `small`, which includes the *minimum* number of inputs to cover the amount, starting with the smallest value output. In contrast, using `all` consolidates *all* of your outputs into a single new output, thus reducing your wallet size, increasing operation speed and reducing the UTXO-set size of the chain. The downside is that the entire contents of your wallet remain locked until the transaction is validated on-chain, and all outputs are linked to one another, a detriment to your privacy.
 * `-b` `--ttl_blocks` allows you to specify a number of blocks into the future, after which a wallet should refuse to process the transaction further. This can be useful for putting time limits on transaction finalization, but please note this is not enforced at the grin protocol level; it's up to individual wallets whether they wish to respect this flag.
 
 ## receive
 
-The `receive` command proccesses the slatepack message provided by the sender.
+The `receive` command processes the slatepack message provided by the sender.
 
 ```text
 grin-wallet receive
@@ -258,7 +258,7 @@ grin-wallet post -i "~/.grin/main/slatepacks/my_tx.S3.slatepack/"
 
 ## proof
 
-Grin's privacy and scalability mechanics mean users no longer have the ability to simply prove a transaction has happened by pointing to it on the chain. By default, whenever a transaction sent to a destination addres using `-d`, a payment proof is created.
+Grin's privacy and scalability mechanics mean users no longer have the ability to simply prove a transaction has happened by pointing to it on the chain. By default, whenever a transaction sent to a destination address using `-d`, a payment proof is created.
 
 Payers can then use these proofs to resolve future payment disputes and prove they sent funds to the correct recipient.
 
@@ -303,7 +303,7 @@ Since invoice transactions require manual confirmation from the party paying the
 grin-wallet invoice -d grin1dhvv9mvarqwl6fderuxp3qgl6qpphvc9p4u24347ec0mvvg6342q4w6x5r 60
 ```
 
-This command will create an encypted (since `-d` is provided) invoice, requesting a payment of `60` grins. The resulting slatepack can then be sent to the other party for them to [pay](#pay).
+This command will create an encrypted (since `-d` is provided) invoice, requesting a payment of `60` grins. The resulting slatepack can then be sent to the other party for them to [pay](#pay).
 
 Upon receiving the back the slatepack from the payer, the transaction can then be finalized and posted using the `finalize` command.
 
@@ -331,10 +331,9 @@ To proceed, type the exact amount of the invoice as displayed above (or Q/q to q
 
 To confirm the payment, type the exact amount in decimal, `10.000000000` in this example, into the prompt. Your wallet will then fill out the transaction slate and return a slatepack for you to provide back to the initiator, which they can then `finalize`.
 
-
 ## unpack
 
-Upon receiving a slatepack message or file from a party, whether in an encrypted form or not, the `unpack` command decrypts and decodes it to a bare slate JSON format (the format used by the wallet to read and contruct transactions).
+Upon receiving a slatepack message or file from a party, whether in an encrypted form or not, the `unpack` command decrypts and decodes it to a bare slate JSON format (the format used by the wallet to read and construct transactions).
 
 ```text
 grin-wallet unpack
@@ -376,7 +375,7 @@ grin-wallet outputs
 ```
 
 ```text
-allet Outputs - Account 'default' - Block Height: 814491
+Wallet Outputs - Account 'default' - Block Height: 814491
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
  Output Commitment                                                   MMR Index  Block Height  Locked Until  Status   Coinbase?  # Confirms  Value           Tx
 ===============================================================================================================================================================
@@ -459,7 +458,6 @@ The `recover` command displays the existing wallet's 24 (or 12) word seed phrase
 ```text
 grin-wallet recover
 ```
-
 
 ---
 

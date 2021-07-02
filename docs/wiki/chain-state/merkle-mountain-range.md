@@ -5,7 +5,7 @@
 ## Structure
 
 !!! note ""
-    For the original document describing the motivation for choosing MMR as the merkle structure for Grin, read [here](merkle-structures(old).md).
+    For the original document describing the motivation for choosing MMR as the Merkle structure for Grin, read [here](merkle-structures(old).md).
 
 Merkle Mountain Ranges[^1] are an alternative to Merkle trees[^2]. While the
 latter relies on perfectly balanced binary trees, the former can be seen

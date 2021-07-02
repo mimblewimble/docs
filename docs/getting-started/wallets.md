@@ -67,7 +67,6 @@ GUI wallet and node written in C++ &emsp;~Windows,~ ~Linux,~ ~macOS~
 
 ---
 
-
 [![Niffler](images/niffler.png){ align=left width=60 }](https://github.com/grinfans/Niffler){:target="_blank"}
 
 ## &emsp;Niffler
@@ -129,9 +128,7 @@ GUI wallet and node using the Rust implementation as back-end &emsp;~Windows,~ ~
 
         Done! Your wallet will now finalize the transaction and post it to the network.
 
-
 ---
-
 
 [![Ironbelly](images/ironbelly.png){ align=left width=55 }](https://ironbelly.app){:target="_blank"}
 
@@ -153,14 +150,11 @@ Mobile wallet &emsp;~iOS,~ ~Android~
 
         Soon
 
-
-
 ---
 
 </br>
 
 # Related Services
-
 
 [![grinnode.live](images/grinnode-live.png){ align=left width=90 }](https://grinnode.live/){:target="_blank"}
 

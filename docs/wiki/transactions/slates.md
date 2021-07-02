@@ -8,6 +8,7 @@
     - Tracking issue: [mimblewimble/grin-wallet#317](https://github.com/mimblewimble/grin-wallet/issues/317)
 
 ## Summary
+
 [summary]: #summary
 
 !!! note "What is a slate?"
@@ -16,6 +17,7 @@
 This RFC describes the changes between version 3 and version 4 of the Slate transaction exchange format, which had the goal of reducing the contents of the Slate to be as minimal as possible.
 
 ## Motivation
+
 [motivation]: #motivation
 
 Previously, the definition of Slate versions up to V3 had been put together with no regard for its size or/and redundant/irrelevant content. In order to facilitate future exchange method possibilities, it's desirable to ensure the Slate is as compact as possible, particularly on the 'first leg' of a transaction exchange which only actually requires minimal information from the transaction initiator.
@@ -33,6 +35,7 @@ Although this RFC doesn't address any particular transaction exchange methods th
 * Encoding the initial slate as an easily-cut-and-paste chunk
 
 ## Community-level explanation
+
 [community-level-explanation]: #community-level-explanation
 
 There are two basic transaction workflows in a two-party Grin transaction:
@@ -41,7 +44,7 @@ There are two basic transaction workflows in a two-party Grin transaction:
 
 * In the Invoice workflow, the invoice creator adds a new output to a transaction, and sends the amount and signature data to the payer. The payer adds their inputs and change outputs to the transaction along with their signature data and fee information, then returns to the invoicer, who completes the transaction and posts.
 
-Although previous versions of the Slate included every party's complete inputs and outputs at every stage of the transaction, it is not technically necessary for the initiator to provide their inputs and outputs to the other party. It suffices for the initiator to store the input/output listing in their local transaction context, and only provide the amount, fee, excess and signature data to the other party. Recognising this, it is possible to ensure that the 'first-leg' of a transaction stage is extremely compact.
+Although previous versions of the Slate included every party's complete inputs and outputs at every stage of the transaction, it is not technically necessary for the initiator to provide their inputs and outputs to the other party. It suffices for the initiator to store the input/output listing in their local transaction context, and only provide the amount, fee, excess and signature data to the other party. Recognizing this, it is possible to ensure that the 'first-leg' of a transaction stage is extremely compact.
 
 For instance, version 3 of the Slate on transaction initiation may have looked something like the following:
 
@@ -392,7 +395,7 @@ All integer values are Big-Endian.
 | `proof`                    | struct         | (varies) | If present. See [Proof](#proof)                       |
 | `feat_args` entries        | struct         | (varies) | If present. See [Feature Args](#feature-args)         |
 
-**Status Byte**
+### Status Byte
 
 Encodes slate status (`sta`) field, mapped as follows:
 
@@ -406,7 +409,7 @@ Encodes slate status (`sta`) field, mapped as follows:
 | `I2`            | 5     |
 | `I3`            | 6     |
 
-**Optional Field Status**
+### Optional Field Status
 
 A bit field that denotes the presence or absence of the optional slate fields. Each bit is
 mapped to particular slate field as follows:
@@ -417,7 +420,7 @@ mapped to particular slate field as follows:
 
 If the corresponding field for a bit is 1, the field is present and must be read accordingly.
 
-**Sigs Entries**
+### Sigs Entries
 
 Sigs Entries contains a length-prefixed array of entries corresponding to the `sigs` struct.
 
@@ -435,7 +438,7 @@ Each Sigs Entry is structured as follows:
 | `nonce`       | secp256k1 Public Key | 33   |                                    |
 | `part`        | secp256k1 AggSig     | (64) | If present                         |
 
-**Optional Struct Status**
+### Optional Struct Status
 
 A bit field that denotes the presence or absence of the optional slate structures. Each bit is
 mapped to particular slate structure as follows:
@@ -446,7 +449,7 @@ mapped to particular slate structure as follows:
 
 If the corresponding field for a struct is 1, the struct is present and must be read accordingly.
 
-**Coms Entries**
+### Coms Entries
 
 Coms Entries contains a length-prefixed array of entries corresponding to the `coms` struct.
 
@@ -464,7 +467,7 @@ Each Coms Entry is structured as follows:
 | `c`         | Commitment | 33   |                                                       |
 | `p`         | Rangeproof | 675  | If present                                            |
 
-**Proof**
+### Proof
 
 Optional Payment proof, with fields as follows
 
@@ -475,7 +478,7 @@ Optional Payment proof, with fields as follows
 | rsig flag   | u8                 | 1    | If non-zero, `rsig` field is present |
 | `rsig`      | ed25519 EDCSA Sig  | (64) | If present                           |
 
-**Feature Args**
+### Feature Args
 
 Optional feature args, presence or absence of which should be determined by the
 value of the `feat` field. Currently only present if `feat` is 2.
@@ -496,5 +499,5 @@ value of the `feat` field. Currently only present if `feat` is 2.
 This RFC is envisaged as a necessary first step for all slate-exchange possibilities that would benefit from compactness, e.g:
 
 * QR Code encoding of slates
-* [Armored slates]()
-* [Slatepack](https://github.com/j01tz/grin-rfcs/blob/slatepack/text/0000-slatepack.md)
+* Armored slates
+* [Slatepack](../../grin-rfcs/text/0012-compact-slates.md)

@@ -72,7 +72,7 @@ grin-wallet already handles ed25519 keys for the v3 onion addresses in Tor trans
 
 _By default, all wallets should generate a new `SlatepackAddress` for each transaction for improved user privacy and security._ Wallets can optionally support the ability for a static, reusable receiving `SlatepackAddress` with a warning about the privacy risks of reusing these addresses.
 
-The exact proposal for the implementation of simulatenous active `SlatepackAddresses` to enforce address uniqueness by default according to this standard is left as an implementation detail to wallets to ensure that wallets can _interactively_ receive Grin across many `SlatepackAddresses` simulataneously and efficiently.
+The exact proposal for the implementation of simultaneous active `SlatepackAddresses` to enforce address uniqueness by default according to this standard is left as an implementation detail to wallets to ensure that wallets can _interactively_ receive Grin across many `SlatepackAddresses` simultaneously and efficiently.
 
 ed25519 keys are bech32 encoded as `SlatepackAddresses` rather than x25519 keys because the mapping from ed25519 to x25519 is more straightforward (x25519 public keys do not carry a `v` coordinate so they can map to two possible ed25519 public keys- this is solvable but using the ed25519 as the first order key avoids a potentially complex solution).
 

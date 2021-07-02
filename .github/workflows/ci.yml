@@ -12,5 +12,5 @@ jobs:
         with:
           python-version: 3.x
       - run: git submodule init && git submodule update
-      - run: pip install mkdocs-material
+      - run: pip install -Iv mkdocs-material
       - run: mkdocs gh-deploy --force

@@ -85,7 +85,7 @@ The message `M` to sign would need to include the following:
 * A referenced kernel commitment `C`
 * M = `fee | h | C`
 
-For Tx2 to be accepted it would also need to include a [Merkle proof](../../building-blocks/merkle-mountain-range/#merkle-proof) identifying the block including `C` from Tx1. This proves the relative lock_height requirement has been met.
+For Tx2 to be accepted it would also need to include a [Merkle proof](../chain-state/merkle-mountain-range.md#merkle-proof) identifying the block including `C` from Tx1. This proves the relative lock_height requirement has been met.
 
 ## Derived Contracts
 

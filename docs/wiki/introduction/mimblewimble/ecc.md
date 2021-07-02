@@ -5,11 +5,11 @@ description: Elliptic Curve Cryptography ECC
 
 **Preface**
 
-The following three-part series is intended for those who wish to understand what goes on inside Mimblewimble and Grin. We try to make this objective more accessible by going through the cryptographic primitives required to know first, without diving into proofs and specifics. Once those are in order, we connect everything explain how Mimblewimble works.
+The following three-part series is intended for those who wish to understand what goes on inside Mimblewimble and Grin. We try to make this objective more accessible by going through the cryptographic primitives required to know first, without diving into proofs and specifics. Once those are in order, we connect everything and explain how Mimblewimble works.
 
-1. [Elliptic Curves](../ecc)
-1. [Commitments](../commitments)
-1. [Mimblewimble](../mimblewimble)
+1. [Elliptic Curves](ecc.md)
+1. [Commitments](commitments.md)
+1. [Mimblewimble](mimblewimble.md)
 
 For the original introduction (along with many translations), refer to [here](https://github.com/mimblewimble/grin/blob/master/doc/intro.md).
 
@@ -17,7 +17,7 @@ For the original introduction (along with many translations), refer to [here](ht
 
 # Elliptic Curve Cryptography
 
-Mimblewimble relies entirely on Elliptic-curve cryptography (ECC), an approach to public-key cryptography. Put simply, given an algebraic curve of the form `y^2 = x^3 + ax + b`, pairs of private and public keys can be derived. Picking a private key and computing its correspnding public key is trivial, but the reverse operation `public key -> private key` is called the *discrete logarithm problem*, and is considered to be computationally infeasible.
+Mimblewimble relies entirely on Elliptic-curve cryptography (ECC), an approach to public-key cryptography. Put simply, given an algebraic curve of the form `y^2 = x^3 + ax + b`, pairs of private and public keys can be derived. Picking a private key and computing its corresponding public key is trivial, but the reverse operation `public key -> private key` is called the *discrete logarithm problem*, and is considered to be computationally infeasible.
 
 Let's review the basics.
 

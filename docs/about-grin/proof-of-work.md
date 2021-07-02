@@ -5,12 +5,12 @@ Proof of work is a consensus mechanism which allows anyone to extend the blockch
 Grin has an average block time of 60 seconds and employs Cuckoo Cycle[^1], a memory bound proof of work algorithm, or more specifically, a variation of it named *Cuckatoo* that is meant to simplify ASICs.
 
 ??? info "Cuckoo Cycle"
-    The algorithm finds length-42 cycles in a bipartite graph. The current (and final) grin PoW is Cuckatoo32+, in which a graph must have at least 2^32^ + 2^32^ nodes. For a comprehensive introduction, read [here](../../wiki/miscellaneous/cuckoo-cycle).
+    The algorithm finds length-42 cycles in a bipartite graph. The current (and final) grin PoW is Cuckatoo32+, in which a graph must have at least 2^32^ + 2^32^ nodes. For a comprehensive introduction, read [here](../wiki/miscellaneous/cuckoo-cycle.md).
 
     !!! quote ""
         Q: Why use a memory-hard proof of work?
 
-        A: The point is that chips dominated by memory have rather different characteristics from computational chips; they run much cooler, dissipating less heat per unit of area. This shifts the mining cost from mostly opex (electricity) to mostly capex (hardware cost), which delays obsolescence  and allows mining in places with higher electricity costs.
+        A: The point is that chips dominated by memory have rather different characteristics from computational chips; they run much cooler, dissipating less heat per unit of area. This shifts the mining cost from mostly OPEX (electricity) to mostly CAPEX (hardware cost), which delays obsolescence  and allows mining in places with higher electricity costs.
 
 ## Two Algorithms
 
@@ -50,7 +50,5 @@ Therefore, to achieve optimal security, two conditions must be met:
 There’s increasingly more evidence that ASICs are inevitable, as dedicated hardware will always have ways in which it can improve upon general purpose hardware. While it *is* possible to make ASIC manufacturing more difficult, over a long period it is likely to end up a centralizing force in itself, as it makes the chain vulnerable to secret ASIC operations[^3].
 
 [^1]: [Cuckoo Cycle](https://github.com/tromp/cuckoo)
-
 [^2]: [ASICs and Decentralization FAQ](https://download.wpsoftware.net/bitcoin/asic-faq.pdf)
-
 [^3]: [The State of Cryptocurrency Mining](https://blog.sia.tech/the-state-of-cryptocurrency-mining-538004a37f9b)

@@ -23,16 +23,16 @@ To everybody else, our commitment `8*G` just looks like a random point, and we p
 reveal 8
 ```
 
-And now any observer could multiply our stated value 8, by the public point G and verify that their result is equal to the commitment we published ealier.
+And now any observer could multiply our stated value 8, by the public point G and verify that their result is equal to the commitment we published earlier.
 
 ```text
 verify (8, commitment) == 8*G  ? --> True/False
 ```
 
-However, there’s a major issue. If our value is within a small range, which is typically the case, it’s simple for anybody to find out what value we committed to, even if we don’t reveal it; By trying out (brute-forcing) different values, they can find the one value that, when multiplied by `G` , matches the original commitment.
+However, there’s a major issue. If our value is within a small range, which is typically the case, it’s simple for anybody to find out what value we committed to, even if we don’t reveal it; by trying out (brute-forcing) different values, they can find the one value that, when multiplied by `G`, matches the original commitment.
 
 !!! note "Example"
-    Say we're betting on how many goals a team would score by the end of the year. Our guess is 23, and we commit to it by publishing the commitment `23*G`. Problem is, it would be trivial for anybody to uncover our guess simply by trying to commit to 1, 2, 3, 4 etc and checking each result if it's equal to our commitment. In this case, our value will be revealed after only 23 simple steps.
+    Say we're betting on how many goals a team would score by the end of the year. Our guess is 23, and we commit to it by publishing the commitment `23*G`. Problem is, it would be trivial for anybody to uncover our guess simply by trying to commit to 1, 2, 3, 4 etc. and checking each result if it's equal to our commitment. In this case, our value will be revealed after only 23 simple steps.
 
 What’s the solution?
 
@@ -40,7 +40,7 @@ What’s the solution?
 
 The issue is solved by adding a blinding factor r, which is a random 256-bit integer (range 0 to 2^256, same as a typical private key) used to blind the value so that it can’t be guessed and uncovered.
 
-We could try adding the blinding factor by comitting `(8+r)*G` and then revealing `8` and `r`. But, doing so breaks the binding property of the commitment, because instead of revealing value `8` and blinding factor `r`, we could reveal `7` and `r+1` or any other value.
+We could try adding the blinding factor by committing `(8+r)*G` and then revealing `8` and `r`. But, doing so breaks the binding property of the commitment, because instead of revealing value `8` and blinding factor `r`, we could reveal `7` and `r+1` or any other value.
 
 Therefore, we require a different method to include `r`.
 
@@ -76,7 +76,7 @@ They allow us to do as follows:
 	commit (y)  &rArr; C~2~ </br>
 	commit (x+y) &rArr; Z = C~1~ + C~2~
 
-f we add two commitments to each other, the result would be an entirely new, valid commitment, which actually commits to the value `x + y`. So we’re able to perform a math operation (addition) unto encrypted data (commitments) while keeping the underlying values “intact”.
+If we add two commitments to each other, the result would be an entirely new, valid commitment, which actually commits to the value `x + y`. So we’re able to perform a math operation (addition) unto encrypted data (commitments) while keeping the underlying values “intact”.
 
 Elliptic curve commitments indeed have these homomorphic properties. We can do the following:
 
@@ -107,7 +107,7 @@ So we can calculate what **Z** is:
 Z = (r1 + r2)*G + (v1 + v2)*H
 ```
 
-Hence point **Z** is a pedersen commitment that is the sum of commitments **C~1~** and **C~2~**.
+Hence point **Z** is a Pedersen commitment that is the sum of commitments **C~1~** and **C~2~**.
 
 This is the foundation for the Elliptic-curve algebra used in Mimblewimble to prove both ownership of outputs (coins) and non-inflation.
 

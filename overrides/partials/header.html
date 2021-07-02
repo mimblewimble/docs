@@ -1,16 +1,13 @@
 <!--
-  Copyright (c) 2016-2020 Martin Donath <martin.donath@squidfunk.com>
-
+  Copyright (c) 2016-2021 Martin Donath <martin.donath@squidfunk.com>
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to
   deal in the Software without restriction, including without limitation the
   rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
   sell copies of the Software, and to permit persons to whom the Software is
   furnished to do so, subject to the following conditions:
-
   The above copyright notice and this permission notice shall be included in
   all copies or substantial portions of the Software.
-
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
   FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
@@ -20,51 +17,44 @@
   IN THE SOFTWARE.
 -->
 
-<!-- Application header -->
+<!-- Header -->
 <header class="md-header" data-md-component="header">
-
-  <!-- Top-level navigation -->
-  <nav class="md-header-nav md-grid" aria-label="{{ lang.t('header.title') }}">
+  <nav
+    class="md-header__inner md-grid"
+    aria-label="{{ lang.t('header.title') }}"
+  >
 
     <!-- Link to home -->
     <a
       href="{{ config.main_site_url | default(nav.homepage.url, true) | url }}"
-      title="{{ config.main_site_name }}"
-      class="md-header-nav__button md-logo"
-      aria-label="{{ config.site_main_name }}"
+      title="{{ config.main_site_name | e }}"
+      class="md-header__button md-logo"
+      aria-label="{{ config.main_site_name }}"
     >
       {% include "partials/logo.html" %}
     </a>
 
     <!-- Button to open drawer -->
-    <label class="md-header-nav__button md-icon" for="__drawer">
+    <label class="md-header__button md-icon" for="__drawer">
       {% include ".icons/material/menu" ~ ".svg" %}
     </label>
 
     <!-- Header title -->
-    <div class="md-header-nav__title" data-md-component="header-title">
-      {% if config.site_name == page.title %}
-        <div class="md-header-nav__ellipsis md-ellipsis">
-          <a
-            href="{{ config.site_url | default(nav.homepage.url, true) | url }}"
-            title="{{ config.site_name }}"
-            aria-label="{{ config.site_name }}"
-          >
-            {{ config.site_name }}
-          </a>
-        </div>
-      {% else %}
-        <div class="md-header-nav__ellipsis">
-          <span class="md-header-nav__topic md-ellipsis">
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
             <a
               href="{{ config.site_url | default(nav.homepage.url, true) | url }}"
               title="{{ config.site_name }}"
               aria-label="{{ config.site_name }}"
             >
-              {{ config.site_name }}
+            {{ config.site_name }}
             </a>
           </span>
-          <span class="md-header-nav__topic md-ellipsis">
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
             {% if page and page.meta and page.meta.title %}
               {{ page.meta.title }}
             {% else %}
@@ -72,12 +62,37 @@
             {% endif %}
           </span>
         </div>
+      </div>
+    </div>
+
+    <!-- Header options -->
+    <div class="md-header__options">
+
+      <!-- Switch to toggle language -->
+      {% if config.extra.alternate %}
+        <div class="md-select">
+          {% set icon = config.theme.icon.alternate or "material/translate" %}
+          <span class="md-header__button md-icon">
+            {% include ".icons/" ~ icon ~ ".svg" %}
+          </span>
+          <div class="md-select__inner">
+            <ul class="md-select__list">
+              {% for alt in config.extra.alternate %}
+                <li class="md-select__item">
+                  <a href="{{ alt.link | url }}" class="md-select__link">
+                    {{ alt.name }}
+                  </a>
+                </li>
+                {% endfor %}
+            </ul>
+          </div>
+        </div>
       {% endif %}
     </div>
 
-    <!-- Button to open search dialogue -->
+    <!-- Button to open search modal -->
     {% if "search" in config["plugins"] %}
-      <label class="md-header-nav__button md-icon" for="__search">
+      <label class="md-header__button md-icon" for="__search">
         {% include ".icons/material/magnify.svg" %}
       </label>
 
@@ -85,9 +100,9 @@
       {% include "partials/search.html" %}
     {% endif %}
 
-    <!-- Repository containing source -->
+    <!-- Repository information -->
     {% if config.repo_url %}
-      <div class="md-header-nav__source">
+      <div class="md-header__source">
         {% include "partials/source.html" %}
       </div>
     {% endif %}

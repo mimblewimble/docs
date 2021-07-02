@@ -11,11 +11,17 @@
     },
     {
       "pattern": "https://github.com/mimblewimble/grin-rfcs/pull/0000"
+    },
+    {
+      "pattern": "https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography/"
     }
   ],
   "timeout": "20s",
   "retryOn429": true,
   "retryCount": 5,
   "fallbackRetryDelay": "30s",
-  "aliveStatusCodes": [200, 206]
+  "aliveStatusCodes": [
+    200,
+    206
+  ]
 }

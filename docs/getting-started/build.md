@@ -74,6 +74,17 @@ cargo build --release
 
     On Ubuntu install the ncurses development headers: `apt install libncursesw5-dev`.
 
+### Upgrading
+
+```text
+rustup update
+cd ~/grin
+git checkout master
+git pull
+git checkout [determine latest build you want e.g. v5.0.0]
+cargo build --release
+```
+
 ## What was built?
 
 Let's review what a successful build gets you.

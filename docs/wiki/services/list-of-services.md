@@ -29,3 +29,7 @@
 - [2Miners](https://2miners.com)
 - [MinerGate](https://minergate.com)
 - [GoblinPool](https://goblinpool.com/)
+
+## Marketplaces
+
+- [Slatepacks Market](https://slatepacks.com/)

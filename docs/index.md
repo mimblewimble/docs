@@ -27,7 +27,8 @@ Minimal implementation that strives to remain as clear and simple as possible, m
 
 ### Proven
 
-Mimblewimble only relies on strong Elliptic Curve cryptography which has been tried and tested for decades.
+Mimblewimble relies on Elliptic Curve cryptography which has been tried and tested for decades. 
+A formal study of its security was [published](https://eprint.iacr.org/2018/1039) in one of the [flagship conferences of the the International Association for Cryptologic Research](https://www.iacr.org/meetings/eurocrypt/).
 
 </br>
 <center>

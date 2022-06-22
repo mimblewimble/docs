@@ -10,22 +10,24 @@
 ### Active trading but no withdraw/deposit
 
 - [BitForex](https://www.bitforex.com/)
-- [HitBTC](https://hitbtc.com/)
+- [HitBtc](https://hitbtc.com/)
 - [Hotbit](https://www.hotbit.io/)
 - [KuCoin](https://www.kucoin.com/)
-- [Kaiserex](https://www.kaiserex.com/)
-- [BigONE](https://big.one/en)
+- [BKEX](https://www.bkex.com/trade/GRIN_USDT)
+- [ZB](https://www.zb.com/en/kline/grin_usdt)
 
 ## Block Explorers
 
 - [Grinscan](https://grinscan.net/)
 - [Grinmint](https://grinmint.com/explorer/)
 - [GrinExplorer](https://grinexplorer.net/)
+- [ScanGrinMoney](https://scan.grin.money/)
 
 ## Mining Pools
 
 - [GrinMint](https://www.grinmint.com)
-- [WoolyPooly](https://woolypooly.com)
+- [HeroMiners](https://grin.herominers.com)
 - [2Miners](https://2miners.com)
-- [MinerGate](https://minergate.com)
-- [GoblinPool](https://goblinpool.com/)
+- [Alwaysvip](https://pool.always.vip)
+- [GaeaPool](https://gaeapool.com)
+- [Easygrin](https://pool.easygrin.org)             

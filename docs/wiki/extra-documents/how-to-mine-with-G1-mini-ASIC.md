@@ -91,4 +91,4 @@ Click Miners-Dashboard to check current server operating status.
 
 Done!
 
-**İnstructed by [ipollo official](https://ipollo.com/)
+**Instructed by [ipollo official](https://ipollo.com/)

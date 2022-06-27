@@ -23,7 +23,7 @@ Press the “IP Report” button on the server for 3-5 seconds and release it.
 
 <img alt="grin tutorial image 1" width="400px" src="../../assets/images/g1-mini-ASIC/G1-tut-2.png" />
 
-The server IP address will be feedback as shown below:
+The server IP address will be shown as can be seen below:
 
 
 <img alt="grin tutorial image 1" width="400px" src="../../assets/images/g1-mini-ASIC/G1-tut-3.png" />
@@ -70,9 +70,7 @@ Pool4：stratum+tcp://grin.us.always.vip:3344
 
 *For Decentralization and healthy Network, choose other pools please.
 
-Pool Worker：According to the“sub-accounts”set in the corresponding mining pool account, if the sub-account is ipollo123, the worker should be ipollo123.xxx, the number suffixed used to
-
-distinguish the server.
+Pool Worker：According to the“sub-accounts”set in the corresponding mining pool account, if the sub-account is ipollo123, the worker should be ipollo123.xxx, the number suffixed used to distinguish the server.
 
 The default pool password is 123.
 

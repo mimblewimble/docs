@@ -30,4 +30,5 @@
 - [2Miners](https://2miners.com)
 - [Alwaysvip](https://pool.always.vip)
 - [GaeaPool](https://gaeapool.com)
+- [WoolyPooly](https://woolypooly.com)
 - [Easygrin](https://pool.easygrin.org)             

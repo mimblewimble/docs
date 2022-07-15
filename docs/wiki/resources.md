@@ -160,9 +160,8 @@
 [[GitHub] Fees in Mining](https://github.com/mimblewimble/grin/wiki/fees-mining) </br>
 [[Google] Replay Attacks Summary](https://docs.google.com/document/d/1BbXhgFd3byP_gfvnteRq4BmfXjtv5PJtJwI13CJsZT8/edit#) </br>
 [[Blog] A Relatively Easy to Understand Primer on ECC](https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography/)
-    </br>
-[Grinvestigation](https://phyro.github.io/grinvestigation/)
 </br>
+
 
 #### RFCs
 

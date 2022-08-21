@@ -26,11 +26,14 @@ Each of the inputs consists of **Feature** and a **Commitment**.
 
 Just as in case of the inputs, the outputs consist of **Feature** and a **Commitment** but in addition they also hold **Range proofs**
 
-| Field         | Description                             | Size                |
-|:--------------|:----------------------------------------|:--------------------|
-| Feature       | **Plain** (0x00) or **Coinbase** (0x01) | 1 byte              |
-| Commitment    | Pedersen commitment                     | 33 bytes            |
-| Range proof   | Proves the transaction is net positive  | 8 bytes             |
+| Field                  | Description                             | Size                |
+|:-----------------------|:----------------------------------------|:--------------------|
+| Feature                | **Plain** (0x00) or **Coinbase** (0x01) | 1 byte              |
+| Commitment             | Pedersen commitment                     | 33 bytes            |
+| Range proof size **x** | Proves the transaction is net positive  | 8 bytes             |
+| Range proof            | Proves the transaction is net positive  | **x** bytes         |
+
+Note that the **range proof** is of a variable size which is indicated by its first 8 bytes.
 
 ## Kernels
 

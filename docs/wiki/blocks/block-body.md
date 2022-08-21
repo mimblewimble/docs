@@ -60,9 +60,21 @@ A kernel resulting from a transaction, unlike **Coinbase** kernel it also includ
 | Excess commitment | Pedersen commitment                                                                               | 33 bytes            |
 | Excess signature  | Schnorr signature                                                                                 | 64 bytes            |
 
-### Height locked / no recent duplicate / V1 protocol kernel
+### Height locked kernels
 
-The first protocol **kernel** would always consist of **Feature**, **Fee**, **Lock height** and standard **Excess commitment** and **Signature**. Once V2 protocol was introduced this kind of kernel becamse **Height locked** kernel or **No recent duplicate** kernel.
+The first protocol **kernel** would always consist of **Feature**, **Fee**, **Lock height** and standard **Excess commitment** and **Signature**. Starting from the V2 protocol a specific type of kernel - **height locked** kernel supports the **lock height**.
+
+| Field             | Description                                                                                       | Size                |
+|:------------------|:--------------------------------------------------------------------------------------------------|:--------------------|
+| Feature           | **Plain** (0x00), **Coinbase** (0x01), **Height Locked** (0x02) or **No recent duplicate** (0x03) | 1 byte              |
+| Fee               | Transaction fee                                                                                   | 8 bytes             |
+| Lock height       | Block height starting from which the kernel becomes valid                                         | 8 bytes             |
+| Excess commitment | Pedersen commitment                                                                               | 33 bytes            |
+| Excess signature  | Schnorr signature                                                                                 | 64 bytes            |
+
+### NRD (No Recent Duplicate) kernels
+
+( need help describing )
 
 | Field             | Description                                                                                       | Size                |
 |:------------------|:--------------------------------------------------------------------------------------------------|:--------------------|

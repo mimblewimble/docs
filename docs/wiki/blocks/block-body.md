@@ -1,6 +1,6 @@
-# Block Body
+# Transaction Body
 
-General format of a **Block Body** in a Mimblewimble/Grin is basically a Mimblewimble transaction which consists of a list of **Inputs**, **Outputs** and **Kernels**.
+General format of a **Transaction Body** in a Mimblewimble/Grin is basically a Mimblewimble transaction which consists of a list of **Inputs**, **Outputs** and **Kernels**.
 
 | Field         | Description           | Size                 |
 |:--------------|:----------------------|:---------------------|

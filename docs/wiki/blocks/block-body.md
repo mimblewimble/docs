@@ -74,7 +74,7 @@ The first protocol **kernel** would always consist of **Feature**, **Fee**, **Lo
 
 ### NRD (No Recent Duplicate) kernels
 
-( need help describing )
+When transaction is representing a creation of a payment channel it is relevant to ensure that one of the parties cannot update own kernel associated to own output in the transaction. The NRD kernels are created simultaneously and correlated preventing such an attack. More details in the [mailing list archive](https://lists.launchpad.net/mimblewimble/msg00636.html).
 
 | Field             | Description                                                                                       | Size                |
 |:------------------|:--------------------------------------------------------------------------------------------------|:--------------------|

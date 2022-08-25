@@ -74,7 +74,7 @@ The first protocol **kernel** would always consist of **Feature**, **Fee**, **Lo
 
 ### NRD (No Recent Duplicate) kernels
 
-When transaction is representing a creation of a payment channel it is relevant to ensure that one of the parties cannot update own kernel associated to own output in the transaction. The NRD kernels are created simultaneously and correlated preventing such an attack. More details in the [mailing list archive](https://lists.launchpad.net/mimblewimble/msg00636.html).
+An NRD kernel is only valid in the absence of an identical instance existing within the last relative-height blocks. More information is available in the [NRD kernel RFC](../../grin-rfcs/text/0013-nrd-kernels.md) as well as in the [mailing list archive](https://lists.launchpad.net/mimblewimble/msg00636.html).
 
 | Field             | Description                                                                                       | Size                |
 |:------------------|:--------------------------------------------------------------------------------------------------|:--------------------|

@@ -76,10 +76,10 @@ The first protocol **kernel** would always consist of **Feature**, **Fee**, **Lo
 
 An NRD kernel is only valid in the absence of an identical instance existing within the last relative-height blocks. More information is available in the [NRD kernel RFC](../../grin-rfcs/text/0013-nrd-kernels.md) as well as in the [mailing list archive](https://lists.launchpad.net/mimblewimble/msg00636.html).
 
-| Field             | Description                                                                                       | Size                |
-|:------------------|:--------------------------------------------------------------------------------------------------|:--------------------|
-| Feature           | **Plain** (0x00), **Coinbase** (0x01), **Height Locked** (0x02) or **No recent duplicate** (0x03) | 1 byte              |
-| Fee               | Transaction fee                                                                                   | 8 bytes             |
-| Lock height       | Block height starting from which the kernel becomes valid                                         | 8 bytes             |
-| Excess commitment | Pedersen commitment                                                                               | 33 bytes            |
-| Excess signature  | Schnorr signature                                                                                 | 64 bytes            |
+| Field                | Description                                                                                       | Size                |
+|:---------------------|:--------------------------------------------------------------------------------------------------|:--------------------|
+| Feature              | **Plain** (0x00), **Coinbase** (0x01), **Height Locked** (0x02) or **No recent duplicate** (0x03) | 1 byte              |
+| Fee                  | Transaction fee                                                                                   | 8 bytes             |
+| Relative lock height | Number of most recent blocks in which the same NRD must be absent                                 | 8 bytes             |
+| Excess commitment    | Pedersen commitment                                                                               | 33 bytes            |
+| Excess signature     | Schnorr signature                                                                                 | 64 bytes            |

@@ -41,7 +41,7 @@ Every kernel starts with **Kernel feature** which indicates how it should be des
 
 ### Coinbase kernel
 
-The most basic kernel that does not contain **Fee** nor **Lock height**.
+This kernel is used for coinbase outputs that collect both the fixed block subsidy of 60 Grin and all the transaction fees in the block.
 
 | Field             | Description                                                                                       | Size                |
 |:------------------|:--------------------------------------------------------------------------------------------------|:--------------------|

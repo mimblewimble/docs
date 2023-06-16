@@ -11,9 +11,6 @@
 
 - [BitForex](https://www.bitforex.com/)
 - [HitBtc](https://hitbtc.com/)
-- [Hotbit](https://www.hotbit.io/)
-- [KuCoin](https://www.kucoin.com/)
-- [BKEX](https://www.bkex.com/trade/GRIN_USDT)
 - [ZB](https://www.zb.com/en/kline/grin_usdt)
 
 ## Block Explorers

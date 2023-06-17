@@ -11,11 +11,9 @@
 
 - [BitForex](https://www.bitforex.com/)
 - [HitBtc](https://hitbtc.com/)
-- [ZB](https://www.zb.com/en/kline/grin_usdt)
 
 ## Block Explorers
 
-- [Grinscan](https://grinscan.net/)
 - [Grinmint](https://grinmint.com/explorer/)
 - [GrinExplorer](https://grinexplorer.net/)
 - [ScanGrinMoney](https://scan.grin.money/)
@@ -25,7 +23,9 @@
 - [GrinMint](https://www.grinmint.com)
 - [HeroMiners](https://grin.herominers.com)
 - [2Miners](https://2miners.com)
+- [2Miners SOLO](https://solo-grin.2miners.com/)
 - [Alwaysvip](https://pool.always.vip)
 - [GaeaPool](https://gaeapool.com)
-- [WoolyPooly](https://woolypooly.com)
-- [Easygrin](https://pool.easygrin.org)             
+- [Easygrin](https://pool.easygrin.org) 
+- [Easygrin SOLO](https://solo.easygrin.org/)  
+- [GrinMint](https://www.grinmint.com)

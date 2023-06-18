@@ -28,4 +28,3 @@
 - [GaeaPool](https://gaeapool.com)
 - [Easygrin](https://pool.easygrin.org) 
 - [Easygrin SOLO](https://solo.easygrin.org/)  
-- [GrinMint](https://www.grinmint.com)

@@ -24,10 +24,10 @@ All outputs include a Pedersen commitment of the form `r*G + v*H` with `r`
 the blinding factor, `v` the value, and G and H two distinct generator points
 on the same curve group.
 
-### Aggregate Signatures (a.k.a. Schnorr, MuSig)
+### Schnorr Signatures
 
 We suppose we have the SHA256 hash function and the same G curve as above. In
-its simplest form, an aggregate signature is built from:
+its simplest form, a Schnorr signature is built from:
 
 * the message `M` to sign, in our case the transaction fee
 * a private key `x`, with its matching public key `x*G`
@@ -45,12 +45,13 @@ s*G = k*G + e * x*G
 ```
 
 In this simple case of someone sending a transaction to a receiver they trust
-(see later for the trustless case), an aggregate signature can be directly
+(see later for the trustless case), a signature can be directly
 built for a Grin transaction by taking the above private key `x` to be the sum
 of output blinding factors minus the sum of input blinding factors. The resulting
 kernel is assembled from the aggregate signature generated using `r` and the
 public key `r*G`, and allows to verify non-inflation for all Grin transactions
-(and signs the fees).
+(and signs the fees). In the case of a multi-signature, a more complex protocol called MuSig
+is used for generating a Schnorr signature.
 
 Because these signatures are built simply from a scalar and a public key, they
 can be used to construct a variety of contracts using "simple" arithmetic.

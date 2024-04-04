@@ -14,7 +14,7 @@
 
 ## Block Explorers
 
-- [Grinmint](https://grinmint.com/explorer/)
+- [Grinmint](https://www.grinmint.com/explorer/)
 - [GrinExplorer](https://grinexplorer.net/)
 - [ScanGrinMoney](https://scan.grin.money/)
 

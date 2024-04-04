@@ -32,12 +32,12 @@ What do we call the "technomity" aka the Council of Grin, given it certainly doe
 * The Stygmergic Syzygy
 * Institute of Broom and Wand Design
 * Magical Undertakings of Money (MUMs the word!)
-* P.O.W.O.W. (which could stand for The POWOW Order of Wizards Ongoing Work… which has that nice nested GNU thing… and actually we’ve already been calling it the powow… plus the connotations for proof of work, POW, and pain, OW… but is probably incensitive to native americans)
+* P.O.W.O.W. (which could stand for The POWOW Order of Wizards Ongoing Work… which has that nice nested GNU thing… and actually we’ve already been calling it the powow… plus the connotations for proof of work, POW, and pain, OW… but is probably insensitive to native americans)
 * Sobornost (“the combination of freedom and unity of many persons on the basis of their common love for the same absolute values.”, https://en.wikipedia.org/wiki/Sobornost)
-* Synod (church council)
+* Synod (church council)https://commons.wikimedia.org/wiki/Category:Alchemical_symbols
 * Conventicle (https://en.wikipedia.org/wiki/Conventicle)
 * Conciliabulum (https://en.wikipedia.org/wiki/Conciliabulum)
-* navem civitatis - ship of state (platos coinage of philosopher king)
+* navem civitatis - ship of state (Platos coinage of philosopher king)
 * technicorum magorum™ - technocracy of magi
 * Ministry of Magi (MOM said!)
 * Convention of Wizards (COW goes MU (Mimblewimble Undertakings))
@@ -70,7 +70,7 @@ In what units do we measure the grin currency?
 
 Discussion: https://www.grin-forum.org/t/currency-symbol-other-bs/484
 
-* we could do something absolutely evil and comandeer the symbol for generic currency... ¤ ... ¤333 .... https://en.wikipedia.org/wiki/Currency_sign_(typography) it is the universal ISO symbol for money............................... i feel like i've peekend inside pandora's box. **GOODNESS I like this one.** It's like a glitch in the matrix.... and very philosophicala symbolic.
+* we could do something absolutely evil and commandeer the symbol for generic currency... ¤ ... ¤333 .... https://en.wikipedia.org/wiki/Currency_sign_(typography) it is the universal ISO symbol for money............................... i feel like i've peekend inside pandora's box. **GOODNESS I like this one.** It's like a glitch in the matrix.... and very philosophicala symbolic.
 
 >Roman Czyborra writes in his [Good ole' ASCII](http://www.unicodecharacter.com/charsets/iso646.html) that "the socialist countries managed to substitute the international currency sign ¤ for ASCII's capitalist dollar sign $ in the the first international reference version ISO-646-IRV". However, the international currency symbol ¤ was proposed for inclusion in the international standard character code in place of the dollar or pound sign by the Italian delegation to the CCITT, not by the socialist countries. In a later vote, Italy, Portugal, Switzerland, and the USSR favored the use of the ¤ character; Canada, France, Germany, the Netherlands, Sweden, and the United Kingdom preferred to standardize the $ and £ signs.
 Sources: CCITT Working Group on Alphabets, October 6-9, 1964, CBI 67, box 3, folder 3; ISO TC 97/SC 2 and CCITT/GM ALP joint meeting, April 26-28, 1966, NMAH 310, box 5.
@@ -140,7 +140,7 @@ https://www.unicode.org/charts/PDF/U1F700.pdf
 its just a little unicode smiley face, this would be perfect
 
 * [♾](https://en.wikipedia.org/wiki/%E2%99%BE)
-its like an infinity symbol in a circle.. looks kind of like a smiley... and is the symbol for acid free p aper
+its like an infinity symbol in a circle.. looks kind of like a smiley... and is the symbol for acid free paper
 I need 699♾! Grin, that acid free paper currency!!! also means PERMANENT PAPER... which is a good symbol for a cashlike currency probably.
 
 * [☹](https://en.wikipedia.org/wiki/%E2%98%B9)
@@ -154,7 +154,7 @@ now from
 https://www.unicode.org/charts/PDF/U2600.pdf
 
 * ⚡like harry potters lightning bolt
-* ⛀ i think thats supposed to be a coin
+* ⛀ i think that's supposed to be a coin
 * ♒ mw looking
 * ⚇ a partial smiley
 * ☹☺.. first is a sad face second is a smiley... for some reason the sad one is bigger
@@ -165,14 +165,14 @@ https://www.unicode.org/charts/PDF/U2600.pdf
 
 * ⌚ a little watch... time is money
 1⌚ /second
-* ⌛  hourglas... time is still money... 9,000⌛   please!
+* ⌛  hourglass... time is still money... 9,000⌛   please!
 * 🌞 _****wow!** sun with face... that one is pretty good.**_
 
 feeling more and more like picking something simple like the letter G is the wrong choice. what fun to have so much creative freedom...and people may  be writing it on checks and the tip line of receipts!
 
 * ☠ skull and cross bones... theres a grin in there somewhere
 * 🕱  another render, supposed to be b lack
-* ࿊  a tibetan symbol
+* ࿊  a Tibetan symbol
 
 * 😶 ****WOW* symbol for face without a mouth!!!!!!**
 
@@ -200,7 +200,7 @@ https://commons.wikimedia.org/wiki/Category:Mercury_symbols
 mercury is a communication symbol... money is a very pure form of communication
 
 some good ones in there.
-almost entirely sure that using something as ancient as a latin letter would be a missed opportunity. why wouldnt the currency of the future have an emoji as a symbol????? I mean of course it would. We are desinging the ultimate cash for the digital age, it should look like a product of the internet in every way right?
+almost entirely sure that using something as ancient as a Latin letter would be a missed opportunity. Why wouldnt the currency of the future have an emoji as a symbol????? I mean of course it would. We are designing the ultimate cash for the digital age, it should look like a product of the internet in every way right?
 
 someone on reddit said the MW-Eyed smiley logo looks too much like a meme... but that is what we are making right, an infectious meme. currency itself is a meme!
 

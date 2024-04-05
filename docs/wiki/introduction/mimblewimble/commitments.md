@@ -112,4 +112,4 @@ Hence point **Z** is a Pedersen commitment that is the sum of commitments **C~1~
 This is the foundation for the Elliptic-curve algebra used in Mimblewimble to prove both ownership of outputs (coins) and non-inflation.
 
 
-[^1]: [Finessing commitments](https://joinmarket.me/blog/blog/finessing-commitments/)
+[^1]: [Finessing commitments](https://reyify.com/blog/finessing-commitments)

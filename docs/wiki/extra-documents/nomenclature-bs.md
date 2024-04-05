@@ -9,12 +9,12 @@ The technology is cool, and that's what this project is about, THE WAY is namele
 
 If it weren't explicitly useful (in my opinion) to name things unconventionally, and if there was not already a magical-theme happening within the project, it would not be worth pursuing. But as we have already stepped in it, so to speak, there are many things we can do to "unBrand" the project in an effective way.
 
-_We obviously don't want to cross the line into copyright infringement. There are plenty of historical and wizardly themes to choos from that are not strictly inspired by modern novels._
+_We obviously don't want to cross the line into copyright infringement. There are plenty of historical and wizardly themes to chose from that are not strictly inspired by modern novels._
 
 Some discussion:
 
-* https://www.grin-forum.org/t/meeting-notes-governance-aug-15-2018/644/2?u=0-x
-* https://www.grin-forum.org/t/technomity-new-members/635/2?u=0-x
+* https://forum.grin.mw/t/meeting-notes-governance-aug-15-2018/644
+* https://forum.grin.mw/t/technomity-new-members/635
 
 GRIN (GOBLINS' Righteous Intergalactic Network)
 
@@ -68,7 +68,7 @@ In what units do we measure the grin currency?
 
 ## Currency Symbol
 
-Discussion: https://www.grin-forum.org/t/currency-symbol-other-bs/484
+Discussion: https://forum.grin.mw/t/currency-symbol-other-bs/484
 
 * we could do something absolutely evil and commandeer the symbol for generic currency... ¤ ... ¤333 .... https://en.wikipedia.org/wiki/Currency_sign_(typography) it is the universal ISO symbol for money............................... i feel like i've peekend inside pandora's box. **GOODNESS I like this one.** It's like a glitch in the matrix.... and very philosophicala symbolic.
 

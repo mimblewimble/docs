@@ -2,7 +2,7 @@
 
 ## More Documents
 
-:   [Build and run automation](extra-documents/build-run-automation.md) </br>
+    [Build and run automation](extra-documents/build-run-automation.md) </br>
     [Run a node on google cloud for free](extra-documents/google-cloud-node.md) </br>
     [How to mine with grin-miner](extra-documents/how-to-mine.md) </br>
     [Monetary policy](extra-documents/monetary-policy.md) </br>
@@ -12,7 +12,7 @@
 
 #### Playlists
 
-:   [grincon0](https://www.youtube.com/playlist?list=PLvgCPbagiHgqYdVUj-ylqhsXOifWrExiq) </br>
+    [grincon0](https://www.youtube.com/playlist?list=PLvgCPbagiHgqYdVUj-ylqhsXOifWrExiq) </br>
     [grinconUS(0)](https://www.youtube.com/playlist?list=PLvgCPbagiHgqOe0z_xgrIsGq-ayVZcNjy) </br>
     [grinAmsterdam](https://www.youtube.com/playlist?list=PLvgCPbagiHgpJXhrKAJu0Q-mbCVhpqgu7) </br>
     [grincon1](https://www.youtube.com/playlist?list=PLvgCPbagiHgrQa5KVt4XixK9t_NbfpkuP) </br>
@@ -28,7 +28,7 @@
 ## Forum
 
 ### Announcements
-:   [Hardforks on Grin v5.0.0 and beyond](https://forum.grin.mw/t/network-upgrades-hard-forks-on-grin-v5-0-0-and-beyond/7231) </br>
+    [Hardforks on Grin v5.0.0 and beyond](https://forum.grin.mw/t/network-upgrades-hard-forks-on-grin-v5-0-0-and-beyond/7231) </br>
     [Dismantling the core team and governance structure](https://forum.grin.mw/t/dismantling-the-core-team-and-governance-structure/7801)</br>
 
 ### Development and  Technical Discussions
@@ -54,14 +54,14 @@
 
 ### Emmission Model
 
-:   [Emission Rate of GRIN](https://forum.grin.mw/t/emission-rate-of-grin/171)</br>
+    [Emission Rate of GRIN](https://forum.grin.mw/t/emission-rate-of-grin/171)</br>
     [Questioning core assumptions on emmission model](https://forum.grin.mw/t/questioning-core-assumptions-on-our-emissions-model/1414)</br>
     [Linear emmission is fair to late adopters](https://forum.grin.mw/t/question-for-statement-linear-emission-is-fair-for-late-adopters/6285)</br>
 
 
 #### Mining
 
-:   [PoW specification](https://forum.grin.mw/t/pow-specification/7963)</br>
+    [PoW specification](https://forum.grin.mw/t/pow-specification/7963)</br>
     [Scheduled PoW upgrades proposal](https://forum.grin.mw/t/scheduled-pow-upgrades-proposal/820)</br>
     [Choice of ASIC Resistant PoW for GPU miners](https://forum.grin.mw/t/choice-of-asic-resistant-pow-for-gpu-miners/1017)</br>
     [Put later phase-outs on hold proposal](https://forum.grin.mw/t/grin-improvement-proposal-1-put-later-phase-outs-on-hold-and-rephrase-primary-pow-commitment/4653)</br>
@@ -71,7 +71,7 @@
 
 ### Miscellaneous
 
-:   [Response to Reavealing TX Graph](https://forum.grin.mw/t/my-full-response-to-the-blocks-questions/6566)</br>
+    [Response to Reavealing TX Graph](https://forum.grin.mw/t/my-full-response-to-the-blocks-questions/6566)</br>
     [Some toughts on Privacy](https://forum.grin.mw/t/some-thoughts-on-privacy/6581)</br>
     [On Igno's absence](https://forum.grin.mw/t/on-ignos-absence/5301) </br>
     [Genesis block message](https://forum.grin.mw/t/genesis-block-message/250)</br> 
@@ -79,7 +79,7 @@
 
 ### Research
 
-:   [Coinbase outputs as regular outputs](https://forum.grin.mw/t/coinbase-outputs-as-transaction-outputs/7441) </br>
+    [Coinbase outputs as regular outputs](https://forum.grin.mw/t/coinbase-outputs-as-transaction-outputs/7441) </br>
     [Is there a potential hidden inflation problem](https://forum.grin.mw/t/is-there-a-potential-hidden-inflation-problem-with-all-mw-coins/6400) </br>
     [Confidential Assets](https://forum.grin.mw/t/confidential-assets/1217) </br>
     [Bidirectional Payment Proofs](https://forum.grin.mw/t/bidirectional-payment-proofs/9175) </br>
@@ -90,7 +90,7 @@
    
 ## Medium
 
-:   [Grin's Mythical Fair Launch](https://www.coindesk.com/coders-harry-potter-bitcoin-mimblewimble) </br>
+    [Grin's Mythical Fair Launch](https://www.coindesk.com/coders-harry-potter-bitcoin-mimblewimble) </br>
     [Grin Money Explained](https://medium.com/@CryptoProfG/grin-money-explained-4-exploring-grins-monetary-model-e48b1761653) </br>
     [Grin Transactions Explained, Step-by-Step](https://medium.com/@brandonarvanaghi/grin-transactions-explained-step-by-step-fdceb905a853) </br>
     [What’s inside a Grin Transaction File?](https://medium.com/@brandonarvanaghi/whats-inside-a-grin-transaction-file-f062a0dcbf99)</br>
@@ -103,7 +103,7 @@
 
 ## Podcasts
 
-:   [[Bitcoin Wednesday] Introducing Mimblewimble and Grin @jaspervdm](https://www.youtube.com/watch?v=mzHswLujMYc) </br>
+    [[Bitcoin Wednesday] Introducing Mimblewimble and Grin @jaspervdm](https://www.youtube.com/watch?v=mzHswLujMYc) </br>
     [[Unchained] Grin: A More Private, Lighter Bitcoin @lehnberg @yeastplume](https://unchainedpodcast.com/grin-a-more-private-lighter-bitcoin/) </br>
     [[The Crypto Show] Mimblewimble with Andrew Poelstra and Peter Wuillie](https://soundcloud.com/heryptohow/mimblewimble-andrew-poelstra-peter-wuille-brian-deery-and-chris-odom) </br>
     [[What Bitcoin Did] Grin's Mimblewimble Implementation @yeastplume](https://www.whatbitcoindid.com/podcast/grins-michael-cordner-aka-yeastplume-on-implementing-mimblewimble) </br>
@@ -113,7 +113,7 @@
 
 ## Miscellaneous
 
-:   [[Launchpad] Mimblewimble Mailing List Archive](https://lists.launchpad.net/mimblewimble/) </br>
+    [[Launchpad] Mimblewimble Mailing List Archive](https://lists.launchpad.net/mimblewimble/) </br>
     [[Reddit] Mimblewimble introduced to r/bitcoin](https://www.reddit.com/r/Bitcoin/comments/4vub3y/mimblewimble_noninteractive_coinjoin_and_better/) </br>
     [[Youtube] Aantonop Bitcoin Q&A: Mimblewimble and Dandelion](https://www.youtube.com/watch?v=LjDJGTpK_lE) </br>
     [[Coindesk] Harry Potter Characters Join Mimblewimble 2016](https://www.coindesk.com/coders-harry-potter-bitcoin-mimblewimble) </br>
@@ -128,12 +128,12 @@
 
 #### RFCs
 
-:   [[Github] All Accepted RFCs](https://github.com/mimblewimble/grin-rfcs#list-of-accepted-rfcs) </br>
+    [[Github] All Accepted RFCs](https://github.com/mimblewimble/grin-rfcs#list-of-accepted-rfcs) </br>
     [[Github] All Pending RFCs](https://github.com/mimblewimble/grin-rfcs/pulls) </br>
 
 ## Papers
 
-:   [Confidential Assets](https://blockstream.com/bitcoin17-final41.pdf) </br>
+    [Confidential Assets](https://blockstream.com/bitcoin17-final41.pdf) </br>
     [OWAS](https://download.wpsoftware.net/bitcoin/wizardry/horasyuanmouton-owas.pdf) </br>
     [Bulletproofs](https://eprint.iacr.org/2017/1066.pdf) </br>
     [Cuckoo Cycle](https://github.com/tromp/cuckoo/blob/master/doc/cuckoo.pdf) </br>

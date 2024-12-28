@@ -32,6 +32,10 @@ grin-wallet listen
 
 Done! This sets up your wallet to listen for incoming connections through Tor. Just let the sender know that your wallet is ready. You can type `grin-wallet info` to check your wallet balance.
 
+You can make sure your wallet is online by [checking if it's reachable](../../wiki/extra-documents/always-listening-wallet.md#verifying-your-wallet-is-online-and-reachable).
+
+If your wallet should always be online, see [Setting up an always listening wallet](../../wiki/extra-documents/always-listening-wallet.md).
+
 ## Slatepack
 
 Slatepacks are encoded text messages used to transfer the data required to form a transaction, and are an alternative to a hands-off method such as Tor. The messages are easily copy-pasted and can be transferred in any communication channel imaginable: email, forum, social media, chat, letter, carrier pigeon etc.

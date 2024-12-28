@@ -52,7 +52,7 @@ The idea is to use grin like you use your bicycle, to get you around and make yo
 
 ## It will get forked into a "get rich quick" coin
 
-[Fine.](http://woke.mw) But the keyword in "get rich quick" is _quick_. Moderate yearly variations in supply are fairly slow in comparison. Grin isn't for getting rich quick.
+Fine. But the keyword in "get rich quick" is _quick_. Moderate yearly variations in supply are fairly slow in comparison. Grin isn't for getting rich quick.
 
 ## Confidential Assets allow parallel monetary policies to be soft-forked in later
 

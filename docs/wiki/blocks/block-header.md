@@ -34,7 +34,7 @@ General format of a **Proof Of Work** in a Mimblewimble/Grin:
 
 ## Example
 
-Here is a **principle example** of a Mimblewimble/Grin block header. The related block is included in Mainnet chain block: [1869](https://grinscan.net/block/1869).
+Here is a **principle example** of a Mimblewimble/Grin block header. The related block is included in Mainnet chain block: [1869](https://grinexplorer.net/block/00001962e09a383b1ff232aecbce0d0d7250ca7d52d5fcc066ce73ebf9bca5c0).
 
 | Offset        | Field           | Hex Value  |
 |:-------------|:-------------|:-----|

@@ -98,8 +98,9 @@
     [Factual inaccuracies of “Breaking Mimblewimble’s Privacy Model”](https://medium.com/grin-mimblewimble/factual-inaccuracies-of-breaking-mimblewimbles-privacy-model-8063371839b9)</br>
     [Mimblewimble Without the Scary Math](https://blog.qtum.org/mimblewimble-without-scary-math-e894cb841b98) </br>
     [Behind Mimblewimble](https://medium.com/scalar-capital/behind-mimblewimble-cd9da78a00e9) </br>
-    [An Introduction to Grin Proof-of-Work](https://blog.blockcypher.com/an-introduction-to-grin-proof-of-work-103aaa9f66ce) </br>
+    [An Introduction to Grin Proof-of-Work](https://medium.com/blockcypher-blog/an-introduction-to-grin-proof-of-work-103aaa9f66ce) </br>
     [A Case for using soft total supply](https://john-tromp.medium.com/a-case-for-using-soft-total-supply-1169a188d153)
+    
 
 ## Podcasts
 

@@ -1,6 +1,7 @@
 # Setting up an always listening wallet
 
-For some use cases, like mining Grin, it's important to have a wallet that is always listening for incoming transactions. For this use case and others like it, configuring `grin-wallet` as a service is recommended and easy to do.
+For some use cases, like mining Grin, it's important to have a wallet that is always listening for incoming transactions. For this use case and others like it, configuring `grin-wallet` as a service might be prefered.
+Be warned though that the use of a password stored in a text file is required to automatically start the service, which does provide significant security concerns. Only use these instructions when you know what you are doing, e.g. for development and small amounts of funds!
 
 ## Set up grin-wallet as a service
 

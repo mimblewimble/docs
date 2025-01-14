@@ -7,11 +7,7 @@
 - [TradeOgre](https://tradeogre.com/markets)
 - [Gate.io](https://www.gate.io/)
 
-### Active trading but no withdraw/deposit
 
-- [BitForex](https://www.bitforex.com/)
-- [HitBtc](https://hitbtc.com/)
-- [ZB](https://www.zb.com/en/kline/grin_usdt)
 
 ## Block Explorers
 
@@ -27,5 +23,6 @@
 - [2Miners](https://2miners.com)
 - [Alwaysvip](https://pool.always.vip)
 - [GaeaPool](https://gaeapool.com)
-- [WoolyPooly](https://woolypooly.com)
-- [Easygrin](https://pool.easygrin.org)             
+- [2miners SOLO](https://solo-grin.2miners.com/)
+- [Easygrin](https://pool.easygrin.org)    
+ -[Easygrin SOLO](https://solo.easygrin.org/)      

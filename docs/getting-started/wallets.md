@@ -4,18 +4,18 @@
 
 ## &emsp;GRIM 
 
-Cross-platform GUI written in Rust 🦀 supports both running a grin rust node or a remote node. Focus on usability and availability. 
-&emsp;~Windows, ~Linux,~ ~Android,~ ~macOS,~ ~iOS~
+Cross-platform GUI written in Rust 🦀 supports both running a grin rust node or a remote node. Focus on usability and availability. </br>
+&emsp;~Windows,~ ~Linux,~ ~Android,~ ~macOS,~ ~iOS~
 
 
-
-??? abstract "How to: send/receive"
+??? abstract "How to: send/receive" 
+=== "Download"
 
 
        Download at [https://gri.mw/downloads](https://gri.mw/#downloads){:target="_blank"}
 
       [Telegram channel](https://t.me/grim_app)
-          === "Receive"
+    === "Receive"
 
         * Copy your address (`grin1...`) and provide it to the other party.
          That's it. If both your wallets can communicate via Tor, the transaction is then completed automatically.
@@ -26,7 +26,7 @@ Cross-platform GUI written in Rust 🦀 supports both running a grin rust node o
         * Copy the Slatepack message your wallet generates and give it to the sender 
         * Done! The sender will finalize the transaction and post it to the network, it should show up in your wallet.
 
-        === "Send"
+    === "Send"
 
         * Click send.
         * Choose the amount of grins.
@@ -34,7 +34,7 @@ Cross-platform GUI written in Rust 🦀 supports both running a grin rust node o
 
         That's it. If both your wallets can communicate via Tor, the transaction is then completed automatically.
 
-        *But if there's no Tor communication, next steps are:*
+        * But if there's no Tor communication, next steps are:*
 
         * Copy the Slatepack message your wallet generates and provide it to the receiver (however you want).
 
@@ -42,8 +42,7 @@ Cross-platform GUI written in Rust 🦀 supports both running a grin rust node o
 
         Done! Your wallet will now finalize the transaction and post it to the network.
 
-
-<br/>
+---
 
 [![Grin++](images/grinplusplus.png){ align=left width=100 }](https://grinplusplus.github.io/){:target="_blank"}
 
@@ -51,7 +50,8 @@ Cross-platform GUI written in Rust 🦀 supports both running a grin rust node o
 
 </br>
 
-GUI wallet and node written in C++ &emsp;~Windows,~ ~Linux,~ ~macOS~
+GUI wallet and node written in C++ </br>
+&emsp;~Windows,~ ~Linux,~ ~macOS~
 
 ??? abstract "How to: send/receive"
     === "Download"
@@ -68,7 +68,7 @@ GUI wallet and node written in C++ &emsp;~Windows,~ ~Linux,~ ~macOS~
 
         That's it. If both your wallets can communicate via Tor, the transaction is then completed automatically.
 
-        *But if there's no Tor communication, next steps are:*
+        * But if there's no Tor communication, next steps are:*
 
         * The sender will provide you a Slatepack message. Paste it into the Slatepack box and click Receive.
 
@@ -117,7 +117,8 @@ GUI wallet and node written in C++ &emsp;~Windows,~ ~Linux,~ ~macOS~
 ## &emsp;Niffler
 
 </br>
-GUI wallet and node using the Rust implementation as back-end &emsp;~Windows,~ ~Linux,~ ~macOS~
+GUI wallet and node using the Rust implementation as back-end </br>
+&emsp;~Windows,~ ~Linux,~ ~macOS~
 
 ??? abstract "How to: send/receive"
     === "Download"
@@ -180,7 +181,8 @@ GUI wallet and node using the Rust implementation as back-end &emsp;~Windows,~ ~
 ## &emsp;Ironbelly
 
 </br>
-Mobile wallet &emsp;~iOS,~ ~Android~
+Mobile wallet </br>
+&emsp;~iOS,~ ~Android~
 
 ??? abstract "How to: send/receive"
     === "Download"

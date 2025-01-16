@@ -8,13 +8,12 @@ Cross-platform GUI written in Rust 🦀 supports both running a grin rust node o
 &emsp;~Windows,~ ~Linux,~ ~Android,~ ~macOS,~ ~iOS~
 
 
-??? abstract "How to: send/receive" 
-=== "Download"
+??? abstract "How to: send/receive"
+    === "Download"
 
+        Download at [https://gri.mw/downloads](https://gri.mw/#downloads){:target="_blank"}
 
-       Download at [https://gri.mw/downloads](https://gri.mw/#downloads){:target="_blank"}
-
-      [Telegram channel](https://t.me/grim_app)
+       [Telegram channel](https://t.me/grim_app)
     === "Receive"
 
         * Copy your address (`grin1...`) and provide it to the other party.

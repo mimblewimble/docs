@@ -4,7 +4,9 @@
 
 ## &emsp;GRIM 
 
- Cross-platform GUI for in Rust 🦀 for maximum compatibility with original Mimblewimble implementation and focus on usability and availability. 
+Cross-platform GUI written in Rust 🦀 supports both running a grin rust node or a remote node. Focus on usability and availability. 
+&emsp;~Windows, ~Linux,~ ~Android,~ ~macOS,~ ~iOS~
+
 
 
 ??? abstract "How to: send/receive"

@@ -1,6 +1,6 @@
 # Grin Wallets
 
-[![Screenshot 2025-01-14 at 19-59-11 Grim - Cross-platform GUI for Grin](https://github.com/user-attachments/assets/35826215-7f88-442e-abd8-8c9d777fe002){align=left width=400}](https://gri.mw){:target="_blank"}
+[![Screenshot 2025-01-14 at 19-59-11 Grim - Cross-platform GUI for Grin](https://github.com/user-attachments/assets/35826215-7f88-442e-abd8-8c9d777fe002){align=left width=100}](https://gri.mw){:target="_blank"}
 
 ## &emsp;GRIM 
 
@@ -10,13 +10,40 @@
 ??? abstract "How to: send/receive"
 
 
- Download at [https://gri.mw/downloads](https://gri.mw/#downloads){:target="_blank"}
+       Download at [https://gri.mw/downloads](https://gri.mw/#downloads){:target="_blank"}
 
-[Telegram channel](https://t.me/grim_app)
+      [Telegram channel](https://t.me/grim_app)
+          === "Receive"
+
+        * Copy your address (`grin1...`) and provide it to the other party.
+         That's it. If both your wallets can communicate via Tor, the transaction is then completed automatically.
+
+        *But if there's no Tor communication, next steps are:*
+
+        * The sender will provide you a Slatepack message. Paste it into the Slatepack box and click Receive.
+        * Copy the Slatepack message your wallet generates and give it to the sender 
+        * Done! The sender will finalize the transaction and post it to the network, it should show up in your wallet.
+
+        === "Send"
+
+        * Click send.
+        * Choose the amount of grins.
+        * Enter the receiver's address and send.
+
+        That's it. If both your wallets can communicate via Tor, the transaction is then completed automatically.
+
+        *But if there's no Tor communication, next steps are:*
+
+        * Copy the Slatepack message your wallet generates and provide it to the receiver (however you want).
+
+        * You should get a Slatepack message back from the receiver. Paste it into the Slatepack box and click Finalize.
+
+        Done! Your wallet will now finalize the transaction and post it to the network.
+
 
 <br/>
 
-[![Grin++](images/grinplusplus.png){ align=left width=60 }](https://grinplusplus.github.io/){:target="_blank"}
+[![Grin++](images/grinplusplus.png){ align=left width=100 }](https://grinplusplus.github.io/){:target="_blank"}
 
 ## &emsp;Grin++
 
@@ -83,7 +110,7 @@ GUI wallet and node written in C++ &emsp;~Windows,~ ~Linux,~ ~macOS~
 
 ---
 
-[![Niffler](images/niffler.png){ align=left width=60 }](https://github.com/grinfans/Niffler){:target="_blank"}
+[![Niffler](images/niffler.png){ align=left width=100 }](https://github.com/grinfans/Niffler){:target="_blank"}
 
 ## &emsp;Niffler
 
@@ -146,7 +173,7 @@ GUI wallet and node using the Rust implementation as back-end &emsp;~Windows,~ ~
 
 ---
 
-[![Ironbelly](images/ironbelly.png){ align=left width=55 }](https://ironbelly.app){:target="_blank"}
+[![Ironbelly](images/ironbelly.png){ align=left width=100 }](https://ironbelly.app){:target="_blank"}
 
 ## &emsp;Ironbelly
 
@@ -172,7 +199,7 @@ Mobile wallet &emsp;~iOS,~ ~Android~
 
 # Related Services
 
-[![grinnode.live](images/grinnode-live.png){ align=left width=90 }](https://grinnode.live/){:target="_blank"}
+[![grinnode.live](images/grinnode-live.png){ align=left width=120 }](https://grinnode.live/){:target="_blank"}
 
 ## &emsp;Grinnode.live
 

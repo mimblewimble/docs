@@ -468,9 +468,9 @@ There are several global wallet arguments which you can provide for every comman
 
 ### rewind_hash and scan rewind_hash 
 
-Ensure the transparency (spending, receiving, balance etc) of a wallet that receive grin as donations.  
+The rewind_hash command returns the hash of the wallets __root public key_. Ensure the transparency (spending, receiving, balance etc) of a wallet that receive grin as donations.  
 
-Allow everyone to scan the rewind_hash of the wallet shared publicly.
+The scan_rewind_hash command makes the wallet scan the UTXO set and return the outputs and the total of grin owned by a view wallet rewind hash. Allow everyone to scan the rewind_hash of the wallet shared publicly.
 
 
    - get the rewind_hash of the wallet

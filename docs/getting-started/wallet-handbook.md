@@ -92,9 +92,9 @@ On the first run, the wallet will scan the entire chain and restore any outputs 
 
 ### rewind_hash and scan rewind_hash 
 
-Ensure the transparency (spending, receiving, balance etc) of a wallet that receive grin as donations.  
+The rewind_hash command returns the hash of the wallets _root public key_. Ensure the transparency (spending, receiving, balance etc) of a wallet that receive grin as donations. 
 
-Allow everyone to scan the rewind_hash of the wallet shared publicly.
+The  *scan_rewind_hash*  command makes the wallet scan the UTXO set and return the outputs and the total of grin owned by a view wallet rewind hash. Allow everyone to scan the rewind_hash of the wallet shared publicly.
 
 
    - get the rewind_hash of the wallet

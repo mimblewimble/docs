@@ -24,5 +24,5 @@
 - [GaeaPool](https://gaeapool.com)
 - [2miners SOLO](https://solo-grin.2miners.com/)
 - [Easygrin](https://pool.easygrin.org)    
- -[Easygrin SOLO](https://solo.easygrin.org/)      
+- [Easygrin SOLO](https://solo.easygrin.org/)      
 

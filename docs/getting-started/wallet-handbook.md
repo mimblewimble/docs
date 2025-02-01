@@ -89,6 +89,26 @@ Please enter your recovery phrase:
 
 On the first run, the wallet will scan the entire chain and restore any outputs that belong to you.
 
+
+### rewind_hash and scan rewind_hash 
+
+The rewind_hash command returns the hash of the wallets _root public key_. Ensure the transparency (spending, receiving, balance etc) of a wallet that receive grin as donations. 
+
+The  *scan_rewind_hash*  command makes the wallet scan the UTXO set and return the outputs and the total of grin owned by a view wallet rewind hash. Allow everyone to scan the rewind_hash of the wallet shared publicly.
+
+
+   - get the rewind_hash of the wallet
+
+   - scan of the rewind_hash of a third-party wallet
+```text
+get_rewind_hash: `grin-wallet rewind_hash`
+```
+
+```text
+scan_rewind_hash: `grin-wallet scan_rewind_hash 2c95b24de492395934a8a345440ed0ebbe67ee0025b348712a927a91c7fe58e9`
+```
+
+
 ## account
 
 The `account` command is used to manage wallet accounts. Let's print a list of your existing accounts:

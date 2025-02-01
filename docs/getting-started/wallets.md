@@ -45,6 +45,20 @@ Cross-platform GUI written in Rust 🦀 supports both running a grin rust node o
 
 [![Grin++](images/grinplusplus.png){ align=left width=100 }](https://grinplusplus.github.io/){:target="_blank"}
 
+
+## GRIM  Cross-platform GUI for in Rust 🦀 for maximum compatibility with original Mimblewimble implementation and focus on usability and availability. 
+
+
+??? abstract "How to: send/receive"
+
+
+ Download at [https://gri.mw/downloads](https://gri.mw/#downloads){:target="_blank"}
+
+[Telegram channel](https://t.me/grim_app)
+
+[![Screenshot 2025-01-14 at 19-59-11 Grim - Cross-platform GUI for Grin](https://github.com/user-attachments/assets/35826215-7f88-442e-abd8-8c9d777fe002){align=left width=400}](https://gri.mw){:target="_blank"}
+
+
 ## &emsp;Grin++
 
 </br>

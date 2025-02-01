@@ -15,7 +15,7 @@ Caution: The server and PC must be in the same network segment, otherwise the IP
 
 ## Find the server IP address.
 
-Download the file [Showip.exe](https://gameway.fun/output/api/ipollo/download?fileName=Showip.rar).
+Download the file [Showip.exe](https://ipollo-shopify.s3.us-west-2.amazonaws.com/%E6%8F%92%E4%BB%B6/Showip.rar).
 
 Right click the “Show IP.exe” and run it as Administrator.
 

@@ -7,8 +7,8 @@ This endpoint requires, by default, [basic authentication](https://en.wikipedia.
 
 This API version uses JSON-RPC for its requests. It is split up into a foreign API and an owner API. The documentation for these endpoints is automatically generated:
 
-* [Owner API](https://docs.rs/grin_api/latest/grin_api/trait.OwnerRpc.html)
-* [Foreign API](https://docs.rs/grin_api/latest/grin_api/trait.ForeignRpc.html)
+* [Owner API](https://docs.rs/grin_wallet_api/latest/grin_wallet_api/trait.OwnerRpc.html)
+* [Foreign API](https://docs.rs/grin_wallet_api/latest/grin_wallet_api/trait.ForeignRpc.html)
 
 Basic auth passwords can be found in `.api_secret`/`.foreign_api_secret` files respectively.
 

@@ -120,7 +120,7 @@ The Cuckoo Cycle outlined above forms the basis of Grin's mining process, howeve
     * 90% of rewards at launch, linearly decreasing to 0% in 2 years.
     * Variant of Cuckoo that enforces so-called ``mean'' mining.
     * Takes 5.5GB of memory (perhaps 4GB with slowdown).
-2. for ASICs: [Cuckatoo](https://youtu.be/h4AJDKoeO9E?t=2071) on 2^31 or more edges
+2. for ASICs: [Cuckatoo](https://www.youtube.com/watch?v=h4AJDKoeO9E&t=2071s) on 2^31 or more edges
     * Variant of Cuckoo that simplifies ASIC design.
     * 10% of rewards at launch, linearly increasing to 100% in 2 years.
     * Mean mineable in high memory GPUs.

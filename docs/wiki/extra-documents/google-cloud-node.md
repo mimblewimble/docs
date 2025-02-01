@@ -14,7 +14,7 @@ The only requirement is that you are willing to sign up for a Google Cloud accou
 ## Google Cloud Set up
 
 1. Visit http://cloud.google.com and set up an account as an individual. This will require a debit or credit card, they do a $1 reserve charge on your card to ensure it's valid. As part of signing up you also get $300 in free trial credit to spend within 12 months.
-2. In order to qualify for [Always Free](https://cloud.google.com/free/docs/frequently-asked-questions#always-free) you need to have an upgraded account. So ensure you [upgrade](https://cloud.google.com/free/docs/frequently-asked-questions#what-is-upgrade). Note that this means that you will start to be charged automatically if your spend beyond the $300 in free trial credit. As you will not exceed the [Always Free limits](https://cloud.google.com/free/docs/always-free-usage-limits) here, this point is moot, but keep it in mind for any other projects you use this account for.
+2. In order to qualify for [Always Free](https://cloud.google.com/free/docs/free-cloud-features) you need to have an upgraded account. So ensure you [upgrade](https://cloud.google.com/free/docs/frequently-asked-questions#what-is-upgrade). Note that this means that you will start to be charged automatically if your spend beyond the $300 in free trial credit. As you will not exceed the [Always Free limits](https://cloud.google.com/free/docs/free-cloud-features#free-tier-usage-limits) here, this point is moot, but keep it in mind for any other projects you use this account for.
 3. Launch a [Cloud Shell](https://cloud.google.com/shell/) console from your browser, or install the [Google Cloud SDK](https://cloud.google.com/sdk/) to run Cloud Shell from your local terminal.
 
 ## Provisioning an instance
@@ -60,12 +60,12 @@ Install rust:
 curl https://sh.rustup.rs -sSf | sh; source $HOME/.cargo/env
 ```
 
-Clone grin and build a release version
+Clone grin and build a release version using the commands below.  First check for the latest release version [here](https://github.com/mimblewimble/grin/releases).  If v5.2.1 is not the latest release, replace the version number below ("v5.2.1") with the latest release version before entering the command.
 
 ```bash
 git clone https://github.com/mimblewimble/grin.git
 cd grin
-git checkout v4.0.2
+git checkout v5.2.1
 cargo build --release
 ```
 
@@ -94,7 +94,7 @@ cd target/release
 
 The node should automatically connect to peers and begin syncing. This might also take a while, so you might want to go for another break.
 
-Once completed, the node should be at the same block height as [https://grinscan.net/](https://grinscan.net/). We can now detach from the tmux session running the node by pressing `ctrl+b`, then `d`. This will allow us to continue interfacing with the gcloud instance command line, with the node running in the background. If you want to check in on the node at a later time, you can attach back into it's tmux session with `tmux a -t main`
+Once completed, the node should be at the same block height as [https://grinexplorer.net](https://grinexplorer.net). We can now detach from the tmux session running the node by pressing `ctrl+b`, then `d`. This will allow us to continue interfacing with the gcloud instance command line, with the node running in the background. If you want to check in on the node at a later time, you can attach back into it's tmux session with `tmux a -t main`
 
 Optionally, from the cloud shell, open up your node's p2p port so it can receive inbound connections:
 

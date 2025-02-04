@@ -5,13 +5,14 @@
 ### Active trading and withdraw/deposit
 
 - [TradeOgre](https://tradeogre.com/markets)
-
 - [Gate.io](https://www.gate.io/)
+- [BisQ (DEX)](https://bisq.network/)
 
 
 ## Block Explorers
 
 - [Grincoin](https://grincoin.org/)
+- [Grinminer (GRIN TESTNET)]https://testexplorer.grinminer.net/
 
 
 

@@ -1,0 +1,24 @@
+@startuml
+actor "Client" as client
+participant "JSON-RPC API (if used)" as jsonrpc
+participant "Internal Rust API" as rustapi
+participant "Wallet Backend" as backend
+
+title Wallet API Call via JSON-RPC
+
+
+== API Call ==
+client -> client: Supply stored token **t** in **req** as **req.t**
+client -> client: enc(**req**, **s**) -> **reqEnc**
+client -> jsonrpc: call_api_function(**reqEnc**)
+jsonrpc -> jsonrpc: dec(**reqEnc**, **s**) -> **req**
+jsonrpc -> rustapi: call_api_function(**req**)
+rustapi -> backend: retrieve_seed(**req.t** as **t**)
+backend -> backend: calc(**t** ^ **seedT**) -> **seed**
+rustapi -> backend: Internal Wallet Calls
+backend -> backend: Drop **seed**
+rustapi -> jsonrpc: Return (**resp**)
+jsonrpc -> jsonrpc: enc(**resp**, **s**) -> (**respEnc**)
+jsonrpc -> client: Return (**respEnc**)
+client -> client: dec(**s**, **respEnc**) -> **resp**
+@enduml

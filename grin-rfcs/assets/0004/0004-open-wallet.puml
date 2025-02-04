@@ -1,0 +1,26 @@
+@startuml
+actor "Client" as client
+participant "JSON-RPC API" as jsonrpc
+participant "Internal Rust API" as rustapi
+participant "Wallet Backend" as backend
+
+title Opening a Wallet in Secure Mode via JSON-RPC API
+
+== Open Wallet ==
+client -> client: Supply password field **pw** in **req** as **req.pw**
+client -> client: enc(**req**, **s**) -> **reqEnc**
+client -> jsonrpc: open_wallet(**reqEnc**)
+jsonrpc -> jsonrpc: dec(**reqEnc**, **s**) -> **req**
+jsonrpc -> rustapi: open_wallet(**req**)
+rustapi -> rustapi: Generate Random Token (**t**)
+rustapi -> backend: Open Wallet(**t**, **req.pw**)
+backend -> backend: Decrypt seed(**req.pw**) -> **seed**
+backend -> backend: Store **seed**^**t** -> (**seedT**)
+rustapi -> rustapi: Include **t** in **resp** as **resp.t**
+rustapi -> jsonrpc: Return (**resp**)
+jsonrpc -> jsonrpc: enc(**resp**, **s**) -> (**respEnc**)
+jsonrpc -> client: Return (**respEnc**)
+client -> client: dec(**s**, **respEnc**) -> **resp**
+client -> client: Store **resp.t** as **t**
+client -> client: All further API requests contain **t** 
+@enduml

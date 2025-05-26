@@ -80,6 +80,6 @@ Run the following command to get your wallet's address:
 grin-wallet info
 ```
 
-Grab the address that is displayed and search for it on [grinchck](https://grinchck.uber.space/)
+Grab the address that is displayed and check it with the [WALLETCHECK_API_URL](https://grinnode.live/faq#faq-technical-public-api)
 
-[More information on grinchck](https://forum.grin.mw/t/is-this-grin-wallet-url-reachable/7349)
+[More information on grinnode.live](https://grinnode.live/faq#faq-technical-public-api)

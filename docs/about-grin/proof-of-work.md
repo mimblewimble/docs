@@ -51,4 +51,4 @@ There’s increasingly more evidence that ASICs are inevitable, as dedicated har
 
 [^1]: [Cuckoo Cycle](https://github.com/tromp/cuckoo)
 [^2]: [ASICs and Decentralization FAQ](https://download.wpsoftware.net/bitcoin/asic-faq.pdf)
-[^3]: [The State of Cryptocurrency Mining](https://blog.sia.tech/the-state-of-cryptocurrency-mining-538004a37f9b)
+[^3]: [The State of Cryptocurrency Mining](https://davidgerard.co.uk/blockchain/2018/05/14/from-sia-an-incendiary-post-on-the-state-of-cryptocurrency-mining-in-2018/)

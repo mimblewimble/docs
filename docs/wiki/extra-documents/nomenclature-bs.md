@@ -56,7 +56,7 @@ These are all totally free to use for any efforts.
 
 * Cuthru
 * Langlock
-* Alice (https://tmgox.com/product/alice-embroidered-womens-polo-shirt/)
+* Alice
 * Chesire Cat (immensely cool and in public domain: https://upload.wikimedia.org/wikipedia/commons/8/8a/Arthur_Rackham_Cheshire_Cat.jpeg)
 
 ## Currency name [Solved]

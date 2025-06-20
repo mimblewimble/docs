@@ -12,7 +12,8 @@
 ## Block Explorers
 
 - [Grincoin](https://grincoin.org/)
-- [Grinminer (GRIN TESTNET)]https://testexplorer.grinminer.net/
+- [Grinexplorer.net](https://grinexplorer.net/)
+- [GrinminerTESTNET](https://testexplorer.grinminer.net/)
 
 
 

@@ -12,8 +12,10 @@
 ## Block Explorers
 
 - [Grincoin](https://grincoin.org/)
-- [Grinminer (GRIN TESTNET)]https://testexplorer.grinminer.net/
-
+- [Grincoin Testnet](https://testnet.grincoin.org/)
+- [Grinminer](https://explorer.grinminer.net/)
+- [Grinminer Testnet](https://testexplorer.grinminer.net/)
+- [Grinexplorer](https://grinexplorer.net/)
 
 
 ## Mining Pools

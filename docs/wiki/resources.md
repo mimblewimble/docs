@@ -23,7 +23,7 @@
     [Mimblewimble, SF Bitcoin Developers`16](https://www.youtube.com/watch?v=aHTRlbCaUyM&t=133s) </br>
     [Mimblewimble, BPASE'17](https://www.youtube.com/watch?v=XiUGu48JTd0&feature=youtu.be) </br>
     [Mimblewimble & Scriptless Scripts, RWC'18](https://www.youtube.com/watch?v=EN-JMlzr8Qw) </br>
-    [A View on Grin, HCPP'19](https://www.youtube.com/watch?v=NShVKX6Ra7Y), [Slides](https://docs.google.com/presentation/d/1PbtPV8WwDcWdnqBZHUMU7Cgr0P98NzDnuRRt2y251nU/edit#slide=id.g1a9d89a04cc779b5_0) </br>
+    [A View on Grin, HCPP'19](https://www.youtube.com/watch?v=NShVKX6Ra7Y) </br>
 
 ## Forum
 

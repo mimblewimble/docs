@@ -1,0 +1,3148 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Grin Documentation">
+      
+      
+        <meta name="author" content="Grin Developers">
+      
+      
+        <link rel="canonical" href="https://docs.grin.mw/wiki/miscellaneous/switch-commitments/">
+      
+      
+        <link rel="prev" href="../dandelion/">
+      
+      
+        <link rel="next" href="../coinbase-maturity-rule/">
+      
+      
+      <link rel="icon" href="../../../assets/images/grin-logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Switch Commitments - Grin Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction-to-switch-commitments" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      <!--
+  Copyright (c) 2016-2021 Martin Donath <martin.donath@squidfunk.com>
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Header -->
+<header class="md-header" data-md-component="header">
+  <nav
+    class="md-header__inner md-grid"
+    aria-label="header.title"
+  >
+
+    <!-- Link to home -->
+    <a
+      href="https://grin.mw"
+      title="Grin"
+      class="md-header__button md-logo"
+      aria-label="Grin"
+    >
+      
+  <img src="../../../assets/images/grin-logo.svg" alt="logo">
+
+    </a>
+
+    <!-- Button to open drawer -->
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+
+    <!-- Header title -->
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            <a
+              href="https://docs.grin.mw/"
+              title="Grin Documentation"
+              aria-label="Grin Documentation"
+            >
+            Grin Documentation
+            </a>
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Switch Commitments
+            
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header options -->
+    <div class="md-header__options">
+
+      <!-- Switch to toggle language -->
+      
+    </div>
+
+    <!-- Button to open search modal -->
+    
+
+    <!-- Repository information -->
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mimblewimble/grin" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimblewimble/grin
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../about-grin/story/" class="md-tabs__link">
+          
+  
+  
+  About Grin
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../table-of-contents/" class="md-tabs__link">
+          
+  
+  
+  Wiki
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../grin-rfcs/text/0019-deprecate-http-tx/" class="md-tabs__link">
+          
+  
+  
+  RFCs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Grin Documentation" class="md-nav__button md-logo" aria-label="Grin Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/images/grin-logo.svg" alt="logo">
+
+    </a>
+    Grin Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mimblewimble/grin" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimblewimble/grin
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ./Grin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Quickstart
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Quickstart
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/quickstart/install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Install
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/quickstart/initialize/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Initialize
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/quickstart/receive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Receive
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/quickstart/send/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Send
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/wallet-handbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CLI Handbook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/wallets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wallets
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/build/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Build
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    About Grin
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            About Grin
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about-grin/story/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Story
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about-grin/privacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Privacy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about-grin/scalability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Scalability
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about-grin/transactions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Transactions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about-grin/proof-of-work/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Proof of Work
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about-grin/emission/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Emission
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Wiki
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Wiki
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../table-of-contents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Table of Contents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Introduction
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../introduction/grin-for-bitcoiners/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Grin for Bitcoiners
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Mimblewimble
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Mimblewimble
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../introduction/mimblewimble/ecc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Elliptic Curves
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../introduction/mimblewimble/commitments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Commitments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../introduction/mimblewimble/mimblewimble/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mimblewimble
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Transactions
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Transactions
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../transactions/slates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slates
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../transactions/slatepack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slatepack
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../transactions/payment-proofs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Payment Proofs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../transactions/contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contracts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Blocks
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Blocks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blocks/block-header/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Header
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blocks/block-body/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Body
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blocks/fees-and-weight/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fees & Weight
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Chain State
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Chain State
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chain-state/merkle-mountain-range/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Merkle Mountain Ranges
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chain-state/state-and-pruning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    State & Pruning
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chain-state/chain-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chain Sync
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Miscellaneous
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Miscellaneous
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cuckoo-cycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cuckoo Cycle
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dandelion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dandelion
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Switch Commitments
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Switch Commitments
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#general-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      General introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hash-commitment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hash Commitment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pedersen-commitment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pedersen Commitment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#properties-of-commitment-schemes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Properties of commitment schemes:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties of commitment schemes:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#security-of-these-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security of these properties:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mutual-exclusivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mutual exclusivity:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mutual exclusivity:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#always-a-compromise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Always a compromise
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#considerations-for-cryptocurrencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Considerations for cryptocurrencies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Considerations for cryptocurrencies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-hard-choice" class="md-nav__link">
+    <span class="md-ellipsis">
+      A hard choice?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#properties-of-pedersen-commitments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Properties of Pedersen Commitments
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introducing-switch-commitments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducing Switch Commitments
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducing Switch Commitments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-does-this-work-in-detail" class="md-nav__link">
+    <span class="md-ellipsis">
+      How does this work in detail
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../coinbase-maturity-rule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coinbase Maturity Rule
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nrd-kernels/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NRD Kernels
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    API
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/node-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Node API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/wallet-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wallet API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/stratum-rpc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Stratum RPC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Security Process
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            Security Process
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security-process/grin-security-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Grin's Security Process
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security-process/security-team/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security Team
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security-process/code-audits/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Code Audits
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Services
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/list-of-services/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    List of Services
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/slatepack-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slatepack Integration Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Resources
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    RFCs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            RFCs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0019-deprecate-http-tx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0019 deprecate-http-tx
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0018-fix-daa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0018 fix-daa
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0017-fix-fees/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0017 fix-fees
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0016-simplify-governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0016 simplify-governance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0015-slatepack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0015 slatepack
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0014-general-fund-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0014 general-fund-guidelines
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0013-nrd-kernels/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0013 nrd-kernels
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0012-compact-slates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0012 compact-slates
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0011-security-team/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0011 security-team
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0010-online-transacting-via-tor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0010 online-transacting-via-tor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0009-enable-faster-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0009 enable-faster-sync
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0008-wallet-state-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0008 wallet-state-management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0007-node-api-v2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0007 node-api-v2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0006-payment-proofs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0006 payment-proofs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0005-variable-size-kernels/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0005 variable-size-kernels
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0004-full-wallet-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0004 full-wallet-lifecycle
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0003-security-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0003 security-process
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0002-grin-governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0002 grin-governance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0001-rfc-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0001 rfc-process
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#general-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      General introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hash-commitment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hash Commitment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pedersen-commitment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pedersen Commitment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#properties-of-commitment-schemes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Properties of commitment schemes:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties of commitment schemes:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#security-of-these-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security of these properties:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mutual-exclusivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mutual exclusivity:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mutual exclusivity:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#always-a-compromise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Always a compromise
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#considerations-for-cryptocurrencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Considerations for cryptocurrencies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Considerations for cryptocurrencies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-hard-choice" class="md-nav__link">
+    <span class="md-ellipsis">
+      A hard choice?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#properties-of-pedersen-commitments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Properties of Pedersen Commitments
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introducing-switch-commitments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducing Switch Commitments
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducing Switch Commitments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-does-this-work-in-detail" class="md-nav__link">
+    <span class="md-ellipsis">
+      How does this work in detail
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="introduction-to-switch-commitments">Introduction to Switch Commitments</h1>
+<blockquote>
+<p><em>Read this in other languages: <a href="https://github.com/mimblewimble/grin/blob/master/doc/translations/switch_commitment_ZH-CN.md">简体中文</a>.</em></p>
+</blockquote>
+<h2 id="general-introduction">General introduction</h2>
+<p>In cryptography a <em>Commitment</em> (or <em>commitment scheme</em>) refers to a concept which can be imagined
+like a box with a lock. You can put something into the box (for example a piece of a paper with a
+secret number written on it), lock it and give it to another person (or the public).</p>
+<p>The other person doesn't know yet what's the secret number in the box, but if you decide to publish
+your secret number later in time and want to prove that this really is the secret which you came
+up with in the first place (and not a different one) you can prove this simply by giving the
+key of the box to the other person.</p>
+<p>They can unlock the box, compare the secret within the box with the secret you just published
+and can be sure that you didn't change your secret since you locked it. You "<strong>committed</strong>"
+to the secret number beforehand, meaning you cannot change it between the time of
+commitment and the time of revealing.</p>
+<h2 id="examples">Examples</h2>
+<h3 id="hash-commitment">Hash Commitment</h3>
+<p>A simple commitment scheme can be realized with a cryptographic hash function. For example: Alice and Bob
+want to play <em>"Guess my number"</em> and Alice comes up with with her really secret number <code>29</code> which
+Bob has to guess in the game, then before the game starts, Alice calculates:</p>
+<div class="codehilite"><pre><span></span><code>hash( 29 + r )
+</code></pre></div>
+
+<p>and publishes the result to Bob. The <code>r</code> is a randomly chosen  <em>Blinding Factor</em> which is
+needed because otherwise Bob could just try hashing all the possible numbers for the game and
+compare the hashes.</p>
+<p>When the game is finished, Alice simply needs to publish her secret number <code>29</code> and the
+blinding factor <code>r</code> and Bob can calculate the hash himself and easily verify that Alice
+did not change the secret number during the game.</p>
+<h3 id="pedersen-commitment">Pedersen Commitment</h3>
+<p>Other, more advanced commitment schemes can have additional properties. For example Mimblewimble
+and Confidential Transactions (CT) make heavy use of
+<em><a href="https://link.springer.com/content/pdf/10.1007/3-540-46766-1_9.pdf">Pedersen Commitments</a></em>,
+which are <em>homomorphic</em> commitments. Homomorphic in this context means that (speaking in the
+"box" metaphor from above) you can take two of these locked boxes (<em>box1</em> and <em>box2</em>) and
+somehow "<em>add</em>" them together, so that you
+get a single box as result (which still is locked), and if you open this single box later
+(like in the examples before) the secret it contains, is the sum of the secrets
+from <em>box1</em> and <em>box2</em>.</p>
+<p>While this "box" metaphor no longer seems to be reasonable in the real-world this
+is perfectly possible using the properties of operations on elliptic curves.</p>
+<p>Look into <a href="../../introduction/mimblewimble/mimblewimble/">Introduction to Mimblewimble</a> for further details on Pedersen Commitments
+and how they are used in Grin.</p>
+<h2 id="properties-of-commitment-schemes">Properties of commitment schemes:</h2>
+<p>In general for any commitment scheme we can identify two important properties
+which can be weaker or stronger, depending on the type of commitment scheme:</p>
+<ul>
+<li>
+<p><strong>Hidingness (or Confidentiality):</strong> How good is the commitment scheme protecting the secret
+  commitment. Or speaking in terms of our example from above: what would an attacker need to
+  open the box (and learn the secret number) without having the key to unlock it?</p>
+</li>
+<li>
+<p><strong>Bindingness:</strong> Is it possible at all (or how hard would it be) for an attacker to somehow
+  find a different secret, which would produce the same commitment, so that the attacker could
+  later open the commitment to a different secret, thus breaking the <em>binding</em> of the
+  commitment.</p>
+</li>
+</ul>
+<h3 id="security-of-these-properties">Security of these properties:</h3>
+<p>For these two properties different security levels can be identified.</p>
+<p>The two most important combinations of these are</p>
+<ul>
+<li><strong>perfectly binding</strong> and <strong>computationally hiding</strong> commitment schemes and</li>
+<li><strong>computationally binding</strong> and <strong>perfectly hiding</strong> commitment schemes</li>
+</ul>
+<p>"<em>Computationally</em>" binding or hiding means that the property (bindingness/hidingness)
+is secured by the fact that the underlying mathematical problem is too hard to be solved
+with existing computing power in reasonable time (i.e. not breakable today as computational
+resources are bound in the real world).</p>
+<p>"<em>Perfectly</em>" binding or hiding means that even with infinite computing power
+it would be impossible to break the property (bindingness/hidingness).</p>
+<h3 id="mutual-exclusivity">Mutual exclusivity:</h3>
+<p>It is important to realize that it's <strong>impossible</strong> that any commitment scheme can be
+<em>perfectly binding</em> <strong>and</strong> <em>perfectly hiding</em> at the same time. This can be easily shown
+with a thought experiment: Imagine an attacker having infinite computing power, he could
+simply generate a commitment for all possible values (and blinding factors) until finding a
+pair that outputs the same commitment. If we further assume the commitment scheme is
+<em>perfectly binding</em> (meaning there cannot be two different values leading to the same
+commitment) this uniquely would identify the value within the commitment, thus
+breaking the hidingness.</p>
+<p>The same is true the other way around. If a commitment scheme is <em>perfectly hiding</em>
+there must exist several input values resulting in the same commitment (otherwise an
+attacker with infinite computing power could just try all possible values as
+described above). This concludes that the commitment scheme cannot be <em>perfectly
+binding</em>.</p>
+<h4 id="always-a-compromise">Always a compromise</h4>
+<p>The key take-away point is this: it's <strong>always a compromise</strong>, you can never have both
+properties (<em>hidingness</em> and <em>bindingness</em>) with <em>perfect</em> security. If one is <em>perfectly</em>
+secure then the other can be at most <em>computationally</em> secure
+(and the other way around).</p>
+<h3 id="considerations-for-cryptocurrencies">Considerations for cryptocurrencies</h3>
+<p>Which roles do these properties play in the design of cryptocurrencies?</p>
+<p><strong>Hidingness</strong>:
+In privacy oriented cryptocurrencies like Grin, commitment schemes are used to secure
+the contents of transactions. The sender commits to an amount of coins he sends, but for
+the general public the concrete amount should remain private (protected by the <em>hidingness</em> property of the commitment scheme).</p>
+<p><strong>Bindingness</strong>:
+At the same time no transaction creator should ever be able to change his commitment
+to a different transaction amount later in time. If this would be possible, an attacker
+could spend more coins than previously committed to in an UTXO (unspent transaction
+output) and therefore inflate coins out of thin air. Even worse, as the amounts are
+hidden, this could go undetected.</p>
+<p>So there is a valid interest in having both of these properties always secured and
+never be violated.</p>
+<p>Even with the intent being that both of these properties will hold for the lifetime
+of a cryptocurrency, still a choice has to be made about which commitment scheme to use.</p>
+<h4 id="a-hard-choice">A hard choice?</h4>
+<p>Which one of these two properties needs to be <em>perfectly</em> safe
+and for which one it would be sufficient to be <em>computationally</em> safe?
+Or in other words: in case of a disaster, if the commitment scheme unexpectedly
+gets broken, which one of the two properties should be valued higher?
+Economical soundness (no hidden inflation possible) or ensured privacy (privacy will
+be preserved)?</p>
+<p>This seems like a hard to choice to make.</p>
+<p>If we look closer into this we realize that the commitment scheme only needs to be
+<em>perfectly</em> binding at the point in time when the scheme actually gets broken. Until
+then it will be safe even if it's only <em>computationally</em> binding.</p>
+<p>At the same time a privacy-oriented cryptocurrency needs to ensure the <em>hidingness</em>
+property <strong>forever</strong>. Unlike the <em>binding</em> property, which only is important at the
+time when a transaction is created and will not affect past transactions, the <em>hidingness</em>
+property must be ensured at all times. Otherwise, in the unfortunate case should the
+commitment scheme be broken, an attacker could go back in the chain and unblind
+past transactions, thus break the privacy property retroactively.</p>
+<h2 id="properties-of-pedersen-commitments">Properties of Pedersen Commitments</h2>
+<p>Pedersen Commitments are <strong>computationally binding</strong> and <strong>perfectly hiding</strong> as for a given
+commitment to the value <code>v</code>: <code>v*H + r*G</code> there may exist a pair of different values <code>r1</code>
+and <code>v1</code> such that the sum will be the same. Even if you have infinite computing power
+and could try all possible values, you would not be able to tell which one is the original one
+(thus <em>perfectly hiding</em>).</p>
+<h2 id="introducing-switch-commitments">Introducing Switch Commitments</h2>
+<p>So what can be done if the bindingness of the Pedersen Commitment unexpectedly gets broken?</p>
+<p>In general a cryptocurrency confronted with a broken commitment scheme could choose to
+change the scheme in use, but the problem with this approach would be that it requires to
+create new transaction outputs using the new scheme to make funds secure again. This would
+require every coin holder to move his coins into new transaction outputs.
+If coins are not moved into new outputs, they will not profit from the
+security of the new commitment scheme. Also, this has to happen <strong>before</strong> the scheme gets
+actually broken in the wild, otherwise the existing UTXOs no longer can be assumed
+to contain correct values.</p>
+<p>In this situation <a href="https://eprint.iacr.org/2017/237.pdf"><em>Switch Commitments</em></a> offer a neat
+solution. These type of commitments allow changing the properties of the commitments just
+by changing the revealing / validating procedure without changing the way commitments
+are created. (You "<em>switch</em>" to a new validation scheme which is backwards
+compatible with commitments created long before the actual "<em>switch</em>").</p>
+<h3 id="how-does-this-work-in-detail">How does this work in detail</h3>
+<p>First let's introduce a new commitment scheme: The <strong>ElGamal commitment</strong> scheme is a commitment
+scheme similiar to Pedersen Commitments and it's <em>perfectly binding</em> (but only <em>computationally
+hiding</em> as we can never have both).
+It looks very similar to a Pedersen Commitment, with the addition of a new
+element, calculated by multiplying the blinding factor <code>r</code> with another generator point <code>J</code>:</p>
+<div class="codehilite"><pre><span></span><code>v*H + r*G ,  r*J
+</code></pre></div>
+
+<p>So if we store the additional field <code>r*J</code> and ignore it for now, we can treat it like
+Pedersen Commitments, until we decide to also validate the full ElGamal
+commitment at some time in future. This is exactly what was implemented in an
+<a href="https://github.com/mimblewimble/grin/blob/5a47a1710112153fb38e4406251c9874c366f1c0/core/src/core/transaction.rs#L812">earlier version of Grin</a>,
+before mainnet was launched. In detail: the hashed value of <code>r*J</code>
+(<em>switch_commit_hash</em>) was added to the transaction output, but this came with
+the burden of increasing the size of each output by 32 bytes.</p>
+<p>Fortunately, later on the Mimblewimble mailinglist Tim Ruffing came up with a really
+<a href="https://lists.launchpad.net/mimblewimble/msg00479.html">beautiful idea</a>
+(initially suggested by Pieter Wuille), which offers the same advantages but doesn't
+need this extra storage of an additional element per transaction output:</p>
+<p>The idea is the following:</p>
+<p>A normal Pedersen commitment looks like this:</p>
+<div class="codehilite"><pre><span></span><code>v*H + r*G
+</code></pre></div>
+
+<p>(<code>v</code> is value of the input/output, <code>r</code> is a truly random blinding factor, and <code>H</code> and <code>G</code> are
+two generator points on the elliptic curve).</p>
+<p>If we adapt this by having <code>r</code> not being random itself, but using another random number <code>r'</code>
+and create the Pedersen Commitment:</p>
+<div class="codehilite"><pre><span></span><code>v*H + r*G
+</code></pre></div>
+
+<p>such that:</p>
+<div class="codehilite"><pre><span></span><code>r = r&#39; + hash( v*H + r&#39;*G  ,  r&#39;*J )
+</code></pre></div>
+
+<p>(using the additional third generation point <code>J</code> on the curve) then <code>r</code> still is perfectly
+valid as a blinding factor, as it's still randomly distributed, but now we see
+that the part within the brackets of the hash function (<code>v*H + r'*G  ,  r'*J</code>) is an
+<strong>ElGamal commitment</strong>.</p>
+<p>This neat idea lead to the removal of the switch commitment hash from the outputs in this
+(and following) <a href="https://github.com/mimblewimble/grin/issues/998">pull requests</a> as now it
+could be easily included into the Pedersen Commitments.</p>
+<p>This is how it is currently implemented in Grin. Pedersen commitments are
+used for the Confidential Transaction but instead of choosing the blinding factor <code>r</code>
+only by random, it is calculated by adding the hash of an ElGamal commitment to a random <code>r'</code>
+(see here in <a href="https://github.com/mimblewimble/secp256k1-zkp/blob/73617d0fcc4f51896cce4f9a1a6977a6958297f8/src/modules/commitment/main_impl.h#L267">main_impl.h#L267</a>).</p>
+<p>In general switch commitments were first described in the paper
+<a href="https://eprint.iacr.org/2017/237.pdf">"Switch Commitments: A Safety Switch for Confidential Transactions"</a>).
+The <strong>"switch"</strong> in the name comes from the fact that you can virtually flip a "switch" in
+the future and simply by changing the validation procedure you can change the strength of
+the bindingness and hidingness property of your commitments and this even works in a
+backwards compatible way with commitments created today.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Grin uses Pedersen Commitments - like other privacy cryptocurrencies do as well - with
+the only difference that the random blinding factor <code>r</code> is created using the ElGamal
+commitment scheme.</p>
+<p>This might not seem like a big change on a first look, but it provides an
+important safety measure:</p>
+<p>Pedersen Commitments are already <em>perfectly hiding</em> so whatever happens, privacy will
+never be at risk without requiring any action from users. But in case of a disaster if the
+bindingness of the commitment scheme gets broken, then switch commitments can be enabled
+(via a soft fork) requiring that all new transactions prove that their commitment is not
+breaking the bindingness by validating the full ElGamal commitment.</p>
+<p>But in this case users would still have a choice:</p>
+<ul>
+<li>
+<p>they can decide to continue to create new transactions, even if this might compromise
+  their privacy (only on their <strong>last</strong> UTXOs) as the ElGamal commitment scheme is
+  only computationally hiding, but at least they would still have access to their coins</p>
+</li>
+<li>
+<p>or users can decide to just leave the money alone, walk away and make no more transactions
+  (but preserve their privacy, as their old transactions only validated the Pedersen commitment
+  which is perfectly hiding)</p>
+</li>
+</ul>
+<p>There are many cases where a privacy leak is much more dangerous to one's life than
+some cryptocurrency might be worth. But this is a decision that should be left up to
+the individual user and switch commitments enable this type of choice.</p>
+<p>It should be made clear that this is a safety measure meant to be enabled in case of a
+disaster. If advances in computing would put the hardness of the discrete log problem
+in question, a lot of other cryptographic systems, including other cryptocurrencies,
+will be in urgent need of updating their primitives to a future-proof system. The switch
+commitments just provide an additional layer of security if the bindingness of Pedersen
+commitments ever breaks unexpectedly.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/mimblewimble" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://keybase.io/team/grincoin" target="_blank" rel="noopener" title="keybase.io" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M286.17 419a18 18 0 1 0 18 18 18 18 0 0 0-18-18m111.92-147.6c-9.5-14.62-39.37-52.45-87.26-73.71q-9.1-4.06-18.38-7.27a78.43 78.43 0 0 0-47.88-104.13c-12.41-4.1-23.33-6-32.41-5.77-.6-2-1.89-11 9.4-35L198.66 32l-5.48 7.56c-8.69 12.06-16.92 23.55-24.34 34.89a51 51 0 0 0-8.29-1.25c-41.53-2.45-39-2.33-41.06-2.33-50.61 0-50.75 52.12-50.75 45.88l-2.36 36.68c-1.61 27 19.75 50.21 47.63 51.85l8.93.54a214 214 0 0 0-46.29 35.54C14 304.66 14 374 14 429.77v33.64l23.32-29.8a148.6 148.6 0 0 0 14.56 37.56c5.78 10.13 14.87 9.45 19.64 7.33 4.21-1.87 10-6.92 3.75-20.11a178.3 178.3 0 0 1-15.76-53.13l46.82-59.83-24.66 74.11c58.23-42.4 157.38-61.76 236.25-38.59 34.2 10.05 67.45.69 84.74-23.84.72-1 1.2-2.16 1.85-3.22a156 156 0 0 1 2.8 28.43c0 23.3-3.69 52.93-14.88 81.64-2.52 6.46 1.76 14.5 8.6 15.74 7.42 1.57 15.33-3.1 18.37-11.15C429 443 434 414 434 382.32c0-38.58-13-77.46-35.91-110.92M142.37 128.58l-15.7-.93-1.39 21.79 13.13.78a93 93 0 0 0 .32 19.57l-22.38-1.34a12.28 12.28 0 0 1-11.76-12.79L107 119c1-12.17 13.87-11.27 13.26-11.32l29.11 1.73a144 144 0 0 0-7 19.17m148.42 172.18a10.51 10.51 0 0 1-14.35-1.39l-9.68-11.49-34.42 27a8.09 8.09 0 0 1-11.13-1.08l-15.78-18.64a7.38 7.38 0 0 1 1.34-10.34l34.57-27.18-14.14-16.74-17.09 13.45a7.75 7.75 0 0 1-10.59-1s-3.72-4.42-3.8-4.53a7.38 7.38 0 0 1 1.37-10.34L214 225.19s-18.51-22-18.6-22.14a9.56 9.56 0 0 1 1.74-13.42 10.38 10.38 0 0 1 14.3 1.37l81.09 96.32a9.58 9.58 0 0 1-1.74 13.44M187.44 419a18 18 0 1 0 18 18 18 18 0 0 0-18-18"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>

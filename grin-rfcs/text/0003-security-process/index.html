@@ -1,0 +1,3319 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Grin Documentation">
+      
+      
+        <meta name="author" content="Grin Developers">
+      
+      
+        <link rel="canonical" href="https://docs.grin.mw/grin-rfcs/text/0003-security-process/">
+      
+      
+        <link rel="prev" href="../0004-full-wallet-lifecycle/">
+      
+      
+        <link rel="next" href="../0002-grin-governance/">
+      
+      
+      <link rel="icon" href="../../../assets/images/grin-logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>0003 security-process - Grin Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#summary" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      <!--
+  Copyright (c) 2016-2021 Martin Donath <martin.donath@squidfunk.com>
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Header -->
+<header class="md-header" data-md-component="header">
+  <nav
+    class="md-header__inner md-grid"
+    aria-label="header.title"
+  >
+
+    <!-- Link to home -->
+    <a
+      href="https://grin.mw"
+      title="Grin"
+      class="md-header__button md-logo"
+      aria-label="Grin"
+    >
+      
+  <img src="../../../assets/images/grin-logo.svg" alt="logo">
+
+    </a>
+
+    <!-- Button to open drawer -->
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+
+    <!-- Header title -->
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            <a
+              href="https://docs.grin.mw/"
+              title="Grin Documentation"
+              aria-label="Grin Documentation"
+            >
+            Grin Documentation
+            </a>
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              0003 security-process
+            
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header options -->
+    <div class="md-header__options">
+
+      <!-- Switch to toggle language -->
+      
+    </div>
+
+    <!-- Button to open search modal -->
+    
+
+    <!-- Repository information -->
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mimblewimble/grin" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimblewimble/grin
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../about-grin/story/" class="md-tabs__link">
+          
+  
+  
+  About Grin
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../wiki/table-of-contents/" class="md-tabs__link">
+          
+  
+  
+  Wiki
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../0019-deprecate-http-tx/" class="md-tabs__link">
+          
+  
+  
+  RFCs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Grin Documentation" class="md-nav__button md-logo" aria-label="Grin Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/images/grin-logo.svg" alt="logo">
+
+    </a>
+    Grin Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mimblewimble/grin" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimblewimble/grin
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ./Grin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Quickstart
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Quickstart
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/quickstart/install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Install
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/quickstart/initialize/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Initialize
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/quickstart/receive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Receive
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/quickstart/send/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Send
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/wallet-handbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CLI Handbook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/wallets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wallets
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/build/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Build
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    About Grin
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            About Grin
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about-grin/story/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Story
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about-grin/privacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Privacy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about-grin/scalability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Scalability
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about-grin/transactions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Transactions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about-grin/proof-of-work/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Proof of Work
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about-grin/emission/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Emission
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Wiki
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Wiki
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/table-of-contents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Table of Contents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Introduction
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/introduction/grin-for-bitcoiners/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Grin for Bitcoiners
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Mimblewimble
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Mimblewimble
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/introduction/mimblewimble/ecc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Elliptic Curves
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/introduction/mimblewimble/commitments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Commitments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/introduction/mimblewimble/mimblewimble/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mimblewimble
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Transactions
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Transactions
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/transactions/slates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slates
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/transactions/slatepack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slatepack
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/transactions/payment-proofs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Payment Proofs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/transactions/contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contracts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Blocks
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Blocks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/blocks/block-header/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Header
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/blocks/block-body/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Body
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/blocks/fees-and-weight/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fees & Weight
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Chain State
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Chain State
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/chain-state/merkle-mountain-range/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Merkle Mountain Ranges
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/chain-state/state-and-pruning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    State & Pruning
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/chain-state/chain-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chain Sync
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Miscellaneous
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Miscellaneous
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/miscellaneous/cuckoo-cycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cuckoo Cycle
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/miscellaneous/dandelion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dandelion
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/miscellaneous/switch-commitments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Switch Commitments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/miscellaneous/coinbase-maturity-rule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coinbase Maturity Rule
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/miscellaneous/nrd-kernels/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NRD Kernels
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    API
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/api/node-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Node API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/api/wallet-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wallet API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/api/stratum-rpc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Stratum RPC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Security Process
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            Security Process
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/security-process/grin-security-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Grin's Security Process
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/security-process/security-team/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security Team
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/security-process/code-audits/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Code Audits
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Services
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/services/list-of-services/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    List of Services
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/services/slatepack-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slatepack Integration Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Resources
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    RFCs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            RFCs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0019-deprecate-http-tx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0019 deprecate-http-tx
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0018-fix-daa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0018 fix-daa
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0017-fix-fees/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0017 fix-fees
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0016-simplify-governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0016 simplify-governance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0015-slatepack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0015 slatepack
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0014-general-fund-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0014 general-fund-guidelines
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0013-nrd-kernels/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0013 nrd-kernels
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0012-compact-slates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0012 compact-slates
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0011-security-team/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0011 security-team
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0010-online-transacting-via-tor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0010 online-transacting-via-tor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0009-enable-faster-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0009 enable-faster-sync
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0008-wallet-state-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0008 wallet-state-management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0007-node-api-v2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0007 node-api-v2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0006-payment-proofs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0006 payment-proofs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0005-variable-size-kernels/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0005 variable-size-kernels
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0004-full-wallet-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0004 full-wallet-lifecycle
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    0003 security-process
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    0003 security-process
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#motivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motivation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#community-level-explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Community-level explanation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference-level-explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference-level explanation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reference-level explanation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changes-to-securitymd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changes to SECURITY.md
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Changes to SECURITY.md">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#responsible-disclosure-standard" class="md-nav__link">
+    <span class="md-ellipsis">
+      Responsible Disclosure Standard
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#receiving-disclosures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Receiving Disclosures
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sending-disclosures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sending Disclosures
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bilateral-responsible-disclosure-agreements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bilateral Responsible Disclosure Agreements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deviations-from-the-standard" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deviations from the Standard
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#canaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Canaries
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#drawbacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Drawbacks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rationale-and-alternatives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rationale and alternatives
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Rationale and alternatives">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-is-this-design-the-best-in-the-space-of-possible-designs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why is this design the best in the space of possible designs?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-other-designs-have-been-considered-and-what-is-the-rationale-for-not-choosing-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      What other designs have been considered and what is the rationale for not choosing them?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-the-impact-of-not-doing-this" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is the impact of not doing this?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prior-art" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prior art
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unresolved-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unresolved questions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-possibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future possibilities
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0002-grin-governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0002 grin-governance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0001-rfc-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0001 rfc-process
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#motivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motivation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#community-level-explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Community-level explanation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference-level-explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference-level explanation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reference-level explanation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changes-to-securitymd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changes to SECURITY.md
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Changes to SECURITY.md">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#responsible-disclosure-standard" class="md-nav__link">
+    <span class="md-ellipsis">
+      Responsible Disclosure Standard
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#receiving-disclosures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Receiving Disclosures
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sending-disclosures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sending Disclosures
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bilateral-responsible-disclosure-agreements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bilateral Responsible Disclosure Agreements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deviations-from-the-standard" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deviations from the Standard
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#canaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Canaries
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#drawbacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Drawbacks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rationale-and-alternatives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rationale and alternatives
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Rationale and alternatives">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-is-this-design-the-best-in-the-space-of-possible-designs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why is this design the best in the space of possible designs?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-other-designs-have-been-considered-and-what-is-the-rationale-for-not-choosing-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      What other designs have been considered and what is the rationale for not choosing them?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-the-impact-of-not-doing-this" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is the impact of not doing this?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prior-art" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prior art
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unresolved-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unresolved questions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-possibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future possibilities
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>0003 security-process</h1>
+
+<ul>
+<li>Title: security-process</li>
+<li>Authors: <a href="mailto:joltz@protonmail.com">joltz</a></li>
+<li>Start date : July 18, 2019</li>
+<li>RFC PR: <a href="https://github.com/mimblewimble/grin-rfcs/pull/13">mimblewimble/grin-rfcs#13</a></li>
+<li>Tracking issue: <a href="https://github.com/mimblewimble/grin-pm/issues/178">mimblewimble/grin-pm#178</a></li>
+</ul>
+<hr />
+<h2 id="summary">Summary</h2>
+<p>This RFC improves the security processes for Grin by adopting a community
+standard for a public pre-commitment scheme for vulnerability sharing agreements.
+The standard proposed for adoption describes the norms for ethical disclosure
+behavior and provides a public pre-commitment scheme for the Grin community to
+clarify security process actions and expectations [2].</p>
+<h2 id="motivation">Motivation</h2>
+<ul>
+<li>Improves transparency around Grin security and disclosure processes</li>
+<li>Decreases reaction time for mitigating security incidents across the Grin ecosystem</li>
+<li>Increases preparedness in the event of an extreme vulnerability</li>
+<li>Improves overall ecosystem resiliency</li>
+<li>Provides clarity around ethical behavior and expected deviations</li>
+<li>Makes possible the mapping of the vulnerability disclosure surface</li>
+</ul>
+<h2 id="community-level-explanation">Community-level explanation</h2>
+<p>This RFC proposes adopting a
+<a href="https://github.com/RD-Crypto-Spec/Responsible-Disclosure#the-standard">vulnerability disclosure standard</a>
+for Grin that provides
+more guidance and clears up some unanswered questions from Grin's
+<a href="https://github.com/mimblewimble/grin/blob/09cf6de1d143ffbe007478372dc573213e06804d/SECURITY.md#grins-security-process">current security process</a>.
+The community should think of this improvement as an extension
+to the existing security process with the following changes:</p>
+<ul>
+<li>Better define
+<a href="https://github.com/RD-Crypto-Spec/Responsible-Disclosure#ethical-behavior">ethical behavior</a>
+(and deviations) for vulnerability disclosure</li>
+<li>Better define the
+<a href="https://github.com/RD-Crypto-Spec/Responsible-Disclosure#standard-disclosure-timelines">processes and expectations</a>
+for receiving and sending disclosures</li>
+<li>Provide a framework for
+<a href="https://github.com/RD-Crypto-Spec/Responsible-Disclosure#publicly-committing-to-disclosure-relationships">bi-lateral disclosure agreements</a>
+with other projects/implementations</li>
+<li>A <a href="https://github.com/RD-Crypto-Spec/Responsible-Disclosure#publicly-committing-to-disclosure-process">public commitment</a>
+to the above</li>
+</ul>
+<p>This all results in a more robust security process for Grin that is transparent
+from the beginning to the community, vulnerability researchers, the core team
+and other neighboring projects that share threads in the same security blanket.</p>
+<p>An example of another project adopting the same standard can be found
+<a href="https://github.com/zcash/zcash/blob/76d3adc564a8cb87923ce5be1cc3aa8046f6d24e/SECURITY.md">here</a>
+in Zcash's vulnerability disclosure document.</p>
+<h2 id="reference-level-explanation">Reference-level explanation</h2>
+<ul>
+<li>
+<p>This RFC proposes to adopt a community responsible disclosure standard for Grin: https://github.com/RD-Crypto-Spec/Responsible-Disclosure</p>
+</li>
+<li>
+<p>Here we will describe the specific changes that would be made to
+<a href="https://github.com/mimblewimble/grin/blob/09cf6de1d143ffbe007478372dc573213e06804d/SECURITY.md">SECURITY.md</a> if the RFC is adopted.</p>
+</li>
+<li>
+<p>Many of the changes proposed are modeled from
+<a href="https://github.com/zcash/zcash/blob/76d3adc564a8cb87923ce5be1cc3aa8046f6d24e/SECURITY.md#security-disclosures">Zcash's security disclosure policy</a>
+which adopts the same standard proposed here for Grin.</p>
+</li>
+</ul>
+<p><em>All links to the standard in the actual implementation of SECURITY.md must be
+permanent.</em></p>
+<h3 id="changes-to-securitymd">Changes to <a href="https://github.com/mimblewimble/grin/blob/09cf6de1d143ffbe007478372dc573213e06804d/SECURITY.md">SECURITY.md</a></h3>
+<ul>
+<li>
+<p>The original
+<a href="https://github.com/mimblewimble/grin/blob/09cf6de1d143ffbe007478372dc573213e06804d/SECURITY.md#recognition-and-bug-bounties">Recognition and Bug Bounties</a>
+section will be updated:</p>
+<ul>
+<li>Include a link to the
+<a href="https://github.com/RD-Crypto-Spec/Responsible-Disclosure#acknowledgements">Acknowledgements</a>
+section of the standard</li>
+<li>Include a link to the
+<a href="https://github.com/RD-Crypto-Spec/Responsible-Disclosure#bounty-payments">Bounty Payments</a>
+section of the standard</li>
+<li>
+<p>Keep existing language such as:</p>
+<blockquote>
+<p>As of this writing, Grin is a traditional open source project with limited to
+no direct funding. As such, we have little means with which to compensate
+security researchers for their contributions.</p>
+</blockquote>
+</li>
+<li>
+<p>Remove unnecessary or old language such as:</p>
+<blockquote>
+<p>It is our hope that after mainnet release...</p>
+</blockquote>
+</li>
+<li>
+<p>Include a note that there is not currently a formal bug bounty program
+but that more donations can help provide the resources to run one in the
+future. Include a donation link here.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>The original
+<a href="https://github.com/mimblewimble/grin/blob/09cf6de1d143ffbe007478372dc573213e06804d/SECURITY.md#code-reviews-and-audits">Code Reviews and Audits</a>
+section will be moved to a not yet determined page on the
+<a href="https://github.com/mimblewimble/docs/wiki">wiki</a>.</p>
+</li>
+<li>
+<p>The original
+<a href="https://github.com/mimblewimble/grin/blob/09cf6de1d143ffbe007478372dc573213e06804d/SECURITY.md#chain-splits">Chain Splits</a>
+section will move to a not yet determined
+<a href="https://github.com/mimblewimble/grin/issues">Github issue</a>
+in the main repository.</p>
+</li>
+</ul>
+<p><em><strong>The following sections will be added to
+<a href="https://github.com/mimblewimble/grin/blob/09cf6de1d143ffbe007478372dc573213e06804d/SECURITY.md">SECURITY.md</a> and may replace existing sections as noted below.</strong></em></p>
+<h4 id="responsible-disclosure-standard">Responsible Disclosure Standard</h4>
+<p><em>This section will replace the
+<a href="https://github.com/mimblewimble/grin/blob/09cf6de1d143ffbe007478372dc573213e06804d/SECURITY.md#vulnerability-handling">original vulnerability handling section</a></em></p>
+<blockquote>
+<p>Grin follows a
+<a href="https://github.com/RD-Crypto-Spec/Responsible-Disclosure#the-standard">community standard for responsible disclosure</a>
+in cryptocurrency and related software.</p>
+<p>This document is a public commitment to following the standard. Any expected
+deviations are explained in the following sections.</p>
+<p>The standard provides detailed information for:
+- <a href="https://github.com/RD-Crypto-Spec/Responsible-Disclosure#initial-contact">Initial Contact</a>:
+how the initial contact process works
+- <a href="https://github.com/RD-Crypto-Spec/Responsible-Disclosure#giving-details">Giving Details</a>:
+what details to include with your disclosure after receiving a response to your
+initial contact
+- <a href="https://github.com/RD-Crypto-Spec/Responsible-Disclosure#setting-dates">Setting Dates</a>:
+details for when to release updates and publicize details of the issue</p>
+</blockquote>
+<h4 id="receiving-disclosures">Receiving Disclosures</h4>
+<p><em>This section will replace the
+will replace the
+<a href="https://github.com/mimblewimble/grin/blob/09cf6de1d143ffbe007478372dc573213e06804d/SECURITY.md#responsible-disclosure">original responsible disclosure section</a>.</em></p>
+<blockquote>
+<p>Grin is committed to working with researchers who submit security vulnerability
+notifications to us to resolve those issues on an appropriate timeline and perform
+a coordinated release, giving credit to the reporter if they would like.</p>
+<p>Please submit issues to all of the following main points of contact for
+security related issues according to the
+<a href="https://github.com/RD-Crypto-Spec/Responsible-Disclosure#initial-contact">initial contact</a>
+and <a href="https://github.com/RD-Crypto-Spec/Responsible-Disclosure#giving-details">details</a>
+guidelines. More information is available about the
+<a href="https://github.com/RD-Crypto-Spec/Responsible-Disclosure#standard-disclosure-timelines">expected timelines for the full disclosure cycle</a>.</p>
+</blockquote>
+<p>Emails and PGP keys for Grin's security contacts will be listed here as in the
+existing
+<a href="https://github.com/mimblewimble/grin/blob/09cf6de1d143ffbe007478372dc573213e06804d/SECURITY.md#responsible-disclosure">Responsible Disclosure</a>
+and
+<a href="https://github.com/mimblewimble/grin/blob/09cf6de1d143ffbe007478372dc573213e06804d/SECURITY.md#public-keys">Public Key</a>
+sections.</p>
+<h4 id="sending-disclosures">Sending Disclosures</h4>
+<blockquote>
+<p>In the case where we become aware of security issues affecting other projects
+that has never affected Grin, our intention is to inform those projects of
+security issues on a best effort basis.</p>
+<p>In the case where we fix a security issue in Grin that also affects the following
+neighboring projects, our intention is to engage in responsible disclosures with
+them as described in https://github.com/RD-Crypto-Spec/Responsible-Disclosure,
+subject to the deviations described in the 'Deviations from the Standard' section.</p>
+</blockquote>
+<h4 id="bilateral-responsible-disclosure-agreements">Bilateral Responsible Disclosure Agreements</h4>
+<p>Here we would list any agreements we have with neighboring projects to share
+vulnerability information in accordance with the standard itself and the
+'Deviations from the Standard' section in the adoption of the standard.
+Agreements would be made by the core team or security team based on capacity
+to engage and relevance/impact on Grin's ecosystem and to an extent the greater
+cryptocurrency ecosystem.</p>
+<h4 id="deviations-from-the-standard">Deviations from the Standard</h4>
+<blockquote>
+<p>Grin is a technology that provides strong privacy with zero-knowledge
+commitments and rangeproofs. Due to the nature of the cryptography used, if a
+counterfeiting bug results it could be exploited without a way to identify
+which data was corrupted. This renders rollbacks or other fork-based attempted
+fixes ineffective.</p>
+<p>The standard describes reporters of vulnerabilities including full details of an
+issue, in order to reproduce it. This is necessary for instance in the case of
+an external researcher both demonstrating and proving that there really is a
+security issue, and that security issue really has the impact that they say it
+has - allowing the development team to accurately prioritize and resolve the issue.</p>
+<p>In the case of a counterfeiting or privacy-breaking bug, however, we might
+decide not to include those details with our reports to partners ahead of
+coordinated release, so long as we are sure that they are vulnerable.</p>
+</blockquote>
+<h4 id="canaries">Canaries</h4>
+<p>For a privacy preserving project such as Grin, adversaries wishing to break that
+privacy may have incentive to disrupt Grin's security processes. This could be
+attempted via NSLs, FISA court orders, secret government subpoenas and rubber-hose
+tactics. The purpose of a PGP signed canary by each disclosure contact on a
+regular basis is to indicate that the disclosure contacts are not compelled
+in any way to take any actions (or non-actions) to jeopardize the security of
+Grin users. There are several examples of canaries in action, particularly in
+privacy preserving projects [5][6][7].</p>
+<p>If this section is adopted with the RFC, canaries for each security contact for
+Grin vulnerability disclosures will be updated quarterly. Repos containing up to
+date signatures will be linked in the SECURITY.md document. In the event a
+security contact fails to keep their canary alive, they will be removed from the
+list of contacts. The specific language of each canary can be up to each contact
+unless a canary standard is adopted.</p>
+<h2 id="drawbacks">Drawbacks</h2>
+<p>This proposal could add complexity and overhead that a donation-supported decentralized
+project may not be able to uphold in good faith. Adopting and pre-committing
+to a standard and policy is not effective if it cannot be upheld through actions.
+This is amplified with bilateral agreements that extend through chains of vendors
+sharing code, many forks and multiple implementations with many operating publicly.</p>
+<p>For a project with extremely limited resources (relative to large companies)
+and no source of steady funding, it may not be possible to support the time and
+resources required to follow through on such a commitment.</p>
+<h2 id="rationale-and-alternatives">Rationale and alternatives</h2>
+<h3 id="why-is-this-design-the-best-in-the-space-of-possible-designs">Why is this design the best in the space of possible designs?</h3>
+<p>This seems to be the most transparent and least centralized option that still
+provides the ability to efficiently handle cases of severe vulnerabilities that
+may be unique to Grin, while keeping with the minimalist philosophy.</p>
+<p>Relying on a single security@ disclosure email address provides a single point
+of failure. Additionally, not having clear pre-commitments to sharing agreements
+and expected ethical deviations can cause community contention at best and
+failure to successfully mitigate a vulnerability before it is exploited at worst.</p>
+<h3 id="what-other-designs-have-been-considered-and-what-is-the-rationale-for-not-choosing-them">What other designs have been considered and what is the rationale for not choosing them?</h3>
+<p>A less centralized model would be to attempt to guide this process with on-chain
+governance or an on-chain bug bounty program. Both of those not only challenge
+Grin's minimalist philosophy but are also extremely complicated to execute on.
+These do not seem to be viable options for Grin at this time.</p>
+<p>Ideally formal verification could be used to handle many of these security
+challenges but there is a huge gap between what formal verification can actually
+do and the complex blockchain related things we are doing today that we want
+formally verified. This may be more viable in the future, but it would require
+significant time and resource investment. It would not be responsible to rely
+on formal verification for a project like Grin today.</p>
+<h3 id="what-is-the-impact-of-not-doing-this">What is the impact of not doing this?</h3>
+<p>If we do not adopt a standard as proposed here, the community is left with
+unresolved problems:</p>
+<ul>
+<li>Who do we tell if we receive a vulnerability?</li>
+<li>What details are we obligated to share?<ul>
+<li>Exploit code?</li>
+<li>What if it is an inflation bug?</li>
+</ul>
+</li>
+<li>Do we attempt to collect a bug bounty?</li>
+</ul>
+<p>The community is exposed to risk by not having clear answers to these questions
+<em>before</em> it is presented with a critical security vulnerability. Even if the
+vulnerability has technically been fixed, there may be severe fallout in the
+community if it perceives the situation wasn't handled ethically by the parties
+involved in the disclosure. There is also risk of not implementing a fix in time
+across the community because there were internal disputes about who to tell.</p>
+<p>Without a public pre-commitment to expected actions taken during a vulnerability
+disclosure, Grin runs the risk of alienating the community in pursuit of
+security, or even worse, not implementing a critical fix before any user
+experiences privacy or value loss.</p>
+<h2 id="prior-art">Prior art</h2>
+<p>The traditional disclosure model (RF Policy/security@) [0] handles interaction between
+researcher and vendor but does not quite fit for our use case of potentially multiple
+vendors up/down stream. There have been multi-party models proposed with single
+researcher and multiple vendors that have not been successful, nor do they
+sufficiently account for the challenges faced in public decentralized projects.</p>
+<p>Neither model fits with chains of vendors sharing code, protocols with multiple
+implementations and forks, all operating in public. We need a model that is
+better suited to handle cases of consensus critical vulnerabilities that require
+upgrades across many implementations, forks and projects both in the Grin and
+greater cryptocurrency ecosystems.</p>
+<p>Bitcoin has received some criticism over handling of disclosures, as it never
+had a robust, well-defined pre-committed standard to follow. We want to learn
+from those lessons to avoid putting more people in the position to repeat the
+same mistakes.</p>
+<p>Zcash, a privacy based cryptocurrency, experienced a critical vulnerability
+that inspired the creation of the standard this RFC proposes to adopt [1]. Due
+to the similar nature of the Zcash and Grin ecosystems, this prior art is highly
+relevant to the security process for Grin.</p>
+<h2 id="unresolved-questions">Unresolved questions</h2>
+<ul>
+<li>
+<p>How can we further reduce centralization risk for Grin's security process?</p>
+<ul>
+<li>Disclosures are sent directly only to those listed in SECURITY.md.
+This poses a centralization risk for the community as there is no way to
+trustlessly publicly verify actions taken by individuals involved in a
+disclosure. While this RFC is a step in the right direction, it does not
+completely remove centralization risk for the disclosure process.</li>
+</ul>
+</li>
+<li>
+<p>How can we responsibly handle vulnerabilities in academic papers?</p>
+<ul>
+<li>It is possible that a vulnerability may be found in an underlying primitive
+at the specification level that Grin relies on. In this case not only
+do we have potential vulnerabilities in all implementations, but also in
+the specification itself. Without addressing these properly some may
+continue to use academic papers with vulnerable specifications as a
+reference for new development.</li>
+</ul>
+</li>
+<li>
+<p>What role will formal verification play in Grin's future?</p>
+</li>
+<li>
+<p>What form, if any, will the Bug Bounty process take?</p>
+</li>
+</ul>
+<h2 id="future-possibilities">Future possibilities</h2>
+<ul>
+<li>Security team<ul>
+<li>If a security team is adopted in the future it would likely maintain these processes</li>
+</ul>
+</li>
+<li>On-chain governance/bug bounties</li>
+<li>Bug bounty program</li>
+<li>Formal verification</li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li>[0] <a href="https://dl.packetstormsecurity.net/papers/general/rfpolicy-2.0.txt">https://dl.packetstormsecurity.net/papers/general/rfpolicy-2.0.txt</a></li>
+<li>[1] <a href="https://www.youtube.com/watch?v=h7W1u1K2VjQ">https://www.youtube.com/watch?v=h7W1u1K2VjQ</a></li>
+<li>[2] <a href="https://github.com/RD-Crypto-Spec/Responsible-Disclosure">https://github.com/RD-Crypto-Spec/Responsible-Disclosure</a></li>
+<li>[3] <a href="https://github.com/zcash/zcash/blob/76d3adc564a8cb87923ce5be1cc3aa8046f6d24e/SECURITY.md">https://github.com/zcash/zcash/blob/master/SECURITY.md</a></li>
+<li>[4] <a href="https://github.com/mimblewimble/grin/blob/09cf6de1d143ffbe007478372dc573213e06804d/SECURITY.md">https://github.com/mimblewimble/grin/blob/09cf6de1d143ffbe007478372dc573213e06804d/SECURITY.md</a></li>
+<li>[5] <a href="https://github.com/QubesOS/qubes-secpack/blob/master/canaries/canary-020-2019.txt">https://github.com/QubesOS/qubes-secpack/blob/master/canaries/canary-020-2019.txt</a></li>
+<li>[6] <a href="https://riseup.net/about-us/canary/canary-statement-signed.txt">https://riseup.net/about-us/canary/canary-statement-signed.txt</a></li>
+<li>[7] <a href="https://protonmail.com/blog/transparency-report/">https://protonmail.com/blog/transparency-report/</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/mimblewimble" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://keybase.io/team/grincoin" target="_blank" rel="noopener" title="keybase.io" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M286.17 419a18 18 0 1 0 18 18 18 18 0 0 0-18-18m111.92-147.6c-9.5-14.62-39.37-52.45-87.26-73.71q-9.1-4.06-18.38-7.27a78.43 78.43 0 0 0-47.88-104.13c-12.41-4.1-23.33-6-32.41-5.77-.6-2-1.89-11 9.4-35L198.66 32l-5.48 7.56c-8.69 12.06-16.92 23.55-24.34 34.89a51 51 0 0 0-8.29-1.25c-41.53-2.45-39-2.33-41.06-2.33-50.61 0-50.75 52.12-50.75 45.88l-2.36 36.68c-1.61 27 19.75 50.21 47.63 51.85l8.93.54a214 214 0 0 0-46.29 35.54C14 304.66 14 374 14 429.77v33.64l23.32-29.8a148.6 148.6 0 0 0 14.56 37.56c5.78 10.13 14.87 9.45 19.64 7.33 4.21-1.87 10-6.92 3.75-20.11a178.3 178.3 0 0 1-15.76-53.13l46.82-59.83-24.66 74.11c58.23-42.4 157.38-61.76 236.25-38.59 34.2 10.05 67.45.69 84.74-23.84.72-1 1.2-2.16 1.85-3.22a156 156 0 0 1 2.8 28.43c0 23.3-3.69 52.93-14.88 81.64-2.52 6.46 1.76 14.5 8.6 15.74 7.42 1.57 15.33-3.1 18.37-11.15C429 443 434 414 434 382.32c0-38.58-13-77.46-35.91-110.92M142.37 128.58l-15.7-.93-1.39 21.79 13.13.78a93 93 0 0 0 .32 19.57l-22.38-1.34a12.28 12.28 0 0 1-11.76-12.79L107 119c1-12.17 13.87-11.27 13.26-11.32l29.11 1.73a144 144 0 0 0-7 19.17m148.42 172.18a10.51 10.51 0 0 1-14.35-1.39l-9.68-11.49-34.42 27a8.09 8.09 0 0 1-11.13-1.08l-15.78-18.64a7.38 7.38 0 0 1 1.34-10.34l34.57-27.18-14.14-16.74-17.09 13.45a7.75 7.75 0 0 1-10.59-1s-3.72-4.42-3.8-4.53a7.38 7.38 0 0 1 1.37-10.34L214 225.19s-18.51-22-18.6-22.14a9.56 9.56 0 0 1 1.74-13.42 10.38 10.38 0 0 1 14.3 1.37l81.09 96.32a9.58 9.58 0 0 1-1.74 13.44M187.44 419a18 18 0 1 0 18 18 18 18 0 0 0-18-18"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>

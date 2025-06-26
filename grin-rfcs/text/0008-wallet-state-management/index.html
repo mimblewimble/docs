@@ -1,0 +1,3167 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Grin Documentation">
+      
+      
+        <meta name="author" content="Grin Developers">
+      
+      
+        <link rel="canonical" href="https://docs.grin.mw/grin-rfcs/text/0008-wallet-state-management/">
+      
+      
+        <link rel="prev" href="../0009-enable-faster-sync/">
+      
+      
+        <link rel="next" href="../0007-node-api-v2/">
+      
+      
+      <link rel="icon" href="../../../assets/images/grin-logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>0008 wallet-state-management - Grin Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#summary" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      <!--
+  Copyright (c) 2016-2021 Martin Donath <martin.donath@squidfunk.com>
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Header -->
+<header class="md-header" data-md-component="header">
+  <nav
+    class="md-header__inner md-grid"
+    aria-label="header.title"
+  >
+
+    <!-- Link to home -->
+    <a
+      href="https://grin.mw"
+      title="Grin"
+      class="md-header__button md-logo"
+      aria-label="Grin"
+    >
+      
+  <img src="../../../assets/images/grin-logo.svg" alt="logo">
+
+    </a>
+
+    <!-- Button to open drawer -->
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+
+    <!-- Header title -->
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            <a
+              href="https://docs.grin.mw/"
+              title="Grin Documentation"
+              aria-label="Grin Documentation"
+            >
+            Grin Documentation
+            </a>
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              0008 wallet-state-management
+            
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header options -->
+    <div class="md-header__options">
+
+      <!-- Switch to toggle language -->
+      
+    </div>
+
+    <!-- Button to open search modal -->
+    
+
+    <!-- Repository information -->
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mimblewimble/grin" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimblewimble/grin
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../about-grin/story/" class="md-tabs__link">
+          
+  
+  
+  About Grin
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../wiki/table-of-contents/" class="md-tabs__link">
+          
+  
+  
+  Wiki
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../0019-deprecate-http-tx/" class="md-tabs__link">
+          
+  
+  
+  RFCs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Grin Documentation" class="md-nav__button md-logo" aria-label="Grin Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/images/grin-logo.svg" alt="logo">
+
+    </a>
+    Grin Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mimblewimble/grin" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimblewimble/grin
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ./Grin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Quickstart
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Quickstart
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/quickstart/install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Install
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/quickstart/initialize/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Initialize
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/quickstart/receive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Receive
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/quickstart/send/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Send
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/wallet-handbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CLI Handbook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/wallets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wallets
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/build/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Build
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    About Grin
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            About Grin
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about-grin/story/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Story
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about-grin/privacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Privacy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about-grin/scalability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Scalability
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about-grin/transactions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Transactions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about-grin/proof-of-work/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Proof of Work
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about-grin/emission/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Emission
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Wiki
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Wiki
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/table-of-contents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Table of Contents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Introduction
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/introduction/grin-for-bitcoiners/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Grin for Bitcoiners
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Mimblewimble
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Mimblewimble
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/introduction/mimblewimble/ecc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Elliptic Curves
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/introduction/mimblewimble/commitments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Commitments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/introduction/mimblewimble/mimblewimble/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mimblewimble
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Transactions
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Transactions
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/transactions/slates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slates
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/transactions/slatepack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slatepack
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/transactions/payment-proofs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Payment Proofs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/transactions/contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contracts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Blocks
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Blocks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/blocks/block-header/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Header
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/blocks/block-body/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Body
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/blocks/fees-and-weight/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fees & Weight
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Chain State
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Chain State
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/chain-state/merkle-mountain-range/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Merkle Mountain Ranges
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/chain-state/state-and-pruning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    State & Pruning
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/chain-state/chain-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chain Sync
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Miscellaneous
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Miscellaneous
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/miscellaneous/cuckoo-cycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cuckoo Cycle
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/miscellaneous/dandelion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dandelion
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/miscellaneous/switch-commitments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Switch Commitments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/miscellaneous/coinbase-maturity-rule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coinbase Maturity Rule
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/miscellaneous/nrd-kernels/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NRD Kernels
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    API
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/api/node-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Node API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/api/wallet-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wallet API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/api/stratum-rpc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Stratum RPC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Security Process
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            Security Process
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/security-process/grin-security-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Grin's Security Process
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/security-process/security-team/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security Team
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/security-process/code-audits/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Code Audits
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Services
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/services/list-of-services/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    List of Services
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/services/slatepack-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slatepack Integration Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Resources
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    RFCs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            RFCs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0019-deprecate-http-tx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0019 deprecate-http-tx
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0018-fix-daa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0018 fix-daa
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0017-fix-fees/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0017 fix-fees
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0016-simplify-governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0016 simplify-governance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0015-slatepack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0015 slatepack
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0014-general-fund-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0014 general-fund-guidelines
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0013-nrd-kernels/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0013 nrd-kernels
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0012-compact-slates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0012 compact-slates
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0011-security-team/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0011 security-team
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0010-online-transacting-via-tor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0010 online-transacting-via-tor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0009-enable-faster-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0009 enable-faster-sync
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    0008 wallet-state-management
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    0008 wallet-state-management
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#motivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motivation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#community-level-explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Community-level explanation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference-level-explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference-level explanation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reference-level explanation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wallet-update-procedures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wallet Update Procedures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wallet Update Procedures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#transaction-and-output-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transaction and Output Creation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Transaction and Output Creation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#coinbase-output-transaction-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Coinbase Output + Transaction Creation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transacting-payer-payee-output-transaction-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transacting (Payer -&gt; Payee) Output + Transaction Creation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transaction-and-output-statue-update-processes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transaction and Output Statue Update Processes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Transaction and Output Statue Update Processes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update-by-output-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update by Output Process
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kernel-lookup-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kernel Lookup Process
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-repair-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check-Repair Process
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#previous-overall-update-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Previous Overall Update Process
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changes-to-overall-update-process-and-procedures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changes to Overall Update Process and Procedures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Changes to Overall Update Process and Procedures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-repair-is-renamed-to-scan" class="md-nav__link">
+    <span class="md-ellipsis">
+      check-repair is renamed to scan
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overall-update-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overall Update Process
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-recovered-wallets" class="md-nav__link">
+    <span class="md-ellipsis">
+      New / Recovered Wallets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manual-scans" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manual Scans
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invocation-of-update-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Invocation of Update Process
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transaction-ttl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transaction TTL
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unresolved-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unresolved questions
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0007-node-api-v2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0007 node-api-v2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0006-payment-proofs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0006 payment-proofs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0005-variable-size-kernels/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0005 variable-size-kernels
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0004-full-wallet-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0004 full-wallet-lifecycle
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0003-security-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0003 security-process
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0002-grin-governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0002 grin-governance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0001-rfc-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0001 rfc-process
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#motivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motivation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#community-level-explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Community-level explanation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference-level-explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference-level explanation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reference-level explanation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wallet-update-procedures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wallet Update Procedures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wallet Update Procedures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#transaction-and-output-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transaction and Output Creation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Transaction and Output Creation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#coinbase-output-transaction-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Coinbase Output + Transaction Creation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transacting-payer-payee-output-transaction-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transacting (Payer -&gt; Payee) Output + Transaction Creation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transaction-and-output-statue-update-processes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transaction and Output Statue Update Processes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Transaction and Output Statue Update Processes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update-by-output-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update by Output Process
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kernel-lookup-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kernel Lookup Process
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-repair-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check-Repair Process
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#previous-overall-update-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Previous Overall Update Process
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changes-to-overall-update-process-and-procedures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changes to Overall Update Process and Procedures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Changes to Overall Update Process and Procedures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-repair-is-renamed-to-scan" class="md-nav__link">
+    <span class="md-ellipsis">
+      check-repair is renamed to scan
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overall-update-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overall Update Process
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-recovered-wallets" class="md-nav__link">
+    <span class="md-ellipsis">
+      New / Recovered Wallets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manual-scans" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manual Scans
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invocation-of-update-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Invocation of Update Process
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transaction-ttl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transaction TTL
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unresolved-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unresolved questions
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>0008 wallet-state-management</h1>
+
+<ul>
+<li>Title: improved-wallet-state-management</li>
+<li>Authors: <a href="mailto:yeastplume@protonmail.com">Michael Cordner</a></li>
+<li>Start date: Nov 4th, 2019</li>
+<li>RFC PR: <a href="https://github.com/mimblewimble/grin-rfcs/pull/30">mimblewimble/grin-rfcs#30</a></li>
+<li>Tracking issue: <a href="https://github.com/mimblewimble/grin-wallet/issues/244">mimblewimble/grin-wallet#244</a></li>
+</ul>
+<hr />
+<h2 id="summary">Summary</h2>
+<p>The changes outlined in the RFC are intended to make process of updating a wallet's state from the chain more consistent for developers and more transparent to the end user.</p>
+<p>This includes the following changes:</p>
+<ul>
+<li>The wallet's update process is modified to be more consistent and encapsulated.</li>
+<li>The <code>check-repair</code> process is run periodically as part of normal wallet update operations</li>
+<li>The ability for the wallet to run the update process on a separate thread is added.</li>
+<li>A TTL (Time-to-Live) field is added to the slate</li>
+<li>The default output selection method is set to <code>smallest</code></li>
+</ul>
+<h2 id="motivation">Motivation</h2>
+<p>Grin wallet previously updated the state of its outputs and transactions using a combination of UTXO updates, Kernel Lookups and UTXO set scanning. These 'primitives' on their own are generally enough to keep wallet states consistent, however the manner in which they were previously invoked was less than ideal and relied heavily on manually invoking the <code>check-repair</code> process and <code>cancel</code> command.</p>
+<p>To rectify this situation, this RFC outlines enhancements made to the wallet update process that have the goal of ensuring wallets are always in a consistent state in a manner that is transparent to the user. After adopting these changes, most wallets should automatically keep themselves in sync with the chain in all cases, and users will not usually have to invoke the <code>check-repair</code> or <code>cancel</code> commands.</p>
+<h2 id="community-level-explanation">Community-level explanation</h2>
+<p>While these changes should be transparent to end users, wallet developers should note the changes to how the wallet updates itself via these processes. Special attention should be paid to the new update thread API functions, as well as the new TTL field and default selection strategy change.</p>
+<h2 id="reference-level-explanation">Reference-level explanation</h2>
+<h3 id="wallet-update-procedures">Wallet Update Procedures</h3>
+<p>The following sections outlines the processes used in the creation and update of outputs and related transactions within the wallet.</p>
+<h4 id="transaction-and-output-creation">Transaction and Output Creation</h4>
+<h5 id="coinbase-output-transaction-creation">Coinbase Output + Transaction Creation</h5>
+<p>Coinbase outputs and their related transactions are created via the wallet listener as part of the mining process. The workflow is:</p>
+<ul>
+<li>When mining, create a potential coinbase output for the target block.</li>
+<li>If the block is accepted and the output is detected in the UTXO set (via the <a href="#update-by-output-process">Update by Output process</a>, create a transaction log entry of type 'Confirmed Coinbase', with 'confirmed' set to true.</li>
+</ul>
+<h5 id="transacting-payer-payee-output-transaction-creation">Transacting (Payer -&gt; Payee) Output + Transaction Creation</h5>
+<p>Outputs and tranasctions are created during the transaction exchange process as follows. Note that the invoicing workflow is mostly identical with the roles of Payer and Payee reversed, so this workflow is not outlined separately.</p>
+<ul>
+<li>The sender creates a new 'blank' transaction Slate, adding inputs and change outputs to the slate.</li>
+<li>The sender generates a random kernel offset. (The kernel offset is always generated by the slate creator)</li>
+<li>The sender sends the slate to the payee (via file or http). If sending synchronously, (e.g. via http)  the associated transaction is saved to the log after a response from the payee's listener. If sending asynchronously, (e.g. via file), the transaction is saved immediately.</li>
+<li>When saved, the associated transaction is set to type 'Sent Tx' with a status of 'unconfirmed', inputs are locked internally and a change output is added with status 'unconfirmed'.</li>
+<li>The payee receives the slate, creates (an) output(s) for the received amount with status unconfirmed, and immediately stores a transaction in their log of type 'Received Tx' with confirmed set to false.</li>
+<li>The payee calculates and saves the transaction kernel commitment for later reference.</li>
+<li>The slate is returned to the payer for completion, who calculates and saves the transaction kernel. The transaction is sent to a node for validation.</li>
+</ul>
+<h4 id="transaction-and-output-statue-update-processes">Transaction and Output Statue Update Processes</h4>
+<h5 id="update-by-output-process">Update by Output Process</h5>
+<p>The Update by Output Process is the main method by which the wallet updates its internal state, decides whether a transaction has been confirmed and when to remove or confirm individual outputs. This process works as follows:</p>
+<ul>
+<li>For every unspent output in the wallet:</li>
+<li>If the output's status in the user's wallet is 'unconfirmed' and it is present in the UTXO set, change the output's status to 'confirmed', and update the associated transaction status to 'confirmed'.</li>
+<li>If the output's status in the user's wallet is 'confirmed' and it no longer appears in the UTXO set, set its status to 'Spent'. Note these outputs will usually be locked so they cannot be selected for spending again.</li>
+</ul>
+<h5 id="kernel-lookup-process">Kernel Lookup Process</h5>
+<p>It is also possible to look up a transaction via the kernel that was stored when the transaction and outputs were created. This is necessary in cases such as where a participant in a transaction doesn't have any change outputs, which means the output update process won't detect when to mark a transaction confirmed. This process is:</p>
+<ul>
+<li>Retrieve the transaction kernel from the node using the kernel excess value calculated during the transaction creation process.</li>
+<li>If the kernel exists, update the status of the associated transaction to 'Confirmed'</li>
+</ul>
+<h5 id="check-repair-process">Check-Repair Process</h5>
+<p>The Update by Output process on its own is not enough to ensure the contents of a wallet is correct. There are many easily-encountered situations in the course of a wallet's operation where this process is insufficient and can potentially lead to an wallet state that's inconsistent with the UTXO set, including but not limited to:</p>
+<ul>
+<li>Manually cancelling transactions and unlocking outputs before they've had a chance to confirm on the chain.</li>
+<li>Running multiple wallets from the same seed</li>
+<li>Fork situations</li>
+</ul>
+<p>The check-repair process fixes most of these potential issues by scanning every single output in the UTXO set and testing for ownership by determining if its bullet proof can be decoded using the wallet's master key. It will then 'check and repair' all outputs and transactions in the wallet as follows:</p>
+<ul>
+<li>If an output exists in the UTXO set and is not in the wallet, create an output for the wallet at the derivation path stored in the bullet proof, and create a new transaction crediting the amount</li>
+<li>If an output exists in the UTXO set and is marked as 'spent', mark it as unspent and cancel any associated transaction log entries.</li>
+</ul>
+<p>Additionally, the check-repair process can take a flag instructing it to delete unconfirmed outputs and reset all outstanding transactions. If this flag is set:</p>
+<ul>
+<li>If a locked output exists in the UTXO set, unlock it and set any associated transactions to <code>cancelled</code></li>
+<li>If an 'unconfirmed' output is not in the UTXO set, delete it and cancel any associated transaction log entries.</li>
+</ul>
+<p>Note that the wallet <code>restore</code> process works very similarly to the check-repair process, however it must always operate on an empty wallet meaning it is limited to creating outputs and transactions in the wallet.</p>
+<h3 id="previous-overall-update-process">Previous Overall Update Process</h3>
+<p>All of the procedures outlined above can be considered set of 'primitives' available for the wallet to keep itself updated. The previous update process was somewhat limited, and had the tendency to require a significant amount of manual updating using the <code>check-repair</code> command. The previous process was as follows:</p>
+<ul>
+<li>Invoke the 'Update by Output' process before retrieving any info relating to the wallet state (<code>txs</code>, <code>info</code> or <code>outputs</code> commands,) or creating a new transaction. This invocation is usually done internally and in a syncronous blocking manner by each command that requires the wallet state to be as up to date as possible.</li>
+<li>During the <code>txs</code> retrieval command, for each unconfirmed transaction with an <code>amount recieved</code> field set to 0, invoke the 'Kernel Lookup' process.</li>
+<li>If the user suspects the wallet state to be inconsistent with the node's UTXO state, the user can run the manual <code>check-repair</code> command. This will scan all UTXOs in the set from position 1 in the output PMMR. The user can optionally provide a flag to remove all unconfirmed transactions.</li>
+<li>If a transaction and associated outputs appear 'stuck' or 'locked' due to the other party not completing a transaction, the user must manually cancel the transactions and unlock the outputs for re-use. (or provide the <code>cancel-unconfirmed</code> flag to the check-repair process)</li>
+<li>The default selection strategy is to 'sweep' the wallet of outputs on each transaction creation, meaning that by default, no further transaction can usually be made while a transaction is outstanding.</li>
+</ul>
+<h3 id="changes-to-overall-update-process-and-procedures">Changes to Overall Update Process and Procedures</h3>
+<p>While a combination of the 'primitives' listed above should be enough to keep a wallet's state consistent with a node's UTXO set, the previous method of invoking the vital <code>check-repair</code> command was a manual step that had to be run on the entire UTXO set each time. The overall update process is modified to incorporate the previous <code>check-repair</code> logic as part of normal operation. To ensure a wallet is only scanning the part of the UTXO set required, the wallet stores details on what parts of the UTXO set it has already scanned, and performs incremental scans as part of normal update operation.</p>
+<h4 id="check-repair-is-renamed-to-scan"><code>check-repair</code> is renamed to <code>scan</code></h4>
+<p>The naming of the previous <code>check-repair</code> command and functionality implied something had gone wrong, whereas it really should be considered a necessary part of normal wallet operation. It is therefore renamed to a more friendly-sounding <code>scan</code> process.</p>
+<h4 id="overall-update-process">Overall Update Process</h4>
+<p>The Overall Update process is outlined as follows:</p>
+<ul>
+<li>Perform the 'Update by Output' process.</li>
+<li>Perform the 'Kernel Update' process for transactions where the incoming amount is 0.</li>
+<li>Query the wallet's internal data for the last block height scanned via the <code>scan</code> process.</li>
+<li>If the stored block's header hash doesn't match the version currently on the node's UTXO set, scan the range of the UTXO set corresponding to the last stored block - 100 blocks up until the current block.</li>
+<li>If the stored block's header matches the version on the chain, scan a range of the UTXO set corresponding to the stored block height to the current block height.</li>
+<li>Save the last block scanned by the <code>scan</code> process.</li>
+</ul>
+<h4 id="new-recovered-wallets">New / Recovered Wallets</h4>
+<p>Newly created and recovered wallets scan the UTXO set as follows:</p>
+<ul>
+<li>New wallets generated with a new random seed will mark themselves as <code>new</code>, and set their <code>last scanned block</code> to the block height reported on first successful contact with a node.</li>
+<li>Wallets recovered with an existing mnemonic will set the <code>last scanned block</code> to <code>1</code>, triggering the <code>scan</code> process and thereby restoring any associated outputs.</li>
+<li>The <code>restore</code> command will be removed in favor of the <code>scan</code> process.</li>
+</ul>
+<h4 id="manual-scans">Manual Scans</h4>
+<p>It is still be possible to manually scan the chain via the <code>scan</code> (<code>check</code>) command, however the command is modified to allow the user to specify a range of block heights to scan. If this is not provided, the scan occurs from the current block - 1 week's worth of blocks.</p>
+<h4 id="invocation-of-update-process">Invocation of Update Process</h4>
+<p>The update process was previously run inline in a synchronous blocking fashion as part of individual wallet commands. With the <code>scan</code> command becoming part of normal operations, it's expected that a particular invocation of the overall update process could potentially take a long time. This is acceptable in single-use modes such as the single invocation model of <code>grin-wallet</code>, but is far less usable in environments where the wallet and Owner API stay resident and the caller may not have any particular insight as to why a call invoking the update process might be taking a long time to complete.</p>
+<p>To address this, the wallet provides a method of calling the Overall Update Process in its own thread that attempts to minimise its usage of the wallet lock. The Wallet's Owner API (V3 Only) is extended with the following functions:</p>
+<ul>
+<li><code>start_update_thread(interval)</code> =&gt; Starts the update thread, calling the Overall Update Process at the frequency specified</li>
+<li><code>stop_update_thread()</code> =&gt; Stops the update thread</li>
+<li><code>get_update_status()</code> =&gt; Returns the current status of the update thread, along with as much information as possible about what the thread is doing and, in the case of the <code>scan</code> process, the percentage complete.</li>
+</ul>
+<p>Further, if the update thread is currently running, commands that previously always called the Overall Update Process (such as <code>info</code>, <code>txs</code>, etc...) do not call the update process. This means that when invoked via the command line, the behaviour is unchanged. However, wallets running the Owner API can instead choose to run and monitor the background update thread at the desired frequency while keeping the user informed of any long-running update processes.</p>
+<h4 id="transaction-ttl">Transaction TTL</h4>
+<p>The Update process outlined above does not cover the case where a slate is exchanged and outputs are locked, but one party doesn't complete the transaction for whatever reason.</p>
+<p>Previously, a situation such as this meant that the outputs associated with a transaction sat locked indefinitely within a user's wallet, with the only way to unlock them a manual <code>cancel</code> command (or a <code>check-repair</code> with the <code>delete-unconfirmed</code> flag set). Worse, the wallet's default selection strategy was set to <code>all</code> meaning an entire wallet's contents usually became locked on each transaction, and thus a single uncompleted transaction would render a user's entire wallet balance unspendable.</p>
+<p>To rectify these problems, the following changes are made:</p>
+<ul>
+<li>A Time-To-Live (<code>TTL</code>) field is added to the Slate, which is defined as the last block height at which a wallet should attempt to complete a transaction. This field should be respected at the wallet-exchange level, but is not currently commit to at a consensus level. If a wallet detects a particular transaction's TTL has expired, it will automatically cancel the transaction and unlock associated outputs. Note this doesn't prevent the other party sending the transaction to the node after this happens, but there is no guarantee the outputs will still be available. However, if this does happen the <code>scan</code> command will correct the wallet state.</li>
+<li>The default output selection method is changed to <code>smallest</code>, to prevent all wallet amounts being locked on every transaction. The <code>smallest</code> strategy prefers using the smallest (or 'dust') outputs as inputs to a transaction, and it is conjectured that the overall effect on Grin's UTXO size will be negligible in the longer term, provided users continue to transact. The <code>all</code> method of output selection also has privacy implications in that it makes it easier for an observer to identify a group of outputs as belonging to a single wallet (or indeed, representing the entire contents of a wallet in most cases).</li>
+</ul>
+<h2 id="unresolved-questions">Unresolved questions</h2>
+<ul>
+<li>Do we limit the Kernel Lookup part of the process to just cases where there is no change output. Is there any benefit to calling it for all outstanding transactions on each lookup (or any particular downside to doing so?)</li>
+<li>What is the effect on UTXO set size of changing the selection method to <code>smallest</code>?</li>
+<li>Confirm sensible defaults for how far to scan back on a <code>scan</code></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/mimblewimble" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://keybase.io/team/grincoin" target="_blank" rel="noopener" title="keybase.io" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M286.17 419a18 18 0 1 0 18 18 18 18 0 0 0-18-18m111.92-147.6c-9.5-14.62-39.37-52.45-87.26-73.71q-9.1-4.06-18.38-7.27a78.43 78.43 0 0 0-47.88-104.13c-12.41-4.1-23.33-6-32.41-5.77-.6-2-1.89-11 9.4-35L198.66 32l-5.48 7.56c-8.69 12.06-16.92 23.55-24.34 34.89a51 51 0 0 0-8.29-1.25c-41.53-2.45-39-2.33-41.06-2.33-50.61 0-50.75 52.12-50.75 45.88l-2.36 36.68c-1.61 27 19.75 50.21 47.63 51.85l8.93.54a214 214 0 0 0-46.29 35.54C14 304.66 14 374 14 429.77v33.64l23.32-29.8a148.6 148.6 0 0 0 14.56 37.56c5.78 10.13 14.87 9.45 19.64 7.33 4.21-1.87 10-6.92 3.75-20.11a178.3 178.3 0 0 1-15.76-53.13l46.82-59.83-24.66 74.11c58.23-42.4 157.38-61.76 236.25-38.59 34.2 10.05 67.45.69 84.74-23.84.72-1 1.2-2.16 1.85-3.22a156 156 0 0 1 2.8 28.43c0 23.3-3.69 52.93-14.88 81.64-2.52 6.46 1.76 14.5 8.6 15.74 7.42 1.57 15.33-3.1 18.37-11.15C429 443 434 414 434 382.32c0-38.58-13-77.46-35.91-110.92M142.37 128.58l-15.7-.93-1.39 21.79 13.13.78a93 93 0 0 0 .32 19.57l-22.38-1.34a12.28 12.28 0 0 1-11.76-12.79L107 119c1-12.17 13.87-11.27 13.26-11.32l29.11 1.73a144 144 0 0 0-7 19.17m148.42 172.18a10.51 10.51 0 0 1-14.35-1.39l-9.68-11.49-34.42 27a8.09 8.09 0 0 1-11.13-1.08l-15.78-18.64a7.38 7.38 0 0 1 1.34-10.34l34.57-27.18-14.14-16.74-17.09 13.45a7.75 7.75 0 0 1-10.59-1s-3.72-4.42-3.8-4.53a7.38 7.38 0 0 1 1.37-10.34L214 225.19s-18.51-22-18.6-22.14a9.56 9.56 0 0 1 1.74-13.42 10.38 10.38 0 0 1 14.3 1.37l81.09 96.32a9.58 9.58 0 0 1-1.74 13.44M187.44 419a18 18 0 1 0 18 18 18 18 0 0 0-18-18"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>

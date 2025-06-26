@@ -1,0 +1,3072 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Grin Documentation">
+      
+      
+        <meta name="author" content="Grin Developers">
+      
+      
+        <link rel="canonical" href="https://docs.grin.mw/wiki/introduction/%28og%29introduction-to-mimblewimble/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/grin-logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Technical Introduction to Mimblewimble - Grin Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#technical-introduction-to-mimblewimble" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      <!--
+  Copyright (c) 2016-2021 Martin Donath <martin.donath@squidfunk.com>
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Header -->
+<header class="md-header" data-md-component="header">
+  <nav
+    class="md-header__inner md-grid"
+    aria-label="header.title"
+  >
+
+    <!-- Link to home -->
+    <a
+      href="https://grin.mw"
+      title="Grin"
+      class="md-header__button md-logo"
+      aria-label="Grin"
+    >
+      
+  <img src="../../../assets/images/grin-logo.svg" alt="logo">
+
+    </a>
+
+    <!-- Button to open drawer -->
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+
+    <!-- Header title -->
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            <a
+              href="https://docs.grin.mw/"
+              title="Grin Documentation"
+              aria-label="Grin Documentation"
+            >
+            Grin Documentation
+            </a>
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Technical Introduction to Mimblewimble
+            
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header options -->
+    <div class="md-header__options">
+
+      <!-- Switch to toggle language -->
+      
+    </div>
+
+    <!-- Button to open search modal -->
+    
+
+    <!-- Repository information -->
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mimblewimble/grin" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimblewimble/grin
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../about-grin/story/" class="md-tabs__link">
+          
+  
+  
+  About Grin
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../table-of-contents/" class="md-tabs__link">
+          
+  
+  
+  Wiki
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../grin-rfcs/text/0019-deprecate-http-tx/" class="md-tabs__link">
+          
+  
+  
+  RFCs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Grin Documentation" class="md-nav__button md-logo" aria-label="Grin Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/images/grin-logo.svg" alt="logo">
+
+    </a>
+    Grin Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mimblewimble/grin" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimblewimble/grin
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ./Grin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Quickstart
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Quickstart
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/quickstart/install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Install
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/quickstart/initialize/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Initialize
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/quickstart/receive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Receive
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/quickstart/send/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Send
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/wallet-handbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CLI Handbook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/wallets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wallets
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/build/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Build
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    About Grin
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            About Grin
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about-grin/story/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Story
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about-grin/privacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Privacy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about-grin/scalability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Scalability
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about-grin/transactions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Transactions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about-grin/proof-of-work/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Proof of Work
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about-grin/emission/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Emission
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Wiki
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Wiki
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../table-of-contents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Table of Contents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Introduction
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grin-for-bitcoiners/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Grin for Bitcoiners
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Mimblewimble
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Mimblewimble
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mimblewimble/ecc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Elliptic Curves
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mimblewimble/commitments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Commitments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mimblewimble/mimblewimble/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mimblewimble
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Transactions
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Transactions
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../transactions/slates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slates
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../transactions/slatepack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slatepack
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../transactions/payment-proofs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Payment Proofs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../transactions/contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contracts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Blocks
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Blocks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blocks/block-header/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Header
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blocks/block-body/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Body
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blocks/fees-and-weight/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fees & Weight
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Chain State
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Chain State
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chain-state/merkle-mountain-range/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Merkle Mountain Ranges
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chain-state/state-and-pruning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    State & Pruning
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chain-state/chain-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chain Sync
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Miscellaneous
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Miscellaneous
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../miscellaneous/cuckoo-cycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cuckoo Cycle
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../miscellaneous/dandelion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dandelion
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../miscellaneous/switch-commitments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Switch Commitments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../miscellaneous/coinbase-maturity-rule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coinbase Maturity Rule
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../miscellaneous/nrd-kernels/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NRD Kernels
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    API
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/node-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Node API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/wallet-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wallet API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/stratum-rpc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Stratum RPC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Security Process
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            Security Process
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security-process/grin-security-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Grin's Security Process
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security-process/security-team/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security Team
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security-process/code-audits/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Code Audits
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Services
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/list-of-services/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    List of Services
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/slatepack-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slatepack Integration Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Resources
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    RFCs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            RFCs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0019-deprecate-http-tx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0019 deprecate-http-tx
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0018-fix-daa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0018 fix-daa
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0017-fix-fees/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0017 fix-fees
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0016-simplify-governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0016 simplify-governance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0015-slatepack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0015 slatepack
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0014-general-fund-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0014 general-fund-guidelines
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0013-nrd-kernels/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0013 nrd-kernels
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0012-compact-slates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0012 compact-slates
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0011-security-team/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0011 security-team
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0010-online-transacting-via-tor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0010 online-transacting-via-tor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0009-enable-faster-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0009 enable-faster-sync
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0008-wallet-state-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0008 wallet-state-management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0007-node-api-v2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0007 node-api-v2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0006-payment-proofs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0006 payment-proofs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0005-variable-size-kernels/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0005 variable-size-kernels
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0004-full-wallet-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0004 full-wallet-lifecycle
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0003-security-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0003 security-process
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0002-grin-governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0002 grin-governance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grin-rfcs/text/0001-rfc-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0001 rfc-process
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tongue-tying-for-everyone" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tongue Tying for Everyone
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tiny-bits-of-elliptic-curves" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tiny Bits of Elliptic Curves
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transacting-with-mimblewimble" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transacting with Mimblewimble
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Transacting with Mimblewimble">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#balance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Balance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ownership" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ownership
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#some-finer-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      Some Finer Points
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Some Finer Points">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#change" class="md-nav__link">
+    <span class="md-ellipsis">
+      Change
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#range-proofs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Range Proofs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#putting-it-all-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      Putting It All Together
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#blocks-and-chain-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      Blocks and Chain State
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Blocks and Chain State">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#transaction-aggregation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transaction Aggregation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kernel-offsets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kernel Offsets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cut-through" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cut-through
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cut-through-all-the-way" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cut-through All The Way
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="technical-introduction-to-mimblewimble">Technical Introduction to Mimblewimble</h1>
+<h2 id="tongue-tying-for-everyone">Tongue Tying for Everyone</h2>
+<p>This document is targeted at readers with a good
+understanding of blockchains and basic cryptography. With that in mind, we attempt
+to explain the technical buildup of Mimblewimble and how it's applied in Grin. We hope
+this document is understandable to most technically-minded readers. Our objective is
+to encourage you to get interested in Grin and contribute in any way possible.</p>
+<p>To achieve this objective, we will introduce the main concepts required for a good
+understanding of Grin as a Mimblewimble implementation. We will start with a brief
+description of some relevant properties of Elliptic Curve Cryptography (ECC) to lay the
+foundation on which Grin is based and then describe all the key elements of a
+Mimblewimble blockchain's transactions and blocks.</p>
+<h2 id="tiny-bits-of-elliptic-curves">Tiny Bits of Elliptic Curves</h2>
+<p>We start with a brief primer on Elliptic Curve Cryptography, reviewing just the
+properties necessary to understand how Mimblewimble works and without
+delving too much into the intricacies of ECC. For readers who would want to
+dive deeper into those assumptions, there are other opportunities to
+<a href="http://andrea.corbellini.name/2015/05/17/elliptic-curve-cryptography-a-gentle-introduction/">learn more</a>.</p>
+<p>An Elliptic Curve for the purpose of cryptography is simply a large set of points that
+we will call <em>C</em>. These points can be added, subtracted, or multiplied by integers (also called scalars).
+Given such a point <em>H</em>, an integer <em>k</em> and
+using the scalar multiplication operation we can compute <code>k*H</code>, which is also a point on
+curve <em>C</em>. Given another integer <em>j</em> we can also calculate <code>(k+j)*H</code>, which equals
+<code>k*H + j*H</code>. The addition and scalar multiplication operations on an elliptic curve
+maintain the commutative and associative properties of addition and multiplication:</p>
+<div class="codehilite"><pre><span></span><code>(k+j)*H = k*H + j*H
+</code></pre></div>
+
+<p>In ECC, if we pick a very large number <em>k</em> as a private key, <code>k*H</code> is
+considered the corresponding public key. Even if one knows the
+value of the public key <code>k*H</code>, deducing <em>k</em> is close to impossible (or said
+differently, while multiplication is trivial, "division" by curve points is
+extremely difficult).</p>
+<p>The previous formula <code>(k+j)*H = k*H + j*H</code>, with <em>k</em> and <em>j</em> both private
+keys, demonstrates that a public key obtained from the addition of two private
+keys (<code>(k+j)*H</code>) is identical to the addition of the public keys for each of those
+two private keys (<code>k*H + j*H</code>). In the Bitcoin blockchain, Hierarchical
+Deterministic wallets heavily rely on this principle. Mimblewimble and the Grin
+implementation do as well.</p>
+<h2 id="transacting-with-mimblewimble">Transacting with Mimblewimble</h2>
+<p>The structure of transactions demonstrates a crucial tenet of Mimblewimble:
+strong privacy and confidentiality guarantees.</p>
+<p>The validation of Mimblewimble transactions relies on two basic properties:</p>
+<ul>
+<li><strong>Verification of zero sums.</strong> The sum of outputs minus inputs always equals zero,
+  proving that the transaction did not create new funds, <em>without revealing the actual amounts</em>.</li>
+<li><strong>Possession of private keys.</strong> Like with most other cryptocurrencies, ownership of
+  transaction outputs is guaranteed by the possession of ECC private keys. However,
+  the proof that an entity owns those private keys is not achieved by directly signing
+  the transaction.</li>
+</ul>
+<p>The next sections on balance, ownership, change and proofs details how those two
+fundamental properties are achieved.</p>
+<h3 id="balance">Balance</h3>
+<p>Building upon the properties of ECC we described above, one can obscure the values
+in a transaction.</p>
+<p>If <em>v</em> is the value of a transaction input or output and <em>H</em> a point on the elliptic curve <em>C</em>, we can simply 
+embed <code>v*H</code> instead of <em>v</em> in a transaction. This works because using the ECC
+operations, we can still validate that the sum of the outputs of a transaction equals the
+sum of inputs:</p>
+<div class="codehilite"><pre><span></span><code>v1 + v2 = v3  =&gt;  v1*H + v2*H = v3*H
+</code></pre></div>
+
+<p>Verifying this property on every transaction allows the protocol to verify that a
+transaction doesn't create money out of thin air, without knowing what the actual
+values are. However, there are a finite number of usable values (transaction amounts) and one 
+could try every single 
+one of them to guess the value of the transaction. In addition, knowing <em>v1</em> (from
+a previous transaction for example) and the resulting <code>v1*H</code> reveals all outputs with
+value <em>v1</em> across the blockchain. For these reasons, we introduce a second point <em>G</em> on the same elliptic curve
+(practically <em>G</em> is just another generator point on the same curve group as <em>H</em>) and
+a private key <em>r</em> used as a <em>blinding factor</em>.</p>
+<p>An input or output value in a transaction can then be expressed as:</p>
+<div class="codehilite"><pre><span></span><code>r*G + v*H
+</code></pre></div>
+
+<p>Where:</p>
+<ul>
+<li><em>r</em> is a private key used as a blinding factor, <em>G</em> is a point on the elliptic curve <em>C</em> and
+  their product <code>r*G</code> is the public key for <em>r</em> (using <em>G</em> as generator point).</li>
+<li><em>v</em> is the value of an input or output and <em>H</em> is another point on the elliptic curve <em>C</em>,
+  together producing another public key <code>v*H</code> (using <em>H</em> as generator point).</li>
+</ul>
+<p>Neither <em>v</em> nor <em>r</em> can be deduced, leveraging the fundamental properties of Elliptic
+Curve Cryptography. <code>r*G + v*H</code> is called a <em>Pedersen Commitment</em>.</p>
+<p>As an example, let's assume we want to build a transaction with two inputs and one
+output. We have (ignoring fees):</p>
+<ul>
+<li><em>vi1</em> and <em>vi2</em> as input values.</li>
+<li><em>vo3</em> as output value.</li>
+</ul>
+<p>Such that:</p>
+<div class="codehilite"><pre><span></span><code>vi1 + vi2 = vo3
+</code></pre></div>
+
+<p>Generating a private key as a blinding factor for each input value and replacing each value
+with their respective Pedersen Commitments in the previous equation, we obtain:</p>
+<div class="codehilite"><pre><span></span><code>(ri1*G + vi1*H) + (ri2*G + vi2*H) = (ro3*G + vo3*H)
+</code></pre></div>
+
+<p>Which as a consequence requires that:</p>
+<div class="codehilite"><pre><span></span><code>ri1 + ri2 = ro3
+</code></pre></div>
+
+<p>This is the first pillar of Mimblewimble: the arithmetic required to validate a
+transaction can be done without knowing any of the values.</p>
+<p>As a final note, this idea is actually derived from Greg Maxwell's
+<a href="https://elementsproject.org/features/confidential-transactions/investigation">Confidential Transactions</a>,
+which is itself derived from an 
+<a href="https://bitcointalk.org/index.php?topic=305791.0">Adam Back proposal for homomorphic values</a> 
+applied to Bitcoin.</p>
+<h3 id="ownership">Ownership</h3>
+<p>In the previous section we introduced a private key as a blinding factor to obscure the
+transaction's values. The second insight of Mimblewimble is that this private
+key can be leveraged to prove ownership of the value.</p>
+<p>Alice sends you 3 coins and to obscure that amount, you chose 28 as your
+blinding factor (note that in practice, the blinding factor being a private key, it's an
+extremely large number). Somewhere on the blockchain, the following output appears and
+should only be spendable by you:</p>
+<div class="codehilite"><pre><span></span><code>X = 28*G + 3*H
+</code></pre></div>
+
+<p><em>X</em>, the result of the addition, is visible by everyone. The value 3 is only known to you and Alice,
+and 28 is only known to you.</p>
+<p>To transfer those 3 coins again, the protocol requires 28 to be known somehow.
+To demonstrate how this works, let's say you want to transfer those 3 same coins to Carol.
+You need to build a simple transaction such that:</p>
+<div class="codehilite"><pre><span></span><code>Xi =&gt; Y
+</code></pre></div>
+
+<p>Where <em>Xi</em> is an input that spends your <em>X</em> output and <em>Y</em> is Carol's output. There is no way to build
+such a transaction and balance it without knowing your private key of 28. Indeed, if Carol
+is to balance this transaction, she needs to know both the value sent and your private key
+so that:</p>
+<div class="codehilite"><pre><span></span><code>Y - Xi = (28*G + 3*H) - (28*G + 3*H) = 0*G + 0*H
+</code></pre></div>
+
+<p>By checking that everything has been zeroed out, we can again make sure that
+no new money has been created.</p>
+<p>Wait! Stop! Now you know the private key in Carol's output (which, in this case, must
+be the same as yours to balance out) and so you could
+steal the money back from Carol!</p>
+<p>To solve this, Carol uses a private key of her choosing.
+She picks 113 say, and what ends up on the blockchain is:</p>
+<div class="codehilite"><pre><span></span><code>Y - Xi = (113*G + 3*H) - (28*G + 3*H) = 85*G + 0*H
+</code></pre></div>
+
+<p>Now the transaction no longer sums to zero and we have an <em>excess value</em> (85), which is the result of the summation of all blinding factors. Because <code>85*G</code> is
+a valid public key for the generator point <em>G</em> the input and output values must sum to zero and the transaction is thus valid, since <code>x*G + y*H</code> is a valid public key for generator point <em>G</em> if and only if <code>y = 0</code>.</p>
+<p>So all the protocol needs to verify is that (<code>Y - Xi</code>) is a valid public key for generator point <em>G</em> 
+and that the transacting parties collectively can produce its private key (85 in the above example). The simplest way to do so is to require a signature built with the excess value (85),
+which then ensures that:</p>
+<ul>
+<li>The transacting parties collectively can produce the private key (the excess value)</li>
+<li>The sum of the outputs minus the inputs are zero (because only a valid public key will check against the signature).</li>
+</ul>
+<p>This signature, attached to every transaction, together with some additional data (like mining
+fees), is called a <em>transaction kernel</em> and is checked by all validators.</p>
+<h3 id="some-finer-points">Some Finer Points</h3>
+<p>This section elaborates on the building of transactions by discussing how change is
+introduced and the requirement for range proofs so all values are proven to be
+non-negative. Neither of these are absolutely required to understand Mimblewimble and
+Grin, so if you're in a hurry, feel free to jump straight to
+<a href="#putting-it-all-together">Putting It All Together</a>.</p>
+<h4 id="change">Change</h4>
+<p>Let's say you only want to send 2 coins to Carol from the 3 you received from
+Alice. To do this you would send the remaining 1 coin back to yourself as change.
+You generate another private key (say 12) as a blinding factor to
+protect your change output. Carol uses her own private key as before.</p>
+<div class="codehilite"><pre><span></span><code>Change output:     12*G + 1*H
+Carol&#39;s output:    113*G + 2*H
+</code></pre></div>
+
+<p>What ends up on the blockchain is something very similar to before.
+And the signature is again built with the excess value, 97 in this example.</p>
+<div class="codehilite"><pre><span></span><code>(12*G + 1*H) + (113*G + 2*H) - (28*G + 3*H) = 97*G + 0*H
+</code></pre></div>
+
+<h4 id="range-proofs">Range Proofs</h4>
+<p>In all the above calculations, we rely on the transaction values to always be positive. The
+introduction of negative amounts would be extremely problematic as one could
+create new funds in every transaction.</p>
+<p>For example, one could create a transaction with an input of 2 and outputs of 5
+and -3 and still obtain a well-balanced transaction. This can't be easily detected because even if <em>x</em> is
+negative, the corresponding point <code>x*H</code> on the curve looks like any other.</p>
+<p>To solve this problem, Mimblewimble leverages another cryptographic concept (also
+coming from Confidential Transactions) called
+range proofs: a proof that a number falls within a given range, without revealing
+the number. We won't elaborate on the range proof, but you just need to know
+that for any <code>r*G + v*H</code> we can build a proof that will show that <em>v</em> is greater than
+zero and does not overflow.</p>
+<p>It's also important to note that range proofs for both the blinding factor and the values are needed. The reason for this
+is that it prevents a censoring attack where a third party would be able to lock UTXOs without knowing their private keys
+by creating a transaction such as the following:</p>
+<div class="codehilite"><pre><span></span><code>Carol&#39;s UTXO:      113*G + 2*H
+Attacker&#39;s output: (113 + 99)*G + 2*H
+</code></pre></div>
+
+<p>which can be signed by the attacker because Carol's blinding factor cancels out in the equation <code>Y - Xi</code>:</p>
+<div class="codehilite"><pre><span></span><code>Y - Xi = ((113 + 99)*G + 2*H) - (113*G + 2*H) =  99*G
+</code></pre></div>
+
+<p>This output (<code>(113 + 99)*G + 2*H</code>) requires that both the numbers 113 and 99 are known in order to be spent; the attacker
+would thus have successfully locked Carol's UTXO. The requirement for a range proof for the blinding factor prevents this
+because the attacker doesn't know the number 113 and thus neither (113 + 99). A more detailed description of range proofs is further detailed in the <a href="https://eprint.iacr.org/2017/1066.pdf">range proof paper</a>.</p>
+<h3 id="putting-it-all-together">Putting It All Together</h3>
+<p>A Mimblewimble transaction includes the following:</p>
+<ul>
+<li>A set of inputs, that reference and spend a set of previous outputs.</li>
+<li>A set of new outputs that include:</li>
+<li>A value and a blinding factor (which is just a new private key) multiplied on
+  a curve and summed to be <code>r*G + v*H</code>.</li>
+<li>A range proof that among other things shows that <em>v</em> is non-negative.</li>
+<li>An transaction fee in cleartext.</li>
+<li>A signature whose private key is computed by taking the excess value (the sum of all
+  output values plus the fee, minus the input values).</li>
+</ul>
+<h2 id="blocks-and-chain-state">Blocks and Chain State</h2>
+<p>We explained above how Mimblewimble transactions can provide
+strong anonymity guarantees while maintaining the properties required for a valid
+blockchain, i.e., a transaction does not create money and proof of ownership
+is established through private keys.</p>
+<p>The Mimblewimble block format builds on this by introducing one additional
+concept: <em>cut-through</em>. With this addition, a Mimblewimble chain gains:</p>
+<ul>
+<li>Extremely good scalability, as the great majority of transaction data can be
+  eliminated over time, without compromising security.</li>
+<li>Further anonymity by mixing and removing transaction data.</li>
+</ul>
+<h3 id="transaction-aggregation">Transaction Aggregation</h3>
+<p>Recall that a transaction consists of the following:</p>
+<ul>
+<li>a set of inputs that reference and spent a set of previous outputs</li>
+<li>a set of new outputs</li>
+<li>a transaction kernel consisting of:</li>
+<li>kernel excess (the public key of the excess value)</li>
+<li>transaction signature whose public key is the kernel excess</li>
+</ul>
+<p>A transaction is validated by determining that the kernel excess is a valid public key:</p>
+<div class="codehilite"><pre><span></span><code>(42*G + 1*H) + (99*G + 2*H) - (113*G + 3*H) = 28*G + 0*H
+</code></pre></div>
+
+<p>The public key in this example is <code>28*G</code>.</p>
+<p>We can say the following is true for any valid transaction (ignoring fees for simplicity):</p>
+<div class="codehilite"><pre><span></span><code>sum(outputs) - sum(inputs) = kernel_excess
+</code></pre></div>
+
+<p>The same holds true for blocks themselves once we realize a block is simply a set of aggregated inputs, outputs and transaction kernels. We can sum the outputs, subtract the inputs from it and equating the resulting Pedersen commitment to the sum of the kernel excesses:</p>
+<div class="codehilite"><pre><span></span><code>sum(outputs) - sum(inputs) = sum(kernel_excess)
+</code></pre></div>
+
+<p>Simplifying slightly, (again ignoring transaction fees) we can say that Mimblewimble blocks can be treated exactly as Mimblewimble transactions.</p>
+<h3 id="kernel-offsets">Kernel Offsets</h3>
+<p>There is a subtle problem with Mimblewimble blocks and transactions as described above. It is possible (and in some cases trivial) to reconstruct the constituent transactions in a block. This is clearly bad for privacy. This is the "subset" problem: given a set of inputs, outputs, and transaction kernels a subset of these will recombine to reconstruct a valid transaction.</p>
+<p>Consider the following two transactions:</p>
+<div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">in1</span><span class="p">,</span><span class="w"> </span><span class="n">in2</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">out1</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="n">kern1</span><span class="p">)</span>
+<span class="p">(</span><span class="n">in3</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">out2</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="n">kern2</span><span class="p">)</span>
+</code></pre></div>
+
+<p>We can aggregate them into the following block (or aggregate transaction):</p>
+<div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">in1</span><span class="p">,</span><span class="w"> </span><span class="n">in2</span><span class="p">,</span><span class="w"> </span><span class="n">in3</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">out1</span><span class="p">,</span><span class="w"> </span><span class="n">out2</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="n">kern1</span><span class="p">,</span><span class="w"> </span><span class="n">kern2</span><span class="p">)</span>
+</code></pre></div>
+
+<p>It is trivially easy to try all possible permutations to recover one of the transactions (where it successfully sums to zero):</p>
+<div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">in1</span><span class="p">,</span><span class="w"> </span><span class="n">in2</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">out1</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="n">kern1</span><span class="p">)</span>
+</code></pre></div>
+
+<p>We also know that everything remaining can be used to reconstruct the other valid transaction:</p>
+<div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">in3</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">out2</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="n">kern2</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Remember that the kernel excess <code>r*G</code> simply is the public key of the excess value <em>r</em>. To mitigate this we redefine the kernel excess from <code>r*G</code> to <code>(r-kernel_offset)*G</code> and distribute the <em>kernel offset</em> to be included with every transaction kernel. The kernel offset is thus a blinding factor that needs to be added to the excess value to ensure the commitments sum to zero:</p>
+<div class="codehilite"><pre><span></span><code>sum(outputs) - sum(inputs) = r*G = (r-kernel_offset)*G + kernel_offset*G
+</code></pre></div>
+
+<p>or alternatively</p>
+<div class="codehilite"><pre><span></span><code>sum(outputs) - sum(inputs) = kernel_excess + kernel_offset*G
+</code></pre></div>
+
+<p>For a commitment <code>r*G + 0*H</code> with the offset <code>a</code>, the transaction is signed with <code>(r-a)</code> and <em>a</em> is published so that <code>r*G</code> can be calculated in order to verify the validity of the transaction. During block construction all kernel offsets are summed to generate a <em>single</em> aggregate kernel offset to cover the whole block. The kernel offset for any individual transaction is then unrecoverable and the subset problem is solved.</p>
+<div class="codehilite"><pre><span></span><code>sum(outputs) - sum(inputs) = sum(kernel_excess) + kernel_offset*G
+</code></pre></div>
+
+<h3 id="cut-through">Cut-through</h3>
+<p>Blocks let miners assemble multiple transactions into a single set that's added
+to the chain. In the following block representations, containing 3 transactions,
+we only show inputs and
+outputs of transactions. Inputs reference outputs they spend. An output included
+in a previous block is marked with a lower-case x.</p>
+<div class="codehilite"><pre><span></span><code>I1(x1) --- O1
+        |- O2
+
+I2(x2) --- O3
+I3(O2) -|
+
+I4(O3) --- O4
+        |- O5
+</code></pre></div>
+
+<p>We notice the two following properties:</p>
+<ul>
+<li>Within this block, some outputs are directly spent by following inputs (<em>I3</em>
+  spends <em>O2</em> and <em>I4</em> spends <em>O3</em>).</li>
+<li>The structure of each transaction does not actually matter. Since all transactions
+  individually sum to zero, the sum of all transaction inputs and outputs must be zero.</li>
+</ul>
+<p>Similarly to a transaction, all that needs to be checked in a block is that ownership
+has been proven (which comes from the <em>transaction kernels</em>) and that the whole block did
+not create any coins (other than what's allowed as the mining reward).
+Therefore, matching inputs and outputs can be eliminated, as their contribution to the overall
+sum cancels out. Which leads to the following, much more compact block:</p>
+<div class="codehilite"><pre><span></span><code>I1(x1) | O1
+I2(x2) | O4
+       | O5
+</code></pre></div>
+
+<p>Note that all transaction structure has been eliminated and the order of inputs and
+outputs does not matter anymore. However, the sum of all inputs and outputs is still guaranteed to be zero.</p>
+<p>A block is simply built from:</p>
+<ul>
+<li>A block header.</li>
+<li>The list of inputs remaining after cut-through.</li>
+<li>The list of outputs remaining after cut-through.</li>
+<li>A single kernel offset to cover the full block.</li>
+<li>The transaction kernels containing, for each transaction:</li>
+<li>The public key <code>r*G</code> obtained from the summation of all inputs and outputs.</li>
+<li>The signatures generated using the excess value.</li>
+<li>The mining fee.</li>
+</ul>
+<p>When structured this way, a Mimblewimble block offers extremely good privacy
+guarantees:</p>
+<ul>
+<li>Intermediate (cut-through) transactions will be represented only by their transaction kernels.</li>
+<li>All outputs look the same: very large numbers that are impossible to
+  meaningfully differentiate from one another. If someone wants to exclude a specific output, they'd have
+  to exclude all.</li>
+<li>All transaction structure has been removed, making it impossible to tell which inputs and outputs match.</li>
+</ul>
+<p>And yet, it all still validates!</p>
+<h3 id="cut-through-all-the-way">Cut-through All The Way</h3>
+<p>Going back to the previous example block, outputs <em>x1</em> and <em>x2</em>, spent by <em>I1</em> and
+<em>I2</em>, must have appeared previously in the blockchain. So after the addition of
+this block, those outputs as well as <em>I1</em> and <em>I2</em> can also be removed from the
+blockchain as they now are intermediate transactions.</p>
+<p>We conclude that the chain state (excluding headers) at any point
+in time can be summarized by just these pieces of information:</p>
+<ol>
+<li>The total amount of coins created by mining in the chain.</li>
+<li>The complete set of unspent outputs.</li>
+<li>The transactions kernels for each transaction.</li>
+</ol>
+<p>The first piece of information can be deduced just using the block
+height. </p>
+<p>Both the UTXOs and the
+transaction kernels are extremely compact. This has two important consequences:</p>
+<ul>
+<li>The blockchain a node needs to maintain is very small (on the 
+order of a few gigabytes for a bitcoin-sized blockchain, and
+  potentially optimizable to a few hundreds of megabytes).</li>
+<li>When a new node joins the network the amount of
+  information that needs to be transferred is very small.</li>
+</ul>
+<p>In addition, the UTXO set cannot be tampered with. Adding or removing even
+one input or output would change the sum of the transactions to be something other than zero.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In this document we covered the basic principles that underlie a Mimblewimble
+blockchain. By using the addition properties of Elliptic Curve Cryptography, we're
+able to build transactions that are completely opaque but can still be properly
+validated. And by generalizing those properties to blocks, we can eliminate a large
+amount of blockchain data, allowing for great scaling and fast sync of new peers.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/mimblewimble" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://keybase.io/team/grincoin" target="_blank" rel="noopener" title="keybase.io" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M286.17 419a18 18 0 1 0 18 18 18 18 0 0 0-18-18m111.92-147.6c-9.5-14.62-39.37-52.45-87.26-73.71q-9.1-4.06-18.38-7.27a78.43 78.43 0 0 0-47.88-104.13c-12.41-4.1-23.33-6-32.41-5.77-.6-2-1.89-11 9.4-35L198.66 32l-5.48 7.56c-8.69 12.06-16.92 23.55-24.34 34.89a51 51 0 0 0-8.29-1.25c-41.53-2.45-39-2.33-41.06-2.33-50.61 0-50.75 52.12-50.75 45.88l-2.36 36.68c-1.61 27 19.75 50.21 47.63 51.85l8.93.54a214 214 0 0 0-46.29 35.54C14 304.66 14 374 14 429.77v33.64l23.32-29.8a148.6 148.6 0 0 0 14.56 37.56c5.78 10.13 14.87 9.45 19.64 7.33 4.21-1.87 10-6.92 3.75-20.11a178.3 178.3 0 0 1-15.76-53.13l46.82-59.83-24.66 74.11c58.23-42.4 157.38-61.76 236.25-38.59 34.2 10.05 67.45.69 84.74-23.84.72-1 1.2-2.16 1.85-3.22a156 156 0 0 1 2.8 28.43c0 23.3-3.69 52.93-14.88 81.64-2.52 6.46 1.76 14.5 8.6 15.74 7.42 1.57 15.33-3.1 18.37-11.15C429 443 434 414 434 382.32c0-38.58-13-77.46-35.91-110.92M142.37 128.58l-15.7-.93-1.39 21.79 13.13.78a93 93 0 0 0 .32 19.57l-22.38-1.34a12.28 12.28 0 0 1-11.76-12.79L107 119c1-12.17 13.87-11.27 13.26-11.32l29.11 1.73a144 144 0 0 0-7 19.17m148.42 172.18a10.51 10.51 0 0 1-14.35-1.39l-9.68-11.49-34.42 27a8.09 8.09 0 0 1-11.13-1.08l-15.78-18.64a7.38 7.38 0 0 1 1.34-10.34l34.57-27.18-14.14-16.74-17.09 13.45a7.75 7.75 0 0 1-10.59-1s-3.72-4.42-3.8-4.53a7.38 7.38 0 0 1 1.37-10.34L214 225.19s-18.51-22-18.6-22.14a9.56 9.56 0 0 1 1.74-13.42 10.38 10.38 0 0 1 14.3 1.37l81.09 96.32a9.58 9.58 0 0 1-1.74 13.44M187.44 419a18 18 0 1 0 18 18 18 18 0 0 0-18-18"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,3721 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Grin Documentation">
+      
+      
+        <meta name="author" content="Grin Developers">
+      
+      
+        <link rel="canonical" href="https://docs.grin.mw/grin-rfcs/text/0015-slatepack/">
+      
+      
+        <link rel="prev" href="../0016-simplify-governance/">
+      
+      
+        <link rel="next" href="../0014-general-fund-guidelines/">
+      
+      
+      <link rel="icon" href="../../../assets/images/grin-logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>0015 slatepack - Grin Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#summary" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      <!--
+  Copyright (c) 2016-2021 Martin Donath <martin.donath@squidfunk.com>
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Header -->
+<header class="md-header" data-md-component="header">
+  <nav
+    class="md-header__inner md-grid"
+    aria-label="header.title"
+  >
+
+    <!-- Link to home -->
+    <a
+      href="https://grin.mw"
+      title="Grin"
+      class="md-header__button md-logo"
+      aria-label="Grin"
+    >
+      
+  <img src="../../../assets/images/grin-logo.svg" alt="logo">
+
+    </a>
+
+    <!-- Button to open drawer -->
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+
+    <!-- Header title -->
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            <a
+              href="https://docs.grin.mw/"
+              title="Grin Documentation"
+              aria-label="Grin Documentation"
+            >
+            Grin Documentation
+            </a>
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              0015 slatepack
+            
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header options -->
+    <div class="md-header__options">
+
+      <!-- Switch to toggle language -->
+      
+    </div>
+
+    <!-- Button to open search modal -->
+    
+
+    <!-- Repository information -->
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mimblewimble/grin" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimblewimble/grin
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../about-grin/story/" class="md-tabs__link">
+          
+  
+  
+  About Grin
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../wiki/table-of-contents/" class="md-tabs__link">
+          
+  
+  
+  Wiki
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../0019-deprecate-http-tx/" class="md-tabs__link">
+          
+  
+  
+  RFCs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Grin Documentation" class="md-nav__button md-logo" aria-label="Grin Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/images/grin-logo.svg" alt="logo">
+
+    </a>
+    Grin Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mimblewimble/grin" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mimblewimble/grin
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ./Grin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Quickstart
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Quickstart
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/quickstart/install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Install
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/quickstart/initialize/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Initialize
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/quickstart/receive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Receive
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/quickstart/send/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Send
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/wallet-handbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CLI Handbook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/wallets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wallets
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/build/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Build
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    About Grin
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            About Grin
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about-grin/story/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Story
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about-grin/privacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Privacy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about-grin/scalability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Scalability
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about-grin/transactions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Transactions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about-grin/proof-of-work/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Proof of Work
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about-grin/emission/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Emission
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Wiki
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Wiki
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/table-of-contents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Table of Contents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Introduction
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/introduction/grin-for-bitcoiners/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Grin for Bitcoiners
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Mimblewimble
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Mimblewimble
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/introduction/mimblewimble/ecc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Elliptic Curves
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/introduction/mimblewimble/commitments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Commitments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/introduction/mimblewimble/mimblewimble/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mimblewimble
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Transactions
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Transactions
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/transactions/slates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slates
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/transactions/slatepack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slatepack
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/transactions/payment-proofs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Payment Proofs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/transactions/contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contracts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Blocks
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Blocks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/blocks/block-header/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Header
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/blocks/block-body/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Body
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/blocks/fees-and-weight/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fees & Weight
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Chain State
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Chain State
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/chain-state/merkle-mountain-range/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Merkle Mountain Ranges
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/chain-state/state-and-pruning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    State & Pruning
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/chain-state/chain-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chain Sync
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Miscellaneous
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Miscellaneous
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/miscellaneous/cuckoo-cycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cuckoo Cycle
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/miscellaneous/dandelion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dandelion
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/miscellaneous/switch-commitments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Switch Commitments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/miscellaneous/coinbase-maturity-rule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coinbase Maturity Rule
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/miscellaneous/nrd-kernels/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NRD Kernels
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    API
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/api/node-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Node API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/api/wallet-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wallet API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/api/stratum-rpc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Stratum RPC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Security Process
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            Security Process
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/security-process/grin-security-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Grin's Security Process
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/security-process/security-team/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security Team
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/security-process/code-audits/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Code Audits
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Services
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/services/list-of-services/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    List of Services
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/services/slatepack-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slatepack Integration Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Resources
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    RFCs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            RFCs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0019-deprecate-http-tx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0019 deprecate-http-tx
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0018-fix-daa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0018 fix-daa
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0017-fix-fees/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0017 fix-fees
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0016-simplify-governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0016 simplify-governance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    0015 slatepack
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    0015 slatepack
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#motivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motivation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#community-level-explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Community-level explanation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference-level-explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference-level explanation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reference-level explanation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#slatepackaddress" class="md-nav__link">
+    <span class="md-ellipsis">
+      SlatepackAddress
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SlatepackAddress">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Generation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-slatepackaddress" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example SlatepackAddress
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slatepackmessage" class="md-nav__link">
+    <span class="md-ellipsis">
+      SlatepackMessage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SlatepackMessage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#serialization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Serialization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plain-text-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plain Text Metadata
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encrypted-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Encrypted Metadata
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encryption" class="md-nav__link">
+    <span class="md-ellipsis">
+      Encryption
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Encryption">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#payload-age-encryption" class="md-nav__link">
+    <span class="md-ellipsis">
+      Payload (age Encryption)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#armor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Armor
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Armor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#framing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Framing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoding-simplebase58check" class="md-nav__link">
+    <span class="md-ellipsis">
+      Encoding SimpleBase58Check
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formatting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Formatting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edge-case-large-slates-1mb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Edge Case: Large Slates (&gt;1MB)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-slatepack-json-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Slatepack JSON Object
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example Slatepack JSON Object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mode-0-plain-text" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mode 0: Plain Text
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mode-1-encrypted" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mode 1: Encrypted
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-slatepackmessage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example SlatepackMessage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slatepackworkflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      SlatepackWorkflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SlatepackWorkflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#with-a-slatepackaddress" class="md-nav__link">
+    <span class="md-ellipsis">
+      With a SlatepackAddress
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#without-a-slatepackaddress" class="md-nav__link">
+    <span class="md-ellipsis">
+      Without a SlatepackAddress
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-qr-codes" class="md-nav__link">
+    <span class="md-ellipsis">
+      With QR Codes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-three-or-more-parties" class="md-nav__link">
+    <span class="md-ellipsis">
+      With Three or More Parties
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-timeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Timeline
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#drawbacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Drawbacks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rationale-and-alternatives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rationale and alternatives
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prior-art" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prior art
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prior art">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tari" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tari
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beam" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beam
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unresolved-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unresolved questions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-possibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future possibilities
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0014-general-fund-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0014 general-fund-guidelines
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0013-nrd-kernels/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0013 nrd-kernels
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0012-compact-slates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0012 compact-slates
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0011-security-team/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0011 security-team
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0010-online-transacting-via-tor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0010 online-transacting-via-tor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0009-enable-faster-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0009 enable-faster-sync
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0008-wallet-state-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0008 wallet-state-management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0007-node-api-v2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0007 node-api-v2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0006-payment-proofs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0006 payment-proofs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0005-variable-size-kernels/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0005 variable-size-kernels
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0004-full-wallet-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0004 full-wallet-lifecycle
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0003-security-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0003 security-process
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0002-grin-governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0002 grin-governance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0001-rfc-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0001 rfc-process
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#motivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motivation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#community-level-explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Community-level explanation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference-level-explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference-level explanation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reference-level explanation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#slatepackaddress" class="md-nav__link">
+    <span class="md-ellipsis">
+      SlatepackAddress
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SlatepackAddress">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Generation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-slatepackaddress" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example SlatepackAddress
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slatepackmessage" class="md-nav__link">
+    <span class="md-ellipsis">
+      SlatepackMessage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SlatepackMessage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#serialization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Serialization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plain-text-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plain Text Metadata
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encrypted-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Encrypted Metadata
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encryption" class="md-nav__link">
+    <span class="md-ellipsis">
+      Encryption
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Encryption">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#payload-age-encryption" class="md-nav__link">
+    <span class="md-ellipsis">
+      Payload (age Encryption)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#armor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Armor
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Armor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#framing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Framing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoding-simplebase58check" class="md-nav__link">
+    <span class="md-ellipsis">
+      Encoding SimpleBase58Check
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formatting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Formatting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edge-case-large-slates-1mb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Edge Case: Large Slates (&gt;1MB)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-slatepack-json-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Slatepack JSON Object
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example Slatepack JSON Object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mode-0-plain-text" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mode 0: Plain Text
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mode-1-encrypted" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mode 1: Encrypted
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-slatepackmessage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example SlatepackMessage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slatepackworkflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      SlatepackWorkflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SlatepackWorkflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#with-a-slatepackaddress" class="md-nav__link">
+    <span class="md-ellipsis">
+      With a SlatepackAddress
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#without-a-slatepackaddress" class="md-nav__link">
+    <span class="md-ellipsis">
+      Without a SlatepackAddress
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-qr-codes" class="md-nav__link">
+    <span class="md-ellipsis">
+      With QR Codes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-three-or-more-parties" class="md-nav__link">
+    <span class="md-ellipsis">
+      With Three or More Parties
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-timeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Timeline
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#drawbacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Drawbacks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rationale-and-alternatives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rationale and alternatives
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prior-art" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prior art
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prior art">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tari" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tari
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beam" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beam
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unresolved-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unresolved questions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-possibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future possibilities
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>0015 slatepack</h1>
+
+<ul>
+<li>Title: slatepack</li>
+<li>Authors: <a href="mailto:joltz@protonmail.com">joltz</a></li>
+<li>Start date: May 07, 2020</li>
+<li>RFC PR: <a href="https://github.com/mimblewimble/grin-rfcs/pull/55">mimblewimble/grin-rfcs#55</a></li>
+<li>Tracking issue: <a href="https://github.com/mimblewimble/grin-wallet/issues/406">mimblewimble/grin-wallet#406</a></li>
+</ul>
+<hr />
+<h2 id="summary">Summary</h2>
+<p>Slatepack is a universal transaction standard for Grin. It is designed to provide a single coherent transaction building framework to improve both the user and developer experiences in the Grin ecosystem. All wallets and services are expected to fully support the Slatepack standard by the last scheduled hard fork in January 2021 to remain compatible.</p>
+<p>This document specifies the required components of the Slatepack standard and introduces them in the context of existing methods for transaction building in Grin. It assumes that Slatepack is the default supported transaction standard for Grin and is intended to operate under all conditions and edge cases. Slatepack is intended to be compatible with the objects and serialization methods defined in the <a href="https://github.com/mimblewimble/grin-rfcs/blob/master/text/0012-compact-slates.md">Slate V4/Compact Slates</a> RFC. This RFC is meant to replace the <a href="https://github.com/mimblewimble/grin-rfcs/pull/48">Slate Serialization</a>, <a href="https://github.com/mimblewimble/grin-rfcs/pull/53">Armored Slates</a> and <a href="https://github.com/mimblewimble/grin-rfcs/pull/50">Encrypted Slates</a> RFCs.</p>
+<h2 id="motivation">Motivation</h2>
+<p>Without a comprehensive transaction building flow, users and services are left to make their own complicated decisions about firewalls, file handling and compatibility, risking their security, privacy and sanity.</p>
+<p>The objective of this RFC is to converge on a simple, universal, adoptable, secure and privacy preserving workflow standard for Grin transactions: Slatepack.</p>
+<h2 id="community-level-explanation">Community-level explanation</h2>
+<p>Slatepack changes the existing transaction building process in Grin in a few ways:</p>
+<ol>
+<li>
+<p><em>Users, developers and services are no longer required to choose between many possible transaction methods to use and support: Slatepack is a universal Grin transaction standard</em></p>
+<ul>
+<li>The transport method decision now occurs automatically for the user by following the Slatepack standard</li>
+<li>There is only one synchronous method and one asynchronous method supported by default to keep things simple for developers and support workers</li>
+</ul>
+</li>
+<li>
+<p><em>Tor is the only synchronous transaction transport method that is currently supported in the Slatepack standard</em></p>
+<ul>
+<li>This happens "under the hood" by the wallet and the user only has to keep track of a <code>SlatepackAddress</code> for their counterparty</li>
+<li>If Tor is not successful, the transaction process automatically falls back to using an encrypted copy and pastable <code>SlatepackMessage</code> string to complete the transaction asynchronously</li>
+</ul>
+</li>
+<li>
+<p><em>The asynchronous method by default is now a copy and pastable <code>SlatepackMessage</code> string instead of a file</em></p>
+<ul>
+<li><code>SlatepackMessage</code> is an ascii-armor string that supports encryption of its payload with a <code>SlatepackAddress</code><ul>
+<li>An encrypted <code>SlatepackMessage</code> is not meaningfully larger than a plain text <code>SlatepackMessage</code> with regard to transportability as proposed here</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><em>The difference between synchronous and asynchronous transaction methods is abstracted away from the end user with the Slatepack standard</em></p>
+<ul>
+<li><code>grin-wallet send -d SlatepackAddress 1.337</code> will first try to send the Grin synchronously via Tor to the <code>SlatepackAddress</code></li>
+<li>If that fails it will fall back to outputting an armored encrypted <code>SlatepackMessage</code> string for manual copy and paste transport</li>
+<li>Example <code>SlatepackAddress</code>: <code>grin1p4fuklglxqsgg602hu4c4jl4aunu5tynyf4lkg96ezh3jefzpy6swshp5x</code></li>
+</ul>
+</li>
+<li>
+<p><em>Asynchronous transactions are now encrypted by default by knowing the <code>SlatepackAddress</code> of your counterparty(s)</em></p>
+<ul>
+<li>If a counterparty is unwilling or unable to provide a <code>SlatepackAddress</code>, a plain text <code>SlatepackMessage</code> can still be exchanged</li>
+</ul>
+</li>
+<li>
+<p><em>Sending a mobile Grin transaction should be as easy as scanning a simple QR encoded from a bech32 <code>SlatepackAddress</code></em></p>
+<ul>
+<li>Or as easy as pasting the <code>SlatepackAddress</code> of your counterparty into your wallet for any other device</li>
+<li>Or if Tor is not accessible, or the receiving party is not online, as easy as copying and pasting a couple of <code>SlatepackMessage</code> strings with a counterparty in an alternative communication channel (email, forum, social media, instant messenger, generic web text box, carrier pigeon etc.)</li>
+</ul>
+</li>
+</ol>
+<h2 id="reference-level-explanation">Reference-level explanation</h2>
+<p>The Slatepack standard defines the three primary components: <code>SlatepackAddress</code>, <code>SlatepackMessage</code> and <code>SlatepackWorkflow</code>.</p>
+<p>The <code>SlatepackAddress</code> is a shareable bech32 encoded ed25519 public key that can be used both to <em>route synchronous transactions</em> and to <em>encrypt asynchronous transactions</em>.</p>
+<p>The <code>SlatepackMessage</code> is an easily copy and pastable ascii-armor string that contains an encrypted slate payload by default and is used in asynchronous transactions.</p>
+<p>The <code>SlatepackWorkflow</code> specifies how both of these components interact in a universally adoptable transaction standard for Grin.</p>
+<h3 id="slatepackaddress"><code>SlatepackAddress</code></h3>
+<p>A <code>SlatepackAddress</code> is a bech32 encoded ed25519 public key and when shared with other parties is used to represent the ability to receive Grin transactions.</p>
+<p>grin-wallet already handles ed25519 keys for the v3 onion addresses in Tor transactions. These keys can be extended to be a general <code>SlatepackAddress</code> to allow a universal key format for both transport and encryption that is error-checked, QR friendly and easily human identifiable.</p>
+<ul>
+<li>
+<p>Existing ed25519 public keys from the wallet are bech32 encoded with <code>grin</code> as the <code>human-readable part</code> to build a <code>SlatepackAddress</code></p>
+<ul>
+<li><code>tgrin</code> is the HRP for a floonet <code>SlatepackAddress</code></li>
+</ul>
+</li>
+<li>
+<p>A <code>SlatepackAddress</code> can be decoded to its ed25519 public key which can then be mapped to an x25519 public key to be used for encryption</p>
+</li>
+</ul>
+<p><em>By default, all wallets should generate a new <code>SlatepackAddress</code> for each transaction for improved user privacy and security.</em> Wallets can optionally support the ability for a static, reusable receiving <code>SlatepackAddress</code> with a warning about the privacy risks of reusing these addresses.</p>
+<p>The exact proposal for the implementation of simulatenous active <code>SlatepackAddresses</code> to enforce address uniqueness by default according to this standard is left as an implementation detail to wallets to ensure that wallets can <em>interactively</em> receive Grin across many <code>SlatepackAddresses</code> simulataneously and efficiently.</p>
+<p>ed25519 keys are bech32 encoded as <code>SlatepackAddresses</code> rather than x25519 keys because the mapping from ed25519 to x25519 is more straightforward (x25519 public keys do not carry a <code>v</code> coordinate so they can map to two possible ed25519 public keys- this is solvable but using the ed25519 as the first order key avoids a potentially complex solution).</p>
+<h4 id="key-generation">Key Generation</h4>
+<p>Keys used in <code>SlatepackAddresses</code> are derived from a path from the master seed in a given wallet account. Currently the wallet uses separate derivation paths: one for the private bytes used for the blinding factor keys and one for the private bytes used to derive the ed25519 keys used to derive Tor onion addresses. ed25519 keys used for a <code>SlatepackAddress</code> are derived from this second derivation path of the master seed.</p>
+<p><code>SlatepackAddress</code> keys may be derived in parallel to the blinding factor derivation path such that a unique <code>SlatepackAddress</code> is derived each time a new blinding factor is derived for a transaction to satisfy the requirement for a unique <code>SlatepackAddress</code> to be used for each transaction by default.</p>
+<p>In a future update it may be desirable to encode the derivation path for the <code>SlatepackAddress</code> for a given encrypted <code>SlatepackMessage</code> somewhere so that the x25519 decryption keys can be derived without grinding down the path to find the right key to use.</p>
+<h4 id="example-slatepackaddress">Example <code>SlatepackAddress</code></h4>
+<div class="highlight"><pre><span></span><code>grin1p4fuklglxqsgg602hu4c4jl4aunu5tynyf4lkg96ezh3jefzpy6swshp5x
+</code></pre></div>
+<h3 id="slatepackmessage"><code>SlatepackMessage</code></h3>
+<p>A <code>SlatepackMessage</code> requires multiple layers of data and encoding.</p>
+<h4 id="serialization">Serialization</h4>
+<p>Grin slates are serialized as first order JSON objects. Binary serialization is done on those JSON objects. Before Slatepack, users could use both binary and JSON serialization for asynchronous transactions.</p>
+<p>With the Slatepack standard, all asynchronous transactions serialize the slate JSON objects as binary. JSON serialization for synchronous transactions (Tor) is still used as before. The Slatepack standard serialization choices are only relevant for asynchronous transaction methods.</p>
+<p>The details for the binary serialization of the most recent slates at the time of this writing can be found in the <a href="https://github.com/mimblewimble/grin-rfcs/pull/49">Slate V4 (Compact Slates)</a> RFC. Future variations in slate binary serialization should be referenced in an RFC and may require the update of this document.</p>
+<h4 id="plain-text-metadata">Plain Text Metadata</h4>
+<p>Plain text metadata is included with Slatepack messages to indicate how to handle the encryption if any for the slate data in addition to tracking versions for compatibility. It can be expanded in future versions with new fields that are safe to include as plain text. These fields are neither encrypted nor authenticated.</p>
+<ul>
+<li><code>"slatepack": [Major, Minor]</code></li>
+<li>
+<p>Where <code>[Major, Minor]</code> are positive fixnum ints representing the Slatepack version used to build the <code>SlatepackMessage</code></p>
+</li>
+<li>
+<p><code>"mode": int</code></p>
+</li>
+<li>Where <code>int</code> is a positive fixnum int indicating the type of <code>SlatepackMessage</code></li>
+<li>0 == plain text</li>
+<li>1 == encrypted</li>
+<li>Extendable to future new modes (e.g. multiparty)</li>
+<li>
+<p>Indicates which additional metadata fields should be expected to follow</p>
+</li>
+<li>
+<p><code>"sender": SlatepackAddress</code></p>
+</li>
+<li>Only used here where <code>mode == 0</code>, otherwise this field is encrypted as described below</li>
+<li>Where <code>SlatepackAddress</code> is a bech32 encoded ed25519 public key generated by the sender's wallet</li>
+<li>For Slatepacks where the user does not wish to provide any <code>SlatepackAddress</code> a <code>0</code> value is used</li>
+<li>This value is used in the <code>SlatepackWorkflow</code> to attempt to complete the transaction via Tor and to otherwise encrypt a slate for asynchronous transport</li>
+</ul>
+<h4 id="encrypted-metadata">Encrypted Metadata</h4>
+<p>Encrypted metadata is included with an encrypted <code>SlatepackMessage</code> to improve privacy for the sender of a Slatepack transaction in cases where Tor is not available. It is a basic structure containing the sender <code>SlatepackAddress</code> and potential <code>recipients_list</code> field for multiparty use to be encrypted by age. If these fields are included as plain text metadata, they would require an additional MAC field for authentication and reveal data that would be desirable to keep private.</p>
+<p>Note that <code>recipients_list</code> does not gain the same privacy advantages of the <code>sender</code> field because the values can be derived from the plain text data included in the age header with a bit of work.</p>
+<ul>
+<li><code>"sender": SlatepackAddress</code></li>
+<li>
+<p>Used to complete the <code>SlatepackWorkflow</code></p>
+</li>
+<li>
+<p><code>"recipients_list": vec&lt;SlatepackAddress&gt;</code></p>
+</li>
+<li>Only included in multiparty encrypted mode for use in future versions</li>
+<li>Array of recipients such that each recipients <code>SlatepackAddress</code> in <code>recipients_list</code> matches their associated <code>epk</code> and <code>emk</code> by index in the age encryption header of the encrypted payload</li>
+<li>E.g. <code>"recipients_list": [grin1a, grin1b]</code>, <code>"age_header_recipients": [(X25519, EPKa, EMKa), (X25519, EPKb, EMKb)]</code><ul>
+<li><code>grin1a</code> and <code>(X25519, EPKa, EMKa)</code> both belong to the same party as they are both at index 0</li>
+<li><code>grin1b</code> and <code>(X25519, EPKb, EMKb)</code> both belong to the same party as they are both at index 1</li>
+</ul>
+</li>
+</ul>
+<h4 id="encryption">Encryption</h4>
+<p>Slatepack encryption adheres to the cryptography decisions made by <a href="https://age-encryption.org">age</a>. It supports a conversion from the ed25519 signing key type that grin-wallet already uses for Tor to a x25519 encryption key type that age uses for encryption. This allows us to avoid having to make new cryptography decisions to support encrypted slates with keys already used in grin-wallet.</p>
+<p>While Slatepack adheres to the cryptography decisions and payload structure choices made by age in its encrypted payloads, this data alone is not sufficient to handle all possible <code>SlatepackWorkflow</code> steps (because the age recipient header data contains x25519 keys, we want ed25519 keys for the workflow as key mapping in the other direction is not desirable).</p>
+<p>It should also be noted that a <code>SlatepackAddress</code> could be used to do generic age encryption by decoding the bech32 to the ed25519 public key and mapping that to its corresponding x25519 public key used in age. An <code>age Address</code> could also be used as a <code>SlatepackAddress</code> with some extra effort: bech32 decode to the x25519 public key and then <a href="https://signal.org/docs/specifications/xeddsa/">follow Signal's lead</a> to attempt to solve the problem of an x25519 key mapping to two ed25519 keys to give a single ed25519 public key to be used to build a <code>SlatepackAddress</code> by bech32 encoding with <code>slatepack</code> as the HRP.</p>
+<h5 id="payload-age-encryption">Payload (age Encryption)</h5>
+<p>A binary serialized slate and associated <code>Encrypted Metadata</code> fields are concatenated and encrypted according to the age encryption specification. The steps taken here follow age as closely as possible to avoid losing any security properties. A fairly well-reviewed <a href="https://github.com/str4d/rage/tree/master/age">age library in rust</a> is available to use for implementation.</p>
+<p>Any deviations in Slatepack encryption from the exact cryptography steps and decisions made in age are unintentional and should be corrected unless they are explicitly stated as a deviation from the cryptography decisions made by age.</p>
+<p>An encrypted Slatepack payload is built with the same steps as an encrypted age payload, where the X25519 keys are derived from a participants <code>SlatepackAddress</code>.</p>
+<p>E.g. <code>age_encrypt(sender + slate_binary)</code> where <code>mode == 1</code> and <code>sender</code> is a valid <code>SlatepackAddress</code></p>
+<h4 id="armor">Armor</h4>
+<p>The payload that will be armored is an optionally encrypted, binary serialized <code>Slatepack</code> JSON object and any associated encrypted metadata. Armor is <code>Framing</code> wrapped around a <code>SimpleBase58Check</code> encoded <code>Payload</code>.</p>
+<h5 id="framing">Framing</h5>
+<p>Armor uses specific <code>Headers</code>, <code>Footers</code> and <code>Periods</code> as <code>Framing</code> to contain its <code>Payload</code>.</p>
+<ul>
+<li><code>Header</code></li>
+<li>Supported Headers:<ul>
+<li><code>BEGINSLATEPACK</code></li>
+</ul>
+</li>
+<li>
+<p>Regex: <code>^[&gt;\n\r\t ]*BEGINSLATEPACK[&gt;\n\r\t ]*$</code></p>
+</li>
+<li>
+<p><code>Footer</code></p>
+</li>
+<li>Supported Footers<ul>
+<li><code>ENDSLATEPACK</code></li>
+</ul>
+</li>
+<li>
+<p>Regex: <code>^[&gt;\n\r\t ]*ENDSLATEPACK[&gt;\n\r\t ]*$</code></p>
+</li>
+<li>
+<p><code>Periods</code></p>
+</li>
+<li>
+<p>All data of an armored slate up to the first <code>.</code> is the framing header</p>
+</li>
+<li>All data after the first <code>.</code> and before the second <code>.</code> is the <code>SimpleBase58Check</code> encoded payload which contains the slate data</li>
+<li>All data after the second <code>.</code> and before the third <code>.</code> is the framing footer</li>
+<li>Any data after the third <code>.</code> is ignored</li>
+</ul>
+<h5 id="encoding-simplebase58check">Encoding <code>SimpleBase58Check</code></h5>
+<p><code>SlatepackMessage</code> armor payloads are encoded similar to legacy bitcoin addresses, with the primary differences being that the <code>SimpleBase58Check</code> used here does not include version bytes and includes the error checking code at the beginning of the payload instead of at the end.</p>
+<ol>
+<li>
+<p><code>SHA256(SHA256(SLATEPACK_MESSAGE_BINARY))</code></p>
+</li>
+<li>
+<p>First four bytes from previous step are <code>ERROR_CHECK_CODE</code></p>
+</li>
+<li>
+<p>Concatenate <code>ERROR_CHECK_CODE + SLATEPACK_MESSAGE_BINARY</code></p>
+</li>
+<li>
+<p>Base58 encode the output from the previous step to complete the armor <code>Payload</code></p>
+</li>
+</ol>
+<p>It should be noted that the <code>ERROR_CHECK_CODE</code> does not have a robust error checking ability because a double sha256 hash is not a proper error check code and the encoding scheme itself was meant to be used for bitcoin addresses which are much smaller than slate payloads.</p>
+<p>A more robust error correction option was not chosen here because the consequences of the failure to detect an error are not as severe as they would be for a bitcoin address as further validation would need to occur for Grin. The purpose is to catch some characters being accidentally added or lost during armor transport rather than preventing a spend to an address we don't know the key to spend from.</p>
+<h5 id="formatting">Formatting</h5>
+<ul>
+<li><code>WORD_LENGTH</code>: <code>15</code></li>
+<li>
+<p>Number of <code>SimpleBase58Check</code> encoded characters per word; chosen for human readability across device screen sizes</p>
+</li>
+<li>
+<p><code>LINE_BREAK</code>: <code>200</code> words</p>
+</li>
+<li>
+<p>Number of words of <code>WORD_LENGTH</code> to include before inserting a newline; chosen for user friendliness in terminals and messaging applications</p>
+</li>
+<li>
+<p><code>MAX_STRING_SIZE</code>: <code>1MB</code></p>
+</li>
+<li>Maximum size for an armored <code>SlatepackMessage</code> string without requiring a file container</li>
+<li>If a <code>SlatepackMessage</code> exceeds this value it must be handled as a <code>.slatepack</code> file instead of a string</li>
+<li>This parameter chosen to cover as many cases as possible and still be supported by most clipboards</li>
+</ul>
+<p><code>WORD_LENGTH</code> and <code>LINE_BREAK</code> parameters are adjustable as a formatting convenience. <code>MAX_STRING_SIZE</code> is fixed and cannot be exceeded without wrapping the armored <code>SlatepackMessage</code> in a <code>.slatepack</code> file.</p>
+<h5 id="edge-case-large-slates-1mb">Edge Case: Large Slates (&gt;1MB)</h5>
+<p>Some slate payloads may be so large that they cannot be reliably handled across all clipboards. To handle these edge cases, a <code>SlatepackMessage</code> will be expected to be passed in a <code>.slatepack</code> file format in cases where Tor is unsuccessful and the armored <code>SlatepackMessage</code> string output would exceed 1MB. A file format was chosen as opposed to a multi-part message approach because messages are already written to file by default by grin-wallet and they are potentially simpler to handle from an implementation perspective.</p>
+<p>While wallets must support handling these edge cases to avoid all possible cases where a wallet cannot spend or receive a valid transaction, it would be reasonable for services and exchanges to support the Slatepack standard without the requirement of handling the rare file edge case.</p>
+<h4 id="example-slatepack-json-object">Example Slatepack JSON Object</h4>
+<h5 id="mode-0-plain-text">Mode 0: Plain Text</h5>
+<p>In this plain text example, neither the sender nor the receiver wish to share a <code>SlatepackAddress</code></p>
+<div class="highlight"><pre><span></span><code>{
+  &quot;slatepack&quot;: [1, 0],
+  &quot;mode&quot;: 0,
+  &quot;sender&quot;: &quot;0&quot;,
+  &quot;payload&quot;: &lt;binary serialized slate&gt;
+}
+</code></pre></div>
+<h5 id="mode-1-encrypted">Mode 1: Encrypted</h5>
+<div class="highlight"><pre><span></span><code>{
+  &quot;slatepack&quot;: [1, 0],
+  &quot;mode&quot;: 1,
+  &quot;payload&quot;: &lt;age encrypted binary: sender slatepack address + binary serialized slate&gt;,
+}
+</code></pre></div>
+<h4 id="example-slatepackmessage">Example <code>SlatepackMessage</code></h4>
+<div class="highlight"><pre><span></span><code>BEGINSLATEPACK. 4H1qx1wHe668tFW yC2gfL8PPd8kSgv
+pcXQhyRkHbyKHZg GN75o7uWoT3dkib R2tj1fFGN2FoRLY
+GWmtgsneoXf7N4D uVWuyZSamPhfF1u AHRaYWvhF7jQvKx
+wNJAc7qmVm9JVcm NJLEw4k5BU7jY6S eb. ENDSLATEPACK.
+</code></pre></div>
+<h3 id="slatepackworkflow"><code>SlatepackWorkflow</code></h3>
+<p>Adoption of the Slatepack standard allows for a unified workflow that can still function without knowledge of a <code>SlatepackAddress</code> from a counterparty.</p>
+<h4 id="with-a-slatepackaddress">With a <code>SlatepackAddress</code></h4>
+<ol>
+<li>
+<p><code>grin-wallet send -d grin1p4fuklglxqsgg602hu4c4jl4aunu5tynyf4lkg96ezh3jefzpy6swshp5x 1.337</code></p>
+</li>
+<li>
+<p>Sender wallet derives an onion v3 address from <code>grin1p4fuklglxqsgg602hu4c4jl4aunu5tynyf4lkg96ezh3jefzpy6swshp5x</code> and attempts to complete the transaction synchronously via Tor</p>
+</li>
+<li>
+<p>(Fallback) If the synchronous transaction fails, a <code>SlatepackMessage</code> string is encrypted to the <code>SlatepackAddress</code> and output for manual asynchronous transport by the user</p>
+</li>
+</ol>
+<h4 id="without-a-slatepackaddress">Without a <code>SlatepackAddress</code></h4>
+<ol>
+<li>
+<p><code>grin-wallet send 1.337</code></p>
+</li>
+<li>
+<p>A <code>SlatepackMessage</code> string is output for manual asynchronous transport by the user</p>
+</li>
+</ol>
+<h4 id="with-qr-codes">With QR Codes</h4>
+<p>A QR-based <code>SlatepackWorkflow</code> will always begin with a standard QR size because they are encoded directly from a bech32 <code>SlatepackAddress</code>.</p>
+<p>This encoding simultaneously provides a derivable onion address to attempt a synchronous transaction (<code>bech32 -&gt; ed25519 -&gt; onionv3</code>) <em>and</em> a derivable encryption key (<code>bech32 -&gt; ed25519 -&gt; x25519</code>) to return an encrypted Slatepack string to complete the transaction asynchronously as a fallback.</p>
+<p>As a consequence, a <code>SlatepackAddress</code> must be revealed by the party producing a QR code in the <code>SlatepackWorkflow</code>.</p>
+<ol>
+<li>
+<p>Receiver shares <code>SlatepackAddress</code> via QR</p>
+</li>
+<li>
+<p>Sender scans QR code and the transaction is completed synchronously via Tor by deriving the recipient's onion v3 address from their <code>SlatepackAddress</code></p>
+</li>
+<li>
+<p>(Fallback) If the synchronous transaction fails, a <code>SlatepackMessage</code> string is output for manual asynchronous transport by the user</p>
+</li>
+</ol>
+<h3 id="with-three-or-more-parties">With Three or More Parties</h3>
+<p>Some possible future Slatepack transactions may require more than two parties to successfully build. These cases should not require any breaking changes to the core Slatepack standard workflow.</p>
+<p>The exact flow order (round-robin etc) will be defined by the accompanying RFCs that define the possible future multiple party slates themselves. In some cases, new slate versions may require (non-breaking) updates to this RFC. From there, the same standard Slatepack standard workflow of attempting to exchange the data via Tor first with an ascii armor fallback is still valid.</p>
+<p>For example, a future Slatepack version will add support for an array containing a <code>SlatepackAddress</code> for each party in the order desired to finish building the transaction. The wallet of each subsequent party will attempt to establish a connection with the next via Tor. In the event of a Tor failure it would be the responsibility of the most recent party to manually transport it to the next.</p>
+<p>In cases with many parties, the fallback method of the Slatepack standard could quickly become cumbersome if, for example, every third participant fails to achieve a Tor connection.</p>
+<h3 id="implementation-timeline">Implementation Timeline</h3>
+<ol>
+<li>Initial Slatepack implementation introduced with the <em>July 2020 hard fork</em></li>
+<li>
+<p>May or may not support encryption by default yet</p>
+</li>
+<li>
+<p>The proposed Slatepack standard is fully implemented and adopted as a universal transaction standard in <em>last hard fork (Jan 2021)</em></p>
+</li>
+<li>Slatepack is the default transaction standard in all wallets and services</li>
+</ol>
+<h2 id="drawbacks">Drawbacks</h2>
+<ul>
+<li>
+<p>This puts a lot of eggs in one basket (if Slatepack fails there will likely be confusion returning to old methods)</p>
+</li>
+<li>
+<p>This may be a bit rushed to have where we want it before HF schedule</p>
+</li>
+<li>
+<p>Deprecating HTTP(S) is already a major change- by requiring the adoption of this completely new standard in addition we risk putting a lot of effort on the shoulders of existing services in the Grin ecosystem</p>
+</li>
+</ul>
+<h2 id="rationale-and-alternatives">Rationale and alternatives</h2>
+<ul>
+<li>
+<p>By adding new options without simplifying the workflow for users we risk confusion and friction</p>
+</li>
+<li>
+<p>We could just add an option for copy and pastable slates instead of introducing an entirely new universal transaction flow standard</p>
+</li>
+</ul>
+<h2 id="prior-art">Prior art</h2>
+<p>Note that while previous asynchronous Mimblewimble transaction solutions require a relatively short TTL for a counterparty to successfully connect to their respective network before transactions fail (currently 72 hours for Tari DHT Network, 24 hours for Beam SBBS), Grin Slatepack transactions can remain valid indefinitely without spamming the network when using the ascii armor fallback.</p>
+<h3 id="tari">Tari</h3>
+<p>Tari uses the <a href="https://www.tari.com/lessons/02_how_tari_works.html">Tari DHT Network</a> to support asynchronous Mimblewimble transactions. This approach is comprehensive and comprises of the entire peer to peer messaging network, including both nodes and wallets. This is distinct from Slatepack which is strictly an approach to transaction building between wallet software, not general protocol messaging.</p>
+<p>Similar to Slatepack, Tari users derive a public key from their master seed (which is represented to users as emojis instead of bech32) and is used to look up peers in peer databases (as opposed to directly routing to a traditional Tor hidden service as in Slatepack). By default, Tari, like Slatepack, uses Tor for communication.</p>
+<p>While Slatepack and Tari both have addresses that decode to public keys used to find and communicate with counterparty wallets via Tor, they both handle the Tor failure case differently. Tari seems to rely on its custom DHT network to gracefully handle this at the cost of the complexity of a custom DHT layer. Slatepack falls back to an unopinionated, encrypted ascii armor string for the user to transport "outside of the Grin network" to complete the transaction.</p>
+<p>The advantage for Slatepack is significantly reduced complexity by using Tor directly with an unopinionated fallback mode. The disadvantage for Slatepack is that transactions don't "magically" just work if Tor communication is failing- they still require some effort from the user to transport the ascii armor themselves.</p>
+<p><em>Note that these details were taken from early documentation and not code- transactions in Tari may behave differently in practice.</em></p>
+<h3 id="beam">Beam</h3>
+<p>Beam uses the <a href="https://github.com/BeamMW/beam/wiki/Secure-bulletin-board-system-(SBBS)">SBBS</a> gossip protocol to support asynchronous mimblewimble transactions. SBBS adds a nontrivial amount of complexity and attack surface to the core Beam software. In exchange, Beam receives a somewhat user-friendly mechanism for users to build transactions asynchronously. The asynchronous fallback method for Slatepack transactions is a simple ascii armor string that does not contain an opinion about a particular protocol with which to exchange the data.</p>
+<p>The advantage with the Slatepack method is that much less code is required to support these transactions which can improve the overall stability and security of the codebase running the Grin network. The disadvantage of this for Slatepack is that asynchronous transactions don't "magically" work- they still need to be between users via an outside channel (instant message, text box, email etc). Slatepack makes the tradeoff of slightly more work for the end user in exchange for a simpler and potentially more secure network for Grin.</p>
+<h2 id="unresolved-questions">Unresolved questions</h2>
+<ul>
+<li>
+<p>How to handle key derivation harmoniously?</p>
+</li>
+<li>
+<p>What are unmentioned security considerations for using the same base key to both map to an onion address and map to an encryption key used in transactions?</p>
+</li>
+<li>
+<p>Related, what are unmentioned security considerations to <code>SlatepackAddress</code> reuse?</p>
+</li>
+<li>
+<p>Should we still use double-sha256 in <code>SimpleBase58Check</code> or take the opportunity to use a BCH or CRC code which may be more appropriate for error detection on slatepack messages?</p>
+</li>
+<li>
+<p>Is additional engineering desired here if there will always be further validation of the slate payload before a spend can occur?</p>
+</li>
+<li>
+<p>If addresses are not reused by default and since wallets need to be able to conduct multiple transactions in parallel, they need the ability to listen on all "active" addresses at the same time</p>
+</li>
+</ul>
+<h2 id="future-possibilities">Future possibilities</h2>
+<ul>
+<li>
+<p>Extended to support future modes (payment channel, payjoin, multiple counterparties etc)</p>
+</li>
+<li>
+<p>An entirely different standard could be adopted in the future if non-interactive transactions become the default, eliminating the need for Slatepack</p>
+</li>
+<li>It might be possible for a new standard to remain compatible with the existing <code>SlatepackAddress</code> to allow a more generic <code>GrinAddress</code></li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://en.bitcoin.it/wiki/BIP_0173">Bitcoin BIP173</a></li>
+<li><a href="https://docs.google.com/document/d/11yHom20CrsuX8KQJXBBw04s80Unjv8zCg_A7sPAX_9Y/preview#">age - File Encryption Tool &amp; Format</a></li>
+<li><a href="https://github.com/str4d/rage/blob/master/age">age Rust library</a></li>
+<li><a href="https://blog.mozilla.org/warner/2011/11/29/ed25519-keys/">Ed25519 Keys</a></li>
+<li><a href="https://libsodium.gitbook.io/doc/advanced/ed25519-curve25519">Ed25519 to Curve25519</a></li>
+<li><a href="https://blog.filippo.io/using-ed25519-keys-for-encryption/">Using Ed25519 signing keys for encryption</a></li>
+<li><a href="https://github.com/mimblewimble/grin-rfcs/pull/53">Armored Slates RFC</a></li>
+<li><a href="https://saltpack.org">Saltpack</a></li>
+<li><a href="https://gitweb.torproject.org/torspec.git/tree/rend-spec-v3.txt">Tor v3 Specification</a></li>
+<li><a href="https://signal.org/docs/specifications/xeddsa/">Signal Docs XEdDSA</a></li>
+<li><a href="https://www.tari.com/lessons/02_how_tari_works.html">How Tari Works</a></li>
+<li><a href="https://github.com/BeamMW/beam/wiki/Secure-bulletin-board-system-(SBBS)">Beam Docs SBBS</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/mimblewimble" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://keybase.io/team/grincoin" target="_blank" rel="noopener" title="keybase.io" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M286.17 419a18 18 0 1 0 18 18 18 18 0 0 0-18-18m111.92-147.6c-9.5-14.62-39.37-52.45-87.26-73.71q-9.1-4.06-18.38-7.27a78.43 78.43 0 0 0-47.88-104.13c-12.41-4.1-23.33-6-32.41-5.77-.6-2-1.89-11 9.4-35L198.66 32l-5.48 7.56c-8.69 12.06-16.92 23.55-24.34 34.89a51 51 0 0 0-8.29-1.25c-41.53-2.45-39-2.33-41.06-2.33-50.61 0-50.75 52.12-50.75 45.88l-2.36 36.68c-1.61 27 19.75 50.21 47.63 51.85l8.93.54a214 214 0 0 0-46.29 35.54C14 304.66 14 374 14 429.77v33.64l23.32-29.8a148.6 148.6 0 0 0 14.56 37.56c5.78 10.13 14.87 9.45 19.64 7.33 4.21-1.87 10-6.92 3.75-20.11a178.3 178.3 0 0 1-15.76-53.13l46.82-59.83-24.66 74.11c58.23-42.4 157.38-61.76 236.25-38.59 34.2 10.05 67.45.69 84.74-23.84.72-1 1.2-2.16 1.85-3.22a156 156 0 0 1 2.8 28.43c0 23.3-3.69 52.93-14.88 81.64-2.52 6.46 1.76 14.5 8.6 15.74 7.42 1.57 15.33-3.1 18.37-11.15C429 443 434 414 434 382.32c0-38.58-13-77.46-35.91-110.92M142.37 128.58l-15.7-.93-1.39 21.79 13.13.78a93 93 0 0 0 .32 19.57l-22.38-1.34a12.28 12.28 0 0 1-11.76-12.79L107 119c1-12.17 13.87-11.27 13.26-11.32l29.11 1.73a144 144 0 0 0-7 19.17m148.42 172.18a10.51 10.51 0 0 1-14.35-1.39l-9.68-11.49-34.42 27a8.09 8.09 0 0 1-11.13-1.08l-15.78-18.64a7.38 7.38 0 0 1 1.34-10.34l34.57-27.18-14.14-16.74-17.09 13.45a7.75 7.75 0 0 1-10.59-1s-3.72-4.42-3.8-4.53a7.38 7.38 0 0 1 1.37-10.34L214 225.19s-18.51-22-18.6-22.14a9.56 9.56 0 0 1 1.74-13.42 10.38 10.38 0 0 1 14.3 1.37l81.09 96.32a9.58 9.58 0 0 1-1.74 13.44M187.44 419a18 18 0 1 0 18 18 18 18 0 0 0-18-18"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>

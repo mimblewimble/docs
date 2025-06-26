@@ -1,0 +1,19 @@
+@startuml
+actor "Client" as client
+participant "Internal Rust API" as rustapi
+participant "Wallet Backend" as backend
+
+title Opening a Wallet (Directly Linked)
+
+== Open Wallet ==
+client -> client: Supply password **pw**
+client -> rustapi: open_wallet(**pw**, **other_params**)
+rustapi -> rustapi: Generate Random Token (**t**)
+rustapi -> backend: open_Wallet(**t**, **pw**)
+backend -> backend: Decrypt seed(**req.pw**) -> **seed**
+backend -> backend: Store **seed**^**t** -> (**seedT**)
+rustapi -> rustapi: Include **t** in **return_data**
+rustapi -> client: Return (**return_data**)
+client -> client: Store **return_data.t** as **t**
+client -> client: Supply **t** as parameter to all other API calls
+@enduml

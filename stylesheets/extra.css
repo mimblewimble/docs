@@ -1,0 +1,31 @@
+:root {
+  --md-primary-fg-color: rgb(24, 24, 24);
+}
+
+/* nice blue header color to go with the default bg color
+:root {
+  --md-primary-fg-color: #151726;}
+*/
+
+.md-footer-meta {
+    background-color: rgb(22, 22, 22);
+}
+
+.md-tabs { /* dashed line for the collapsible header */
+    border-bottom: 1px dashed #b5e847;
+}
+
+/* dashed line for h1 headers, looks pretty cool
+h1 {
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #b5e847;
+}
+*/
+
+[data-md-color-scheme="slate"] {
+  --md-default-bg-color: rgb(28, 28, 28); /* set site wide background color*/
+  --md-typeset-color: #cecac3; /* set site wide text color */
+  --md-code-bg-color: rgb(20, 20, 23); /* set code-blocks background color*/
+  --md-footer-bg-color: rgb(24, 24, 24); /* set footer background color */
+  --md-typeset-a-color: rgb(233, 235, 252); /* set active and link font color */
+}

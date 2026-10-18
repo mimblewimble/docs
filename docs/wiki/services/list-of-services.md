@@ -28,4 +28,5 @@
 - [2miners SOLO](https://solo-grin.2miners.com/)
 - [Easygrin](https://pool.easygrin.org)    
 - [Easygrin SOLO](https://solo.easygrin.org/)      
+- [VEIN Pool (PPLNS + SOLO)](https://veinpool.fr/coin/grin?lang=en)
 
